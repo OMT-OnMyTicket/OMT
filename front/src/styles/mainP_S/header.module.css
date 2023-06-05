@@ -1,0 +1,22 @@
+.header {
+  position: relative;
+  z-index: 101;
+}
+.header_content {
+  margin-bottom: 50px;
+  background-color: yellow;
+  border-bottom: 1px solid #eee;
+}
+.conetent {
+  background-color: red;
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 6px 25px 5px;
+}
+.headerInfo {
+  display: flex;
+  align-items: center;
+}
+.headerInfo > li {
+  margin-left: 44px;
+}
