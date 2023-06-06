@@ -1,0 +1,53 @@
+.allContents {
+  position: relative;
+  height: 498px;
+  background-color: #000;
+}
+
+.preview {
+  background-color: blue;
+  color: white;
+  width: 980px;
+  height: 100%;
+  margin: 0 auto;
+}
+.video {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.title {
+  position: absolute;
+  top: 170px;
+  left: 0;
+  font-weight: 700;
+  font-size: 40px;
+  color: #fff;
+  line-height: 1.45em;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.72);
+  z-index: 2;
+}
+.txt {
+  display: -webkit-box;
+  overflow: hidden;
+  position: absolute;
+  top: 239px;
+  left: 0;
+  max-width: 100%;
+  font-size: 20px;
+  color: #fff;
+  line-height: 1.45em;
+  text-overflow: ellipsis;
+  z-index: 3;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.txt2 {
+  display: inline-flex;
+  position: absolute;
+  top: 315px;
+  left: 3px;
+  z-index: 4;
+}
