@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styled from '../../styles/mainP_S/header.module.css';
 
 const Header = () => {
@@ -8,8 +9,12 @@ const Header = () => {
           <h1 className={styled.logo}>로고</h1>
           <ul className={styled.headerInfo}>
             <li>검색icon</li>
-            <li>예매하기</li>
-            <li>My Tickets</li>
+            <li>
+              <Link href='/'>예매하기</Link>
+            </li>
+            <li>
+              <Link href='/'>My Tickets</Link>
+            </li>
             <li>이름</li>
           </ul>
         </div>
