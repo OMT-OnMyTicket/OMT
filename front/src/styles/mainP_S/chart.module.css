@@ -1,0 +1,16 @@
+.contents {
+  background-color: brown;
+  padding: 50px 120px 60px;
+}
+
+.chartTitle {
+  display: flex;
+}
+.chartList {
+  display: flex;
+}
+.movies {
+  width: 170.4px;
+  margin-right: 32px;
+  background-color: white;
+}

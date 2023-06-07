@@ -1,5 +1,6 @@
 import Header from '@/components/_mainpage/header';
 import Preview from '@/components/_mainpage/preview';
+import Chart from '@/components/_mainpage/chart';
 export default function Home() {
   return (
     <>
@@ -8,6 +9,9 @@ export default function Home() {
       </div>
       <div>
         <Preview />
+      </div>
+      <div>
+        <Chart />
       </div>
     </>
   );
