@@ -1,16 +1,35 @@
 .contents {
-  background-color: brown;
   padding: 50px 120px 60px;
 }
 
 .chartTitle {
   display: flex;
+  justify-content: center;
+  column-gap: 30px;
 }
 .chartList {
   display: flex;
+  justify-content: center;
 }
 .movies {
   width: 170.4px;
   margin-right: 32px;
   background-color: white;
+  border-radius: 10px;
+}
+.chartTitle > h3 {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+.movieTitle {
+  display: flex;
+  justify-content: center;
+}
+.moviesTxt2 {
+  display: flex;
+  justify-content: space-around;
 }

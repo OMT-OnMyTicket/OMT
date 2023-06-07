@@ -5,12 +5,11 @@
 .header_content {
   margin-bottom: 50px;
   padding: 0 120px;
-  background-color: yellow;
+
   border-bottom: 1px solid #eee;
 }
 
 .conetent {
-  background-color: red;
   display: flex;
   justify-content: space-between;
   padding: 30px 6px 25px 5px;
