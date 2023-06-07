@@ -1,7 +1,23 @@
 import styled from '../../styles/mainP_S/chart.module.css';
+import axios from 'axios';
+
+const KEY = process.env.NEXT_PUBLIC_KOPIC_KEY;
+const URL = process.env.NEXT_PUBLIC_KOPIC_URL;
 
 const chart = () => {
   let movieChart = ['1위', '2위', '3위', '4위', '5위'];
+
+  axios
+    .get(`${URL}`, {
+      params: {
+        key: `${KEY}`,
+        targetDt: '20230606'
+      }
+    })
+    .then((res) => {
+      console.log(res.data);
+    })
+    .catch((error) => console.log(error));
 
   return (
     <div className={styled.contents}>
