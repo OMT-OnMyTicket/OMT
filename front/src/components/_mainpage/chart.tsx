@@ -82,39 +82,41 @@ const Chart = () => {
   );
 };
 
-export async function getServerSideProps() {
-  const targetDt = get_date_str(new Date());
+// SSR로 구성할 때 공부해볼 것
 
-  try {
-    const res = await axios.get(`${URL}`, {
-      params: {
-        key: KEY,
-        targetDt: targetDt
-      }
-    });
+// export async function getServerSideProps() {
+//   const targetDt = get_date_str(new Date());
 
-    const result = res.data.boxOfficeResult;
-    const extractedData = result.dailyBoxOfficeList.map(
-      (item: DailyBoxOfficeItem) => ({
-        rank: item.rank,
-        movieNm: item.movieNm,
-        audiAcc: item.audiAcc
-      })
-    );
+//   try {
+//     const res = await axios.get(`${URL}`, {
+//       params: {
+//         key: KEY,
+//         targetDt: targetDt
+//       }
+//     });
 
-    return {
-      props: {
-        movieChart: extractedData
-      }
-    };
-  } catch (error) {
-    console.log(error);
-    return {
-      props: {
-        movieChart: []
-      }
-    };
-  }
-}
+//     const result = res.data.boxOfficeResult;
+//     const extractedData = result.dailyBoxOfficeList.map(
+//       (item: DailyBoxOfficeItem) => ({
+//         rank: item.rank,
+//         movieNm: item.movieNm,
+//         audiAcc: item.audiAcc
+//       })
+//     );
+
+//     return {
+//       props: {
+//         movieChart: extractedData
+//       }
+//     };
+//   } catch (error) {
+//     console.log(error);
+//     return {
+//       props: {
+//         movieChart: []
+//       }
+//     };
+//   }
+// }
 
 export default Chart;
