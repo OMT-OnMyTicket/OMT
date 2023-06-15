@@ -37,6 +37,8 @@ const Chart = () => {
   const [movieChart, setMovieChart] = useState<DailyBoxOfficeItem[]>([]);
   const [moviePosters, setMoviePosters] = useState<string[]>([]);
 
+  // 무비차트 데이터 받아오기
+
   useEffect(() => {
     axios
       .get(`${URL}`, {
@@ -56,7 +58,9 @@ const Chart = () => {
         );
         setMovieChart(extractedData);
 
-        const promises = extractedData.map((movie: any) => {
+        // 영화 postURL 받아오기
+
+        const detailMovieInfo = extractedData.map((movie: any) => {
           return axios.get(`${KMDB_URL}`, {
             params: {
               collection: 'kmdb_new2',
@@ -67,7 +71,7 @@ const Chart = () => {
           });
         });
 
-        Promise.all(promises)
+        Promise.all(detailMovieInfo)
           .then((responses) => {
             const posters = responses.map((res) => {
               const posters = res.data.Data[0].Result[0].posters;
