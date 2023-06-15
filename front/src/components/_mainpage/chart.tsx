@@ -7,11 +7,16 @@ import 'slick-carousel/slick/slick-theme.css';
 
 const KEY = process.env.NEXT_PUBLIC_KOPIC_KEY;
 const URL = process.env.NEXT_PUBLIC_KOPIC_URL;
+const KMDB_KEY = process.env.NEXT_PUBLIC_KMDB_KEY;
+const KMDB_URL = process.env.NEXT_PUBLIC_KMDB_URL;
 
 interface DailyBoxOfficeItem {
   rank: string;
   movieNm: string;
   audiAcc: string;
+}
+interface MoviePosters {
+  url: string;
 }
 
 // 전날 날짜 yyyymmdd 형식으로 추출하기 => targetDt 추출
@@ -30,6 +35,7 @@ function get_today() {
 
 const Chart = () => {
   const [movieChart, setMovieChart] = useState<DailyBoxOfficeItem[]>([]);
+  const [moviePosters, setMoviePosters] = useState<string[]>([]);
 
   useEffect(() => {
     axios
@@ -49,6 +55,27 @@ const Chart = () => {
           })
         );
         setMovieChart(extractedData);
+
+        const promises = extractedData.map((movie: any) => {
+          return axios.get(`${KMDB_URL}`, {
+            params: {
+              collection: 'kmdb_new2',
+              detail: 'Y',
+              title: movie.movieNm,
+              ServiceKey: `${KMDB_KEY}`
+            }
+          });
+        });
+
+        Promise.all(promises)
+          .then((responses) => {
+            const posters = responses.map((res) => {
+              const posters = res.data.Data[0].Result[0].posters;
+              return posters.split('|')[0];
+            });
+            setMoviePosters(posters);
+          })
+          .catch((error) => console.log(error));
       })
       .catch((error) => console.log(error));
   }, []);
@@ -76,14 +103,12 @@ const Chart = () => {
             return (
               <div className={styled.movies} key={a.rank}>
                 <img
-                  src='/범죄도시.png'
+                  src={moviePosters[i] || '/preparing.png'}
                   alt='movie poster'
                   className={styled.moviePoster}
                 />
                 <strong className={styled.movieTitle}>{a.movieNm}</strong>
-                <div className={styled.moviesTxt2}>
-                  누적 관람객 : {a.audiAcc}
-                </div>
+                <div className={styled.moviesTxt2}>누적관객수: {a.audiAcc}</div>
               </div>
             );
           })}
@@ -92,42 +117,5 @@ const Chart = () => {
     </div>
   );
 };
-
-// SSR로 구성할 때 공부해볼 것
-
-// export async function getServerSideProps() {
-//   const targetDt = get_date_str(new Date());
-
-//   try {
-//     const res = await axios.get(`${URL}`, {
-//       params: {
-//         key: KEY,
-//         targetDt: targetDt
-//       }
-//     });
-
-//     const result = res.data.boxOfficeResult;
-//     const extractedData = result.dailyBoxOfficeList.map(
-//       (item: DailyBoxOfficeItem) => ({
-//         rank: item.rank,
-//         movieNm: item.movieNm,
-//         audiAcc: item.audiAcc
-//       })
-//     );
-
-//     return {
-//       props: {
-//         movieChart: extractedData
-//       }
-//     };
-//   } catch (error) {
-//     console.log(error);
-//     return {
-//       props: {
-//         movieChart: []
-//       }
-//     };
-//   }
-// }
 
 export default Chart;
