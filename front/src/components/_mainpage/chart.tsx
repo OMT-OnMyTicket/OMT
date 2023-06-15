@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import styled from '../../styles/mainP_S/chart.module.css';
 import axios from 'axios';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 const KEY = process.env.NEXT_PUBLIC_KOPIC_KEY;
 const URL = process.env.NEXT_PUBLIC_KOPIC_URL;
@@ -50,33 +53,41 @@ const Chart = () => {
       .catch((error) => console.log(error));
   }, []);
 
+  // Slider settings
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 5,
+    slidesToScroll: 5,
+    autoplay: true,
+    autoplaySpeed: 8000
+  };
+
   return (
     <div className={styled.contents}>
       <div className={styled.chartTitle}>
         <h3>무비차트</h3>
         <h3>상영예정작</h3>
       </div>
-
-      <div className={styled.chartList}>
-        {movieChart.map((a: DailyBoxOfficeItem, i: number) => {
-          return (
-            <div className={styled.movies} key={a.rank}>
-              <div>
+      <div className={styled.movieSlider}>
+        <Slider {...settings}>
+          {movieChart.map((a: DailyBoxOfficeItem, i: number) => {
+            return (
+              <div className={styled.movies} key={a.rank}>
                 <img
                   src='/범죄도시.png'
-                  alt='영화 포스터'
-                  className={styled.movies}
+                  alt='movie poster'
+                  className={styled.moviePoster}
                 />
-              </div>
-              <div className={styled.moviesTxt}>
                 <strong className={styled.movieTitle}>{a.movieNm}</strong>
                 <div className={styled.moviesTxt2}>
-                  <span>{a.audiAcc}</span>
+                  누적 관람객 : {a.audiAcc}
                 </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </Slider>
       </div>
     </div>
   );
