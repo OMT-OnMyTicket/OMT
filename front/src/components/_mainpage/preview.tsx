@@ -4,9 +4,17 @@ const preview = () => {
   return (
     <div className={styled.allContents}>
       <div className={styled.preview}>
-        <video className={styled.video}>영화 예고편</video>
-        <strong className={styled.title}>영화제목</strong>
-        <span className={styled.txt}>간략한 영화 설명</span>
+        <iframe
+          className={styled.video}
+          src='https://www.youtube.com/embed/Obc6ecquoA0?autoplay=1&mute=1&loop=1&playlist=Obc6ecquoA0'
+          title='귀공자 예고편'
+          allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+          allowFullScreen
+        />
+        <strong className={styled.title}>귀공자 </strong>
+        <span className={styled.txt}>
+          [신세계 , 마녀] 박훈정 감독 작품 <br /> 김선호 강렬한 스크린 첫 데뷔!
+        </span>
         <div className={styled.txt2}>상세보기 or 예매하기</div>
       </div>
     </div>

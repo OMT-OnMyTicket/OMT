@@ -1,17 +1,18 @@
 .allContents {
   position: relative;
-  height: 498px;
+  height: 500px;
   background-color: #000;
+  padding: 10px 0px;
 }
 
 .preview {
-  border: 1px solid white;
   color: white;
   width: 980px;
   height: 100%;
   margin: 0 auto;
 }
 .video {
+  border: 0px;
   overflow: hidden;
   position: relative;
   width: 100%;
