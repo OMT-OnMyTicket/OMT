@@ -1,3 +1,5 @@
+import Head from 'next/head';
+
 import '../styles/globals.css';
 import { Inter } from 'next/font/google';
 
@@ -15,6 +17,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
+      <Head>
+        <link rel='icon' href='/favicon.ico' />
+        <title>{metadata.title}</title>
+        <meta name='description' content={metadata.description} />
+      </Head>
       <body className={inter.className}>{children}</body>
     </html>
   );

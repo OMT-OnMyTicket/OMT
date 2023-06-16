@@ -6,7 +6,7 @@ const Header = () => {
     <div className={styled.header}>
       <div className={styled.header_content}>
         <div className={styled.conetent}>
-          <h1 className={styled.logo}>로고</h1>
+          <img src='/OMT_logo4.png' className={styled.logo} />
           <ul className={styled.headerInfo}>
             <li>검색icon</li>
             <li>

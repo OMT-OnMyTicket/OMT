@@ -9,6 +9,10 @@
   border-bottom: 1px solid #eee;
 }
 
+.logo {
+  width: 200px;
+}
+
 .conetent {
   display: flex;
   justify-content: space-between;
