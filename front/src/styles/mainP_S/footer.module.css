@@ -1,0 +1,17 @@
+.Layout {
+  background-color: #ebebeb;
+  padding: 50px;
+  display: flex;
+  justify-content: center;
+}
+.footer_Logo {
+  width: 130px;
+  position: absolute;
+  left: 0;
+  margin-left: 40px;
+}
+.footerTxt {
+  display: flex;
+  column-gap: 120px;
+  color: gray;
+}

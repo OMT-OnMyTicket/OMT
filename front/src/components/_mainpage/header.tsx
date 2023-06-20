@@ -8,7 +8,9 @@ const Header = () => {
         <div className={styled.conetent}>
           <img src='/OMT_logo4.png' className={styled.logo} />
           <ul className={styled.headerInfo}>
-            <li>검색icon</li>
+            <li>
+              <img src='/search.svg' />
+            </li>
             <li>
               <Link href='/'>예매하기</Link>
             </li>

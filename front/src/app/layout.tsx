@@ -1,5 +1,4 @@
 import Head from 'next/head';
-
 import '../styles/globals.css';
 import { Inter } from 'next/font/google';
 
@@ -23,6 +22,7 @@ export default function RootLayout({
         <meta name='description' content={metadata.description} />
       </Head>
       <body className={inter.className}>{children}</body>
+      <img src='/OMT_web.png' className='Ticket_icon' />
     </html>
   );
 }
