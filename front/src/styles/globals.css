@@ -9,13 +9,3 @@ a {
   color: inherit;
   text-decoration: none;
 }
-.Ticket_icon {
-  position: fixed;
-  width: 100px;
-  bottom: 0;
-  right: 0;
-  background: none;
-  margin: 20px;
-  cursor: pointer;
-  transition: transform 1s;
-}

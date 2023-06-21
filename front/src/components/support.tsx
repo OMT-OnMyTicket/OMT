@@ -12,7 +12,11 @@ const support = () => {
 
   return (
     <>
-      <img src='/OMT_web.png' className='Ticket_icon' onClick={handleClick} />
+      <img
+        src='/OMT_web.png'
+        className={styled.container}
+        onClick={handleClick}
+      />
 
       {ModalOpen && <Modal setModalOpen={setModalOpen} />}
     </>
