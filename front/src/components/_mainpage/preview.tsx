@@ -15,7 +15,9 @@ const preview = () => {
         <span className={styled.txt}>
           [신세계 , 마녀] 박훈정 감독 작품 <br /> 김선호 강렬한 스크린 첫 데뷔!
         </span>
-        <div className={styled.txt2}>상세보기 or 예매하기</div>
+        <button className={styled.Ticketing}>
+          <p className={styled.TicketingTxt}>예매하기</p>
+        </button>
       </div>
     </div>
   );

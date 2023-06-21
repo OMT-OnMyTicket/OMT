@@ -45,10 +45,25 @@
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 }
-.txt2 {
+.Ticketing {
   display: inline-flex;
   position: absolute;
+  align-items: center;
   top: 315px;
-  left: 120px;
+  left: 114px;
   z-index: 4;
+  background-color: black;
+  border: none;
+  color: white;
+  font-size: 17px;
+  font-weight: bold;
+  transition-duration: 1s;
+  border-radius: 10px;
+  height: 30px;
+  width: 120px;
+  cursor: pointer;
+}
+.Ticketing:hover {
+  background-color: red;
+  padding-left: 46px;
 }
