@@ -20,7 +20,15 @@ const mySection = () => {
         </div>
 
         <div className={styled.RightBox}>
-          <div>사용자</div>
+          <div className={styled.MyTxt}>
+            <div>선호장르 : 액션</div>
+            <div>나의 등급 : 영화광</div>
+            <div>월 평균 관람 횟수: 3회</div>
+          </div>
+          <div>
+            <img src='/김세훈.png' className={styled.UserPhoto} />
+            <div className={styled.UserName}>김세훈 님</div>
+          </div>
         </div>
       </div>
     </div>

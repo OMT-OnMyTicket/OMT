@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import '../styles/globals.css';
 import { Inter } from 'next/font/google';
+import Support from '@/components/support';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -22,7 +23,6 @@ export default function RootLayout({
         <meta name='description' content={metadata.description} />
       </Head>
       <body className={inter.className}>{children}</body>
-      <img src='/OMT_web.png' className='Ticket_icon' />
     </html>
   );
 }

@@ -5,6 +5,7 @@ import Preview from '@/components/_mainpage/preview';
 import Chart from '@/components/_mainpage/chart';
 import Footer from '@/components/_mainpage/footer';
 import MySection from '@/components/_mainpage/mySection';
+import Support from '@/components/support';
 
 export default function Home() {
   return (
@@ -23,6 +24,7 @@ export default function Home() {
       </div>
       <div>
         <Footer />
+        <Support />
       </div>
     </>
   );

@@ -1,0 +1,51 @@
+.container {
+  /* 최상단 위치 */
+  z-index: 999;
+  /* 중앙 배치 */
+  /* top, bottom, left, right 는 브라우저 기준으로 작동한다. */
+  /* translate는 본인의 크기 기준으로 작동한다. */
+  position: fixed;
+  bottom: 10%;
+  transition: transform 2s;
+  /* 모달창 디자인 */
+}
+
+/* 모달창 내부 X버튼 */
+.close,
+.Ticketing,
+.MyTicket,
+.Logout {
+  position: fixed;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+  border: 0;
+  border-radius: 10px;
+  width: 90px;
+  height: 27px;
+  font-weight: bold;
+}
+.Logout {
+  right: 9%;
+  bottom: 4%;
+  background-color: grey;
+}
+.Logout:hover {
+  background-color: red;
+  height: 30px;
+}
+.MyTicket {
+  right: 9%;
+  bottom: 8%;
+}
+.Ticketing {
+  right: 9%;
+  bottom: 12%;
+}
+.MyTicket:hover,
+.Ticketing:hover {
+  background-color: white;
+  color: black;
+  height: 32px;
+  border: 3px solid black;
+}

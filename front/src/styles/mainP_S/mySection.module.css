@@ -21,10 +21,17 @@
   justify-content: space-around;
   align-items: center;
 }
-.poster {
+.poster,
+.UserPhoto {
   width: 180px;
   border-radius: 20px;
 }
-.recentTxt {
+.recentTxt,
+.MyTxt {
   line-height: 3;
+}
+.UserName {
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
 }
