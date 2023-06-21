@@ -1,37 +1,41 @@
 .Layout {
   border-top: 1px solid #eee;
-  padding: 50px 20px;
+  padding: 3.47vw 1.38vw;
 }
 .Title {
   display: flex;
   justify-content: space-around;
+  font-size: 1.38vw;
 }
 .Boxes {
   display: flex;
   justify-content: space-around;
-  height: 300px;
+  height: 20.8vw;
 }
 
 .LeftBox,
 .RightBox {
-  border-radius: 20px;
-  width: 500px;
-  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.12);
+  border-radius: 1.38vw;
+  width: 34.7vw;
+  box-shadow: 0vw 0.5vw 1.66vw rgba(0, 0, 0, 0.12);
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
 .poster,
 .UserPhoto {
-  width: 180px;
-  border-radius: 20px;
+  width: 12.5vw;
+  border-radius: 1.38vw;
+  box-shadow: 0vw 0.5vw 1.66vw rgba(0, 0, 0, 0.12);
 }
 .recentTxt,
 .MyTxt {
-  line-height: 3;
+  line-height: 3.47vw;
+  font-size: 1.1vw;
 }
 .UserName {
   display: flex;
   justify-content: center;
   font-weight: bold;
+  font-size: 1.1vw;
 }

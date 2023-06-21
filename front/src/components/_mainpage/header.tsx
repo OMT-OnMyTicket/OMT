@@ -9,15 +9,19 @@ const Header = () => {
           <img src='/OMT_logo4.png' className={styled.logo} />
           <ul className={styled.headerInfo}>
             <li>
-              <img src='/search.svg' />
+              <img src='/search.svg' className={styled.search} />
             </li>
             <li>
-              <Link href='/'>예매하기</Link>
+              <Link href='/' className={styled.ticketing}>
+                예매하기
+              </Link>
             </li>
             <li>
-              <Link href='/'>My Tickets</Link>
+              <Link href='/' className={styled.myTickets}>
+                My Tickets
+              </Link>
             </li>
-            <li>이름</li>
+            <li className={styled.UserName}>이름</li>
           </ul>
         </div>
       </div>

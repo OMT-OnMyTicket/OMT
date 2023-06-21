@@ -1,18 +1,20 @@
 .container {
   position: fixed;
-  width: 100px;
+  width: 6.94vw;
   bottom: 0;
   right: 0;
   background: none;
-  margin: 20px;
+  margin: 1.38vw;
   cursor: pointer;
+  transition-duration: 1s;
 }
+
 .goToTop {
   position: fixed;
   bottom: 0;
   left: 0;
-  margin: 20px;
-  width: 44px;
+  margin: 1.38vw;
+  width: 3.1vw;
   cursor: pointer;
 }
 
@@ -24,9 +26,9 @@
   background-color: black;
   color: white;
   border: 0;
-  border-radius: 10px;
-  width: 90px;
-  height: 27px;
+  border-radius: 0.7vw;
+  width: 6.25vw;
+  height: 1.87vw;
   font-weight: bold;
   transition-duration: 1s;
 }
@@ -51,6 +53,6 @@
 .Ticketing:hover {
   background-color: white;
   color: black;
-  height: 32px;
+  height: 2.22vw;
   border: 1px solid black;
 }

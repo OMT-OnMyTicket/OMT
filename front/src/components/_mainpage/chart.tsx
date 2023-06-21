@@ -99,7 +99,6 @@ const Chart = () => {
     <div className={styled.contents}>
       <div className={styled.chartTitle}>
         <h3>무비차트</h3>
-        <h3>상영예정작</h3>
       </div>
       <div className={styled.movieSlider}>
         <Slider {...settings}>

@@ -1,21 +1,26 @@
 .contents {
-  padding: 50px 120px 60px;
+  padding: 3.47vw 8.3vw 4.2vw;
 }
 
 .chartTitle {
   display: flex;
-  justify-content: center;
-  column-gap: 30px;
+  font-size: 1.38vw;
 }
 
 .moviePoster {
-  width: 170.4px;
-  height: 240px;
+  width: 11.83vw;
+  height: 16.6vw;
   background-color: white;
-  border-radius: 10px;
-  margin-bottom: 20px;
+  border-radius: 0.7vw;
+  margin-bottom: 1.38vw;
 }
 
 .movieSlider {
-  margin-left: 10px;
+  margin-left: 0.7vw;
+}
+.movieTitle {
+  font-size: 1.18vw;
+}
+.moviesTxt2 {
+  font-size: 0.97vw;
 }

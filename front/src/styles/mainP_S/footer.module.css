@@ -1,17 +1,21 @@
 .Layout {
   background-color: #ebebeb;
-  padding: 50px;
+  padding: 3.47vw;
   display: flex;
   justify-content: center;
 }
 .footer_Logo {
-  width: 130px;
+  width: 11.02vw;
   position: absolute;
+  color: grey;
+  font-weight: bold;
   left: 0;
-  margin-left: 40px;
+  margin-left: 2.77vw;
+  font-size: 1.39vw;
 }
 .footerTxt {
   display: flex;
-  column-gap: 120px;
+  column-gap: 8.3vw;
   color: gray;
+  font-size: 0.9vw;
 }

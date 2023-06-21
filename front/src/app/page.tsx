@@ -23,8 +23,8 @@ export default function Home() {
         <MySection />
       </div>
       <div>
-        <Footer />
         <Support />
+        <Footer />
       </div>
     </>
   );

@@ -3,25 +3,34 @@
   z-index: 101;
 }
 .header_content {
-  margin-bottom: 50px;
-  padding: 0 120px;
-
+  margin-bottom: 3.5vw;
+  padding: 0 8.3vw;
   border-bottom: 1px solid #eee;
 }
 
 .logo {
-  width: 200px;
+  width: 12vw;
+  height: 4vw;
+  align-items: center;
 }
 
 .conetent {
   display: flex;
   justify-content: space-between;
-  padding: 30px 6px 25px 5px;
+  padding: 2vw 0.4vw 1.7vw 0.34vw;
 }
 .headerInfo {
   display: flex;
   align-items: center;
 }
 .headerInfo > li {
-  margin-left: 44px;
+  margin-left: 3.05vw;
+}
+.ticketing,
+.myTickets,
+.UserName {
+  font-size: 1.1vw;
+}
+.search {
+  width: 2.5vw;
 }
