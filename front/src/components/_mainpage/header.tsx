@@ -21,7 +21,10 @@ const Header = () => {
                 My Tickets
               </Link>
             </li>
-            <li className={styled.UserName}>이름</li>
+
+            <li className={styled.UserName}>
+              <img src='/userProfile.svg' className={styled.UserProfile} />
+            </li>
           </ul>
         </div>
       </div>

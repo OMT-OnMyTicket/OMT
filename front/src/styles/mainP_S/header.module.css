@@ -17,6 +17,7 @@
 .conetent {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 2vw 0.4vw 1.7vw 0.34vw;
 }
 .headerInfo {
@@ -33,4 +34,7 @@
 }
 .search {
   width: 2.5vw;
+}
+.UserProfile {
+  width: 4.17vw;
 }
