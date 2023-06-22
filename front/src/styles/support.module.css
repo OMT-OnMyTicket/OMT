@@ -60,7 +60,7 @@
 
 @media all and (min-width: 531px) and (max-width: 840px) {
   .container {
-    width: 8.94vw;
+    width: 12.94vw;
   }
   .goToTop {
     width: 7vw;
@@ -69,23 +69,23 @@
   .MyTicket,
   .Logout {
     width: 10.25vw;
-    height: 2.8vw;
-    font-size: 1vw;
+    height: 3.8vw;
+    font-size: 1.7vw;
   }
   .Logout {
-    right: 12%;
+    right: 16%;
     bottom: 2%;
   }
   .Logout:hover {
     height: 3vw;
   }
   .MyTicket {
-    right: 12%;
-    bottom: 5%;
+    right: 16%;
+    bottom: 6%;
   }
   .Ticketing {
-    right: 12%;
-    bottom: 8%;
+    right: 16%;
+    bottom: 10%;
   }
   .MyTicket:hover,
   .Ticketing:hover {
@@ -95,34 +95,39 @@
 @media all and (max-width: 530px) {
   .container {
     width: 11.94vw;
+    margin-bottom: 5vw;
+    margin-right: 3vw;
   }
   .goToTop {
     width: 9vw;
+    margin-bottom: 5vw;
+    margin-left: 3vw;
   }
   .Ticketing,
   .MyTicket,
   .Logout {
-    width: 13.25vw;
-    height: 3.6vw;
-    font-size: 1vw;
+    width: 14.25vw;
+    height: 4.6vw;
+    font-size: 2.5vw;
+    border-radius: 2vw;
   }
   .Logout {
-    right: 16%;
-    bottom: 2%;
+    right: 17%;
+    bottom: 3%;
   }
   .Logout:hover {
-    height: 4vw;
+    height: 5vw;
   }
   .MyTicket {
-    right: 14%;
-    bottom: 4.5%;
+    right: 15%;
+    bottom: 6%;
   }
   .Ticketing {
-    right: 12%;
-    bottom: 7%;
+    right: 13%;
+    bottom: 9%;
   }
   .MyTicket:hover,
   .Ticketing:hover {
-    height: 4vw;
+    height: 5vw;
   }
 }
