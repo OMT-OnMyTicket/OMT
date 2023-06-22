@@ -20,7 +20,42 @@
 }
 .movieTitle {
   font-size: 1.18vw;
+  display: flex;
+  width: 12.5vw;
+  margin-bottom: 1vw;
 }
 .moviesTxt2 {
   font-size: 0.97vw;
+}
+
+@media screen and (max-width: 600px) {
+  .contents {
+    padding: 3.47vw 8.3vw 4.2vw;
+  }
+
+  .chartTitle {
+    display: flex;
+    font-size: 4vw;
+  }
+
+  .moviePoster {
+    width: 20.83vw;
+    height: 28.6vw;
+    background-color: white;
+    border-radius: 0.7vw;
+    margin-bottom: 2.38vw;
+  }
+
+  .movieSlider {
+    margin-left: 0.7vw;
+  }
+  .movieTitle {
+    font-size: 2.5vw;
+    display: flex;
+    width: 22vw;
+    margin-bottom: 2.38vw;
+  }
+  .moviesTxt2 {
+    font-size: 1.97vw;
+  }
 }

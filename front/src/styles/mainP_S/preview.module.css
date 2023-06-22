@@ -57,7 +57,7 @@
   color: white;
   border-radius: 0.7vw;
   height: 2.4vw;
-  width: 8.9vw;
+  width: 9.9vw;
   cursor: pointer;
 }
 .Ticketing:hover {
@@ -70,8 +70,35 @@
   font-weight: bold;
 }
 
-@media screen and (max-width: 773px) {
+@media screen and (max-width: 600px) {
   .Ticketing {
     width: 11.9vw;
+  }
+  .allContents {
+    height: 60.7vw;
+  }
+  .preview {
+    width: 80vw;
+  }
+  .title {
+    top: 20.9vw;
+    left: 8.3vw;
+    font-size: 4.77vw;
+    line-height: 1.45em;
+  }
+  .txt {
+    top: 27.59vw;
+    left: 8.3vw;
+    font-size: 2.4vw;
+    line-height: 2.45em;
+  }
+  .Ticketing {
+    top: 42vw;
+    left: 8vw;
+    height: 4.4vw;
+    width: 14.9vw;
+  }
+  .Ticketing:hover {
+    padding-left: 4.4vw;
   }
 }

@@ -1,5 +1,6 @@
 .Layout {
   border-top: 1px solid #eee;
+  margin-top: 2vw;
   padding: 3.47vw 1.38vw;
 }
 .Title {
@@ -38,4 +39,51 @@
   justify-content: center;
   font-weight: bold;
   font-size: 1.1vw;
+}
+@media screen and (max-width: 600px) {
+  .Layout {
+    height: 90vw;
+  }
+  .Boxes {
+    display: flex;
+    flex-direction: column;
+    height: 20.8vw;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10vw;
+  }
+
+  .LeftBox,
+  .RightBox {
+    width: 60.7vw;
+    margin-bottom: 10vw;
+  }
+  .poster,
+  .UserPhoto {
+    width: 20.5vw;
+    position: relative;
+  }
+  .poster {
+    margin: 2vw 0;
+    left: 2vw;
+  }
+  .UserPhoto {
+    margin-top: 2vw;
+  }
+  .UserName {
+    margin-bottom: 2vw;
+  }
+  .recentTxt,
+  .MyTxt {
+    line-height: 5.47vw;
+    font-size: 2.5vw;
+  }
+  .Title {
+    font-size: 2.9vw;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    row-gap: 33vw;
+    margin-left: 7vw;
+  }
 }

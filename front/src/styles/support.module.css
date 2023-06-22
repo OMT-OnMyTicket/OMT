@@ -30,6 +30,7 @@
   width: 6.25vw;
   height: 1.87vw;
   font-weight: bold;
+  font-size: 1.1vw;
   transition-duration: 1s;
 }
 .Logout {
@@ -39,7 +40,7 @@
 }
 .Logout:hover {
   background-color: red;
-  height: 30px;
+  height: 2vw;
 }
 .MyTicket {
   right: 9%;
@@ -55,4 +56,73 @@
   color: black;
   height: 2.22vw;
   border: 1px solid black;
+}
+
+@media all and (min-width: 531px) and (max-width: 840px) {
+  .container {
+    width: 8.94vw;
+  }
+  .goToTop {
+    width: 7vw;
+  }
+  .Ticketing,
+  .MyTicket,
+  .Logout {
+    width: 10.25vw;
+    height: 2.8vw;
+    font-size: 1vw;
+  }
+  .Logout {
+    right: 12%;
+    bottom: 2%;
+  }
+  .Logout:hover {
+    height: 3vw;
+  }
+  .MyTicket {
+    right: 12%;
+    bottom: 5%;
+  }
+  .Ticketing {
+    right: 12%;
+    bottom: 8%;
+  }
+  .MyTicket:hover,
+  .Ticketing:hover {
+    height: 3vw;
+  }
+}
+@media all and (max-width: 530px) {
+  .container {
+    width: 11.94vw;
+  }
+  .goToTop {
+    width: 9vw;
+  }
+  .Ticketing,
+  .MyTicket,
+  .Logout {
+    width: 13.25vw;
+    height: 3.6vw;
+    font-size: 1vw;
+  }
+  .Logout {
+    right: 16%;
+    bottom: 2%;
+  }
+  .Logout:hover {
+    height: 4vw;
+  }
+  .MyTicket {
+    right: 14%;
+    bottom: 4.5%;
+  }
+  .Ticketing {
+    right: 12%;
+    bottom: 7%;
+  }
+  .MyTicket:hover,
+  .Ticketing:hover {
+    height: 4vw;
+  }
 }
