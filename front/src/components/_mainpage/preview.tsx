@@ -6,7 +6,7 @@ const preview = () => {
       <div className={styled.preview}>
         <iframe
           className={styled.video}
-          src='https://www.youtube.com/embed/Obc6ecquoA0?autoplay=1&mute=1&loop=1&playlist=Obc6ecquoA0'
+          src='https://www.youtube-nocookie.com/embed/Obc6ecquoA0?autoplay=1&mute=1&loop=1&playlist=Obc6ecquoA0'
           title='귀공자 예고편'
           allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
           allowFullScreen
