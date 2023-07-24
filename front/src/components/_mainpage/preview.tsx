@@ -11,7 +11,7 @@ const preview = () => {
           allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
           allowFullScreen
         />
-        <strong className={styled.title}>귀공자 </strong>
+        <strong className={styled.title}>귀공자(변경예정) </strong>
         <span className={styled.txt}>
           [신세계 , 마녀] 박훈정 감독 작품 <br /> 김선호 강렬한 스크린 첫 데뷔!
         </span>
