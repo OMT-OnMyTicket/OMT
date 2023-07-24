@@ -1,0 +1,10 @@
+.Layout {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  border-bottom: 1px solid #ddd;
+}
+.Home,
+.Login {
+  margin: 20px;
+}
