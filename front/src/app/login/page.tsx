@@ -1,5 +1,7 @@
 import Header from '@/components/_loginpage/header';
 import FirstMain from '@/components/_loginpage/firstmain';
+import SecondMain from '@/components/_loginpage/secondmain';
+import GotoTop from '@/components/gotoTop';
 
 const LoginP = () => {
   return (
@@ -9,6 +11,9 @@ const LoginP = () => {
       </div>
       <div>
         <FirstMain />
+      </div>
+      <div>
+        <SecondMain />
       </div>
     </>
   );

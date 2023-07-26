@@ -1,16 +1,16 @@
 .Container {
-  height: calc(100vh);
+  height: calc(110vh);
   overflow: hidden;
 }
 
 .Title {
-  padding-top: 120px;
+  padding-top: 160px;
   font-family: 'Pretendard Variable';
   font-style: normal;
   font-weight: 700;
   font-size: 96px;
   line-height: 115px;
-  /* identical to box height */
+
   text-align: center;
   color: #000000;
   margin-bottom: 60px;
@@ -37,4 +37,36 @@
 
 .ticketImg2 {
   opacity: 0.4;
+}
+
+/* 두번째 페이지 */
+
+.second_Container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 160px;
+  height: calc(100vh);
+  padding-right: 14vw;
+}
+.ticketImgs2 {
+  margin-left: 140px;
+}
+.ticketImg2_1 {
+  position: absolute;
+  left: 280px;
+}
+.ticketImg2_2 {
+  transform: rotate(-15.52deg);
+  opacity: 0.4;
+}
+
+.second_Txt {
+  font-family: 'Pretendard Variable';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 120px;
+  text-align: center;
+  color: #000000;
 }

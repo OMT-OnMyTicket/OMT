@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import '../styles/globals.css';
 import { Inter } from 'next/font/google';
-import Support from '@/components/support';
+import GotoTop from '@/components/gotoTop';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -25,6 +25,7 @@ export default function RootLayout({
         <title>{metadata.title}</title>
         <meta name='description' content={metadata.description} />
       </Head>
+      <GotoTop />
       <body className={inter.className}>{children}</body>
     </html>
   );
