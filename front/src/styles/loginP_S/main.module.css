@@ -1,0 +1,40 @@
+.Container {
+  height: calc(100vh);
+  overflow: hidden;
+}
+
+.Title {
+  padding-top: 120px;
+  font-family: 'Pretendard Variable';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 96px;
+  line-height: 115px;
+  /* identical to box height */
+  text-align: center;
+  color: #000000;
+  margin-bottom: 60px;
+}
+.subTitle {
+  font-family: 'Pretendard Variable';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 62px;
+  /* or 67% */
+  text-align: center;
+  color: #484e5a;
+}
+
+.imgLayout {
+  display: flex;
+  justify-content: center;
+}
+.ticketImg1 {
+  transform: rotate(-15.52deg);
+  opacity: 0.4;
+}
+
+.ticketImg2 {
+  opacity: 0.4;
+}
