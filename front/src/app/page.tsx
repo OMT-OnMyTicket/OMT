@@ -1,31 +1,21 @@
-'use client';
+import Header from '@/components/_loginpage/header';
+import FirstMain from '@/components/_loginpage/firstmain';
+import SecondMain from '@/components/_loginpage/secondmain';
 
-import Header from '@/components/_mainpage/header';
-import Preview from '@/components/_mainpage/preview';
-import Chart from '@/components/_mainpage/chart';
-import Footer from '@/components/_mainpage/footer';
-import MySection from '@/components/_mainpage/mySection';
-import Support from '@/components/support';
-
-export default function Home() {
+const LoginP = () => {
   return (
     <>
-      <div className=''>
+      <div>
         <Header />
       </div>
       <div>
-        <Preview />
+        <FirstMain />
       </div>
       <div>
-        <Chart />
-      </div>
-      <div>
-        <MySection />
-      </div>
-      <div>
-        <Support />
-        <Footer />
+        <SecondMain />
       </div>
     </>
   );
-}
+};
+
+export default LoginP;

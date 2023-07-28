@@ -29,7 +29,7 @@ const Header = () => {
   return (
     <>
       <div id='header' className={styled.Layout}>
-        <Link href='/' className={styled.Home}>
+        <Link href='/home' className={styled.Home}>
           Home
         </Link>
         <Link href='/' className={styled.Login}>
