@@ -1,5 +1,7 @@
 'use client';
 
+// next.js 13 with AOS 자료 찾기
+
 import styled from '@/styles/loginP_S/main.module.css';
 
 const Second = () => {
