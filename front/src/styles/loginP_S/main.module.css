@@ -9,27 +9,22 @@
   background-image: url('/loginIMG.jpg');
   background-repeat: no-repeat;
   background-size: cover;
+  font-family: 'Pretendard Variable';
+  text-align: center;
 }
 
 .Title {
   padding-top: 160px;
-  font-family: 'Pretendard Variable';
-  font-style: normal;
   font-weight: 700;
   font-size: 96px;
   line-height: 115px;
-  text-align: center;
   color: #000000;
   margin-bottom: 60px;
 }
 .subTitle {
-  font-family: 'Pretendard Variable';
-  font-style: normal;
   font-weight: 500;
   font-size: 32px;
   line-height: 62px;
-  /* or 67% */
-  text-align: center;
   color: #484e5a;
 }
 
@@ -58,41 +53,32 @@
   height: 700px;
   justify-content: center;
   align-items: center;
-  font-family: 'Pretendard Variable';
 }
 
 /* 두번째 페이지 */
 
 .second_Container {
+  font-family: 'Pretendard Variable';
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: calc(100vh);
-  padding-left: 14vw;
+  padding: 0 16vw;
 }
 .mainTxt2_1 {
-  font-family: 'Pretendard Variable';
-  font-style: normal;
   font-weight: 600;
   font-size: 34px;
   line-height: 80px;
   color: blue;
 }
 .mainTxt2_2 {
-  font-family: 'Pretendard Variable';
-  font-style: normal;
   font-weight: 600;
   font-size: 44px;
   line-height: 80px;
   color: #000000;
 }
 
-.right_Container {
-  margin-right: 14vw;
-}
 .mainTxt2_3 {
-  font-family: 'Pretendard Variable';
-  font-style: normal;
   font-weight: 450;
   font-size: 24px;
   line-height: 80px;
