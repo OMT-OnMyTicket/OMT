@@ -1,6 +1,14 @@
 .Container {
-  height: calc(110vh);
+  height: calc(100vh);
   overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 78px;
+  background-image: url('/loginIMG.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .Title {
@@ -10,7 +18,6 @@
   font-weight: 700;
   font-size: 96px;
   line-height: 115px;
-
   text-align: center;
   color: #000000;
   margin-bottom: 60px;
@@ -26,17 +33,32 @@
   color: #484e5a;
 }
 
-.imgLayout {
+.ScrollDown {
+  width: 60px;
+  animation: bounce_frames 1s;
+  animation-direction: alternate;
+  animation-timing-function: cubic-bezier(0.5, 0.05, 1, 0.5);
+  animation-iteration-count: infinite;
+}
+@keyframes bounce_frames {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 50px, 0);
+  }
+}
+.secondTitle {
   display: flex;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.6;
+  color: #191f28;
+  text-align: center;
+  height: 500px;
   justify-content: center;
-}
-.ticketImg1 {
-  transform: rotate(-15.52deg);
-  opacity: 0.4;
-}
-
-.ticketImg2 {
-  opacity: 0.4;
+  align-items: center;
+  font-family: 'Pretendard Variable';
 }
 
 /* 두번째 페이지 */
@@ -52,10 +74,7 @@
 .ticketImgs2 {
   margin-left: 140px;
 }
-.ticketImg2_1 {
-  position: absolute;
-  left: 280px;
-}
+
 .ticketImg2_2 {
   transform: rotate(-15.52deg);
   opacity: 0.4;

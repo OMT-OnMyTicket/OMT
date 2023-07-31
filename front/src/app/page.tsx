@@ -5,9 +5,10 @@ import SecondMain from '@/components/_loginpage/secondmain';
 const LoginP = () => {
   return (
     <>
-      <div>
+      <header>
         <Header />
-      </div>
+      </header>
+
       <div>
         <FirstMain />
       </div>
