@@ -55,7 +55,7 @@
   line-height: 1.6;
   color: #191f28;
   text-align: center;
-  height: 500px;
+  height: 700px;
   justify-content: center;
   align-items: center;
   font-family: 'Pretendard Variable';
@@ -67,25 +67,40 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 160px;
   height: calc(100vh);
-  padding-right: 14vw;
+  padding-left: 14vw;
 }
-.ticketImgs2 {
-  margin-left: 140px;
-}
-
-.ticketImg2_2 {
-  transform: rotate(-15.52deg);
-  opacity: 0.4;
-}
-
-.second_Txt {
+.mainTxt2_1 {
   font-family: 'Pretendard Variable';
   font-style: normal;
-  font-weight: 700;
-  font-size: 64px;
-  line-height: 120px;
-  text-align: center;
+  font-weight: 600;
+  font-size: 34px;
+  line-height: 80px;
+  color: blue;
+}
+.mainTxt2_2 {
+  font-family: 'Pretendard Variable';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 44px;
+  line-height: 80px;
   color: #000000;
+}
+
+.right_Container {
+  margin-right: 14vw;
+}
+.mainTxt2_3 {
+  font-family: 'Pretendard Variable';
+  font-style: normal;
+  font-weight: 450;
+  font-size: 24px;
+  line-height: 80px;
+  color: #000000;
+  margin-top: 100px;
+}
+
+.ticketImg2 {
+  width: 350px;
+  filter: drop-shadow(20px 20px 2px rgba(150, 150, 150, 0.25));
 }
