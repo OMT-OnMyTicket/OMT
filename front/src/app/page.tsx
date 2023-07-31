@@ -1,6 +1,7 @@
 import Header from '@/components/_loginpage/header';
 import FirstMain from '@/components/_loginpage/firstmain';
 import SecondMain from '@/components/_loginpage/secondmain';
+import ThirdMain from '@/components/_loginpage/thirdmain';
 
 const LoginP = () => {
   return (
@@ -14,6 +15,9 @@ const LoginP = () => {
       </div>
       <div>
         <SecondMain />
+      </div>
+      <div>
+        <ThirdMain />
       </div>
     </>
   );

@@ -39,14 +39,16 @@ const firstmain = () => {
         </div>
         <img className={styled.ScrollDown} src='/ScrollDown.svg'></img>
       </div>
-      <div
-        className={styled.secondTitle}
-        data-aos='fade-up'
-        data-aos-duration='3000'
-      >
-        On My Ticket에서는 <br />
-        나만의 영화를 모아 정리할 수 있습니다.
-        <br /> 내가 관람한 영화를 한눈에 확인해보세요
+      <div className={styled.secondTitle}>
+        <p
+          className={styled.secondTitle_Txt}
+          data-aos='fade-up'
+          data-aos-duration='3000'
+        >
+          On My Ticket에서는 <br />
+          나만의 영화를 모아 정리할 수 있습니다.
+          <br /> 내가 관람한 영화를 한눈에 확인해보세요
+        </p>
       </div>
     </>
   );
