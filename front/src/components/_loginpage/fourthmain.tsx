@@ -1,41 +1,75 @@
 'use client';
 
-// next.js 13 with AOS 자료 찾기
-
+import Oauth from './oauth';
 import styled from '@/styles/loginP_S/main.module.css';
+import { useEffect, useState } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { useEffect } from 'react';
 
 const Fourth = () => {
+  const [position, setPosition] = useState(0);
+  const [loginClicked, setLoginClicked] = useState(false);
+
+  function onScroll() {
+    console.log(window.scrollY);
+    setPosition(window.scrollY);
+  }
+  useEffect(() => {
+    window.addEventListener('scroll', onScroll);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+    };
+  }, []);
   useEffect(() => {
     AOS.init();
   }, []);
+
+  // 로그인 버튼
+  function handleLoginClick() {
+    setLoginClicked(true);
+  }
+
   return (
     <>
-      <div className={styled.second_Container}>
+      <div className={styled.fourth_Container}>
         <div
-          className={styled.left_Container}
-          data-aos='fade-up'
-          data-aos-duration='2000'
+          className={styled.IMG_layout}
+          style={{
+            backgroundImage: loginClicked
+              ? "url('/loginIMG.jpg')"
+              : "url('/background.png')"
+          }}
         >
-          <h1 className={styled.mainTxt2_1}>TICKET ROME</h1>
-          <h2 className={styled.mainTxt2_2}>
-            재미있는 영화로 <br />
-            만드는 나만의 티켓
-          </h2>
-          <div data-aos='fade-right' data-aos-duration='1000' id='Img'>
-            <img className={styled.ticketImg2} src='/back.png' />
+          <div
+            className={styled.Txt_Layout}
+            style={{ display: loginClicked ? 'none' : 'flex' }}
+          >
+            <p
+              className={styled.fourth_Title}
+              data-aos='fade-down'
+              data-aos-duration='1000'
+            >
+              당신의 소중한 추억.
+            </p>
+            <p
+              className={styled.fourth_Txt}
+              data-aos='fade-down'
+              data-aos-duration='3000'
+            >
+              ON MY TICKET과 함께
+            </p>
+            <div
+              className={styled.login_Btn}
+              data-aos='fade-down'
+              data-aos-duration='3000'
+              onClick={handleLoginClick}
+            >
+              로그인하기
+            </div>
           </div>
         </div>
-        <div className={styled.right_Container}>
-          <div data-aos='fade-left' data-aos-duration='1000' id='Img'>
-            <img className={styled.ticketImg2} src='/front.png' />
-          </div>
-          <h3 className={styled.mainTxt2_3}>
-            재미있게 시청한 영화를 기록해보세요. <br />
-            나만의 추억을 만들어 한 눈에 확인할 수 있어요.
-          </h3>
+        <div style={{ display: loginClicked ? 'flex' : 'none' }}>
+          <Oauth />
         </div>
       </div>
     </>
