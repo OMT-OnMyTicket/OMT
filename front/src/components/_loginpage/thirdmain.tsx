@@ -13,6 +13,7 @@ const Third = () => {
   }, []);
   return (
     <>
+      {/* 첫번째 섹션 */}
       <div className={styled.third_Container}>
         <div
           className={styled.third_header}
@@ -25,6 +26,45 @@ const Third = () => {
             모든 예매를 한 곳에서
           </h2>
         </div>
+
+        {/* 두번째 섹션 */}
+
+        <div className={styled.theater_Layout}>
+          <div
+            className={styled.theater}
+            data-aos='fade-right'
+            data-aos-duration='3000'
+          >
+            <img src='/롯데시네마.png' className={styled.theater_icon} />
+          </div>
+          <div
+            className={styled.theater}
+            data-aos='fade-right'
+            data-aos-duration='1500'
+          >
+            <img src='/CGV.png' className={styled.theater_icon} />
+          </div>
+          <div className={styled.theater}>
+            <img src='/OMT_web.png' className={styled.theater_icon} />
+          </div>
+          <div
+            className={styled.theater}
+            data-aos='fade-left'
+            data-aos-duration='1500'
+          >
+            <img src='/메가박스.png' className={styled.theater_icon} />
+          </div>
+          <div
+            className={styled.theater}
+            data-aos='fade-left'
+            data-aos-duration='3000'
+          >
+            <img src='/씨네큐.png' className={styled.theater_icon} />
+          </div>
+        </div>
+
+        {/* 세번째 섹션 */}
+
         <div className={styled.third_Contents}>
           <h3
             className={styled.mainTxt3_1}
@@ -46,45 +86,16 @@ const Third = () => {
             data-aos-duration='3000'
           >
             영화관 별 <br />
-            이벤트 비교까지
+            비교까지
           </h3>
-        </div>
-        <div className={styled.theater_Layout}>
           <div
-            className={styled.theater}
-            data-aos='fade-right'
+            className={styled.phone_Content}
+            data-aos='fade-up'
             data-aos-duration='3000'
+            id='Img'
           >
-            <img src='/롯데시네마.png' className={styled.theater_icon} />
-            <p className={styled.theater_txt}>롯데시네마</p>
-          </div>
-          <div
-            className={styled.theater}
-            data-aos='fade-right'
-            data-aos-duration='1500'
-          >
-            <img src='/CGV.png' className={styled.theater_icon} />
-            <p className={styled.theater_txt}>CGV</p>
-          </div>
-          <div className={styled.theater}>
-            <img src='/OMT_web.png' className={styled.theater_icon} />
-            <p className={styled.theater_txt}>OMT</p>
-          </div>
-          <div
-            className={styled.theater}
-            data-aos='fade-left'
-            data-aos-duration='1500'
-          >
-            <img src='/메가박스.png' className={styled.theater_icon} />
-            <p className={styled.theater_txt}>메가박스</p>
-          </div>
-          <div
-            className={styled.theater}
-            data-aos='fade-left'
-            data-aos-duration='3000'
-          >
-            <img src='/씨네큐.png' className={styled.theater_icon} />
-            <p className={styled.theater_txt}>시네큐</p>
+            <img className={styled.phoneTop} src='phoneTop.png' />
+            <img className={styled.phoneBtm} src='phoneBtm.png' />
           </div>
         </div>
       </div>

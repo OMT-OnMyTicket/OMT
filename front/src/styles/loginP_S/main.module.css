@@ -100,28 +100,25 @@
   font-family: 'Pretendard Variable';
   display: flex;
   flex-direction: column;
-  height: calc(160vh);
+  height: calc(200vh);
   padding: 10vw 16vw;
   background-color: #f9fafb;
-  position: relative;
 }
 .third_Contents {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 .phoneImg {
   width: 600px;
-  filter: drop-shadow(20px 20px 2px rgba(150, 150, 150, 0.25));
   margin: 0 3vw;
 }
 .theater_Layout {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: absolute;
-  top: 1050px;
-  left: 170px;
+  margin: 130px 0;
 }
 .theater {
   width: 190px;
@@ -137,13 +134,27 @@
   justify-content: space-evenly;
 }
 .theater_icon {
-  width: 100px;
-  border-bottom: 1px solid black;
+  width: 140px;
 }
 .mainTxt3_1 {
   font-weight: 450;
   font-size: 24px;
   line-height: 80px;
   color: #000000;
-  margin-bottom: 120px;
 }
+.phone_Content {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 48px;
+}
+.phoneTop,
+.phoneBtm {
+  width: 280px;
+  border-radius: 30px;
+  margin-top: 40px;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* 네번째 페이지 */
