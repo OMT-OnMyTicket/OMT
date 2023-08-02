@@ -1,0 +1,336 @@
+.Container {
+  height: calc(100vh);
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 78px;
+  background-image: url('/loginIMG.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: 'Pretendard Variable';
+  text-align: center;
+}
+
+.Title {
+  padding-top: 160px;
+  font-weight: 700;
+  font-size: 96px;
+  line-height: 115px;
+  color: #000000;
+  margin-bottom: 60px;
+}
+.subTitle {
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 62px;
+  color: #484e5a;
+}
+@media screen and (max-width: 639px) {
+  .Container {
+    height: calc(80vh);
+  }
+  .Title {
+    font-size: 33px;
+    font-weight: 700;
+    line-height: 1.4;
+    color: rgb(25, 31, 40);
+  }
+  .subTitle {
+    font-size: 28px;
+  }
+}
+
+.ScrollDown {
+  width: 60px;
+  animation: bounce_frames 1s;
+  animation-direction: alternate;
+  animation-timing-function: cubic-bezier(0.5, 0.05, 1, 0.5);
+  animation-iteration-count: infinite;
+}
+@keyframes bounce_frames {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 50px, 0);
+  }
+}
+.secondTitle {
+  display: flex;
+  height: 700px;
+  justify-content: center;
+  align-items: center;
+  background-color: #f9fafb;
+}
+.secondTitle_Txt {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 2.6;
+  color: #191f28;
+  text-align: center;
+}
+
+@media screen and (max-width: 639px) {
+  .secondTitle {
+    padding: 100px 0;
+    height: 230px;
+  }
+
+  .secondTitle_Txt {
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.5;
+    color: #191f28;
+  }
+}
+
+/* 두번째 페이지 */
+
+.second_Container {
+  font-family: 'Pretendard Variable';
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: calc(160vh);
+  padding: 0 16vw;
+}
+.mainTxt2_1 {
+  font-weight: 600;
+  font-size: 34px;
+  line-height: 80px;
+  color: blue;
+}
+.mainTxt2_2 {
+  font-weight: 600;
+  font-size: 44px;
+  line-height: 80px;
+  color: #000000;
+}
+
+.mainTxt2_3 {
+  font-weight: 450;
+  font-size: 24px;
+  line-height: 80px;
+  color: #000000;
+  margin-top: 100px;
+}
+
+.ticketImg2 {
+  width: 350px;
+  filter: drop-shadow(20px 20px 2px rgba(150, 150, 150, 0.25));
+}
+
+@media screen and (max-width: 639px) {
+  .second_Container {
+    display: flex;
+    padding: 8vw;
+    height: calc(110vh);
+  }
+  .left_Container {
+    position: relative;
+  }
+  .right_Container {
+    margin-left: 30px;
+  }
+  .mainTxt2_1 {
+    font-size: 18px;
+  }
+  .mainTxt2_2 {
+    font-size: 28px;
+  }
+
+  .mainTxt2_3 {
+    font-size: 17px;
+    position: absolute;
+    line-height: 40px;
+  }
+  .ticketImg2 {
+    width: 220px;
+    filter: drop-shadow(20px 20px 2px rgba(150, 150, 150, 0.25));
+  }
+}
+
+/* 세번째 페이지 */
+
+.third_Container {
+  font-family: 'Pretendard Variable';
+  display: flex;
+  flex-direction: column;
+  height: calc(200vh);
+  padding: 10vw 16vw;
+  background-color: #f9fafb;
+}
+.third_Contents {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.phoneImg {
+  width: 600px;
+  margin: 0 3vw;
+}
+.theater_Layout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 130px 0;
+}
+.theater,
+.theater1 {
+  width: 190px;
+  height: 170px;
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: 20px 20px 2px rgba(150, 150, 150, 0.25);
+  margin: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.theater_icon {
+  width: 140px;
+}
+.mainTxt3_1 {
+  font-weight: 450;
+  font-size: 24px;
+  line-height: 80px;
+  color: #000000;
+}
+.phone_Content {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 48px;
+}
+.phoneTop,
+.phoneBtm {
+  width: 280px;
+  border-radius: 30px;
+  margin-top: 40px;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+@media screen and (max-width: 639px) {
+  .third_Container {
+    height: calc(130vh);
+  }
+  .theater_Layout {
+    margin: 30px 0;
+  }
+  .theater {
+    height: 100px;
+  }
+  .theater_icon {
+    width: 100px;
+  }
+  .theater1 {
+    display: none;
+  }
+  .phoneImg {
+    width: 380px;
+    margin: 0 3vw;
+  }
+  .mainTxt3_1 {
+    font-size: 14px;
+    width: 100%;
+    line-height: 40px;
+  }
+  .phone_Content {
+    margin-left: 8px;
+  }
+  .phoneTop,
+  .phoneBtm {
+    width: 180px;
+    margin-top: 10px;
+    border-radius: 20px;
+  }
+}
+
+/* 네번째 페이지 */
+.fourth_Container {
+  font-family: 'Pretendard Variable';
+  height: calc(100vh);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.IMG_layout {
+  width: 100%;
+  height: 600px;
+  background-image: url('/background.png');
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  overflow-x: hidden;
+  transition-duration: 3s;
+}
+
+.Txt_Layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 10px;
+}
+.fourth_Title {
+  font-size: 100px;
+  color: white;
+}
+.fourth_Txt {
+  font-size: 30px;
+  color: white;
+}
+
+@media screen and (max-width: 639px) {
+  .fourth_Title {
+    font-size: 60px;
+  }
+  .fourth_Txt {
+    font-size: 30px;
+  }
+}
+
+/* 로그인 버튼 */
+.login_Btn {
+  background: linear-gradient(90deg, #000000 0%, #616161 59.31%, #a4a4a4 100%);
+  color: white;
+  border-radius: 15px;
+  width: 200px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: 40px;
+  cursor: pointer;
+}
+.login_Btn:hover {
+  background: linear-gradient(90deg, #fef3f3 0%, #ffffff 4.69%, #9d9d9d 100%);
+  color: black;
+}
+.login_Btn {
+  animation: bounce2 3s ease infinite;
+}
+@keyframes bounce2 {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
