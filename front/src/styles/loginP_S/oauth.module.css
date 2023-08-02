@@ -1,3 +1,35 @@
+.login_Layout {
+  height: calc(95vh);
+  overflow: hidden;
+  background-image: url('/loginIMG.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: 'Pretendard Variable';
+  display: flex;
+  justify-content: space-between;
+}
+.login_Txt {
+  margin-top: 8.3vw;
+  margin-left: 17.3vw;
+}
+.login_Txt1 {
+  font-weight: 600;
+  font-size: 33px;
+  line-height: 5vw;
+  color: blue;
+}
+.login_Txt2 {
+  font-weight: 600;
+  font-size: 43px;
+  line-height: 5.5vw;
+  color: #000000;
+}
+
+.OauthBox {
+  margin-top: 13.8vw;
+  margin-right: 24.3vw;
+}
+
 .oauth_Layout {
   display: flex;
   flex-direction: column;
@@ -8,23 +40,7 @@
   background-color: white;
   border-radius: 20px;
   box-shadow: 20px 20px 4px rgba(0, 0, 0, 0.25);
-  position: absolute;
-  left: 18.1944vw;
-  top: 11.1111vw;
-}
-
-.oauth_Layout {
-  animation: fade-in-down 3s ease;
-}
-@keyframes fade-in-down {
-  0% {
-    opacity: 0;
-    transform: translateY(-120px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  font-family: 'Pretendard Variable';
 }
 
 .oauth_Box1,
@@ -71,5 +87,14 @@
 .oauth_Box3:hover .oauth_Txt {
   opacity: 100%;
   transition-duration: 3s;
+  font-size: 20px;
+}
+
+.login_Title {
+  font-size: 20px;
   font-weight: bold;
+  border-bottom: 1px solid #f0d7c2;
+  width: 100%;
+  text-align: center;
+  padding-bottom: 30px;
 }

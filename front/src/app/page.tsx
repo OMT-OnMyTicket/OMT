@@ -3,6 +3,7 @@ import FirstMain from '@/components/_loginpage/firstmain';
 import SecondMain from '@/components/_loginpage/secondmain';
 import ThirdMain from '@/components/_loginpage/thirdmain';
 import FourthMain from '@/components/_loginpage/fourthmain';
+import Loginpage from '@/components/_loginpage/loginpage';
 
 const LoginP = () => {
   return (
@@ -22,6 +23,9 @@ const LoginP = () => {
       </div>
       <div>
         <FourthMain />
+      </div>
+      <div>
+        <Loginpage />
       </div>
     </>
   );

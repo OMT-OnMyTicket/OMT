@@ -4,7 +4,7 @@ const Oauth = () => {
   return (
     <>
       <div className={styled.oauth_Layout}>
-        <div>Login</div>
+        <div className={styled.login_Title}>간편하게 로그인하기</div>
         <div className={styled.oauth_Box1}>
           <img src='/네이버.png' className={styled.oauth_Logo} />
           <p className={styled.oauth_Txt}>네이버로 로그인하기</p>

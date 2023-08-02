@@ -209,9 +209,8 @@
   cursor: pointer;
 }
 .login_Btn:hover {
-  background: linear-gradient(90deg, #ff2323 0%, #e1c2c2 100%);
+  background: linear-gradient(90deg, #fef3f3 0%, #ffffff 4.69%, #9d9d9d 100%);
   color: black;
-  transition-duration: 2s;
 }
 .login_Btn {
   animation: bounce2 3s ease infinite;

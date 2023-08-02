@@ -1,25 +1,13 @@
 'use client';
 
-import Oauth from './oauth';
 import styled from '@/styles/loginP_S/main.module.css';
 import { useEffect, useState } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 const Fourth = () => {
-  const [position, setPosition] = useState(0);
   const [loginClicked, setLoginClicked] = useState(false);
 
-  function onScroll() {
-    console.log(window.scrollY);
-    setPosition(window.scrollY);
-  }
-  useEffect(() => {
-    window.addEventListener('scroll', onScroll);
-    return () => {
-      window.removeEventListener('scroll', onScroll);
-    };
-  }, []);
   useEffect(() => {
     AOS.init();
   }, []);
@@ -27,23 +15,16 @@ const Fourth = () => {
   // 로그인 버튼
   function handleLoginClick() {
     setLoginClicked(true);
+
+    // 로그인 버튼을 눌렀을 때 화면을 가장 아래로 스크롤
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
   }
 
   return (
     <>
       <div className={styled.fourth_Container}>
-        <div
-          className={styled.IMG_layout}
-          style={{
-            backgroundImage: loginClicked
-              ? "url('/loginIMG.jpg')"
-              : "url('/background.png')"
-          }}
-        >
-          <div
-            className={styled.Txt_Layout}
-            style={{ display: loginClicked ? 'none' : 'flex' }}
-          >
+        <div className={styled.IMG_layout}>
+          <div className={styled.Txt_Layout}>
             <p
               className={styled.fourth_Title}
               data-aos='fade-down'
@@ -67,9 +48,6 @@ const Fourth = () => {
               로그인하기
             </div>
           </div>
-        </div>
-        <div style={{ display: loginClicked ? 'flex' : 'none' }}>
-          <Oauth />
         </div>
       </div>
     </>
