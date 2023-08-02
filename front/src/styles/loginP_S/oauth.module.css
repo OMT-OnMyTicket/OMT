@@ -94,7 +94,33 @@
   font-size: 20px;
   font-weight: bold;
   border-bottom: 1px solid #f0d7c2;
-  width: 100%;
+  width: 70%;
   text-align: center;
   padding-bottom: 30px;
+}
+
+@media screen and (max-width: 639px) {
+  .login_Layout {
+    flex-direction: column;
+  }
+  .login_Txt1 {
+    font-size: 18px;
+  }
+  .login_Txt2 {
+    font-size: 28px;
+  }
+  .OauthBox {
+    margin: 0 auto;
+  }
+  .oauth_Layout {
+    width: 350px;
+    height: 500px;
+    margin-bottom: 40px;
+  }
+
+  .oauth_Box1,
+  .oauth_Box2,
+  .oauth_Box3 {
+    width: 250px;
+  }
 }

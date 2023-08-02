@@ -44,7 +44,7 @@ const Third = () => {
           >
             <img src='/CGV.png' className={styled.theater_icon} />
           </div>
-          <div className={styled.theater}>
+          <div className={styled.theater1}>
             <img src='/OMT_web.png' className={styled.theater_icon} />
           </div>
           <div

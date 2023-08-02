@@ -28,6 +28,7 @@ const Second = () => {
             <img className={styled.ticketImg2} src='/back.png' />
           </div>
         </div>
+
         <div className={styled.right_Container}>
           <div data-aos='fade-left' data-aos-duration='1000' id='Img'>
             <img className={styled.ticketImg2} src='/front.png' />

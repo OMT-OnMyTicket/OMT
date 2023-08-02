@@ -27,6 +27,20 @@
   line-height: 62px;
   color: #484e5a;
 }
+@media screen and (max-width: 639px) {
+  .Container {
+    height: calc(80vh);
+  }
+  .Title {
+    font-size: 33px;
+    font-weight: 700;
+    line-height: 1.4;
+    color: rgb(25, 31, 40);
+  }
+  .subTitle {
+    font-size: 28px;
+  }
+}
 
 .ScrollDown {
   width: 60px;
@@ -56,6 +70,20 @@
   line-height: 2.6;
   color: #191f28;
   text-align: center;
+}
+
+@media screen and (max-width: 639px) {
+  .secondTitle {
+    padding: 100px 0;
+    height: 230px;
+  }
+
+  .secondTitle_Txt {
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.5;
+    color: #191f28;
+  }
 }
 
 /* 두번째 페이지 */
@@ -94,6 +122,36 @@
   filter: drop-shadow(20px 20px 2px rgba(150, 150, 150, 0.25));
 }
 
+@media screen and (max-width: 639px) {
+  .second_Container {
+    display: flex;
+    padding: 8vw;
+    height: calc(110vh);
+  }
+  .left_Container {
+    position: relative;
+  }
+  .right_Container {
+    margin-left: 30px;
+  }
+  .mainTxt2_1 {
+    font-size: 18px;
+  }
+  .mainTxt2_2 {
+    font-size: 28px;
+  }
+
+  .mainTxt2_3 {
+    font-size: 17px;
+    position: absolute;
+    line-height: 40px;
+  }
+  .ticketImg2 {
+    width: 220px;
+    filter: drop-shadow(20px 20px 2px rgba(150, 150, 150, 0.25));
+  }
+}
+
 /* 세번째 페이지 */
 
 .third_Container {
@@ -120,7 +178,8 @@
   justify-content: center;
   margin: 130px 0;
 }
-.theater {
+.theater,
+.theater1 {
   width: 190px;
   height: 170px;
   border-radius: 20px;
@@ -157,6 +216,42 @@
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
+@media screen and (max-width: 639px) {
+  .third_Container {
+    height: calc(130vh);
+  }
+  .theater_Layout {
+    margin: 30px 0;
+  }
+  .theater {
+    height: 100px;
+  }
+  .theater_icon {
+    width: 100px;
+  }
+  .theater1 {
+    display: none;
+  }
+  .phoneImg {
+    width: 380px;
+    margin: 0 3vw;
+  }
+  .mainTxt3_1 {
+    font-size: 14px;
+    width: 100%;
+    line-height: 40px;
+  }
+  .phone_Content {
+    margin-left: 8px;
+  }
+  .phoneTop,
+  .phoneBtm {
+    width: 180px;
+    margin-top: 10px;
+    border-radius: 20px;
+  }
+}
+
 /* 네번째 페이지 */
 .fourth_Container {
   font-family: 'Pretendard Variable';
@@ -191,6 +286,15 @@
 .fourth_Txt {
   font-size: 30px;
   color: white;
+}
+
+@media screen and (max-width: 639px) {
+  .fourth_Title {
+    font-size: 60px;
+  }
+  .fourth_Txt {
+    font-size: 30px;
+  }
 }
 
 /* 로그인 버튼 */
