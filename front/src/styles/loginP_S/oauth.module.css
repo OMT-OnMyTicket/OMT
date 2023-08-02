@@ -80,6 +80,7 @@
 .oauth_Box2:hover .oauth_Logo,
 .oauth_Box3:hover .oauth_Logo {
   opacity: 0%;
+
   transition-duration: 1s;
 }
 .oauth_Box1:hover .oauth_Txt,
