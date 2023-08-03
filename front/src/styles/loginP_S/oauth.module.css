@@ -1,5 +1,4 @@
 .login_Layout {
-  height: calc(95vh);
   overflow: hidden;
   background-image: url('/loginIMG.jpg');
   background-repeat: no-repeat;
@@ -103,12 +102,19 @@
 @media screen and (max-width: 639px) {
   .login_Layout {
     flex-direction: column;
+    justify-content: center;
+  }
+  .login_Txt {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
   }
   .login_Txt1 {
     font-size: 18px;
   }
   .login_Txt2 {
     font-size: 28px;
+    line-height: 40px;
   }
   .OauthBox {
     margin: 0 auto;

@@ -24,7 +24,12 @@ const Second = () => {
             재미있는 영화로 <br />
             만드는 나만의 티켓
           </h2>
-          <div data-aos='fade-right' data-aos-duration='1000' id='Img'>
+          <div
+            className={styled.ticketImg_layout}
+            data-aos='fade-right'
+            data-aos-duration='1000'
+            id='Img'
+          >
             <img className={styled.ticketImg2} src='/back.png' />
           </div>
         </div>

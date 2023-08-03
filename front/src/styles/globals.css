@@ -10,3 +10,6 @@ a {
   color: inherit;
   text-decoration: none;
 }
+header {
+  width: 100vw;
+}

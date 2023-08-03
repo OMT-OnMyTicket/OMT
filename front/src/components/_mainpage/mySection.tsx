@@ -1,6 +1,9 @@
 import styled from '../../styles/mainP_S/mySection.module.css';
 
 const mySection = () => {
+  // 최근 예매 티켓 어떻게 가져올건지
+  // My Ticket 페이지에서 유저가 마지막으로 입력한 정보를 가지고 가져오는 걸로
+
   return (
     <div className={styled.Layout}>
       <div className={styled.Title}>
