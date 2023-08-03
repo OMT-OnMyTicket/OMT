@@ -1,5 +1,9 @@
+.Login_Page_Layout {
+  width: 100vw !important;
+  height: 100vh !important;
+}
+
 .Container {
-  height: calc(100vh);
   overflow: hidden;
   justify-content: center;
   align-items: center;
@@ -28,9 +32,6 @@
   color: #484e5a;
 }
 @media screen and (max-width: 639px) {
-  .Container {
-    height: calc(80vh);
-  }
   .Title {
     font-size: 33px;
     font-weight: 700;
@@ -39,6 +40,9 @@
   }
   .subTitle {
     font-size: 28px;
+  }
+  .ScrollDown {
+    margin-bottom: 80px;
   }
 }
 
@@ -93,7 +97,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: calc(160vh);
   padding: 0 16vw;
 }
 .mainTxt2_1 {
@@ -126,29 +129,35 @@
   .second_Container {
     display: flex;
     padding: 8vw;
-    height: calc(110vh);
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
   }
   .left_Container {
     position: relative;
   }
   .right_Container {
-    margin-left: 30px;
+    margin-bottom: 100px;
   }
+
   .mainTxt2_1 {
     font-size: 18px;
   }
   .mainTxt2_2 {
     font-size: 28px;
+    line-height: 40px;
   }
 
   .mainTxt2_3 {
     font-size: 17px;
     position: absolute;
     line-height: 40px;
+    margin: 0 auto;
   }
   .ticketImg2 {
     width: 220px;
     filter: drop-shadow(20px 20px 2px rgba(150, 150, 150, 0.25));
+    margin-bottom: 50px;
   }
 }
 
@@ -158,7 +167,7 @@
   font-family: 'Pretendard Variable';
   display: flex;
   flex-direction: column;
-  height: calc(200vh);
+
   padding: 10vw 16vw;
   background-color: #f9fafb;
 }
@@ -218,26 +227,37 @@
 
 @media screen and (max-width: 639px) {
   .third_Container {
-    height: calc(130vh);
+    display: flex;
+    padding: 8vw;
+
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
   }
   .theater_Layout {
     margin: 30px 0;
+    width: 100%;
   }
   .theater {
-    height: 100px;
+    height: 15vw;
+    width: 15vw;
+    box-shadow: 8px 8px 0px rgba(150, 150, 150, 0.25);
   }
   .theater_icon {
-    width: 100px;
+    width: 15vw;
   }
   .theater1 {
     display: none;
   }
+  .third_Contents {
+    display: flex;
+    flex-direction: column;
+  }
   .phoneImg {
     width: 380px;
-    margin: 0 3vw;
   }
   .mainTxt3_1 {
-    font-size: 14px;
+    font-size: 18px;
     width: 100%;
     line-height: 40px;
   }
@@ -255,21 +275,21 @@
 /* 네번째 페이지 */
 .fourth_Container {
   font-family: 'Pretendard Variable';
-  height: calc(100vh);
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
 }
 .IMG_layout {
+  height: 500px;
   width: 100%;
-  height: 600px;
   background-image: url('/background.png');
   background-size: cover;
   display: flex;
   justify-content: center;
   overflow-x: hidden;
   transition-duration: 3s;
+  margin: 100px 0;
 }
 
 .Txt_Layout {
@@ -290,7 +310,7 @@
 
 @media screen and (max-width: 639px) {
   .fourth_Title {
-    font-size: 60px;
+    font-size: 40px;
   }
   .fourth_Txt {
     font-size: 30px;
