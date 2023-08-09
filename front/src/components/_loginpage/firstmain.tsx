@@ -24,20 +24,27 @@ const firstmain = () => {
   return (
     <>
       <div className={styled.Container}>
-        <div
-          className={styled.Title}
-          data-aos='fade-up'
-          data-aos-duration='1000'
-        >
-          ON MY TICKET
+        <div className={styled.Background}>
+          <img className={styled.Background_IMG} src='/loginIMG.jpg' />
         </div>
-        <div className={styled.subTitle}>
-          <p data-aos='fade-up' data-aos-duration='3000'>
-            영화의 모든 것 <br />
-            OMT로 쉽고 간편하게
-          </p>
+
+        <div className={styled.First_Title}>
+          <div
+            className={styled.Title}
+            data-aos='fade-up'
+            data-aos-duration='1000'
+          >
+            <h1 className={styled.H1}>ON MY TICKET</h1>
+          </div>
+
+          <div className={styled.subTitle}>
+            <p data-aos='fade-up' data-aos-duration='3000'>
+              영화의 모든 것 <br />
+              OMT로 쉽고 간편하게
+            </p>
+          </div>
+          <img className={styled.ScrollDown} src='/ScrollDown.svg'></img>
         </div>
-        <img className={styled.ScrollDown} src='/ScrollDown.svg'></img>
       </div>
       <div className={styled.secondTitle}>
         <p

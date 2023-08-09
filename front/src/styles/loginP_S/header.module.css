@@ -12,6 +12,7 @@
   font-weight: bold;
   font-family: 'Pretendard Variable';
   z-index: 1;
+  background-color: white;
 }
 .Login {
   cursor: pointer;

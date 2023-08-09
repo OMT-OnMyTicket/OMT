@@ -22,23 +22,22 @@ const Fourth = () => {
 
   return (
     <>
-      <div className={styled.fourth_Container}>
-        <div className={styled.IMG_layout}>
-          <div className={styled.Txt_Layout}>
-            <p
-              className={styled.fourth_Title}
+      <div className={styled.Fourth_Container}>
+        <div className={styled.Fourth_Back}>
+          <div className={styled.Fourth_Txt_Layout}>
+            <div
+              className={styled.Fourth_Title}
               data-aos='fade-down'
               data-aos-duration='1000'
             >
-              당신의 소중한 추억.
-            </p>
-            <p
-              className={styled.fourth_Txt}
-              data-aos='fade-down'
-              data-aos-duration='3000'
-            >
-              ON MY TICKET과 함께
-            </p>
+              <h1 className={styled.Fourth_H1}>당신의 소중한 추억.</h1>
+            </div>
+            <div className={styled.Fourth_Sub_Title}>
+              <p data-aos='fade-down' data-aos-duration='3000'>
+                ON MY TICKET과 함께
+              </p>
+            </div>
+
             <div
               className={styled.login_Btn}
               data-aos='fade-down'

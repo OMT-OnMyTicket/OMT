@@ -1,30 +1,44 @@
-.Login_Page_Layout {
-  width: 100vw !important;
-  height: 100vh !important;
+.Background {
+  width: auto;
+  height: 100vh;
 }
-
-.Container {
-  overflow: hidden;
-  justify-content: center;
+.Background_IMG {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+.First_Title {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  -webkit-box-align: center;
   align-items: center;
   display: flex;
   flex-direction: column;
-  margin-top: 78px;
-  background-image: url('/loginIMG.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  font-family: 'Pretendard Variable';
-  text-align: center;
+  -webkit-box-pack: justify;
+  justify-content: space-around;
 }
 
 .Title {
-  padding-top: 160px;
-  font-weight: 700;
-  font-size: 96px;
-  line-height: 115px;
-  color: #000000;
-  margin-bottom: 60px;
+  margin-top: 170px;
+  -webkit-box-align: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  -webkit-box-pack: start;
+  justify-content: flex-start;
 }
+.H1 {
+  width: 100%;
+  text-align: center;
+  font-size: 90px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: rgb(0, 0, 0);
+}
+
 .subTitle {
   font-weight: 500;
   font-size: 32px;
@@ -61,6 +75,7 @@
     transform: translate3d(0, 50px, 0);
   }
 }
+
 .secondTitle {
   display: flex;
   height: 700px;
@@ -93,11 +108,10 @@
 /* 두번째 페이지 */
 
 .second_Container {
-  font-family: 'Pretendard Variable';
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 16vw;
+  padding: 16vw 16vw;
 }
 .mainTxt2_1 {
   font-weight: 600;
@@ -110,6 +124,7 @@
   font-size: 44px;
   line-height: 80px;
   color: #000000;
+  margin: 70px 0;
 }
 
 .mainTxt2_3 {
@@ -164,10 +179,8 @@
 /* 세번째 페이지 */
 
 .third_Container {
-  font-family: 'Pretendard Variable';
   display: flex;
   flex-direction: column;
-
   padding: 10vw 16vw;
   background-color: #f9fafb;
 }
@@ -185,7 +198,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 130px 0;
+  margin: 80px 0;
 }
 .theater,
 .theater1 {
@@ -273,51 +286,50 @@
 }
 
 /* 네번째 페이지 */
-.fourth_Container {
-  font-family: 'Pretendard Variable';
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-.IMG_layout {
-  height: 500px;
-  width: 100%;
-  background-image: url('/background.png');
-  background-size: cover;
-  display: flex;
-  justify-content: center;
-  overflow-x: hidden;
-  transition-duration: 3s;
-  margin: 100px 0;
-}
 
-.Txt_Layout {
+.Fourth_Container {
+  margin: 10vw 0;
+}
+.Fourth_Back {
+  background-image: url('/background.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 700px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  line-height: 10px;
 }
-.fourth_Title {
-  font-size: 100px;
+.Fourth_Txt_Layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 150px;
+}
+.Fourth_H1 {
+  width: 100%;
+  font-size: 90px;
+  font-weight: 700;
+  line-height: 1.4;
   color: white;
 }
-.fourth_Txt {
+.Fourth_Sub_Title {
   font-size: 30px;
   color: white;
 }
 
 @media screen and (max-width: 639px) {
-  .fourth_Title {
+  .Fourth_Title {
     font-size: 40px;
   }
-  .fourth_Txt {
+  .Fourth_Txt {
     font-size: 30px;
   }
 }
 
 /* 로그인 버튼 */
+
 .login_Btn {
   background: linear-gradient(90deg, #000000 0%, #616161 59.31%, #a4a4a4 100%);
   color: white;

@@ -1,16 +1,9 @@
-.login_Layout {
-  overflow: hidden;
-  background-image: url('/loginIMG.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  font-family: 'Pretendard Variable';
+.login_Back {
   display: flex;
   justify-content: space-between;
+  padding: 0vw 20vw 10vw 16vw;
 }
-.login_Txt {
-  margin-top: 8.3vw;
-  margin-left: 17.3vw;
-}
+
 .login_Txt1 {
   font-weight: 600;
   font-size: 33px;
@@ -23,12 +16,14 @@
   line-height: 5.5vw;
   color: #000000;
 }
-
-.OauthBox {
-  margin-top: 13.8vw;
-  margin-right: 24.3vw;
+.Character_Position {
+  position: absolute;
+  right: 0;
+  bottom: -100;
 }
-
+.Character {
+  height: 500px;
+}
 .oauth_Layout {
   display: flex;
   flex-direction: column;
