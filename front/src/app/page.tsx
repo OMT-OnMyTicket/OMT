@@ -8,26 +8,28 @@ import styled from '@/styles/loginP_S/main.module.css';
 
 const LoginP = () => {
   return (
-    <div className={styled.Login_Page_Layout}>
-      <header>
+    <>
+      <nav>
         <Header />
-      </header>
-      <div>
-        <FirstMain />
-      </div>
-      <div>
-        <SecondMain />
-      </div>
-      <div>
-        <ThirdMain />
-      </div>
-      <div>
-        <FourthMain />
-      </div>
-      <div>
-        <Loginpage />
-      </div>
-    </div>
+      </nav>
+      <main className={styled.Login_Page_Layout}>
+        <section>
+          <FirstMain />
+        </section>
+        <section>
+          <SecondMain />
+        </section>
+        <section>
+          <ThirdMain />
+        </section>
+        <section>
+          <FourthMain />
+        </section>
+        <section>
+          <Loginpage />
+        </section>
+      </main>
+    </>
   );
 };
 
