@@ -46,8 +46,8 @@
   color: #484e5a;
 }
 @media screen and (max-width: 639px) {
-  .Title {
-    font-size: 33px;
+  .H1 {
+    font-size: 40px;
     font-weight: 700;
     line-height: 1.4;
     color: rgb(25, 31, 40);
@@ -92,15 +92,10 @@
 }
 
 @media screen and (max-width: 639px) {
-  .secondTitle {
-    padding: 100px 0;
-    height: 230px;
-  }
-
   .secondTitle_Txt {
     font-size: 22px;
     font-weight: 600;
-    line-height: 1.5;
+    line-height: 2;
     color: #191f28;
   }
 }
@@ -286,7 +281,6 @@
 }
 
 /* 네번째 페이지 */
-
 .Fourth_Container {
   margin: 10vw 0;
 }
@@ -320,7 +314,7 @@
 }
 
 @media screen and (max-width: 639px) {
-  .Fourth_Title {
+  .Fourth_H1 {
     font-size: 40px;
   }
   .Fourth_Txt {

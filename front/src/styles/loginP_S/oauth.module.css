@@ -1,7 +1,7 @@
 .login_Back {
   display: flex;
   justify-content: space-between;
-  padding: 0vw 20vw 0vw 16vw;
+  padding: 10vw 20vw 0vw 16vw;
   position: relative;
 }
 .OauthBox {
@@ -24,19 +24,27 @@
   position: absolute;
   bottom: 0;
   right: 0;
+  z-index: 1;
 }
 .Character {
   height: 500px;
+  z-index: 1;
+}
+
+.oauth_ul {
+  width: 55vw;
 }
 
 .oauth_li {
   width: 100%;
   margin: 60px 0px;
-  border-bottom: 1px solid #aba3a3;
-}
-.oauth_li:hover {
+  border: 1px solid #aba3a3;
+  border-radius: 20px;
+  padding: 30px 35px;
+  margin-right: 20px;
   cursor: pointer;
 }
+
 .oauth_li:hover > .oauth_li_Txt > .Login_Txt {
   color: black;
   font-size: 22px;
@@ -59,7 +67,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 30px;
 }
 .oauth_Logo {
   width: 40px;
@@ -86,6 +93,53 @@
   font-size: 21px;
   color: #aba3a3;
 }
+.Login_Txt_M {
+  display: none;
+}
 
 @media screen and (max-width: 639px) {
+  .login_Back {
+    padding: 8vw;
+  }
+  .oauth_li {
+    height: 75px;
+  }
+
+  .login_Txt1 {
+    font-size: 18px;
+  }
+  .login_Txt2 {
+    font-size: 25px;
+    line-height: 40px;
+    margin-top: 20px;
+  }
+  .Login_Txt {
+    display: none;
+  }
+  .oauth_name1,
+  .oauth_name2,
+  .oauth_name3 {
+    font-size: 18px;
+  }
+  .oauth_Logo {
+    display: none;
+    margin: 0;
+  }
+
+  .Login_Txt_M {
+    display: flex;
+    font-size: 18px;
+    color: #aba3a3;
+    font-weight: bold;
+  }
+
+  .Character {
+    opacity: 30%;
+  }
+
+  .oauth_li:hover > .oauth_li_Txt > .Login_Txt_M {
+    color: black;
+    font-size: 20px;
+    transition-duration: 1s;
+  }
 }
