@@ -26,7 +26,7 @@ const Second = () => {
           </h2>
           <div
             className={styled.ticketImg_layout}
-            data-aos='fade-right'
+            data-aos='fade-rignt'
             data-aos-duration='1000'
             id='Img'
           >
