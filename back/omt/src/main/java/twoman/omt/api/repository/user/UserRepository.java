@@ -6,5 +6,5 @@ import twoman.omt.api.entity.user.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User,Long> {
-    User findById(String Id);
+    User findByUserIdentity(String userIdentity);
 }
