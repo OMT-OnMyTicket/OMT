@@ -28,7 +28,7 @@ public class User extends Auditable {
     @Column(length =64, unique = true)
     @NotNull
     @Size(max = 64)
-    private String Id;
+    private String userIdentity;
 
     @Column(length = 30)
     @NotNull
@@ -67,7 +67,7 @@ public class User extends Auditable {
     private RoleType roleType;
 
     public User(
-            @NotNull @Size(max = 64) String Id,
+            @NotNull @Size(max = 64) String Identity,
             @NotNull @Size(max = 100) String nickname,
             @NotNull @Size(max = 512) String email,
             @NotNull @Size(max = 1) String emailVerifiedYn,
@@ -75,7 +75,7 @@ public class User extends Auditable {
             @NotNull ProviderType providerType,
             @NotNull RoleType roleType
     ) {
-        this.Id = Id;
+        this.userIdentity = Identity;
         this.nickname = nickname;
         this.password = "NO_PASS";
         this.email = email !=null ? email : "NO_EMAIL";
