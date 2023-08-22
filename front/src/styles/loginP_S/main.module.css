@@ -211,6 +211,7 @@
 }
 .theater_icon {
   width: 140px;
+  border-radius: 20px;
 }
 .mainTxt3_1 {
   font-weight: 450;

@@ -1,4 +1,5 @@
 import styled from '../../styles/ticketingP_S/main.module.css';
+import Link from 'next/link';
 
 const TicketingMain = () => {
   return (
@@ -24,18 +25,20 @@ const TicketingMain = () => {
               빠르고 간편하게 예매가 가능합니다.
             </p>
           </div>
-          <div className={styled.Right_Box}>
-            <div className={styled.Box_Title}>
-              직접예매
-              <img className={styled.arrow} src={'/ticketing_arrow.svg'} />
+          <Link href='/ticketing/direct'>
+            <div className={styled.Right_Box}>
+              <div className={styled.Box_Title}>
+                직접예매
+                <img className={styled.arrow} src={'/ticketing_arrow.svg'} />
+              </div>
+              <p className={styled.Box_Txt}>
+                일반적인 예매방식과
+                <br />
+                비슷하게 <br />
+                모든 것을 선택할 수 있습니다.
+              </p>
             </div>
-            <p className={styled.Box_Txt}>
-              일반적인 예매방식과
-              <br />
-              비슷하게 <br />
-              모든 것을 선택할 수 있습니다.
-            </p>
-          </div>
+          </Link>
         </div>
       </div>
     </>

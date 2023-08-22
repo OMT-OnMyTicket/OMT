@@ -132,3 +132,37 @@
     height: 5vw;
   }
 }
+
+/* 페이지 체크 */
+
+.PageCheck {
+  display: flex;
+  margin-right: 140px;
+}
+.Page1,
+.Page2,
+.Page3,
+.Page4,
+.Page5,
+.Page6 {
+  border-radius: 50px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+  background-color: #939393;
+  font-size: 15px;
+}
+.ActivePage {
+  background-color: white;
+  border-radius: 50px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+  font-size: 15px;
+}
