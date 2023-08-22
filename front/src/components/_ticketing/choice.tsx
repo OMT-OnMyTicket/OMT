@@ -1,9 +1,9 @@
+'use client';
+
+import styled from '../../styles/ticketingP_S/choice.module.css';
+import PageCheck from '../../components/pageCheck';
 import React, { useEffect, useState } from 'react';
-import styled from '../../styles/mainP_S/chart.module.css';
 import axios from 'axios';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
 
 const KEY = process.env.NEXT_PUBLIC_KOPIC_KEY;
 const URL = process.env.NEXT_PUBLIC_KOPIC_URL;
@@ -33,11 +33,10 @@ function get_today() {
   return get_date_str(new Date());
 }
 
-const Chart = () => {
+const ChoiceMovie = () => {
+  const activePage = 2;
   const [movieChart, setMovieChart] = useState<DailyBoxOfficeItem[]>([]);
   const [moviePosters, setMoviePosters] = useState<string[]>([]);
-
-  // 무비차트 데이터 받아오기
 
   useEffect(() => {
     axios
@@ -85,40 +84,17 @@ const Chart = () => {
       .catch((error) => console.log(error));
   }, []);
 
-  // Slider settings
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 5,
-    slidesToScroll: 5,
-    autoplay: true,
-    autoplaySpeed: 8000,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 4,
-          slidesToScroll: 4
-        }
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 4
-        }
-      }
-    ]
-  };
-
   return (
-    <div className={styled.contents}>
-      <div className={styled.chartTitle}>
-        <h3>무비차트</h3>
-      </div>
-      <div className={styled.movieSlider}>
-        <Slider {...settings}>
+    <>
+      <div className={styled.Container}>
+        <div className={styled.Choice_Txts}>
+          <div className={styled.Choice_Title}>직접예매</div>
+          <div className={styled.PageCheck_Layout}>
+            <div className={styled.Choice_Txt}>영화 선택하기</div>
+            <PageCheck activePage={activePage} />
+          </div>
+        </div>
+        <div className={styled.Movie_Container}>
           {movieChart.map((a: DailyBoxOfficeItem, i: number) => {
             return (
               <div className={styled.movies} key={a.rank}>
@@ -127,15 +103,15 @@ const Chart = () => {
                   alt='movie poster'
                   className={styled.moviePoster}
                 />
-                <strong className={styled.movieTitle}>{a.movieNm}</strong>
-                <div className={styled.moviesTxt2}>누적관객수: {a.audiAcc}</div>
+                <strong className={styled.movieTitle}>
+                  {a.rank}. {a.movieNm}
+                </strong>
               </div>
             );
           })}
-        </Slider>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
-
-export default Chart;
+export default ChoiceMovie;

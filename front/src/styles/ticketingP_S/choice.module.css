@@ -1,0 +1,62 @@
+.Container {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr 8fr;
+  background-image: url('/Ticketing_Back.png');
+  padding: 200px 0 100px 150px;
+  background-attachment: fixed;
+}
+
+.Choice_Title {
+  font-size: 38px;
+  color: white;
+  font-weight: bold;
+}
+.PageCheck_Layout {
+  display: flex;
+  justify-content: space-between;
+}
+.Choice_Txt {
+  font-size: 28px;
+  font-weight: bold;
+  color: white;
+  margin: 40px 0;
+}
+.Movie_Container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.movies {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 400px;
+  margin-bottom: 40px;
+}
+.moviePoster {
+  width: 220px;
+  height: 350px;
+  cursor: pointer;
+}
+.movieTitle {
+  color: white;
+  margin-top: 20px;
+  font-size: 16px;
+  background: linear-gradient(
+    180deg,
+    #000000 32.42%,
+    rgba(0, 0, 0, 0.432292) 68.08%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  border-radius: 10px;
+  width: 200px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* Rectangle 100 */
