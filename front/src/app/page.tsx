@@ -1,31 +1,36 @@
-'use client';
+import Header from '@/components/_loginpage/header';
+import FirstMain from '@/components/_loginpage/firstmain';
+import SecondMain from '@/components/_loginpage/secondmain';
+import ThirdMain from '@/components/_loginpage/thirdmain';
+import FourthMain from '@/components/_loginpage/fourthmain';
+import Loginpage from '@/components/_loginpage/loginpage';
+import styled from '@/styles/loginP_S/main.module.css';
 
-import Header from '@/components/_mainpage/header';
-import Preview from '@/components/_mainpage/preview';
-import Chart from '@/components/_mainpage/chart';
-import Footer from '@/components/_mainpage/footer';
-import MySection from '@/components/_mainpage/mySection';
-import Support from '@/components/support';
-
-export default function Home() {
+const LoginP = () => {
   return (
     <>
-      <div className=''>
+      <nav>
         <Header />
-      </div>
-      <div>
-        <Preview />
-      </div>
-      <div>
-        <Chart />
-      </div>
-      <div>
-        <MySection />
-      </div>
-      <div>
-        <Support />
-        <Footer />
-      </div>
+      </nav>
+      <main className={styled.Login_Page_Layout}>
+        <section>
+          <FirstMain />
+        </section>
+        <section>
+          <SecondMain />
+        </section>
+        <section>
+          <ThirdMain />
+        </section>
+        <section>
+          <FourthMain />
+        </section>
+        <section>
+          <Loginpage />
+        </section>
+      </main>
     </>
   );
-}
+};
+
+export default LoginP;

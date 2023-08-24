@@ -1,6 +1,18 @@
-body {
+*,
+*:before,
+*:after {
+  font-family: 'pretendard' !important;
+  box-sizing: border-box;
+  border: none;
+  list-style: none;
+  padding: 0;
   margin: 0;
-  background-color: white;
+}
+
+html,
+body {
+  font-size: 14px;
+  height: 100vh;
 }
 ul {
   list-style: none;

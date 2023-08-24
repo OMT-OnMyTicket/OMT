@@ -1,0 +1,149 @@
+.login_Back {
+  display: flex;
+  justify-content: space-between;
+  padding: 10vw 20vw 0vw 16vw;
+  position: relative;
+}
+.OauthBox {
+  margin: 0 auto;
+  width: 48vw;
+}
+.login_Txt1 {
+  font-weight: 600;
+  font-size: 33px;
+  line-height: 5vw;
+  color: blue;
+}
+.login_Txt2 {
+  font-weight: 600;
+  font-size: 43px;
+  line-height: 5.5vw;
+  color: #000000;
+}
+.Character_Position {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+}
+.Character {
+  height: 500px;
+  z-index: 1;
+}
+
+/* OAuthBox */
+
+.oauth_ul {
+  width: 55vw;
+}
+
+.oauth_li {
+  width: 100%;
+  margin: 60px 0px;
+  border: 1px solid #aba3a3;
+  border-radius: 20px;
+  padding: 30px 35px;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.oauth_li:hover > .oauth_li_Txt > .Login_Txt {
+  color: black;
+  font-size: 22px;
+  transition-duration: 1s;
+}
+.oauth_li:hover > .oauth_li_Txt > .oauth_arrow {
+  filter: invert(100%);
+  width: 28px;
+  transition-duration: 1s;
+  animation: roll-in 2s ease infinite;
+}
+@keyframes roll-in {
+  100% {
+    opacity: 1;
+    transform: translateX(10px) rotate(0deg);
+  }
+}
+
+.oauth_li_Txt {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.oauth_Logo {
+  width: 40px;
+  border-radius: 10px;
+  margin-top: 12px;
+}
+.oauth_Naming_Layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.oauth_name1 {
+  color: #32bf00;
+  font-weight: bold;
+}
+.oauth_name2 {
+  color: #d2c22e;
+  font-weight: bold;
+}
+.oauth_name3 {
+  font-weight: bold;
+}
+.Login_Txt {
+  font-size: 21px;
+  color: #aba3a3;
+}
+.Login_Txt_M {
+  display: none;
+}
+
+/* 모바일 버전 */
+
+@media screen and (max-width: 639px) {
+  .login_Back {
+    padding: 8vw;
+  }
+  .oauth_li {
+    height: 75px;
+  }
+
+  .login_Txt1 {
+    font-size: 18px;
+  }
+  .login_Txt2 {
+    font-size: 25px;
+    line-height: 40px;
+    margin-top: 20px;
+  }
+  .Login_Txt {
+    display: none;
+  }
+  .oauth_name1,
+  .oauth_name2,
+  .oauth_name3 {
+    font-size: 18px;
+  }
+  .oauth_Logo {
+    display: none;
+    margin: 0;
+  }
+
+  .Login_Txt_M {
+    display: flex;
+    font-size: 18px;
+    color: #aba3a3;
+    font-weight: bold;
+  }
+
+  .Character {
+    opacity: 30%;
+  }
+
+  .oauth_li:hover > .oauth_li_Txt > .Login_Txt_M {
+    color: black;
+    font-size: 20px;
+    transition-duration: 1s;
+  }
+}

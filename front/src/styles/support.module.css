@@ -16,6 +16,7 @@
   margin: 1.38vw;
   width: 3.1vw;
   cursor: pointer;
+  z-index: 5;
 }
 
 .Ticketing,

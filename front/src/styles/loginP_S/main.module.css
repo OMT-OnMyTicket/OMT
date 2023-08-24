@@ -1,0 +1,362 @@
+.Background {
+  width: auto;
+  height: 100vh;
+}
+.Background_IMG {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+.First_Title {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  -webkit-box-align: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  justify-content: space-around;
+}
+
+.Title {
+  margin-top: 170px;
+  -webkit-box-align: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  -webkit-box-pack: start;
+  justify-content: flex-start;
+}
+.H1 {
+  width: 100%;
+  text-align: center;
+  font-size: 90px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: rgb(0, 0, 0);
+}
+
+.subTitle {
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 62px;
+  color: #484e5a;
+}
+@media screen and (max-width: 639px) {
+  .H1 {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.4;
+    color: rgb(25, 31, 40);
+  }
+  .subTitle {
+    font-size: 28px;
+  }
+  .ScrollDown {
+    margin-bottom: 80px;
+  }
+}
+
+.ScrollDown {
+  width: 60px;
+  animation: bounce_frames 1s;
+  animation-direction: alternate;
+  animation-timing-function: cubic-bezier(0.5, 0.05, 1, 0.5);
+  animation-iteration-count: infinite;
+}
+@keyframes bounce_frames {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 50px, 0);
+  }
+}
+
+.secondTitle {
+  display: flex;
+  height: 700px;
+  justify-content: center;
+  align-items: center;
+  background-color: #f9fafb;
+}
+.secondTitle_Txt {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 2.6;
+  color: #191f28;
+  text-align: center;
+}
+
+@media screen and (max-width: 639px) {
+  .secondTitle_Txt {
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 2;
+    color: #191f28;
+  }
+}
+
+/* 두번째 페이지 */
+
+.second_Container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16vw 16vw;
+}
+.mainTxt2_1 {
+  font-weight: 600;
+  font-size: 34px;
+  line-height: 80px;
+  color: blue;
+}
+.mainTxt2_2 {
+  font-weight: 600;
+  font-size: 44px;
+  line-height: 80px;
+  color: #000000;
+  margin: 70px 0;
+}
+
+.mainTxt2_3 {
+  font-weight: 450;
+  font-size: 24px;
+  line-height: 80px;
+  color: #000000;
+  margin-top: 100px;
+}
+
+.ticketImg2 {
+  width: 350px;
+  filter: drop-shadow(20px 20px 2px rgba(150, 150, 150, 0.25));
+}
+
+@media screen and (max-width: 639px) {
+  .second_Container {
+    display: flex;
+    padding: 8vw;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  .left_Container {
+    position: relative;
+  }
+  .right_Container {
+    margin-bottom: 100px;
+  }
+
+  .mainTxt2_1 {
+    font-size: 18px;
+  }
+  .mainTxt2_2 {
+    font-size: 28px;
+    line-height: 40px;
+  }
+
+  .mainTxt2_3 {
+    font-size: 17px;
+    position: absolute;
+    line-height: 40px;
+    margin: 0 auto;
+  }
+  .ticketImg2 {
+    width: 220px;
+    filter: drop-shadow(20px 20px 2px rgba(150, 150, 150, 0.25));
+    margin-bottom: 50px;
+  }
+}
+
+/* 세번째 페이지 */
+
+.third_Container {
+  display: flex;
+  flex-direction: column;
+  padding: 10vw 16vw;
+  background-color: #f9fafb;
+}
+.third_Contents {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.phoneImg {
+  width: 600px;
+  margin: 0 3vw;
+}
+.theater_Layout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 80px 0;
+}
+.theater,
+.theater1 {
+  width: 190px;
+  height: 170px;
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: 20px 20px 2px rgba(150, 150, 150, 0.25);
+  margin: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.theater_icon {
+  width: 140px;
+}
+.mainTxt3_1 {
+  font-weight: 450;
+  font-size: 24px;
+  line-height: 80px;
+  color: #000000;
+}
+.phone_Content {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 48px;
+}
+.phoneTop,
+.phoneBtm {
+  width: 280px;
+  border-radius: 30px;
+  margin-top: 40px;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+@media screen and (max-width: 639px) {
+  .third_Container {
+    display: flex;
+    padding: 8vw;
+
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  .theater_Layout {
+    margin: 30px 0;
+    width: 100%;
+  }
+  .theater {
+    height: 15vw;
+    width: 15vw;
+    box-shadow: 8px 8px 0px rgba(150, 150, 150, 0.25);
+  }
+  .theater_icon {
+    width: 15vw;
+  }
+  .theater1 {
+    display: none;
+  }
+  .third_Contents {
+    display: flex;
+    flex-direction: column;
+  }
+  .phoneImg {
+    width: 380px;
+  }
+  .mainTxt3_1 {
+    font-size: 18px;
+    width: 100%;
+    line-height: 40px;
+  }
+  .phone_Content {
+    margin-left: 8px;
+  }
+  .phoneTop,
+  .phoneBtm {
+    width: 180px;
+    margin-top: 10px;
+    border-radius: 20px;
+  }
+}
+
+/* 네번째 페이지 */
+.Fourth_Container {
+  margin: 10vw 0;
+}
+.Fourth_Back {
+  background-image: url('/background.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 700px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.Fourth_Txt_Layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 150px;
+}
+.Fourth_H1 {
+  width: 100%;
+  font-size: 90px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: white;
+}
+.Fourth_Sub_Title {
+  font-size: 30px;
+  color: white;
+}
+
+@media screen and (max-width: 639px) {
+  .Fourth_H1 {
+    font-size: 40px;
+  }
+  .Fourth_Txt {
+    font-size: 30px;
+  }
+}
+
+/* 로그인 버튼 */
+
+.login_Btn {
+  background: linear-gradient(90deg, #000000 0%, #616161 59.31%, #a4a4a4 100%);
+  color: white;
+  border-radius: 15px;
+  width: 200px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: 40px;
+  cursor: pointer;
+}
+.login_Btn:hover {
+  background: linear-gradient(90deg, #fef3f3 0%, #ffffff 4.69%, #9d9d9d 100%);
+  color: black;
+}
+.login_Btn {
+  animation: bounce2 3s ease infinite;
+}
+@keyframes bounce2 {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
