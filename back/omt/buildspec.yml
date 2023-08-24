@@ -7,15 +7,15 @@ phases:
   build:
     commands:
       - echo Build Starting on `date`
-      - cd OMT
+      - cd back/omt
       - chmod +x ./gradlew
       - ./gradlew build
   post_build:
     commands:
-      - echo $(basename ./OMT/build/libs/*.jar)
+      - echo $(basename ./back/omt/build/libs/*.jar)
 artifacts:
   files:
-    - OMT/build/libs/*.jar
-    - OMT/scripts/**
-    - OMT/appspec.yml
+    - back/omt/build/libs/*.jar
+    - back/omt/scripts/**
+    - back/omt/appspec.yml
   discard-paths: yes
