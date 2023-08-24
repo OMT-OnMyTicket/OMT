@@ -7,12 +7,12 @@ phases:
   build:
     commands:
       - echo Build Starting on `date`
-      - cd DeployServer
+      - cd OMT/back/omt
       - chmod +x ./gradlew
       - ./gradlew build
   post_build:
     commands:
-      - echo $(basename ./DeployServer/build/libs/*.jar)
+      - echo $(basename ./OMT/back/omt/build/libs/*.jar)
 artifacts:
   files:
     - OMT/back/omt/build/libs/*.jar
