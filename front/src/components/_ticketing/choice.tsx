@@ -37,6 +37,7 @@ const ChoiceMovie = () => {
   const activePage = 2;
   const [movieChart, setMovieChart] = useState<DailyBoxOfficeItem[]>([]);
   const [moviePosters, setMoviePosters] = useState<string[]>([]);
+  const [movieContents, setMovieContents] = useState<string[]>([]);
 
   useEffect(() => {
     axios
@@ -72,12 +73,22 @@ const ChoiceMovie = () => {
         });
 
         Promise.all(detailMovieInfo)
+          // 영화 포스터 가져오기
+
           .then((responses) => {
             const posters = responses.map((res) => {
               const posters = res.data.Data[0].Result[0].posters;
               return posters.split('|')[0];
             });
             setMoviePosters(posters);
+
+            // 영화 줄거리 가져오기
+            const contents = responses.map((res) => {
+              const contents =
+                res.data.Data[0].Result[0].plots.plot[0].plotText;
+              return contents.split('.', 2);
+            });
+            setMovieContents(contents);
           })
           .catch((error) => console.log(error));
       })
@@ -98,11 +109,18 @@ const ChoiceMovie = () => {
           {movieChart.map((a: DailyBoxOfficeItem, i: number) => {
             return (
               <div className={styled.movies} key={a.rank}>
-                <img
-                  src={moviePosters[i] || '/preparing.png'}
-                  alt='movie poster'
-                  className={styled.moviePoster}
-                />
+                <div className={styled.moviePoster_Layout}>
+                  <img
+                    src={moviePosters[i] || '/preparing.png'}
+                    alt='movie poster'
+                    className={styled.moviePoster}
+                  />
+                  <div className={styled.movieContents_Layout}>
+                    <p className={styled.Contentes_Title}>{a.movieNm}</p>
+                    <p className={styled.movieContents}>{movieContents[i]}</p>
+                    <div className={styled.Btn}>예매하기</div>
+                  </div>
+                </div>
                 <strong className={styled.movieTitle}>
                   {a.rank}. {a.movieNm}
                 </strong>

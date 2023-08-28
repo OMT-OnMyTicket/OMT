@@ -1,5 +1,6 @@
 import styled from '../../styles/ticketingP_S/direct.module.css';
 import PageCheck from '../../components/pageCheck';
+import Link from 'next/link';
 
 const DirectTicketing = () => {
   const activePage = 1;
@@ -14,57 +15,63 @@ const DirectTicketing = () => {
             <PageCheck activePage={activePage} />
           </div>
         </div>
-        <div className={styled.Theater_Box1}>
-          <div className={styled.Theater_special}>
-            <div>IMAX</div>
-            <div>4DX</div>
-            <div>SCREEN X</div>
+        <Link href='/ticketing/choice'>
+          <div className={styled.Theater_Box1}>
+            <div className={styled.Theater_special}>
+              <div>IMAX</div>
+              <div>4DX</div>
+              <div>SCREEN X</div>
+            </div>
+            <img src='/CGV.png' className={styled.Theater_Logo1} />
+            <div className={styled.Theater_Title}>
+              CGV에서 관람하기
+              <img src='/directarrow.svg' className={styled.arrow} />
+            </div>
           </div>
-          <img src='/CGV.png' className={styled.Theater_Logo1} />
+        </Link>
+        <Link href='/ticketing/choice'>
+          <div className={styled.Theater_Box2}>
+            <div className={styled.Theater_special}>
+              <div>Dolby</div>
+              <div>BOUTIQUE</div>
+              <div>MX</div>
+            </div>
+            <img src='/메가박스.png' className={styled.Theater_Logo} />
 
-          <div className={styled.Theater_Title}>
-            CGV에서 관람하기
-            <img src='/directarrow.svg' className={styled.arrow} />
+            <div className={styled.Theater_Title}>
+              메가박스에서 관람하기
+              <img src='/directarrow.svg' className={styled.arrow} />
+            </div>
           </div>
-        </div>
-        <div className={styled.Theater_Box2}>
-          <div className={styled.Theater_special}>
-            <div>Dolby</div>
-            <div>BOUTIQUE</div>
-            <div>MX</div>
+        </Link>
+        <Link href='/ticketing/choice'>
+          <div className={styled.Theater_Box3}>
+            <div className={styled.Theater_special}>
+              <div>S PLEX</div>
+              <div>SUPER S</div>
+              <div>SUPER 4D</div>
+            </div>
+            <img src='/롯데시네마.png' className={styled.Theater_Logo} />
+            <div className={styled.Theater_Title}>
+              롯데시네마에서 관람하기
+              <img src='/directarrow.svg' className={styled.arrow} />
+            </div>
           </div>
-          <img src='/메가박스.png' className={styled.Theater_Logo} />
-
-          <div className={styled.Theater_Title}>
-            메가박스에서 관람하기
-            <img src='/directarrow.svg' className={styled.arrow} />
+        </Link>
+        <Link href='/ticketing/choice'>
+          <div className={styled.Theater_Box4}>
+            <div className={styled.Theater_special}>
+              <div>RESERVE</div>
+              <div>&</div>
+              <div>SUITE</div>
+            </div>
+            <img className={styled.Theater_Logo} src='/씨네큐.png' />
+            <div className={styled.Theater_Title}>
+              시네큐에서 관람하기
+              <img src='/directarrow.svg' className={styled.arrow} />
+            </div>
           </div>
-        </div>
-        <div className={styled.Theater_Box3}>
-          <div className={styled.Theater_special}>
-            <div>S PLEX</div>
-            <div>SUPER S</div>
-            <div>SUPER 4D</div>
-          </div>
-          <img src='/롯데시네마.png' className={styled.Theater_Logo} />
-
-          <div className={styled.Theater_Title}>
-            롯데시네마에서 관람하기
-            <img src='/directarrow.svg' className={styled.arrow} />
-          </div>
-        </div>
-        <div className={styled.Theater_Box4}>
-          <div className={styled.Theater_special}>
-            <div>RESERVE</div>
-            <div>&</div>
-            <div>SUITE</div>
-          </div>
-          <img className={styled.Theater_Logo} src='/씨네큐.png' />
-          <div className={styled.Theater_Title}>
-            시네큐에서 관람하기
-            <img src='/directarrow.svg' className={styled.arrow} />
-          </div>
-        </div>
+        </Link>
       </div>
     </>
   );

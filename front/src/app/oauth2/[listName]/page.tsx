@@ -2,8 +2,6 @@
 // access_token만 짤라서 로컬스토리지에 저장하고
 // 홈으로 이동시킨다.
 
-// https://back.helfit.life/oauth2/authorization/google
-
 'use client';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
@@ -33,8 +31,8 @@ const OAuth2 = () => {
         .then((res) => {
           const UserInfo = res.data.body.data;
           localStorage.setItem('UserInfo', JSON.stringify(UserInfo));
-          console.log(JSON.parse(localStorage.UserInfo).email);
-          // router.push('/home');
+          // console.log(JSON.parse(localStorage.UserInfo).email);
+          router.push('/home');
         })
         .catch((error) => {
           console.log(error);

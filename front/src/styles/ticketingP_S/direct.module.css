@@ -4,7 +4,8 @@
   display: grid;
   grid-template-rows: 1fr 2fr;
   background-image: url('/Ticketing_Back.png');
-  padding-top: 200px;
+  padding: 200px 150px 0 0;
+
   background-attachment: fixed;
 }
 .Direct_Txts {

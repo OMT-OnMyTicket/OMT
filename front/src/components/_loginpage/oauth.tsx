@@ -1,19 +1,27 @@
 import styled from '@/styles/loginP_S/oauth.module.css';
 
-// /oauth2/authorization/{provider-id}?redirect_uri=http://localhost:3000/oauth/redirect
+// {URL}/oauth2/authorization/{provider-id}
+
+//  ?redirect_uri=http://localhost:3000/oauth/redirect
 
 const URL = process.env.NEXT_PUBLIC_URL;
 const Oauth = () => {
-  const handleGoogleLogin = () => {
-    window.open(`${URL}/oauth2/authorization/google`);
-  };
-
   const handleNaverLogin = () => {
     window.open(`${URL}/oauth2/authorization/naver`);
   };
 
   const handleKakaoLogin = () => {
     window.open(`${URL}/oauth2/authorization/kakao`);
+  };
+
+  const handleGoogleLogin = () => {
+    // window.open(
+    //   'http://ec2-15-164-164-107.ap-northeast-2.compute.amazonaws.com:8080/oauth2/authorization/google?redirect_uri=http://localhost:3000/oauth/redirect'
+    // );
+
+    window.open(
+      `${URL}/oauth2/authorization/google?redirect_uri=http://localhost:3000/oauth2`
+    );
   };
 
   return (
@@ -32,11 +40,8 @@ const Oauth = () => {
             </div>
           </li>
           <li className={styled.oauth_li}>
-            <div className={styled.oauth_li_Txt}>
-              <div
-                className={styled.oauth_Naming_Layout}
-                onClick={handleKakaoLogin}
-              >
+            <div className={styled.oauth_li_Txt} onClick={handleKakaoLogin}>
+              <div className={styled.oauth_Naming_Layout}>
                 <div className={styled.oauth_name2}>Kakao</div>
                 <img src='/카카오.png' className={styled.oauth_Logo} />
               </div>
@@ -46,11 +51,8 @@ const Oauth = () => {
             </div>
           </li>
           <li className={styled.oauth_li}>
-            <div className={styled.oauth_li_Txt}>
-              <div
-                className={styled.oauth_Naming_Layout}
-                onClick={handleGoogleLogin}
-              >
+            <div className={styled.oauth_li_Txt} onClick={handleGoogleLogin}>
+              <div className={styled.oauth_Naming_Layout}>
                 <div className={styled.oauth_name3}>Google</div>
                 <img src='/구글.png' className={styled.oauth_Logo} />
               </div>
