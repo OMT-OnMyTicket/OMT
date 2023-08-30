@@ -15,7 +15,7 @@ const Header = () => {
           header.style.backgroundColor = 'black';
           header.style.color = 'white';
         } else {
-          header.style.backgroundColor = 'transparent';
+          header.style.backgroundColor = 'white';
           header.style.color = 'black';
         }
       }

@@ -1,0 +1,104 @@
+.Container {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr 3.5fr;
+  background-image: url('/Ticketing_Back.png');
+  padding: 150px 150px 0 150px;
+  background-attachment: fixed;
+}
+
+.Select_Title {
+  font-size: 38px;
+  color: white;
+  font-weight: bold;
+}
+.PageCheck_Layout {
+  display: flex;
+  justify-content: space-between;
+}
+.Select_Txt {
+  font-size: 28px;
+  font-weight: bold;
+  color: white;
+  margin: 40px 0;
+}
+.Select_Layout {
+  display: flex;
+  justify-content: center;
+}
+.Selcet_Container {
+  background-color: white;
+  border-radius: 20px 20px 0 0;
+  position: relative;
+  width: 80%;
+  height: 100%;
+}
+.Select_1 {
+  display: flex;
+  justify-content: space-around;
+  height: 100%;
+  position: relative;
+}
+
+.Select_Local {
+  height: 100%;
+  width: 60%;
+  background-color: #fafafa;
+  border-radius: 20px 0 0 0;
+  padding: 20px;
+}
+.Select_Theater {
+  height: 100%;
+  width: 100%;
+  padding: 20px;
+}
+.Select_Brand {
+  height: 100%;
+  width: 40%;
+  padding: 20px;
+}
+
+.Select_2 {
+  display: flex;
+  justify-content: space-around;
+}
+
+.NextBtn {
+  width: 180px;
+  height: 60px;
+  background-color: black;
+  color: white;
+  border-radius: 20px 0 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  font-size: 18px;
+  cursor: pointer;
+}
+.NextBtn:hover,
+.PrevBtn:hover {
+  background-color: #f35a3d;
+  transition-duration: 1s;
+  font-weight: bold;
+  font-size: 20px;
+  width: 220px;
+}
+.PrevBtn {
+  width: 180px;
+  height: 60px;
+  background-color: black;
+  color: white;
+  border-radius: 0 20px 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  font-size: 18px;
+  cursor: pointer;
+}
