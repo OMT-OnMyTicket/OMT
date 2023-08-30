@@ -1,0 +1,121 @@
+.Container {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr 8fr;
+  background-image: url('/Ticketing_Back.png');
+  padding: 200px 150px 100px 150px;
+  background-attachment: fixed;
+}
+
+.Choice_Title {
+  font-size: 38px;
+  color: white;
+  font-weight: bold;
+}
+.PageCheck_Layout {
+  display: flex;
+  justify-content: space-between;
+}
+.Choice_Txt {
+  font-size: 28px;
+  font-weight: bold;
+  color: white;
+  margin: 40px 0;
+}
+.Movie_Container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.movies {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 400px;
+  margin-bottom: 40px;
+}
+.moviePoster_Layout {
+  cursor: pointer;
+  position: relative;
+  height: 350px;
+  width: 220px;
+  display: flex;
+  justify-content: center;
+}
+
+.moviePoster {
+  width: 220px;
+  height: 350px;
+  position: relative;
+  border-radius: 7px;
+}
+
+.moviePoster_Layout:hover > .moviePoster {
+  transform: scale(1.05);
+  transition-duration: 1s;
+  filter: brightness(23%);
+}
+
+.movieContents_Layout {
+  position: absolute;
+  width: 200px;
+  display: none;
+}
+.Contentes_Title {
+  font-size: 24px;
+  color: white;
+  margin: 50px 0;
+  font-weight: bold;
+}
+
+.movieContents {
+  width: 200px;
+  height: 100px;
+  overflow-y: auto;
+  color: white;
+  line-height: 1.5;
+}
+.movieContents::-webkit-scrollbar {
+  width: 5px;
+}
+.movieContents::-webkit-scrollbar-thumb {
+  background-color: white;
+  border-radius: 20px;
+}
+.movieContents::-webkit-scrollbar-track {
+  background-color: grey;
+}
+
+.moviePoster_Layout:hover > .movieContents_Layout {
+  display: block;
+  transition-duration: 1s;
+}
+
+.Btn {
+  background-color: white;
+  border-radius: 20px;
+  width: 80px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+.Btn:hover {
+  background-color: #f15b3a;
+  color: white;
+  transition-duration: 1s;
+  font-weight: bold;
+}
+
+.movieTitle {
+  color: white;
+  margin-top: 20px;
+  font-size: 16px;
+  width: 200px;
+  display: flex;
+  align-items: center;
+}

@@ -1,0 +1,110 @@
+.Container {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr 2fr;
+  background-image: url('/Ticketing_Back.png');
+  padding: 200px 150px 0 0;
+
+  background-attachment: fixed;
+}
+.Direct_Txts {
+  margin-left: 140px;
+}
+.Direct_Title {
+  font-size: 38px;
+  color: white;
+  font-weight: bold;
+}
+.PageCheck_Layout {
+  display: flex;
+  justify-content: space-between;
+}
+.Direct_Txt {
+  font-size: 28px;
+  font-weight: bold;
+  color: white;
+  margin: 40px 0;
+}
+.Theater_Box1,
+.Theater_Box2,
+.Theater_Box3,
+.Theater_Box4 {
+  padding: 50px;
+  border-radius: 0 20px 20px 0;
+  width: 60%;
+  height: 260px;
+  margin: 30px 0;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.Theater_Box1:hover,
+.Theater_Box2:hover,
+.Theater_Box3:hover,
+.Theater_Box4:hover {
+  width: 75%;
+  transition-duration: 1s;
+}
+.Theater_Box1 {
+  background-image: linear-gradient(
+      90deg,
+      #000000 17.78%,
+      rgba(0, 0, 0, 0) 60.37%
+    ),
+    url('/CGV_Back.png');
+}
+.Theater_Box2 {
+  background-image: linear-gradient(
+      90deg,
+      #000000 17.78%,
+      rgba(0, 0, 0, 0) 60.37%
+    ),
+    url('/메가박스_Back.png');
+}
+.Theater_Box3 {
+  background-image: linear-gradient(
+      90deg,
+      #000000 17.78%,
+      rgba(0, 0, 0, 0) 60.37%
+    ),
+    url('/롯데시네마_Back.png');
+}
+.Theater_Box4 {
+  background-image: linear-gradient(
+      90deg,
+      #000000 17.78%,
+      rgba(0, 0, 0, 0) 60.37%
+    ),
+    url('/씨네큐_Back.png');
+}
+
+.Theater_special {
+  font-size: 18px;
+  color: white;
+  line-height: 1.4;
+}
+.Theater_Title {
+  color: white;
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  font-weight: bold;
+}
+.arrow {
+  margin-left: 20px;
+}
+.Theater_Logo1 {
+  width: 90px;
+  height: 40px;
+  margin: 20px 0;
+}
+.Theater_Logo {
+  width: 80px;
+  height: 70px;
+  border-radius: 10px;
+  margin: 20px 0;
+}
