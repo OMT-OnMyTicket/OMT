@@ -16,7 +16,7 @@ const SelectTheater = () => {
   const handlePrevBtn = () => {
     setSelect1Visible(true);
   };
-  // 두번째 페이지 다음단계 버튼 (선택한 시간 인원수 제출후 다음 페이지로 Link)
+  // 두번째 페이지 다음단계 버튼 (선택한 시간 인원수 제출후 다음 페이지로 Link) check
 
   return (
     <>
