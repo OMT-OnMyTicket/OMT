@@ -2,21 +2,17 @@ import React, { useState } from 'react';
 import styled from '../../styles/ticketingP_S/select.module.css';
 
 const Select_Sit = () => {
-  // Define the number of rows and columns
   const numRows = 8;
   const numColumns = 13;
 
-  // Initialize a 2D array to represent the seat grid with all seats initially unselected
   const [selectedSeats, setSelectedSeats] = useState<boolean[][]>(
     Array(numRows)
       .fill(false)
       .map(() => Array(numColumns).fill(false))
   );
 
-  // Maintain a list of selected seat labels
   const [selectedSeatLabels, setSelectedSeatLabels] = useState<string[]>([]);
 
-  // Function to toggle the selection of a seat
   const toggleSeat = (row: number, col: number) => {
     setSelectedSeats((prevSelectedSeats) => {
       const newSelectedSeats = [...prevSelectedSeats];
@@ -24,7 +20,6 @@ const Select_Sit = () => {
       return newSelectedSeats;
     });
 
-    // Generate the seat label (e.g., A13) and add/remove it from the selectedSeatLabels array
     const seatLabel = String.fromCharCode(65 + row) + (col + 1);
     setSelectedSeatLabels((prevSelectedSeatLabels) => {
       if (prevSelectedSeatLabels.includes(seatLabel)) {
@@ -35,7 +30,6 @@ const Select_Sit = () => {
     });
   };
 
-  // Function to render the seat grid
   const renderSeatGrid = () => {
     const seatGrid = [];
 
@@ -76,7 +70,6 @@ const Select_Sit = () => {
           <div className={styled.Info_Txt}>
             <p>총 인원: 7</p>
             <p>선택좌석: {selectedSeatLabels.join(', ')}</p>
-            {/* Display the selected seat labels */}
           </div>
           <div className={styled.Screen}>Screen</div>
           <div className={styled.Info_Txt}>

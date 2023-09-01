@@ -6,23 +6,9 @@ import PageCheck from '../pageCheck';
 import Select_Sit from './select_sit';
 
 const SelectTheater = () => {
-  const activePage = 3;
-  //   const [select1Visible, setSelect1Visible] = useState(true);
   const [count, setcount] = useState(1);
   const [selectPage, setSelectPage] = useState(1);
-
-  // 첫 페이지 다음단계 버튼 (선택한 영화관 제출하고 false로 변경시키면 됨)
-  const handleNextBtn = () => {
-    if (selectPage < 3) {
-      setSelectPage(selectPage + 1);
-    }
-  };
-  // 두번쨰 페이지 이전단계 버튼
-  const handlePrevBtn = () => {
-    if (selectPage > 1) {
-      setSelectPage(selectPage - 1);
-    }
-  };
+  const activePage = 3;
 
   const handlePlusBtn = () => {
     if (count < 10) {
@@ -37,6 +23,20 @@ const SelectTheater = () => {
       setcount(count - 1);
     } else {
       alert('최소 1명이상 예매가 가능합니다.');
+    }
+  };
+
+  // 다음단계 버튼
+  const handleNextBtn = () => {
+    if (selectPage < 3) {
+      setSelectPage(selectPage + 1);
+    }
+  };
+
+  // 이전단계 버튼
+  const handlePrevBtn = () => {
+    if (selectPage > 1) {
+      setSelectPage(selectPage - 1);
     }
   };
 
