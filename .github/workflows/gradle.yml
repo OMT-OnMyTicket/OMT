@@ -23,7 +23,7 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
     - name: Build with Gradle
-      run : cd back/omt/gradle/wrapper
+      run : cd back/omt
 
     - run: ./gradlew build
     
