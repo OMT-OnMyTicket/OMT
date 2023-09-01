@@ -8,7 +8,7 @@ permissions:
   contents: read
   
 env:
-  S3_BUCKET_NAME: codepipeline-ap-northeast-2-108145542983
+  S3_BUCKET_NAME: omt-githubaction
 
 jobs:
   build:
