@@ -4,6 +4,7 @@ import styled from '../../styles/ticketingP_S/choice.module.css';
 import PageCheck from '../../components/pageCheck';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Link from 'next/link';
 
 const KEY = process.env.NEXT_PUBLIC_KOPIC_KEY;
 const URL = process.env.NEXT_PUBLIC_KOPIC_URL;
@@ -118,7 +119,9 @@ const ChoiceMovie = () => {
                   <div className={styled.movieContents_Layout}>
                     <p className={styled.Contentes_Title}>{a.movieNm}</p>
                     <p className={styled.movieContents}>{movieContents[i]}</p>
-                    <div className={styled.Btn}>예매하기</div>
+                    <Link href='/ticketing/select'>
+                      <div className={styled.Btn}>예매하기</div>
+                    </Link>
                   </div>
                 </div>
                 <strong className={styled.movieTitle}>

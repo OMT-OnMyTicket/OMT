@@ -3,20 +3,42 @@
 import React, { useState } from 'react';
 import styled from '../../styles/ticketingP_S/select.module.css';
 import PageCheck from '../pageCheck';
+import Select_Sit from './select_sit';
 
 const SelectTheater = () => {
   const activePage = 3;
-  const [select1Visible, setSelect1Visible] = useState(true);
+  //   const [select1Visible, setSelect1Visible] = useState(true);
+  const [count, setcount] = useState(1);
+  const [selectPage, setSelectPage] = useState(1);
 
   // 첫 페이지 다음단계 버튼 (선택한 영화관 제출하고 false로 변경시키면 됨)
   const handleNextBtn = () => {
-    setSelect1Visible(false);
+    if (selectPage < 3) {
+      setSelectPage(selectPage + 1);
+    }
   };
   // 두번쨰 페이지 이전단계 버튼
   const handlePrevBtn = () => {
-    setSelect1Visible(true);
+    if (selectPage > 1) {
+      setSelectPage(selectPage - 1);
+    }
   };
-  // 두번째 페이지 다음단계 버튼 (선택한 시간 인원수 제출후 다음 페이지로 Link) check
+
+  const handlePlusBtn = () => {
+    if (count < 10) {
+      setcount(count + 1);
+    } else {
+      alert('10명 이상으로는 예매할 수 없습니다.');
+    }
+  };
+
+  const handleMinusBtn = () => {
+    if (count > 1) {
+      setcount(count - 1);
+    } else {
+      alert('최소 1명이상 예매가 가능합니다.');
+    }
+  };
 
   return (
     <>
@@ -30,7 +52,7 @@ const SelectTheater = () => {
         </div>
         <div className={styled.Select_Layout}>
           <div className={styled.Selcet_Container}>
-            {select1Visible ? (
+            {selectPage === 1 && (
               <div className={styled.Select_1}>
                 <div className={styled.Select_Local}>지역</div>
                 <div className={styled.Select_Theater}>지역별 영화관</div>
@@ -39,17 +61,40 @@ const SelectTheater = () => {
                   다음단계
                 </div>
               </div>
-            ) : null}
-            {!select1Visible ? (
+            )}
+            {selectPage === 2 && (
               <div className={styled.Select_2}>
                 <div className={styled.Select_Time}>
-                  <div>강남</div>
-                  <div>영화 시간 List 나열</div>
+                  <div className={styled.Selected_Local}>강남</div>
+                  <div className={styled.Select_Time}>영화 시간 List 나열</div>
                 </div>
                 <div className={styled.Select_Others}>
-                  <div>날짜선택</div>
-                  <div>선택한 영화</div>
-                  <div>인원수 선택하기</div>
+                  <div className={styled.Select_Date}>2023.08.30(수)</div>
+                  <div className={styled.Selected_Movie_info}>
+                    <div className={styled.Selected_Movie}></div>
+                    <div>선택한 영화제목</div>
+                  </div>
+                  <div className={styled.Selecte_People}>
+                    <p className={styled.Selecte_People_Title}>
+                      인원수 선택하기
+                    </p>
+                    <img src='/People.svg' className={styled.People_svg} />
+                    <div className={styled.Check_Person}>
+                      <img
+                        src='/Minus.svg'
+                        className={styled.Minus}
+                        onClick={handleMinusBtn}
+                      />
+                      <div className={styled.Circle}>
+                        <div className={styled.Circle_Number}>{count} 명</div>
+                      </div>
+                      <img
+                        src='/Plus.svg'
+                        className={styled.Plus}
+                        onClick={handlePlusBtn}
+                      />
+                    </div>
+                  </div>
                 </div>
 
                 <div className={styled.PrevBtn} onClick={handlePrevBtn}>
@@ -59,7 +104,22 @@ const SelectTheater = () => {
                   다음단계
                 </div>
               </div>
-            ) : null}
+            )}
+            {selectPage === 3 && (
+              <div className={styled.Select_3}>
+                <div className={styled.Select_Sit_Container}>
+                  <div className={styled.Select_Sit}>
+                    <Select_Sit />
+                  </div>
+                  <div className={styled.PrevBtn} onClick={handlePrevBtn}>
+                    이전으로
+                  </div>
+                  <div className={styled.NextBtn} onClick={handleNextBtn}>
+                    다음단계
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
