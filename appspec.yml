@@ -13,6 +13,24 @@ permissions:
 
 hooks:
   ApplicationStart:
-    - location: scripts/deploy.sh
+    - location: version: 0.0
+os: linux
+files:
+  - source:  /
+    destination: /home/ubuntu/action
+    overwrite: yes
+
+permissions:
+  - object: /
+    pattern: "**"
+    owner: ubuntu
+    group: ubuntu
+
+hooks:
+  ApplicationStart:
+    - location: back/omt/scripts/deploy.sh
+      timeout: 60
+      runas: ubuntu
+scripts/deploy.sh
       timeout: 60
       runas: ubuntu
