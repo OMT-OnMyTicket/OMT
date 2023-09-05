@@ -22,8 +22,6 @@ jobs:
       with:
         java-version: '11'
         distribution: 'temurin'
-    - name: change directory
-      run: cd back/omt
     - name: Add permission
       run: chmod +x gradlew
     - name: Build with Gradle
