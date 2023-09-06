@@ -29,24 +29,31 @@ jobs:
     - name: GOOGLE_CLIENT_ID
       env: 
         GOOGLE_CLIENT_ID: ${{secrets.GOOGLE_CLIENT_ID}}
+      run: echo $GOOGLE_CLIENT_ID
     - name: GOOGLE_CLIENT_SECRET
       env: 
         GOOGLE_CLIENT_SECRET: ${{secrets.GOOGLE_CLIENT_SECRET}}
+      run: echo $GOOGLE_CLIENT_SECRET
     - name: KAKAO_CLIENT_ID
       env:
         KAKAO_CLIENT_ID: ${{secrets.KAKAO_CLIENT_ID}}
+      run: echo $KAKAO_CLIENT_ID
     - name: KAKAO_CLIENT_SECRET
       env:
         KAKAO_CLIENT_SECRET: ${{secrets.KAKAO_CLIENT_SECRET}}
+      run: echo $KAKAO_CLIENT_SECRET
     - name: NAVER_CLIENT_ID
       env:
         NAVER_CLIENT_ID: ${{secrets.NAVER_CLIENT_ID}}
+      run: echo $NAVER_CLIENT_ID
     - name: NAVER_CLIENT_SECRET
       env:
         NAVER_CLIENT_SECRET: ${{secrets.NAVER_SECRET}}
+      run: echo $NAVER_CLIENT_SECRET
     - name: JWT_SECRET_KEY
       env:
         JWT_SECRET_KEY: ${{secrets.JWT_SECRET_KEY}}
+      run: echo $JWT_SECRET_KEY
 
       
     - name: Permission for gradlew
