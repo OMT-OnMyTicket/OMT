@@ -4,7 +4,7 @@ spring:
       enabled: true
       path: /h2
   datasource:
-    url: jdbc:h2:mem:testdb;NON_KEYWORDS=USER
+    url: jdbc:h2:mem:test
     username: sa
     password:
     driver-class-name: org.h2.Driver
