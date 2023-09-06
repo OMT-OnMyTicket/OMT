@@ -48,7 +48,7 @@ jobs:
       run: echo $NAVER_CLIENT_ID
     - name: NAVER_CLIENT_SECRET
       env:
-        NAVER_CLIENT_SECRET: ${{secrets.NAVER_SECRET}}
+        NAVER_CLIENT_SECRET: ${{secrets.NAVER_CLIENT_SECRET}}
       run: echo $NAVER_CLIENT_SECRET
     - name: JWT_SECRET_KEY
       env:
