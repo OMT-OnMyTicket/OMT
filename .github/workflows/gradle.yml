@@ -25,7 +25,30 @@ jobs:
       with:
         java-version: '11'
         distribution: 'temurin'
-        
+
+    - name: write GOOGLE_CLIENT_ID
+      run: echo "GOOGLE_CLIENT_ID=${{secrets.GOOGLE_CLIENT_ID}}" >> env.yml
+      working-directory: ./back/omt/src/main/resources
+    - name: write GOOGLE_CLIENT_SECRET
+      run: echo "GOOGLE_CLIENT_SECRET=${{secrets.GOOGLE_CLIENT_SECRET}}" >> env.yml
+      working-directory: ./back/omt/src/main/resources
+    - name: write KAKAO_CLIENT_ID
+      run: echo "KAKAO_CLIENT_ID=${{secrets.KAKAO_CLIENT_ID}}" >> env.yml
+      working-directory: ./back/omt/src/main/resources
+    - name: write KAKAO_CLIENT_SECRET
+      run: echo "KAKAO_CLIENT_SECRET=${{secrets.KAKAO_CLIENT_SECRET}}" >> env.yml
+      working-directory: ./back/omt/src/main/resources
+    - name: write NAVER_CLIENT_ID
+      run: echo "NAVER_CLIENT_ID=${{secrets.NAVER_CLIENT_ID}}" >> env.yml
+      working-directory: ./back/omt/src/main/resources
+    - name: write NAVER_CLIENT_SECRET
+      run: echo "NAVER_CLIENT_SECRET=${{secrets.NAVER_CLIENT_SECRET}}" >> env.yml
+      working-directory: ./back/omt/src/main/resources
+    - name: write JWT_SECRET_KEY
+      run: echo "JWT_SECRET_KEY=${{secrets.JWT_SECRET_KEY}}" >> env.yml
+      working-directory: ./back/omt/src/main/resources
+
+      
     - name: Permission for gradlew
       run: chmod +x ./gradlew
 
