@@ -44,7 +44,7 @@ const Select_Sit = () => {
           <div
             key={col}
             className={`${styled.Seat} ${
-              isSeatSelected ? styled.Selected : ''
+              isSeatSelected ? styled.Selected : styled.Unselected
             }`}
             onClick={() => toggleSeat(row, col)}
           >

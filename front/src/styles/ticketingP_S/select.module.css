@@ -250,3 +250,11 @@
   background-color: white;
   color: black;
 }
+.Selected {
+  background-color: white;
+  color: black;
+}
+
+.Unselected {
+  background-color: initial;
+}
