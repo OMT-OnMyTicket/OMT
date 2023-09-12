@@ -8,13 +8,16 @@ permissions:
   contents: read
   
 env:
-  S3_BUCKET_NAME: codepipeline-ap-northeast-2-108145542983
-
+  S3_BUCKET_NAME: omt-githubaction
+  
 jobs:
-  build:
-
+  backend:
+    name: Backend CI/CD
     runs-on: ubuntu-latest
-
+    defaults:
+      run:
+        shell: bash
+        working-directory: back/omt
     steps:
     - uses: actions/checkout@v3
     - name: Set up JDK 11
@@ -22,15 +25,47 @@ jobs:
       with:
         java-version: '11'
         distribution: 'temurin'
-        
-    - name: init with Gradle
+
+    - name: GOOGLE_CLIENT_ID
+      env: 
+        GOOGLE_CLIENT_ID: ${{secrets.GOOGLE_CLIENT_ID}}
+      run: echo $GOOGLE_CLIENT_ID
+    - name: GOOGLE_CLIENT_SECRET
+      env: 
+        GOOGLE_CLIENT_SECRET: ${{secrets.GOOGLE_CLIENT_SECRET}}
+      run: echo $GOOGLE_CLIENT_SECRET
+    - name: KAKAO_CLIENT_ID
+      env:
+        KAKAO_CLIENT_ID: ${{secrets.KAKAO_CLIENT_ID}}
+      run: echo $KAKAO_CLIENT_ID
+    - name: KAKAO_CLIENT_SECRET
+      env:
+        KAKAO_CLIENT_SECRET: ${{secrets.KAKAO_CLIENT_SECRET}}
+      run: echo $KAKAO_CLIENT_SECRET
+    - name: NAVER_CLIENT_ID
+      env:
+        NAVER_CLIENT_ID: ${{secrets.NAVER_CLIENT_ID}}
+      run: echo $NAVER_CLIENT_ID
+    - name: NAVER_CLIENT_SECRET
+      env:
+        NAVER_CLIENT_SECRET: ${{secrets.NAVER_CLIENT_SECRET}}
+      run: echo $NAVER_CLIENT_SECRET
+    - name: JWT_SECRET_KEY
+      env:
+        JWT_SECRET_KEY: ${{secrets.JWT_SECRET_KEY}}
+      run: echo $JWT_SECRET_KEY
+
+      
+    - name: Permission for gradlew
+      run: chmod +x ./gradlew
+
+    - name: Setup Gradle
       uses: gradle/gradle-build-action@v2
-    - run: gradle init
-    
-    - name: Build with Gradle
-      uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
       with:
-        arguments: build
+        gradle-version: 7.6.1
+          
+    - name: Execute Gradle build
+      run: ./gradlew clean build
     
     
     - name: Make zip file
@@ -47,3 +82,10 @@ jobs:
 
     - name: Upload to S3
       run: aws s3 cp --region ap-northeast-2 ./deploy.zip s3://omt-githubaction/deploy.zip
+
+    - name: Code Deploy
+      run: >
+        aws deploy create-deployment --application-name omt-Application
+        --deployment-config-name CodeDeployDefault.AllAtOnce
+        --deployment-group-name omt-group 
+        --s3-location bucket=omt-githubaction,bundleType=zip,key=deploy.zip
