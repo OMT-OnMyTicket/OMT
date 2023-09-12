@@ -25,7 +25,12 @@ jobs:
       with:
         java-version: '11'
         distribution: 'temurin'
-
+    - name: DATASOURCE_USERNAME
+      env:
+        DATASOURCE_USERNAME: ${{secrets.DATASOURCE_USERNAME}}
+    - name: DATASOURCE_PASSWORD
+      env:
+        DATASOURCE_PASSWORD: ${{secrets.DATASOURCE_PASSWORD}}
     - name: GOOGLE_CLIENT_ID
       env: 
         GOOGLE_CLIENT_ID: ${{secrets.GOOGLE_CLIENT_ID}}
