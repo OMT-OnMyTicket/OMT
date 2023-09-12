@@ -32,7 +32,7 @@ public class User extends Auditable {
 
     @Column(length = 30)
     @NotNull
-    @Size(max = 100)
+    @Size(max = 30)
     private String nickname;
 
     @JsonIgnore
