@@ -2,7 +2,7 @@
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-rows: 1fr 4fr;
+  grid-template-rows: 1fr 4.2fr;
   background-image: url('/Ticketing_Back.png');
   padding: 150px 150px 0 150px;
   background-attachment: fixed;
@@ -257,4 +257,23 @@
 
 .Unselected {
   background-color: initial;
+}
+.Btn_Position {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
+.resetBtn {
+  align-items: center;
+  width: 150px;
+  height: 30px;
+  border-radius: 10px;
+  z-index: 1;
+  cursor: pointer;
+  font-size: 14px;
+}
+.resetBtn:hover {
+  font-size: 15px;
+  transition-duration: 1s;
 }

@@ -1,9 +1,14 @@
+'use client';
+
 import styled from '../../styles/ticketingP_S/direct.module.css';
 import PageCheck from '../../components/pageCheck';
 import Link from 'next/link';
 
 const DirectTicketing = () => {
   const activePage = 1;
+  const handleTheaterChoice = (id: string) => {
+    localStorage.setItem('영화관', id);
+  };
 
   return (
     <>
@@ -16,7 +21,10 @@ const DirectTicketing = () => {
           </div>
         </div>
         <Link href='/ticketing/choice'>
-          <div className={styled.Theater_Box1}>
+          <div
+            className={styled.Theater_Box1}
+            onClick={() => handleTheaterChoice('CGV')}
+          >
             <div className={styled.Theater_special}>
               <div>IMAX</div>
               <div>4DX</div>
@@ -30,7 +38,10 @@ const DirectTicketing = () => {
           </div>
         </Link>
         <Link href='/ticketing/choice'>
-          <div className={styled.Theater_Box2}>
+          <div
+            className={styled.Theater_Box2}
+            onClick={() => handleTheaterChoice('메가박스')}
+          >
             <div className={styled.Theater_special}>
               <div>Dolby</div>
               <div>BOUTIQUE</div>
@@ -45,7 +56,10 @@ const DirectTicketing = () => {
           </div>
         </Link>
         <Link href='/ticketing/choice'>
-          <div className={styled.Theater_Box3}>
+          <div
+            className={styled.Theater_Box3}
+            onClick={() => handleTheaterChoice('롯데시네마')}
+          >
             <div className={styled.Theater_special}>
               <div>S PLEX</div>
               <div>SUPER S</div>
@@ -59,7 +73,10 @@ const DirectTicketing = () => {
           </div>
         </Link>
         <Link href='/ticketing/choice'>
-          <div className={styled.Theater_Box4}>
+          <div
+            className={styled.Theater_Box4}
+            onClick={() => handleTheaterChoice('씨네큐')}
+          >
             <div className={styled.Theater_special}>
               <div>RESERVE</div>
               <div>&</div>

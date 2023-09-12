@@ -40,6 +40,10 @@ const ChoiceMovie = () => {
   const [moviePosters, setMoviePosters] = useState<string[]>([]);
   const [movieContents, setMovieContents] = useState<string[]>([]);
 
+  const handleChoiceMovie = (id: string) => {
+    localStorage.setItem('영화', id);
+  };
+
   useEffect(() => {
     axios
       .get(`${URL}`, {
@@ -120,7 +124,12 @@ const ChoiceMovie = () => {
                     <p className={styled.Contentes_Title}>{a.movieNm}</p>
                     <p className={styled.movieContents}>{movieContents[i]}</p>
                     <Link href='/ticketing/select'>
-                      <div className={styled.Btn}>예매하기</div>
+                      <div
+                        className={styled.Btn}
+                        onClick={() => handleChoiceMovie(`${a.movieNm}`)}
+                      >
+                        예매하기
+                      </div>
                     </Link>
                   </div>
                 </div>

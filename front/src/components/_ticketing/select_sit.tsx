@@ -63,12 +63,21 @@ const Select_Sit = () => {
     return seatGrid;
   };
 
+  const resetSeats = () => {
+    setSelectedSeats(
+      Array(numRows)
+        .fill(false)
+        .map(() => Array(numColumns).fill(false))
+    );
+    setSelectedSeatLabels([]);
+  };
+
   return (
     <>
       <div className={styled.Select_Sit}>
         <div className={styled.Sit_Info}>
           <div className={styled.Info_Txt}>
-            <p>총 인원: 7</p>
+            <p>총 인원: {localStorage.인원수}</p>
             <p>선택좌석: {selectedSeatLabels.join(', ')}</p>
           </div>
           <div className={styled.Screen}>Screen</div>
@@ -79,6 +88,12 @@ const Select_Sit = () => {
         </div>
         <div className={styled.Seat_Layout}>
           <div className={styled.Seat_Chair}>{renderSeatGrid()}</div>
+        </div>
+        <div className={styled.Btn_Position}>
+          <button className={styled.resetBtn} onClick={resetSeats}>
+            다시 선택하기
+            {/* <img src={'/reset.svg'} /> */}
+          </button>
         </div>
       </div>
     </>

@@ -27,9 +27,13 @@ const SelectTheater = () => {
   };
 
   // 다음단계 버튼
-  const handleNextBtn = () => {
+  const handleNextBtn = (id: any) => {
     if (selectPage < 3) {
       setSelectPage(selectPage + 1);
+    }
+    if (selectPage === 2) {
+      localStorage.setItem('인원수', id);
+      console.log(id);
     }
   };
 
@@ -56,7 +60,7 @@ const SelectTheater = () => {
               <div className={styled.Select_1}>
                 <div className={styled.Select_Local}>지역</div>
                 <div className={styled.Select_Theater}>지역별 영화관</div>
-                <div className={styled.Select_Brand}>CGV</div>
+                <div className={styled.Select_Brand}>{localStorage.영화관}</div>
                 <div className={styled.NextBtn} onClick={handleNextBtn}>
                   다음단계
                 </div>
@@ -72,7 +76,7 @@ const SelectTheater = () => {
                   <div className={styled.Select_Date}>2023.08.30(수)</div>
                   <div className={styled.Selected_Movie_info}>
                     <div className={styled.Selected_Movie}></div>
-                    <div>선택한 영화제목</div>
+                    <div>{localStorage.영화}</div>
                   </div>
                   <div className={styled.Selecte_People}>
                     <p className={styled.Selecte_People_Title}>
@@ -100,7 +104,10 @@ const SelectTheater = () => {
                 <div className={styled.PrevBtn} onClick={handlePrevBtn}>
                   이전으로
                 </div>
-                <div className={styled.NextBtn} onClick={handleNextBtn}>
+                <div
+                  className={styled.NextBtn}
+                  onClick={() => handleNextBtn(count)}
+                >
                   다음단계
                 </div>
               </div>
