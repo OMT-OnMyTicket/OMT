@@ -121,9 +121,6 @@ const SelectTheater = () => {
                   <div className={styled.PrevBtn} onClick={handlePrevBtn}>
                     이전으로
                   </div>
-                  <div className={styled.NextBtn} onClick={handleNextBtn}>
-                    다음단계
-                  </div>
                 </div>
               </div>
             )}
