@@ -25,6 +25,9 @@ jobs:
       with:
         java-version: '11'
         distribution: 'temurin'
+    - name: DATASOURCE_URL
+      env:
+        DATASOURCE_URL: ${{secrets.DATASOURCE_URL}}  
     - name: DATASOURCE_USERNAME
       env:
         DATASOURCE_USERNAME: ${{secrets.DATASOURCE_USERNAME}}
