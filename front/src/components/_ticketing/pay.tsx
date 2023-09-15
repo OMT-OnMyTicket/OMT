@@ -12,35 +12,55 @@ const Pay = () => {
   return (
     <div className={styled.Container}>
       <div className={styled.Boxes}>
+        <img src={'/ticket.png'} className={styled.Ticket} />
         <div className={styled.Ticket_Box}>
-          <div className={styled.Ticket_Box_Title}>티켓확인</div>
           <div className={styled.Ticket_Box_MovieInfo}>
-            <div className={styled.Ticket_Box_Poster}>영화 포스터</div>
+            <img
+              src={localStorage.포스터URL}
+              className={styled.Ticket_Box_Poster}
+            />
             <div className={styled.Ticket_Box_MovieTitle}>{MovieTitle}</div>
           </div>
           <div className={styled.Ticket_Box_UserInfo}>
-            <div>극장: {Theater}</div>
-            <div>선택시간: 00:00시</div>
-            <div>인원수:{Users}명 </div>
-            <div>선택좌석: {ChoicedSeat}</div>
+            <div>00:00시</div>
+            <div>{ChoicedSeat}</div>
           </div>
         </div>
+
+        {/* 결제하기 BOX */}
+
         <div className={styled.Pay_Box}>
-          <div>결제하기</div>
           <div className={styled.Pay_Check}>
+            <div className={styled.Charge}>{Charge} 원</div>
             <div className={styled.Pay_Recheck}>
               <div> {MovieTitle}</div>
               <div>00:00시</div>
               <div>성인 {Users}명</div>
+              <div>선택좌석 : {ChoicedSeat}</div>
             </div>
-            <div>금액 : {Charge} 원</div>
           </div>
+
           <div className={styled.Payment}>
-            <div>간편결제</div>
-            <div className={styled.Payment_Way}>
-              <div className={styled.Payment_Toss}>토스페이로 결제하기</div>
-              <div className={styled.Payment_KaKao}>카카오페이로 결제하기</div>
-              <div className={styled.Payment_Naver}>네이버페이로 결제하기</div>
+            <div className={styled.Payment_Title}>간편결제</div>
+            <div className={styled.Payment_Way_Container}>
+              <div className={styled.Payment_Way}>
+                <img
+                  src={'/토스페이.png'}
+                  alt='토스페이'
+                  className={styled.Payment_Toss}
+                />
+                <img
+                  src={'/카카오페이.png'}
+                  alt='카카오페이'
+                  className={styled.Payment_KaKao}
+                />
+                <img
+                  src={'/네이버페이.png'}
+                  alt='네이버페이'
+                  className={styled.Payment_Naver}
+                />
+              </div>
+              <div>간편결제</div>
             </div>
           </div>
           <div className={styled.Payment_Confirmation}>
