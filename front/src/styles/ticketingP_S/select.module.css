@@ -93,12 +93,13 @@
   align-items: center;
 }
 .Selected_Movie {
-  width: 100px;
-  height: 140px;
+  width: 140px;
+  height: 200px;
   border: 1px solid black;
   margin: 20px;
+  border-radius: 10px;
 }
-.Selecte_People {
+.Selected_People {
   border: 1px solid #d9d9d9;
   width: 100%;
   display: flex;
@@ -106,7 +107,7 @@
   justify-content: center;
   align-items: center;
 }
-.Selecte_People_Title {
+.Selected_People_Title {
   margin: 20px;
 }
 .People_svg {
