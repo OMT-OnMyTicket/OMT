@@ -9,16 +9,21 @@
 }
 .Boxes {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 2fr;
   grid-column-gap: 100px;
 }
 .Ticket_Box,
 .Pay_Box {
   height: 600px;
-  background-color: white;
   border-radius: 10px;
-  padding: 20px;
+  padding: 30px;
+  background-color: white;
 }
+.Ticket_Box {
+  display: grid;
+  grid-template-rows: 5% 45% 50%;
+}
+
 .Ticket_Box_MovieInfo {
   display: flex;
   flex-direction: column;
@@ -30,4 +35,69 @@
   height: 200px;
   border: 1px solid black;
   border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Ticket_Box_MovieTitle {
+  margin-top: 20px;
+  background-color: black;
+  color: white;
+  width: 120px;
+  height: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.Ticket_Box_UserInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.Pay_Box {
+  display: grid;
+  grid-template-rows: 5% 25% 50% 15%;
+}
+.Pay_Check {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.Pay_Recheck {
+  display: flex;
+  justify-content: space-around;
+}
+
+.Payment {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.Payment_Way {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Payment_Toss,
+.Payment_KaKao,
+.Payment_Naver {
+  border: 1px solid black;
+  width: 200px;
+  height: 200px;
+  margin-left: 20px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.Payment_Confirmation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

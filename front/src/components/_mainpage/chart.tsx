@@ -75,8 +75,15 @@ const Chart = () => {
         Promise.all(detailMovieInfo)
           .then((responses) => {
             const posters = responses.map((res) => {
-              const posters = res.data.Data[0].Result[0].posters;
-              return posters.split('|')[0];
+              const data = res.data.Data[0].Result[0];
+              // console.log(data.posters.split('|')[0]);
+              if (data && data.posters) {
+                const posters = data.posters;
+                const posterArray = posters.split('|');
+                if (posterArray.length > 0) {
+                  return posterArray[0];
+                }
+              }
             });
             setMoviePosters(posters);
           })

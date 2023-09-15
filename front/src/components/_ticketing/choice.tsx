@@ -40,8 +40,9 @@ const ChoiceMovie = () => {
   const [moviePosters, setMoviePosters] = useState<string[]>([]);
   const [movieContents, setMovieContents] = useState<string[]>([]);
 
-  const handleChoiceMovie = (id: string) => {
+  const handleChoiceMovie = (id: string, url: string) => {
     localStorage.setItem('영화', id);
+    localStorage.setItem('포스터URL', url);
   };
 
   useEffect(() => {
@@ -79,7 +80,6 @@ const ChoiceMovie = () => {
 
         Promise.all(detailMovieInfo)
           // 영화 포스터 가져오기
-
           .then((responses) => {
             const posters = responses.map((res) => {
               const posters = res.data.Data[0].Result[0].posters;
@@ -126,7 +126,12 @@ const ChoiceMovie = () => {
                     <Link href='/ticketing/select'>
                       <div
                         className={styled.Btn}
-                        onClick={() => handleChoiceMovie(`${a.movieNm}`)}
+                        onClick={() =>
+                          handleChoiceMovie(
+                            `${a.movieNm}`,
+                            `${moviePosters[i]}`
+                          )
+                        }
                       >
                         예매하기
                       </div>
