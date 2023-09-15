@@ -75,11 +75,15 @@ const SelectTheater = () => {
                 <div className={styled.Select_Others}>
                   <div className={styled.Select_Date}>2023.08.30(수)</div>
                   <div className={styled.Selected_Movie_info}>
-                    <div className={styled.Selected_Movie}></div>
+                    <img
+                      src={localStorage.포스터URL}
+                      className={styled.Selected_Movie}
+                    />
+
                     <div>{localStorage.영화}</div>
                   </div>
-                  <div className={styled.Selecte_People}>
-                    <p className={styled.Selecte_People_Title}>
+                  <div className={styled.Selected_People}>
+                    <p className={styled.Selected_People_Title}>
                       인원수 선택하기
                     </p>
                     <img src='/People.svg' className={styled.People_svg} />
