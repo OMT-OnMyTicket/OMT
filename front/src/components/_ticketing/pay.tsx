@@ -11,6 +11,10 @@ const Pay = () => {
   const Theater = localStorage.getItem('영화관');
   const Charge = Number(Users) * 12000;
 
+  const handlePay = () => {
+    window.location.href = 'http://localhost:3000/ticketing/pay/success';
+  };
+
   return (
     <div className={styled.Container}>
       <div className={styled.Pay_Coment}>
@@ -18,13 +22,14 @@ const Pay = () => {
       </div>
       <div className={styled.Boxes}>
         <div className={styled.Ticket_Container}>
-          <MovieTicket posterURL={localStorage.포스터URL} />
+          <MovieTicket posterURL={localStorage.포스터URL} showCircles={true} />
           <InfoTicket
             MovieTitle={MovieTitle}
             Theater={Theater}
             Users={Users}
             ChoicedSeat={ChoicedSeat}
             posterURL={localStorage.포스터URL}
+            showCircles={true}
           />
         </div>
 
@@ -53,7 +58,10 @@ const Pay = () => {
             <div>
               <div className={styled.Payment_Confirmation}>
                 <div>약관동의</div>
-                <div>결제하기</div>
+
+                <div onClick={handlePay} className={styled.pay_Btn}>
+                  결제하기
+                </div>
               </div>
             </div>
           </div>

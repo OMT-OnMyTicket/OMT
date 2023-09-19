@@ -1,5 +1,6 @@
+// InfoTicket.tsx
 import React from 'react';
-import styled from '../styles/ticketingP_S/pay.module.css';
+import styled from '../styles/ticket.module.css';
 
 interface InfoTicketProps {
   MovieTitle: string | null;
@@ -7,6 +8,7 @@ interface InfoTicketProps {
   Users: string | null;
   ChoicedSeat: string | null;
   posterURL: string;
+  showCircles: boolean; // 새로운 prop 추가
 }
 
 const InfoTicket: React.FC<InfoTicketProps> = ({
@@ -14,7 +16,8 @@ const InfoTicket: React.FC<InfoTicketProps> = ({
   Theater,
   Users,
   ChoicedSeat,
-  posterURL
+  posterURL,
+  showCircles // 새로운 prop 사용
 }) => {
   return (
     <div className={styled.Ticket_Box_MovieInfo2}>
@@ -37,16 +40,21 @@ const InfoTicket: React.FC<InfoTicketProps> = ({
       </div>
       <div className={styled.OMT}>OMT</div>
       <img src={posterURL} className={styled.Ticket_Box_Poster2} />
-      <div className={styled.Circle_Line_T2}>
-        {[...Array(6)].map((_, index) => (
-          <div className={styled.Circle_T2} key={index}></div>
-        ))}
-      </div>
-      <div className={styled.Circle_Line_B2}>
-        {[...Array(6)].map((_, index) => (
-          <div className={styled.Circle_B2} key={index}></div>
-        ))}
-      </div>
+
+      {showCircles && (
+        <>
+          <div className={styled.Circle_Line_T2}>
+            {[...Array(6)].map((_, index) => (
+              <div className={styled.Circle_T2} key={index}></div>
+            ))}
+          </div>
+          <div className={styled.Circle_Line_B2}>
+            {[...Array(6)].map((_, index) => (
+              <div className={styled.Circle_B2} key={index}></div>
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 };

@@ -1,6 +1,7 @@
 .Container {
   width: 100%;
-  height: 100vh;
+  padding: 150px 0 0 0;
+  height: auto;
   background-image: url('/Ticketing_Back.png');
   background-attachment: fixed;
   display: flex;
@@ -9,8 +10,9 @@
 }
 .Box {
   background-color: white;
-  height: 70%;
-  width: 60%;
+  width: 70%;
+  height: 100%;
+  padding: 50px 0 20px 0;
   border-radius: 20px 20px 0 0;
   display: flex;
   justify-content: space-around;
@@ -19,15 +21,180 @@
 }
 .Box_Top {
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
   align-items: center;
+}
+.Box_Bottom {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
 }
 .Success_ment1 {
   font-size: 30px;
   font-weight: bold;
-  margin: 20px 0 20px 0;
+  margin-left: 30px;
 }
 .Success_ment2 {
   font-size: 18px;
+}
+
+.Tickets {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Ticket_Box_Poster1 {
+  width: 250px;
+  height: 420px;
+  border-radius: 10px;
+  position: relative;
+}
+.Info_Conetent {
+  position: absolute;
+  z-index: 1;
+}
+
+.Ticket2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 50px;
+  height: 450px;
+}
+.Ticket1_Poster {
+  position: relative;
+}
+.Ticket2_Poster {
+  position: absolute;
+  margin-bottom: 60px;
+}
+.Ticket_Box_Poster2 {
+  width: 250px;
+  height: 420px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  filter: invert(35%);
+  border-radius: 10px;
+}
+.Original {
+  z-index: 1;
+  color: white;
+  margin-bottom: 5px;
+}
+.OMT {
+  color: white;
+  display: flex;
+  margin-top: 5px;
+  justify-content: flex-end;
+}
+.Info_Conetent {
+  margin-bottom: 60px;
+}
+
+.Ticket_Info {
+  width: 230px;
+  height: 350px;
+  border: 3px solid black;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+}
+.Ticket_Info_Title,
+.Ticket_Info_Seat {
+  height: 120px;
+}
+.Ticket_Info_Release {
+  height: 160px;
+}
+
+.Ticket_Info_Title,
+.Ticket_Info_Release {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+.Ticket_Info_Seat {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+.Txt_Title {
+  font-size: 15px;
+  font-weight: bold;
+  position: absolute;
+  top: 8px;
+  left: 8px;
+}
+.Txt_Conetent_Title {
+  font-size: 18px;
+  font-weight: bold;
+}
+.Txt_Conetent {
+  line-height: 1.5;
+  font-size: 15px;
+}
+.Last_Check {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 100%;
+  margin-top: 80px;
+}
+
+.LastCheck_Info {
+  display: flex;
+  flex-direction: column;
+}
+.LastCheck_Info_ID,
+.LastCheck_Info_Charge {
+  height: 120px;
+}
+.LastCheck_Info_Pay {
+  height: 160px;
+}
+
+.LastCheck_Info_ID,
+.LastCheck_Info_Pay {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+.LastCheck_Info_Charge {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+.LastCheck_Title {
+  font-size: 15px;
+  font-weight: bold;
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  color: red;
+  background-color: blanchedalmond;
+  width: 100%;
+  padding: 5px;
+}
+.LastCheck_Conetent_Title {
+  font-size: 18px;
+  font-weight: bold;
+}
+.LastCheck_Conetent {
+  line-height: 1.5;
+  font-size: 15px;
 }
