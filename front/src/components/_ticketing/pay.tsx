@@ -37,7 +37,7 @@ const Pay = () => {
             <div className={styled.Ticket_Info}>
               <div className={styled.Ticket_Info_Title}>
                 <div className={styled.Txt_Title}>Title :</div>
-                <div className={styled.Txt_Conetent}>{MovieTitle}</div>
+                <div className={styled.Txt_Conetent_Title}>{MovieTitle}</div>
               </div>
               <div className={styled.Ticket_Info_Release}>
                 <div className={styled.Txt_Title}>Release :</div>

@@ -76,8 +76,7 @@
 
 .Ticket_Info_Title,
 .Ticket_Info_Release {
-  border-bottom: 3px solid black;
-
+  border-bottom: 2px solid black;
   padding: 10px;
   display: flex;
   justify-content: center;
@@ -100,10 +99,13 @@
   top: 8px;
   left: 8px;
 }
-.Txt_Conetent {
-  line-height: 1.5;
+.Txt_Conetent_Title {
   font-size: 18px;
   font-weight: bold;
+}
+.Txt_Conetent {
+  line-height: 1.5;
+  font-size: 15px;
 }
 
 .Charge {
