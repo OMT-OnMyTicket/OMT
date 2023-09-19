@@ -1,0 +1,32 @@
+.TicketBox {
+  border-radius: 1px solid black;
+  width: 300px;
+  height: 600px;
+  background-color: white;
+  position: relative;
+}
+/* Ellipse 37 */
+.Circle_Line_T {
+  display: flex;
+  position: absolute;
+  top: -22px;
+}
+.Circle_T {
+  box-sizing: border-box;
+  border-radius: 50px;
+  width: 50px;
+  height: 50px;
+  border-bottom: 1px solid white;
+}
+.Circle_Line_B {
+  display: flex;
+  position: absolute;
+  bottom: -22px;
+}
+.Circle_B {
+  box-sizing: border-box;
+  border-radius: 50px;
+  width: 50px;
+  height: 50px;
+  border-top: 1px solid white;
+}

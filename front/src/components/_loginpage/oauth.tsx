@@ -7,7 +7,7 @@ import styled from '@/styles/loginP_S/oauth.module.css';
 const URL = process.env.NEXT_PUBLIC_URL;
 const Oauth = () => {
   const handleNaverLogin = () => {
-    window.open(`${URL}/oauth2/authorization/naver`);
+    window.open(`${URL}/oauth/authorization/naver`);
   };
 
   const handleKakaoLogin = () => {
@@ -15,13 +15,7 @@ const Oauth = () => {
   };
 
   const handleGoogleLogin = () => {
-    // window.open(
-    //   'http://ec2-15-164-164-107.ap-northeast-2.compute.amazonaws.com:8080/oauth2/authorization/google?redirect_uri=http://localhost:3000/oauth/redirect'
-    // );
-
-    window.open(
-      `${URL}/oauth2/authorization/google?redirect_uri=http://localhost:3000/oauth2`
-    );
+    window.location.href = `ec2-3-34-47-93.ap-northeast-2.compute.amazonaws.com/oauth2/authorization/google?redirect_uri=http://localhost:3000/oauth/redirect`;
   };
 
   return (

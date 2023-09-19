@@ -1,107 +1,127 @@
 .Container {
   width: 100%;
-  height: 100%;
-  display: grid;
-  grid-template-rows: 1fr 0.1fr;
-  background-image: url('/Ticketing_Back.png');
-  padding: 150px 150px 0 150px;
   background-attachment: fixed;
+  padding: 150px 150px 0 150px;
+  background: linear-gradient(
+      254.01deg,
+      rgba(0, 0, 0, 0) 31.07%,
+      rgba(0, 0, 0, 0) 31.07%,
+      #000000 49.48%
+    ),
+    url('/Ticketing_Back.png');
 }
+
 .Boxes {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-column-gap: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px 0 20px 0;
 }
-.Ticket {
-  width: 300px;
+.Pay_Coment {
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
+  line-height: 1.4;
+  margin-bottom: 20px;
+}
+.Ticket_Container {
+  display: flex;
+}
+.Ticket_Box_MovieInfo {
+  height: 500px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Original {
+  position: absolute;
+  z-index: 1;
+  top: 25px;
+  left: 20px;
+  color: white;
+}
+.OMT {
+  position: absolute;
+  z-index: 1;
+  bottom: 25px;
+  right: 20px;
+  color: white;
+}
+
+.Ticket_Box_Poster {
+  width: 260px;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
 }
-
-.Ticket_Box {
+.Ticket_Info {
+  width: 230px;
+  height: 400px;
+  border: 3px solid black;
   position: absolute;
-  width: 300px;
-  padding: 30px;
-}
-
-.Ticket_Box_MovieInfo {
+  z-index: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
-.Ticket_Box_Poster {
-  width: 250px;
-  border: 1px solid black;
-  border-radius: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.Ticket_Info_Title,
+.Ticket_Info_Seat {
+  height: 120px;
 }
-.Ticket_Box_MovieTitle {
-  margin: 15px 0 10px 0;
-  background-color: black;
-  color: white;
-  max-width: 300px;
-  max-height: 40px;
-  padding: 10px;
-  overflow: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 10px;
+.Ticket_Info_Release {
+  height: 160px;
 }
 
-.Ticket_Box_UserInfo {
+.Ticket_Info_Title,
+.Ticket_Info_Release {
+  border-bottom: 3px solid black;
+
+  padding: 10px;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+.Ticket_Info_Seat {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+.Txt_Title {
   font-size: 15px;
   font-weight: bold;
-  background-color: black;
-  color: white;
-  padding: 5px;
-  border-radius: 10px;
+  position: absolute;
+  top: 8px;
+  left: 8px;
+}
+.Txt_Conetent {
+  line-height: 1.5;
+  font-size: 18px;
+  font-weight: bold;
 }
 
-.Pay_Box {
-  display: grid;
-  grid-template-areas:
-    'Info Pay Pay'
-    'Info Pay Pay'
-    'Btn  Pay Pay';
-  grid-column-gap: 20px;
-  background-color: white;
-  border-radius: 10px;
-  padding: 30px;
-}
-.Pay_Check {
-  grid-area: Info;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  background-color: antiquewhite;
-  border-radius: 10px;
-  padding: 20px;
-  line-height: 60px;
-  height: 300px;
-}
 .Charge {
   font-size: 20px;
   font-weight: bold;
   border-bottom: 1px solid black;
-}
-.Pay_Recheck {
+  margin: 30px;
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+  justify-content: flex-end;
 }
 
 .Payment {
-  grid-area: Pay;
   display: flex;
   flex-direction: column;
   position: relative;
-  border: 1px solid black;
+  width: 500px;
   border-radius: 10px;
+  background-color: white;
 }
 .Payment_Title {
   background-color: antiquewhite;
@@ -113,10 +133,18 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  position: relative;
+}
+.charactor {
+  position: absolute;
+  height: 400px;
+  right: 0;
+  bottom: 0;
 }
 .Payment_Way {
   display: flex;
   flex-direction: column;
+  margin-top: 30px;
 }
 .Payment_Toss,
 .Payment_KaKao,
@@ -128,7 +156,7 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  margin-top: 30px;
+  margin-bottom: 30px;
 }
 .Payment_Toss:hover,
 .Payment_KaKao:hover,
@@ -152,11 +180,80 @@
 }
 
 .Payment_Confirmation {
-  grid-area: Btn;
   display: flex;
-  border: 1px solid black;
   align-items: center;
   flex-direction: column;
+  justify-content: space-between;
+  height: 350px;
+}
+
+.Circle_Line_T {
+  display: flex;
+  position: absolute;
+  top: -25px;
+}
+.Circle_T {
+  box-sizing: border-box;
+  border-radius: 50px;
+  width: 40px;
+  height: 40px;
+  background-color: black;
+  margin-left: 5px;
+}
+.Circle_Line_B {
+  display: flex;
+  position: absolute;
+  bottom: -25px;
+}
+.Circle_B {
+  box-sizing: border-box;
+  border-radius: 50px;
+  width: 40px;
+  height: 40px;
+  background-color: black;
+  margin-left: 5px;
+}
+.Ticket_Box_MovieInfo2 {
+  height: 500px;
+  position: relative;
+  display: flex;
   justify-content: center;
-  border-radius: 10px;
+  align-items: center;
+  margin: 50px;
+}
+.Ticket_Box_Poster2 {
+  width: 260px;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  filter: invert(35%);
+}
+
+.Circle_Line_T2 {
+  display: flex;
+  position: absolute;
+  top: -25px;
+}
+.Circle_T2 {
+  box-sizing: border-box;
+  border-radius: 50px;
+  width: 40px;
+  height: 40px;
+  background-color: black;
+  margin-left: 5px;
+}
+.Circle_Line_B2 {
+  display: flex;
+  position: absolute;
+  bottom: -25px;
+}
+.Circle_B2 {
+  box-sizing: border-box;
+  border-radius: 50px;
+  width: 40px;
+  height: 40px;
+  background-color: black;
+  margin-left: 5px;
 }
