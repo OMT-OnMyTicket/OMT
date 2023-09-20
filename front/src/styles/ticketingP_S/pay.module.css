@@ -1,7 +1,7 @@
 .Container {
   width: 100%;
   background-attachment: fixed;
-  padding: 150px 150px 0 150px;
+  padding: 150px 150px 100px 150px;
   background: linear-gradient(
       254.01deg,
       rgba(0, 0, 0, 0) 31.07%,
