@@ -1,6 +1,7 @@
 'use client';
 
 import styled from '../../styles/ticketingP_S/success.module.css';
+import Link from 'next/link';
 
 const Success = () => {
   const MovieTitle = localStorage.getItem('영화');
@@ -66,14 +67,17 @@ const Success = () => {
                 </div>
               </div>
               <div className={styled.LastCheck_Info_Pay}>
-                <div className={styled.LastCheck_Title}>결제수단 :</div>
+                <div className={styled.LastCheck_Title}>결제수단 </div>
                 <div className={styled.LastCheck_Conetent}>{'카카오페이'}</div>
               </div>
               <div className={styled.LastCheck_Info_Charge}>
-                <div className={styled.LastCheck_Title}>결제금액 :</div>
+                <div className={styled.LastCheck_Title}>결제금액 </div>
                 <div className={styled.LastCheck_Conetent}>{Charge}원</div>
               </div>
             </div>
+            <Link href='/home' className={styled.Btn_Layout}>
+              <div className={styled.Btn}>확인</div>
+            </Link>
           </div>
         </div>
       </div>
