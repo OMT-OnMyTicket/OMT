@@ -54,6 +54,7 @@ const Pay = () => {
                 className={styled.Payment_Naver}
               />
             </div>
+
             <img src={'/캐릭터.png'} className={styled.charactor} />
             <div>
               <div className={styled.Payment_Confirmation}>
