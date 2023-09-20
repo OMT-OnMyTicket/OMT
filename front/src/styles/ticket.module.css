@@ -34,7 +34,6 @@
 
 .Ticket_Info_Title,
 .Ticket_Info_Release {
-  border-bottom: 2px solid black;
   padding: 10px;
   display: flex;
   justify-content: center;
@@ -60,10 +59,12 @@
 .Txt_Conetent_Title {
   font-size: 18px;
   font-weight: bold;
+  color: white;
 }
 .Txt_Conetent {
   line-height: 1.5;
   font-size: 15px;
+  color: white;
 }
 
 .Circle_Line_T {
