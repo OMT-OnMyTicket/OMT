@@ -2,20 +2,21 @@ import styled from '@/styles/loginP_S/oauth.module.css';
 
 // {URL}/oauth2/authorization/{provider-id}
 
-//  ?redirect_uri=http://localhost:3000/oauth/redirect
+//  ?redirect_uri=http://localhost:3000/oauth
 
 const URL = process.env.NEXT_PUBLIC_URL;
 const Oauth = () => {
   const handleNaverLogin = () => {
-    window.open(`${URL}/oauth/authorization/naver`);
+    // window.open(`${URL}/oauth/authorization/naver`);
+    window.location.href = `${URL}/oauth2/authorization/naver`;
   };
 
   const handleKakaoLogin = () => {
-    window.open(`${URL}/oauth2/authorization/kakao`);
+    window.location.href = `${URL}/oauth2/authorization/kakao`;
   };
 
   const handleGoogleLogin = () => {
-    window.location.href = `ec2-3-34-47-93.ap-northeast-2.compute.amazonaws.com/oauth2/authorization/google?redirect_uri=http://localhost:3000/oauth/redirect`;
+    window.location.href = `${URL}/oauth2/authorization/google`;
   };
 
   return (
