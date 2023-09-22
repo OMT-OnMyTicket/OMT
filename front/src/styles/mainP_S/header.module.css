@@ -28,7 +28,7 @@
 }
 .ticketing,
 .myTickets,
-.UserName {
+.User {
   font-size: 1.1vw;
 }
 .search {
@@ -36,6 +36,12 @@
 }
 .UserProfile {
   width: 4.17vw;
+}
+.UserName {
+  margin-top: 10px;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
 }
 
 @media screen and (max-width: 600px) {

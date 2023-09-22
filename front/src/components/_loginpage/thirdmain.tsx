@@ -35,31 +35,31 @@ const Third = () => {
             data-aos='fade-down'
             data-aos-duration='3000'
           >
-            <img src='/롯데시네마.png' className={styled.theater_icon} />
+            <img src='/png/롯데시네마.png' className={styled.theater_icon} />
           </div>
           <div
             className={styled.theater}
             data-aos='fade-down'
             data-aos-duration='1500'
           >
-            <img src='/CGV.png' className={styled.theater_icon} />
+            <img src='/png/CGV.png' className={styled.theater_icon} />
           </div>
           <div className={styled.theater1}>
-            <img src='/OMT_web.png' className={styled.theater_icon} />
+            <img src='/png/OMT_web.png' className={styled.theater_icon} />
           </div>
           <div
             className={styled.theater}
             data-aos='fade-down'
             data-aos-duration='1500'
           >
-            <img src='/메가박스.png' className={styled.theater_icon} />
+            <img src='/png/메가박스.png' className={styled.theater_icon} />
           </div>
           <div
             className={styled.theater}
             data-aos='fade-down'
             data-aos-duration='3000'
           >
-            <img src='/씨네큐.png' className={styled.theater_icon} />
+            <img src='/png/씨네큐.png' className={styled.theater_icon} />
           </div>
         </div>
 
@@ -94,8 +94,8 @@ const Third = () => {
             data-aos-duration='3000'
             id='Img'
           >
-            <img className={styled.phoneTop} src='phoneTop.png' />
-            <img className={styled.phoneBtm} src='phoneBtm.png' />
+            <img className={styled.phoneTop} src='/png/phoneTop.png' />
+            <img className={styled.phoneBtm} src='/png/phoneBtm.png' />
           </div>
         </div>
       </div>

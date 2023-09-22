@@ -116,7 +116,7 @@ const ChoiceMovie = () => {
               <div className={styled.movies} key={a.rank}>
                 <div className={styled.moviePoster_Layout}>
                   <img
-                    src={moviePosters[i] || '/preparing.png'}
+                    src={moviePosters[i] || '/png/preparing.png'}
                     alt='movie poster'
                     className={styled.moviePoster}
                   />

@@ -130,7 +130,7 @@ const Chart = () => {
             return (
               <div className={styled.movies} key={a.rank}>
                 <img
-                  src={moviePosters[i] || '/preparing.png'}
+                  src={moviePosters[i] || '/png/preparing.png'}
                   alt='movie poster'
                   className={styled.moviePoster}
                 />

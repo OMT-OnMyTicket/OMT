@@ -31,7 +31,7 @@ const Loginpage = () => {
             </div>
           </div>
           <div className={styled.Character_Position}>
-            <img className={styled.Character} src='/캐릭터.png' />
+            <img className={styled.Character} src='/png/캐릭터.png' />
           </div>
         </div>
       </div>

@@ -3,7 +3,7 @@
   height: 100%;
   display: grid;
   grid-template-rows: 1fr 8fr;
-  background-image: url('/Ticketing_Back.png');
+  background-image: url('/png/Ticketing_Back.png');
   padding: 200px 150px 100px 150px;
   background-attachment: fixed;
 }

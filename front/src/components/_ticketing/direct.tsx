@@ -30,7 +30,7 @@ const DirectTicketing = () => {
               <div>4DX</div>
               <div>SCREEN X</div>
             </div>
-            <img src='/CGV.png' className={styled.Theater_Logo1} />
+            <img src='/png/CGV.png' className={styled.Theater_Logo1} />
             <div className={styled.Theater_Title}>
               CGV에서 관람하기
               <img src='/directarrow.svg' className={styled.arrow} />
@@ -47,7 +47,7 @@ const DirectTicketing = () => {
               <div>BOUTIQUE</div>
               <div>MX</div>
             </div>
-            <img src='/메가박스.png' className={styled.Theater_Logo} />
+            <img src='/png/메가박스.png' className={styled.Theater_Logo} />
 
             <div className={styled.Theater_Title}>
               메가박스에서 관람하기
@@ -65,7 +65,7 @@ const DirectTicketing = () => {
               <div>SUPER S</div>
               <div>SUPER 4D</div>
             </div>
-            <img src='/롯데시네마.png' className={styled.Theater_Logo} />
+            <img src='/png/롯데시네마.png' className={styled.Theater_Logo} />
             <div className={styled.Theater_Title}>
               롯데시네마에서 관람하기
               <img src='/directarrow.svg' className={styled.arrow} />
@@ -82,7 +82,7 @@ const DirectTicketing = () => {
               <div>&</div>
               <div>SUITE</div>
             </div>
-            <img className={styled.Theater_Logo} src='/씨네큐.png' />
+            <img className={styled.Theater_Logo} src='/png/씨네큐.png' />
             <div className={styled.Theater_Title}>
               시네큐에서 관람하기
               <img src='/directarrow.svg' className={styled.arrow} />
