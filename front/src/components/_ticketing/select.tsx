@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import styled from '../../styles/ticketingP_S/select.module.css';
 import PageCheck from '../pageCheck';
 import Select_Sit from './select_sit';
+import Date from './date';
 
 const SelectTheater = () => {
   const [count, setcount] = useState(1);
@@ -44,6 +45,57 @@ const SelectTheater = () => {
     }
   };
 
+  const choicedTheater = () => {
+    if (localStorage.getItem('영화관') === 'CGV') {
+      return (
+        <div
+          className={styled.choicedTheater}
+          style={{
+            backgroundImage: `url('/png/CGV_세로.png')`
+          }}
+        >
+          <img src='/png/CGV.png' className={styled.choicedTheater_Logo} />
+        </div>
+      );
+    } else if (localStorage.getItem('영화관') === '메가박스') {
+      return (
+        <div
+          className={styled.choicedTheater}
+          style={{
+            backgroundImage: `url('/png/메가박스_세로.png')`
+          }}
+        >
+          <img src='/png/메가박스.png' className={styled.choicedTheater_Logo} />
+        </div>
+      );
+    } else if (localStorage.getItem('영화관') === '롯데시네마') {
+      return (
+        <div
+          className={styled.choicedTheater}
+          style={{
+            backgroundImage: `url('/png/롯데시네마_세로.png')`
+          }}
+        >
+          <img
+            src='/png/롯데시네마.png'
+            className={styled.choicedTheater_Logo}
+          />
+        </div>
+      );
+    } else if (localStorage.getItem('영화관') === '씨네큐') {
+      return (
+        <div
+          className={styled.choicedTheater}
+          style={{
+            backgroundImage: `url('/png/씨네큐_세로.png')`
+          }}
+        >
+          <img src='/png/씨네큐.png' className={styled.choicedTheater_Logo} />
+        </div>
+      );
+    }
+  };
+
   return (
     <>
       <div className={styled.Container}>
@@ -60,7 +112,7 @@ const SelectTheater = () => {
               <div className={styled.Select_1}>
                 <div className={styled.Select_Local}>지역</div>
                 <div className={styled.Select_Theater}>지역별 영화관</div>
-                <div className={styled.Select_Brand}>{localStorage.영화관}</div>
+                <div className={styled.Select_Brand}>{choicedTheater()}</div>
                 <div className={styled.NextBtn} onClick={handleNextBtn}>
                   다음단계
                 </div>
@@ -73,14 +125,18 @@ const SelectTheater = () => {
                   <div className={styled.Select_Time}>영화 시간 List 나열</div>
                 </div>
                 <div className={styled.Select_Others}>
-                  <div className={styled.Select_Date}>2023.08.30(수)</div>
+                  <div className={styled.Select_Date}>
+                    <Date />
+                  </div>
                   <div className={styled.Selected_Movie_info}>
                     <img
                       src={localStorage.포스터URL}
                       className={styled.Selected_Movie}
                     />
 
-                    <div>{localStorage.영화}</div>
+                    <div className={styled.Selected_MovieTitle}>
+                      {localStorage.영화}
+                    </div>
                   </div>
                   <div className={styled.Selected_People}>
                     <p className={styled.Selected_People_Title}>

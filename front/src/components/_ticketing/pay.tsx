@@ -4,8 +4,10 @@ import styled from '../../styles/ticketingP_S/pay.module.css';
 import MovieTicket from '../Movieticket';
 import InfoTicket from '../InfoTicket';
 import Payment from './payment';
+import PageCheck from '../pageCheck';
 
 const Pay = () => {
+  const activepage = 4;
   const MovieTitle = localStorage.getItem('영화');
   const Users = localStorage.getItem('인원수');
   const ChoicedSeat = localStorage.getItem('선택좌석');
@@ -14,8 +16,11 @@ const Pay = () => {
 
   return (
     <div className={styled.Container}>
-      <div className={styled.Pay_Coment}>
-        영화 관람의 <br /> 마지막 단계
+      <div className={styled.Top}>
+        <div className={styled.Pay_Coment}>결제하기</div>
+        <div>
+          <PageCheck activePage={activepage} />
+        </div>
       </div>
       <div className={styled.Boxes}>
         <div className={styled.Ticket_Container}>

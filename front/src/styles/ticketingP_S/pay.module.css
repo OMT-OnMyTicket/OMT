@@ -11,6 +11,11 @@
     url('/png/Ticketing_Back.png');
 }
 
+.Top {
+  display: flex;
+  justify-content: space-between;
+}
+
 .Boxes {
   display: flex;
   justify-content: space-around;

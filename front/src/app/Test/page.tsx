@@ -1,4 +1,4 @@
-import Test from '@/components/_ticketing/payment';
+import Test from '@/components/_Test/test';
 
 const Direct = () => {
   return (

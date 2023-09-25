@@ -1,8 +1,8 @@
-'use client';
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { ko } from 'date-fns/esm/locale';
+import styled from '../../styles/ticketingP_S/select.module.css';
 
 const Test: React.FC = () => {
   const [startDate, setStartDate] = useState<Date | null>(null);
@@ -22,7 +22,8 @@ const Test: React.FC = () => {
       dateFormat='yyyy년 MM월 dd일'
       minDate={new Date()}
       maxDate={twoWeeksLater}
-      placeholderText='날짜를 선택하세요.'
+      className={styled.DatePicker}
+      placeholderText='날짜를 선택해주세요.'
     />
   );
 };

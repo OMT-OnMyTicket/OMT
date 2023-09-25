@@ -62,7 +62,7 @@
 }
 .Select_Brand {
   height: 100%;
-  width: 40%;
+  width: 70%;
   padding: 20px;
 }
 
@@ -77,6 +77,25 @@
   align-items: center;
   flex-direction: column;
 }
+.choicedTheater {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90%;
+  border-radius: 20px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.choicedTheater_Logo {
+  width: 120px;
+  border-radius: 20px;
+}
+
+.DatePicker {
+  width: 100%;
+  background-color: #d9d9d9;
+  cursor: pointer;
+}
 
 .Select_Date {
   background-color: #d9d9d9;
@@ -84,7 +103,7 @@
   width: 100%;
   height: 50px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 }
 .Selected_Movie_info {
@@ -95,9 +114,13 @@
 .Selected_Movie {
   width: 140px;
   height: 200px;
-  border: 1px solid black;
   margin: 20px;
   border-radius: 10px;
+}
+.Selected_MovieTitle {
+  background-color: antiquewhite;
+  padding: 20px;
+  border-radius: 20px;
 }
 .Selected_People {
   border: 1px solid #d9d9d9;
@@ -106,6 +129,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-radius: 20px 0 0 20px;
 }
 .Selected_People_Title {
   margin: 20px;

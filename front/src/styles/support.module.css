@@ -141,9 +141,7 @@
 .Page1,
 .Page2,
 .Page3,
-.Page4,
-.Page5,
-.Page6 {
+.Page4 {
   border-radius: 50px;
   width: 30px;
   height: 30px;

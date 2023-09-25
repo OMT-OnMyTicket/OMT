@@ -25,11 +25,15 @@
     "nanoid": "^5.0.1",
     "next": "^13.4.4",
     "react": "^18.2.0",
+    "react-datepicker": "^4.18.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.16.0",
     "react-slick": "^0.29.0",
     "router": "^1.3.8",
     "slick-carousel": "^1.8.1",
     "typescript": "5.1.3"
+  },
+  "devDependencies": {
+    "@types/react-datepicker": "^4.15.0"
   }
 }
