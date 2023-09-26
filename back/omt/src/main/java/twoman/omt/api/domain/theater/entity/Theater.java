@@ -1,10 +1,17 @@
-package twoman.omt.api.entity.theater;
+package twoman.omt.api.domain.theater.entity;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Theater {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,7 +34,7 @@ public class Theater {
 
     public Theater(
             @NotNull @Size(max= 16) String region,
-            @NotNull Cinema cinema,
+            @NotNull @Size(max= 16) Cinema cinema,
             @NotNull @Size(max = 16) String cinemaName)
     {
        this.region = region;
