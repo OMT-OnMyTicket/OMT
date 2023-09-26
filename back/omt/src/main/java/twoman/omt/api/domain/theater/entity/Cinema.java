@@ -1,4 +1,4 @@
-package twoman.omt.api.entity.theater;
+package twoman.omt.api.domain.theater.entity;
 
 import lombok.Getter;
 
