@@ -143,54 +143,67 @@
   justify-content: center;
   align-items: center;
 }
+.Check_Movie_Title {
+  font-size: 25px;
+  color: white;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
 .Selected_Movie {
-  width: 140px;
-  height: 200px;
+  width: 280px;
+  height: 480px;
   margin: 20px;
-  border-radius: 10px;
-}
-.Selected_MovieTitle {
-  background-color: antiquewhite;
-  padding: 20px;
   border-radius: 20px;
+  position: relative;
+  filter: invert(40%);
+  margin-top: 50px;
 }
+
 .Selected_People {
-  border: 1px solid #d9d9d9;
-  width: 100%;
   display: flex;
-  flex-direction: column;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
   border-radius: 20px 0 0 20px;
+  margin-top: 120px;
+  position: absolute;
 }
-.Selected_People_Title {
-  margin: 20px;
-}
+
 .People_svg {
-  width: 24px;
+  width: 34px;
+  margin-bottom: 20px;
 }
 .Check_Person {
   display: flex;
   justify-content: center;
   align-items: center;
+  border-top: 1px solid white;
+  margin-top: 20px;
+}
+.Check_Txt {
+  color: white;
 }
 .Circle {
-  border: 1px solid blue;
+  border: 2px solid white;
   border-radius: 100px;
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 20px;
 }
 .Circle_Number {
-  font-size: 40px;
+  font-size: 25px;
+  color: white;
+  font-weight: bold;
 }
 .Minus,
 .Plus {
   cursor: pointer;
   width: 25px;
+  background-color: white;
+  border-radius: 30px;
 }
 
 .NextBtn {

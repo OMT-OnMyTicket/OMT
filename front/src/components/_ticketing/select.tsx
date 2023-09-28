@@ -196,16 +196,13 @@ const SelectTheater = () => {
                       src={localStorage.포스터URL}
                       className={styled.Selected_Movie}
                     />
-
-                    <div className={styled.Selected_MovieTitle}>
-                      {localStorage.영화}
-                    </div>
                   </div>
                   <div className={styled.Selected_People}>
-                    <p className={styled.Selected_People_Title}>
-                      인원수 선택하기
-                    </p>
+                    <div className={styled.Check_Movie_Title}>
+                      {localStorage.getItem('영화')}
+                    </div>
                     <img src='/People.svg' className={styled.People_svg} />
+                    <p className={styled.Check_Txt}>인원을 선택해주세요</p>
                     <div className={styled.Check_Person}>
                       <img
                         src='/Minus.svg'
