@@ -11,7 +11,7 @@ const Pay = () => {
   const MovieTitle = localStorage.getItem('영화');
   const Users = localStorage.getItem('인원수');
   const ChoicedSeat = localStorage.getItem('선택좌석');
-  const Theater = localStorage.getItem('영화관');
+  const Theater = localStorage.getItem('장소');
   // const Charge = Number(Users) * 12000;
 
   return (

@@ -105,8 +105,8 @@ const Select_Sit = () => {
           </div>
           <div className={styled.Screen}>Screen</div>
           <div className={styled.Info_Txt}>
-            <p>강남 본관4</p>
-            <p>오펜하이머</p>
+            <p>{localStorage.getItem('장소')} 점</p>
+            <p>{localStorage.getItem('영화')}</p>
           </div>
         </div>
         <div className={styled.Seat_Layout}>

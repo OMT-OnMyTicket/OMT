@@ -1,30 +1,49 @@
-'use client';
-import React, { useState } from 'react';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-import { ko } from 'date-fns/esm/locale';
+import React from 'react';
 
-const Test: React.FC = () => {
-  const [startDate, setStartDate] = useState<Date | null>(null);
+function getRandomTime() {
+  const hours = Math.floor(Math.random() * (23 - 8 + 1)) + 8; // Generate random hour between 8 and 23 (11 PM)
+  const minutes = Math.floor(Math.random() * 60); // Generate random minutes between 0 and 59
+  return `${hours.toString().padStart(2, '0')}:${minutes
+    .toString()
+    .padStart(2, '0')}`;
+}
 
-  const handleDateChange = (date: Date | null) => {
-    setStartDate(date);
-  };
+function generateRandomTimes() {
+  const randomTimes: string[] = [];
+  let previousTime = '08:00'; // Start from 8:00 AM
 
-  const twoWeeksLater = new Date();
-  twoWeeksLater.setDate(twoWeeksLater.getDate() + 14);
+  for (let i = 0; i < 12; i++) {
+    const nextHour = (parseInt(previousTime.slice(0, 2)) + 1)
+      .toString()
+      .padStart(2, '0');
+    const nextTime = `${nextHour}:${previousTime.slice(3)}`;
+
+    const randomHour = getRandomTime();
+
+    if (parseInt(randomHour.slice(0, 2)) + 1 < parseInt(nextHour)) {
+      // Ensure the generated time is at least 1 hour apart from the previous one
+      randomTimes.push(randomHour);
+      previousTime = randomHour;
+    }
+  }
+
+  return randomTimes;
+}
+
+const RandomTimes = () => {
+  const randomTimes = generateRandomTimes();
 
   return (
-    <DatePicker
-      selected={startDate}
-      onChange={handleDateChange}
-      locale={ko}
-      dateFormat='yyyy년 MM월 dd일'
-      minDate={new Date()}
-      maxDate={twoWeeksLater}
-      placeholderText='날짜를 선택하세요.'
-    />
+    <div>
+      <h1>Random Times</h1>
+      <ul>
+        {randomTimes.map((time, index) => (
+          <li key={index}>{time}</li>
+        ))}
+      </ul>
+      <div>ji</div>
+    </div>
   );
 };
 
-export default Test;
+export default RandomTimes;

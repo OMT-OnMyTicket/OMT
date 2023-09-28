@@ -77,6 +77,38 @@
   align-items: center;
   flex-direction: column;
 }
+.Select_Local {
+  display: flex;
+  flex-direction: column;
+}
+.Legion {
+  margin: 20px 0 20px 0;
+  overflow: scroll;
+  cursor: pointer;
+  padding: 20px;
+  border-radius: 20px;
+}
+.Legion:hover {
+  background-color: white;
+}
+.Theaters {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
+  padding: 30px 0 30px 0;
+  overflow: scroll;
+}
+.CinemaName {
+  display: flex;
+  padding: 20px;
+  cursor: pointer;
+  border-radius: 20px;
+}
+.CinemaName:hover {
+  background-color: #fafafa;
+}
+
 .choicedTheater {
   display: flex;
   justify-content: center;

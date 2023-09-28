@@ -5,11 +5,16 @@ import styled from '../../styles/ticketingP_S/select.module.css';
 import PageCheck from '../pageCheck';
 import Select_Sit from './select_sit';
 import Date from './date';
+import axios from 'axios';
+
+const URL = process.env.NEXT_PUBLIC_URL;
 
 const SelectTheater = () => {
   const [count, setcount] = useState(1);
   const [selectPage, setSelectPage] = useState(1);
+  const [theaters, setTheaters] = useState(['지역을 선택해주세요']);
   const activePage = 3;
+  const cinema = localStorage.getItem('영화관');
 
   const handlePlusBtn = () => {
     if (count < 10) {
@@ -96,6 +101,26 @@ const SelectTheater = () => {
     }
   };
 
+  const handleRegion = (region: string) => {
+    axios
+      .get(`${URL}/api/v1/theaters/region/cinema`, {
+        params: {
+          region,
+          cinema: cinema
+        }
+      })
+      .then((res) => {
+        const theaters = res.data.body.theaters;
+        const cinemaNames = theaters.map((theater: any) => theater.cinemaName);
+
+        setTheaters(cinemaNames);
+      })
+      .catch((err) => console.log(err));
+  };
+  const handleCinema = (id: string) => {
+    localStorage.setItem('장소', id);
+  };
+
   return (
     <>
       <div className={styled.Container}>
@@ -110,8 +135,42 @@ const SelectTheater = () => {
           <div className={styled.Selcet_Container}>
             {selectPage === 1 && (
               <div className={styled.Select_1}>
-                <div className={styled.Select_Local}>지역</div>
-                <div className={styled.Select_Theater}>지역별 영화관</div>
+                <div className={styled.Select_Local}>
+                  지역
+                  <div
+                    onClick={() => handleRegion('서울')}
+                    className={styled.Legion}
+                  >
+                    서울
+                  </div>
+                  <div
+                    onClick={() => handleRegion('경기,인천')}
+                    className={styled.Legion}
+                  >
+                    경기/인천
+                  </div>
+                  <div
+                    onClick={() => handleRegion('강원')}
+                    className={styled.Legion}
+                  >
+                    강원
+                  </div>
+                </div>
+
+                <div className={styled.Select_Theater}>
+                  지역별 영화관
+                  <div className={styled.Theaters}>
+                    {theaters.map((cinemaName, index) => (
+                      <div
+                        key={index}
+                        className={styled.CinemaName}
+                        onClick={() => handleCinema(cinemaName)}
+                      >
+                        {cinemaName}
+                      </div>
+                    ))}
+                  </div>
+                </div>
                 <div className={styled.Select_Brand}>{choicedTheater()}</div>
                 <div className={styled.NextBtn} onClick={handleNextBtn}>
                   다음단계
@@ -121,8 +180,12 @@ const SelectTheater = () => {
             {selectPage === 2 && (
               <div className={styled.Select_2}>
                 <div className={styled.Select_Time}>
-                  <div className={styled.Selected_Local}>강남</div>
-                  <div className={styled.Select_Time}>영화 시간 List 나열</div>
+                  <div className={styled.Selected_Local}>
+                    {localStorage.getItem('장소')}
+                  </div>
+                  <div className={styled.Select_Time}>
+                    날짜를 먼저 선택해주세요!
+                  </div>
                 </div>
                 <div className={styled.Select_Others}>
                   <div className={styled.Select_Date}>
