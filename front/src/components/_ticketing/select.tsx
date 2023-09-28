@@ -15,6 +15,8 @@ const SelectTheater = () => {
   const [theaters, setTheaters] = useState(['지역을 선택해주세요']);
   const activePage = 3;
   const cinema = localStorage.getItem('영화관');
+  const [selectedCinema, setSelectedCinema] = useState<string | null>(null);
+  const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
 
   const handlePlusBtn = () => {
     if (count < 10) {
@@ -34,12 +36,22 @@ const SelectTheater = () => {
 
   // 다음단계 버튼
   const handleNextBtn = (id: any) => {
+    if (selectPage === 1) {
+      if (
+        localStorage.getItem('장소') === null ||
+        localStorage.getItem('장소') === undefined
+      ) {
+        alert('장소를 선택하세요');
+        return; // 장소가 선택되지 않은 경우 다음 페이지로 넘어가지 않음
+      }
+    }
+
     if (selectPage < 3) {
       setSelectPage(selectPage + 1);
     }
+
     if (selectPage === 2) {
       localStorage.setItem('인원수', id);
-      console.log(id);
     }
   };
 
@@ -112,13 +124,15 @@ const SelectTheater = () => {
       .then((res) => {
         const theaters = res.data.body.theaters;
         const cinemaNames = theaters.map((theater: any) => theater.cinemaName);
-
         setTheaters(cinemaNames);
+        setSelectedRegion(region);
       })
       .catch((err) => console.log(err));
   };
+
   const handleCinema = (id: string) => {
     localStorage.setItem('장소', id);
+    setSelectedCinema(id);
   };
 
   return (
@@ -139,19 +153,27 @@ const SelectTheater = () => {
                   지역
                   <div
                     onClick={() => handleRegion('서울')}
-                    className={styled.Legion}
+                    className={`${styled.Legion} ${
+                      selectedRegion === '서울' ? styled.Selected_Cinema : ''
+                    }`}
                   >
                     서울
                   </div>
                   <div
                     onClick={() => handleRegion('경기,인천')}
-                    className={styled.Legion}
+                    className={`${styled.Legion} ${
+                      selectedRegion === '경기,인천'
+                        ? styled.Selected_Cinema
+                        : ''
+                    }`}
                   >
                     경기/인천
                   </div>
                   <div
                     onClick={() => handleRegion('강원')}
-                    className={styled.Legion}
+                    className={`${styled.Legion} ${
+                      selectedRegion === '강원' ? styled.Selected_Cinema : ''
+                    }`}
                   >
                     강원
                   </div>
@@ -163,7 +185,11 @@ const SelectTheater = () => {
                     {theaters.map((cinemaName, index) => (
                       <div
                         key={index}
-                        className={styled.CinemaName}
+                        className={`${styled.CinemaName} ${
+                          selectedCinema === cinemaName
+                            ? styled.Selected_Cinema
+                            : ''
+                        }`}
                         onClick={() => handleCinema(cinemaName)}
                       >
                         {cinemaName}

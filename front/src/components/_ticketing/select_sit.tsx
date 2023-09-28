@@ -88,6 +88,7 @@ const Select_Sit = () => {
   const handleNextBtn = (id: string) => {
     if (selectedCount < localStorage.인원수) {
       alert(`${availableSeats}명의 좌석을 추가로 선택해주세요`);
+      return;
     }
     localStorage.setItem('선택좌석', id);
     window.location.href = 'http://localhost:3000/ticketing/pay'; // 수정해야함

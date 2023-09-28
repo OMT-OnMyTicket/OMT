@@ -88,8 +88,11 @@
   padding: 20px;
   border-radius: 20px;
 }
-.Legion:hover {
-  background-color: white;
+.Legion:hover,
+.CinemaName:hover {
+  background-color: #f15b3a;
+  color: white;
+  transition-duration: 1s;
 }
 .Theaters {
   display: flex;
@@ -105,8 +108,10 @@
   cursor: pointer;
   border-radius: 20px;
 }
-.CinemaName:hover {
-  background-color: #fafafa;
+.Selected_Cinema {
+  background-color: #f15b3a;
+  color: white;
+  font-weight: bold;
 }
 
 .choicedTheater {
@@ -182,7 +187,11 @@
 }
 .Check_Txt {
   color: white;
+  border: 2px solid white;
+  padding: 10px;
+  border-radius: 15px;
 }
+
 .Circle {
   border: 2px solid white;
   border-radius: 100px;
