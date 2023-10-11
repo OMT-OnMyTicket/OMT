@@ -21,18 +21,12 @@ interface MoviePosters {
 }
 
 // 전날 날짜 yyyymmdd 형식으로 추출하기 => targetDt 추출
-function get_date_str(date: any) {
-  var sYear = date.getFullYear();
-  var sMonth = date.getMonth() + 1;
-  var sDate = date.getDate();
-
-  sMonth = sMonth > 9 ? sMonth : '0' + sMonth;
-  sDate = sDate > 9 ? sDate : '0' + sDate;
-  return sYear + sMonth + sDate - 1;
-}
-function get_today() {
-  return get_date_str(new Date());
-}
+let today = new Date();
+let year = today.getFullYear();
+let month = ('0' + (today.getMonth() + 1)).slice(-2);
+let day = ('0' + today.getDate()).slice(-2);
+let dateString = year + month + day;
+let date = Number(dateString) - 1;
 
 const ChoiceMovie = () => {
   const activePage = 2;
@@ -50,7 +44,7 @@ const ChoiceMovie = () => {
       .get(`${URL}`, {
         params: {
           key: `${KEY}`,
-          targetDt: `${get_today()}`
+          targetDt: `${date}`
         }
       })
       .then((res) => {

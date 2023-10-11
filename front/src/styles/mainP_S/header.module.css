@@ -31,8 +31,29 @@
 .User {
   font-size: 1.1vw;
 }
+.Textarea {
+  width: 280px;
+  resize: none;
+  border: none;
+  outline: none;
+  line-height: 27px;
+  overflow: hidden;
+  overflow-wrap: inherit;
+  font-size: 16px;
+  margin-left: 10px;
+}
+.search_width {
+  width: 350px;
+  padding: 10px;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  border: 3px solid #eee;
+  cursor: text;
+}
 .search {
   width: 2.5vw;
+  cursor: pointer;
 }
 .UserProfile {
   width: 4.17vw;
@@ -57,4 +78,35 @@
   .search {
     width: 7.17vw;
   }
+}
+
+.Testbox {
+  background-color: white;
+  width: 350px;
+  border-radius: 20px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  position: absolute;
+}
+.Testbox::-webkit-scrollbar {
+  display: none;
+}
+
+.Search_ul {
+  padding: 20px;
+}
+.movieTitle_search {
+  font-size: 16px;
+  line-height: 3.4;
+  width: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.movieTitle_search:hover {
+  background-color: #eee;
+  border-radius: 5px;
 }

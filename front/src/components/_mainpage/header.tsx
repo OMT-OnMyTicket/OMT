@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import styled from '../../styles/mainP_S/header.module.css';
+import Search from './search';
 
 const Header = () => {
   // const UserProfile = localStorage.getItem('userProfile');
@@ -14,9 +15,7 @@ const Header = () => {
         <div className={styled.conetent}>
           <img src='/png/OMT_logo4.png' className={styled.logo} />
           <ul className={styled.headerInfo}>
-            {/* <li>
-              <img src='/search.svg' className={styled.search} />
-            </li> */}
+            <Search />
             <li>
               <Link href='/ticketing' className={styled.ticketing}>
                 예매하기

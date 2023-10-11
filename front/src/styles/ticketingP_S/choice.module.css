@@ -40,7 +40,7 @@
 .moviePoster_Layout {
   cursor: pointer;
   position: relative;
-  height: 350px;
+  height: 400px;
   width: 220px;
   display: flex;
   justify-content: center;
