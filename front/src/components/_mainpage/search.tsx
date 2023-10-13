@@ -65,6 +65,12 @@ const Search = () => {
     };
   }, [inputText]);
 
+  const handleClickSearch = (id: string) => {
+    localStorage.clear;
+    localStorage.setItem('검색어', id);
+    window.location.href = '/search';
+  };
+
   return (
     <>
       <div ref={textAreaRef}>
@@ -78,7 +84,12 @@ const Search = () => {
               setIsTitleClicked(false); // textarea에 입력이 있을 때, title 클릭으로 인한 변경 여부를 초기화
             }}
           ></textarea>
-          <img src='/search.svg' className={styled.search} />
+
+          <img
+            src='/search.svg'
+            className={styled.search}
+            onClick={() => handleClickSearch(inputText)}
+          />
         </li>
         {inputText && !isTitleClicked && (
           <div className={styled.Testbox}>
