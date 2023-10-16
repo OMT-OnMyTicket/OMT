@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from '../../styles/ticketingP_S/select.module.css';
 import PageCheck from '../pageCheck';
 import Select_Sit from './select_sit';
@@ -14,9 +14,18 @@ const SelectTheater = () => {
   const [selectPage, setSelectPage] = useState(1);
   const [theaters, setTheaters] = useState(['지역을 선택해주세요']);
   const activePage = 3;
-  const cinema = localStorage.getItem('영화관');
+
   const [selectedCinema, setSelectedCinema] = useState<string | null>(null);
   const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
+  const [cinema, setCinema] = useState('');
+
+  useEffect(() => {
+    const storedCinema = localStorage.getItem('영화관');
+
+    if (storedCinema) {
+      setCinema(storedCinema);
+    }
+  }, []);
 
   const handlePlusBtn = () => {
     if (count < 10) {
@@ -63,7 +72,7 @@ const SelectTheater = () => {
   };
 
   const choicedTheater = () => {
-    if (localStorage.getItem('영화관') === 'CGV') {
+    if (cinema === 'CGV') {
       return (
         <div
           className={styled.choicedTheater}
@@ -74,7 +83,7 @@ const SelectTheater = () => {
           <img src='/png/CGV.png' className={styled.choicedTheater_Logo} />
         </div>
       );
-    } else if (localStorage.getItem('영화관') === '메가박스') {
+    } else if (cinema === '메가박스') {
       return (
         <div
           className={styled.choicedTheater}
@@ -85,7 +94,7 @@ const SelectTheater = () => {
           <img src='/png/메가박스.png' className={styled.choicedTheater_Logo} />
         </div>
       );
-    } else if (localStorage.getItem('영화관') === '롯데시네마') {
+    } else if (cinema === '롯데시네마') {
       return (
         <div
           className={styled.choicedTheater}
@@ -99,7 +108,7 @@ const SelectTheater = () => {
           />
         </div>
       );
-    } else if (localStorage.getItem('영화관') === '씨네큐') {
+    } else if (cinema === '씨네큐') {
       return (
         <div
           className={styled.choicedTheater}

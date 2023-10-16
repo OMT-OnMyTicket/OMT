@@ -5,15 +5,45 @@ import MovieTicket from '../Movieticket';
 import InfoTicket from '../InfoTicket';
 import Payment from './payment';
 import PageCheck from '../pageCheck';
+import { useEffect, useState } from 'react';
 
 const Pay = () => {
   const activepage = 4;
-  const MovieTitle = localStorage.getItem('영화');
-  const Users = localStorage.getItem('인원수');
-  const ChoicedSeat = localStorage.getItem('선택좌석');
-  const Theater = localStorage.getItem('장소');
-  // const Charge = Number(Users) * 12000;
+  const [MovieTitle, setMovieTitle] = useState('');
+  const [Users, setUsers] = useState('');
+  const [ChoicedSeat, setChoicedSeat] = useState('');
+  const [Theater, setTheater] = useState('');
+  const [Poster, setPoster] = useState('');
 
+  useEffect(() => {
+    const storedMovieTitle = localStorage.getItem('영화');
+    const storedUsers = localStorage.getItem('인원수');
+    const storedChoicedSeat = localStorage.getItem('선택좌석');
+    const storedTheater = localStorage.getItem('장소');
+    const storedPoster = localStorage.getItem('포스터URL');
+
+    if (storedMovieTitle) {
+      setMovieTitle(storedMovieTitle);
+    }
+
+    if (storedUsers) {
+      setUsers(storedUsers);
+    }
+
+    if (storedChoicedSeat) {
+      setChoicedSeat(storedChoicedSeat);
+    }
+
+    if (storedTheater) {
+      setTheater(storedTheater);
+    }
+
+    if (storedPoster) {
+      setPoster(storedPoster);
+    }
+  }, []);
+
+  // 테스트
   return (
     <div className={styled.Container}>
       <div className={styled.Top}>
@@ -24,13 +54,13 @@ const Pay = () => {
       </div>
       <div className={styled.Boxes}>
         <div className={styled.Ticket_Container}>
-          <MovieTicket posterURL={localStorage.포스터URL} showCircles={true} />
+          <MovieTicket posterURL={Poster} showCircles={true} />
           <InfoTicket
             MovieTitle={MovieTitle}
             Theater={Theater}
             Users={Users}
             ChoicedSeat={ChoicedSeat}
-            posterURL={localStorage.포스터URL}
+            posterURL={Poster}
             showCircles={true}
           />
         </div>
