@@ -88,6 +88,7 @@ const Payment = () => {
       <div id='payment-widget' />
       <div id='agreement' />
       <div className={styled.Btn_Layout}>
+        <div style={{ display: 'none' }}>{price}원 </div>
         <button onClick={handlePayment} className={styled.Pay_Btn}>
           결제하기
         </button>
