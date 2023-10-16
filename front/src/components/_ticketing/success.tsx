@@ -1,15 +1,44 @@
 'use client';
-
+import { useEffect, useState } from 'react';
 import styled from '../../styles/ticketingP_S/success.module.css';
 import Link from 'next/link';
 
 const Success = () => {
-  const MovieTitle = localStorage.getItem('영화');
-  const Users = localStorage.getItem('인원수');
-  const ChoicedSeat = localStorage.getItem('선택좌석');
-  const Theater = localStorage.getItem('영화관');
+  const [MovieTitle, setMovieTitle] = useState('');
+  const [Users, setUsers] = useState('');
+  const [ChoicedSeat, setChoicedSeat] = useState('');
+  const [Theater, setTheater] = useState('');
+  const [posterURL, setPosterURL] = useState('');
   const Charge = Number(Users) * 12000;
-  const posterURL = localStorage.getItem('포스터URL');
+
+  useEffect(() => {
+    const storedMovieTitle = localStorage.getItem('영화');
+    const storedUsers = localStorage.getItem('인원수');
+    const storedChoicedSeat = localStorage.getItem('선택좌석');
+    const storedTheater = localStorage.getItem('장소');
+    const storedPoster = localStorage.getItem('포스터URL');
+
+    if (storedMovieTitle) {
+      setMovieTitle(storedMovieTitle);
+    }
+
+    if (storedUsers) {
+      setUsers(storedUsers);
+    }
+
+    if (storedChoicedSeat) {
+      setChoicedSeat(storedChoicedSeat);
+    }
+
+    if (storedTheater) {
+      setTheater(storedTheater);
+    }
+
+    if (storedPoster) {
+      setPosterURL(storedPoster);
+    }
+  }, []);
+
   const moviePoster1 = posterURL ? (
     <img src={posterURL} className={styled.Ticket_Box_Poster1} alt='포스터' />
   ) : null;

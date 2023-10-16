@@ -41,8 +41,13 @@ const initialState: MovieState = {
 
 const Result = () => {
   const [movieData, setMovieData] = useState<MovieState>(initialState);
+  const [SearchText, setSearchText] = useState('');
 
   useEffect(() => {
+    const storedSearchText = localStorage.getItem('검색어');
+    if (storedSearchText) {
+      setSearchText(storedSearchText);
+    }
     axios
       .get(`${KMDB_URL}`, {
         params: {
