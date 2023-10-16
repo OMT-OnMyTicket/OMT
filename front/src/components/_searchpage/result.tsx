@@ -6,7 +6,7 @@ const KEY = process.env.NEXT_PUBLIC_KOPIC_KEY;
 const URL = process.env.NEXT_PUBLIC_KOPIC_URL;
 const KMDB_KEY = process.env.NEXT_PUBLIC_KMDB_KEY;
 const KMDB_URL = process.env.NEXT_PUBLIC_KMDB_URL;
-const SearchText = localStorage.getItem('검색어');
+
 import styled from '../../styles/search_P_S/search.module.css';
 
 type MovieData = {
@@ -42,41 +42,40 @@ const initialState: MovieState = {
 const Result = () => {
   const [movieData, setMovieData] = useState<MovieState>(initialState);
   const [SearchText, setSearchText] = useState('');
-
   useEffect(() => {
     const storedSearchText = localStorage.getItem('검색어');
     if (storedSearchText) {
       setSearchText(storedSearchText);
+      axios
+        .get(`${KMDB_URL}`, {
+          params: {
+            collection: 'kmdb_new2',
+            detail: 'Y',
+            title: storedSearchText,
+            ServiceKey: KMDB_KEY
+          }
+        })
+        .then((res) => {
+          const results: MovieData[] = res.data.Data[0]?.Result || [];
+
+          const processedData: MovieState = {
+            moviePosters: results.map((result) => result.posters.split('|')[0]),
+            movieTitle: results.map((result) =>
+              result.title.replace(/!HS|!HE/g, '')
+            ),
+            movieId: results.map((result) => result.movieId),
+            movieSeq: results.map((result) => result.movieSeq),
+            rating: results.map((result) => result.rating),
+            genre: results.map((result) => result.genre),
+            runtime: results.map((result) => result.runtime)
+          };
+
+          setMovieData(processedData);
+        })
+        .catch((error) => {
+          console.error('Error fetching data:', error);
+        });
     }
-    axios
-      .get(`${KMDB_URL}`, {
-        params: {
-          collection: 'kmdb_new2',
-          detail: 'Y',
-          title: SearchText,
-          ServiceKey: KMDB_KEY
-        }
-      })
-      .then((res) => {
-        const results: MovieData[] = res.data.Data[0]?.Result || [];
-
-        const processedData: MovieState = {
-          moviePosters: results.map((result) => result.posters.split('|')[0]),
-          movieTitle: results.map((result) =>
-            result.title.replace(/!HS|!HE/g, '')
-          ),
-          movieId: results.map((result) => result.movieId),
-          movieSeq: results.map((result) => result.movieSeq),
-          rating: results.map((result) => result.rating),
-          genre: results.map((result) => result.genre),
-          runtime: results.map((result) => result.runtime)
-        };
-
-        setMovieData(processedData);
-      })
-      .catch((error) => {
-        console.error('Error fetching data:', error);
-      });
   }, []);
 
   const handleDetail = (url: string) => {
