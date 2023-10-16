@@ -1,5 +1,6 @@
 'use client';
 import React, { useEffect, useState } from 'react';
+// import Link from 'next/link';
 import axios from 'axios';
 const KEY = process.env.NEXT_PUBLIC_KOPIC_KEY;
 const URL = process.env.NEXT_PUBLIC_KOPIC_URL;
@@ -11,31 +12,31 @@ import styled from '../../styles/search_P_S/search.module.css';
 type MovieData = {
   title: string;
   posters: string;
-  plots: { plotText: string }[];
-  genre: string; // 변경: 문자열 배열로 선언
+  genre: string;
   rating: string;
-  keywords: string;
   runtime: string;
+  movieSeq: string;
+  movieId: string;
 };
 
 type MovieState = {
   moviePosters: string[];
   movieTitle: string[];
   rating: string[];
-  genre: string[]; // 배열로 선언
-  movieContents: string[];
-  keword: string[];
+  genre: string[];
   runtime: string[];
+  movieSeq: string[];
+  movieId: string[];
 };
 
 const initialState: MovieState = {
   moviePosters: [],
   movieTitle: [],
   rating: [],
-  genre: [], // 배열로 선언
-  movieContents: [],
-  keword: [],
-  runtime: []
+  genre: [],
+  runtime: [],
+  movieSeq: [],
+  movieId: []
 };
 
 const Result = () => {
@@ -59,12 +60,10 @@ const Result = () => {
           movieTitle: results.map((result) =>
             result.title.replace(/!HS|!HE/g, '')
           ),
+          movieId: results.map((result) => result.movieId),
+          movieSeq: results.map((result) => result.movieSeq),
           rating: results.map((result) => result.rating),
           genre: results.map((result) => result.genre),
-          movieContents: results.map(
-            (result) => result.plots[0]?.plotText || ''
-          ),
-          keword: results.map((result) => result.keywords),
           runtime: results.map((result) => result.runtime)
         };
 
@@ -74,6 +73,10 @@ const Result = () => {
         console.error('Error fetching data:', error);
       });
   }, []);
+
+  const handleDetail = (url: string) => {
+    window.location.href = `/search/id=${url}`;
+  };
 
   return (
     <div className={styled.Seaarch_layout}>
@@ -86,10 +89,15 @@ const Result = () => {
 
       <div className={styled.Result_Layout}>
         {movieData.movieTitle.map((title, index) => {
-          // ":" 이 있는 경우 ":"을 기준으로 문자열을 나누고 줄바꿈을 추가
           const splitTitle = title.split(':');
+          const movieSeq = movieData.movieId[index] + movieData.movieSeq[index];
           return (
-            <div key={index} className={styled.Result}>
+            // <Link href={`/search/id=${movieSeq}`}>
+            <div
+              key={index}
+              className={styled.Result}
+              onClick={() => handleDetail(movieSeq)}
+            >
               <h3 className={styled.Result_Title}>
                 {splitTitle.length > 1 ? (
                   <>
@@ -109,9 +117,8 @@ const Result = () => {
               <p>{movieData.rating[index]}</p>
               <p>장르: {movieData.genre[index]}</p>
               <p>러닝타임: {movieData.runtime[index]} 분</p>
-              <p>줄거리: {movieData.movieContents[index]}</p>
-              <p>키워드: {movieData.keword[index]}</p>
             </div>
+            // </Link>
           );
         })}
       </div>

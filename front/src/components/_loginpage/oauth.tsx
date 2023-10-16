@@ -3,6 +3,7 @@ import styled from '@/styles/loginP_S/oauth.module.css';
 // {URL}/oauth2/authorization/{provider-id}
 
 //  ?redirect_uri=http://localhost:3000/oauth
+// URL= http://ec2-3-34-47-93.ap-northeast-2.compute.amazonaws.com:8080/oauth2/authorization/google
 
 const URL = process.env.NEXT_PUBLIC_URL;
 const Oauth = () => {

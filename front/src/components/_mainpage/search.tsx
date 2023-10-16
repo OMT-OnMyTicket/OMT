@@ -83,6 +83,11 @@ const Search = () => {
               setInputText(e.target.value);
               setIsTitleClicked(false); // textarea에 입력이 있을 때, title 클릭으로 인한 변경 여부를 초기화
             }}
+            onKeyPress={(e) => {
+              if (e.key === 'Enter') {
+                handleClickSearch(inputText);
+              }
+            }}
           ></textarea>
 
           <img
