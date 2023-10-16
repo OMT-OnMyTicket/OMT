@@ -56,6 +56,7 @@ const Detail = () => {
       if (idParam) {
         movieId = idParam.charAt(0);
         movieSeq = idParam.substring(1);
+        console.log(idParam);
       } else {
         alert('올바르지 않은 파라미터값 입니다.');
       }
@@ -94,6 +95,7 @@ const Detail = () => {
         })
         .catch((error) => {
           console.error('Error fetching data:', error);
+          console.log(idParam);
         });
     }
   }, []);
