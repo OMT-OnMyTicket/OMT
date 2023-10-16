@@ -14,12 +14,22 @@ const Payment = () => {
   const paymentMethodsWidgetRef = useRef<ReturnType<
     PaymentWidgetInstance['renderPaymentMethods']
   > | null>(null);
-  const Users = localStorage.getItem('인원수');
+
+  const [Users, setUsers] = useState('');
+  const [MovieTitle, setMovieTitle] = useState('');
   const price = Number(Users) * 12000;
 
-  const MovieTitle = localStorage.getItem('영화');
-
   useEffect(() => {
+    const storedMovieTitle = localStorage.getItem('영화');
+    const storedUsers = localStorage.getItem('인원수');
+
+    if (storedMovieTitle) {
+      setMovieTitle(storedMovieTitle);
+    }
+    if (storedUsers) {
+      setUsers(storedUsers);
+    }
+
     (async () => {
       const paymentWidget = await loadPaymentWidget(clientKey, customerKey);
       paymentWidget.renderAgreement('#agreement');
