@@ -20,18 +20,13 @@ interface MoviePosters {
 }
 
 // 전날 날짜 yyyymmdd 형식으로 추출하기 => targetDt 추출
-function get_date_str(date: any) {
-  var sYear = date.getFullYear();
-  var sMonth = date.getMonth() + 1;
-  var sDate = date.getDate();
 
-  sMonth = sMonth > 9 ? sMonth : '0' + sMonth;
-  sDate = sDate > 9 ? sDate : '0' + sDate;
-  return sYear + sMonth + sDate - 1;
-}
-function get_today() {
-  return get_date_str(new Date());
-}
+let today = new Date();
+let year = today.getFullYear();
+let month = ('0' + (today.getMonth() + 1)).slice(-2);
+let day = ('0' + today.getDate()).slice(-2);
+let dateString = year + month + day;
+let date = Number(dateString) - 1;
 
 const Chart = () => {
   const [movieChart, setMovieChart] = useState<DailyBoxOfficeItem[]>([]);
@@ -44,7 +39,7 @@ const Chart = () => {
       .get(`${URL}`, {
         params: {
           key: `${KEY}`,
-          targetDt: `${get_today()}`
+          targetDt: `${date}`
         }
       })
       .then((res) => {
@@ -75,8 +70,15 @@ const Chart = () => {
         Promise.all(detailMovieInfo)
           .then((responses) => {
             const posters = responses.map((res) => {
-              const posters = res.data.Data[0].Result[0].posters;
-              return posters.split('|')[0];
+              const data = res.data.Data[0].Result[0];
+              // console.log(data.posters.split('|')[0]);
+              if (data && data.posters) {
+                const posters = data.posters;
+                const posterArray = posters.split('|');
+                if (posterArray.length > 0) {
+                  return posterArray[0];
+                }
+              }
             });
             setMoviePosters(posters);
           })
@@ -123,7 +125,7 @@ const Chart = () => {
             return (
               <div className={styled.movies} key={a.rank}>
                 <img
-                  src={moviePosters[i] || '/preparing.png'}
+                  src={moviePosters[i] || '/png/preparing.png'}
                   alt='movie poster'
                   className={styled.moviePoster}
                 />

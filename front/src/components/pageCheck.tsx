@@ -19,12 +19,6 @@ const PageCheck: React.FC<PageCheckProps> = ({ activePage }) => {
       <div className={activePage === 4 ? styled.ActivePage : styled.Page4}>
         4
       </div>
-      <div className={activePage === 5 ? styled.ActivePage : styled.Page5}>
-        5
-      </div>
-      <div className={activePage === 6 ? styled.ActivePage : styled.Page6}>
-        6
-      </div>
     </div>
   );
 };
