@@ -52,13 +52,14 @@ const Detail = () => {
       let movieId: string = '';
       let movieSeq: string = '';
 
+      console.log(idParam);
       if (idParam) {
         movieId = idParam.charAt(0);
         movieSeq = idParam.substring(1);
       } else {
         alert('올바르지 않은 파라미터값 입니다.');
       }
-      console.log(idParam);
+      // 배포 테스트
 
       axios
         .get(`${KMDB_URL}`, {
