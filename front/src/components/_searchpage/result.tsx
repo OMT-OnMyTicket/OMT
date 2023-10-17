@@ -79,7 +79,7 @@ const Result = () => {
   }, []);
 
   const handleDetail = (url: string) => {
-    window.location.href = `/search/id=${url}`;
+    window.location.href = `/search/${url}`;
   };
 
   return (

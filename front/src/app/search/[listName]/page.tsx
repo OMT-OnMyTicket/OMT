@@ -37,21 +37,20 @@ const initialState: MovieState = {
   repRatDate: ''
 };
 
-export async function generateStaticParams({
-  params: { MovieId }
-}: {
-  params: { MovieId: string };
-}) {
-  const products = await fetch(`https://.../search?id=${MovieId}`).then((res) =>
-    res.json()
-  );
-
-  return products.map((MovieId: any) => ({
-    product: MovieId.id
-  }));
+export function generateStaticParams() {
+  return [{ id: 1 }];
 }
 
-const Detail = () => {
+const Detail = ({
+  params
+}: {
+  params: {
+    listName: string;
+    id: string;
+  };
+}) => {
+  const { id } = params;
+
   const [movieData, setMovieData] = useState<MovieState>(initialState);
   const [movieContents, setMovieContents] = useState<string[]>([]);
   const [directors, setDirectors] = useState<string[]>([]);
@@ -59,22 +58,8 @@ const Detail = () => {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const url: string = window.location.href;
-      const urlSearchParams: URLSearchParams = new URLSearchParams(
-        url.split('/')[4]
-      );
-      const idParam: string | null = urlSearchParams.get('id');
-      let movieId: string = '';
-      let movieSeq: string = '';
-
-      console.log(idParam);
-      if (idParam) {
-        movieId = idParam.charAt(0);
-        movieSeq = idParam.substring(1);
-      } else {
-        alert('올바르지 않은 파라미터값 입니다.');
-      }
-      // 배포 테스트
+      let movieId: string = params.listName.charAt(0);
+      let movieSeq: string = params.listName.substring(1);
 
       axios
         .get(`${KMDB_URL}`, {
@@ -109,7 +94,6 @@ const Detail = () => {
           setMovieContents(contents);
         })
         .catch((error) => {
-          console.log(idParam);
           console.error('Error fetching data:', error);
         });
     }
