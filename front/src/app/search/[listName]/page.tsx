@@ -38,66 +38,67 @@ const initialState: MovieState = {
 };
 
 export function generateStaticParams() {
-  return [{ id: 1 }];
+  // 동적으로 생성할 페이지의 id 목록을 반환
+  return [
+    { listName: 'F27886' },
+    { listName: 'F12345' },
+    { listName: 'F56789' },
+    { listName: 'K112356' },
+    { listName: 'F34267' }
+  ];
 }
 
-const Detail = ({
-  params
-}: {
-  params: {
-    listName: string;
-    id: string;
-  };
-}) => {
-  const { id } = params;
-
+const Detail = ({ params }: { params: { listName: string } }) => {
+  const { listName } = params;
   const [movieData, setMovieData] = useState<MovieState>(initialState);
   const [movieContents, setMovieContents] = useState<string[]>([]);
   const [directors, setDirectors] = useState<string[]>([]);
   const [actors, setAcrtors] = useState<string[]>([]);
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      let movieId: string = params.listName.charAt(0);
-      let movieSeq: string = params.listName.substring(1);
-
-      axios
-        .get(`${KMDB_URL}`, {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`${KMDB_URL}`, {
           params: {
             collection: 'kmdb_new2',
             detail: 'Y',
-            movieId: movieId,
-            movieSeq: movieSeq,
+            movieId: listName.charAt(0),
+            movieSeq: listName.substring(1),
             ServiceKey: KMDB_KEY
           }
-        })
-        .then((res) => {
-          const result: MovieData = res.data.Data[0]?.Result[0] || {}; // 첫 번째 결과만 가져오기
-          const contents = res.data.Data[0].Result[0].plots.plot[0].plotText;
-          const movieDirectors =
-            res.data.Data[0].Result[0].directors.director[0].directorNm;
-          const movieActors = res.data.Data[0].Result[0].actors.actor
-            .map((actor: any) => actor.actorNm)
-            .join(', '); // 쉼표와 띄어쓰기로 구별
-          const processedData: MovieState = {
-            moviePosters: result.posters?.split('|')[0] || '',
-            movieTitle: result.title?.replace(/!HS|!HE/g, '') || '',
-            movieSeq: result.movieSeq || '',
-            rating: result.rating || '',
-            genre: result.genre || '',
-            runtime: result.runtime || '',
-            repRatDate: result.repRatDate || ''
-          };
-          setAcrtors(movieActors);
-          setDirectors(movieDirectors);
-          setMovieData(processedData);
-          setMovieContents(contents);
-        })
-        .catch((error) => {
-          console.error('Error fetching data:', error);
         });
+
+        const result: MovieData = response.data.Data[0]?.Result[0] || {};
+        const contents = response.data.Data[0].Result[0].plots.plot[0].plotText;
+        const movieDirectors =
+          response.data.Data[0].Result[0].directors.director[0].directorNm;
+        const movieActors = response.data.Data[0].Result[0].actors.actor
+          .map((actor: any) => actor.actorNm)
+          .join(', ');
+
+        const processedData: MovieState = {
+          moviePosters: result.posters?.split('|')[0] || '',
+          movieTitle: result.title?.replace(/!HS|!HE/g, '') || '',
+          movieSeq: result.movieSeq || '',
+          rating: result.rating || '',
+          genre: result.genre || '',
+          runtime: result.runtime || '',
+          repRatDate: result.repRatDate || ''
+        };
+
+        setAcrtors(movieActors);
+        setDirectors(movieDirectors);
+        setMovieData(processedData);
+        setMovieContents(contents);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    if (typeof window !== 'undefined') {
+      fetchData();
     }
-  }, []);
+  }, [listName]);
 
   const inputDate = movieData.repRatDate;
   let formattedDate = '';
