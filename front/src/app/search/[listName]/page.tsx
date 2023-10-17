@@ -13,4 +13,5 @@ const DetailResult = () => {
     </div>
   );
 };
+
 export default DetailResult;

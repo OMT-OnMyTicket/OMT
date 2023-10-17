@@ -5,7 +5,7 @@ const Test = () => {
   return (
     <div>
       <Search />
-      <Link href='/testpage/dasfk' as={'/testpage/dasfk'}>
+      <Link href='/testpage/a' as={'/testpage/a'}>
         <div>Click me!</div>
       </Link>
     </div>
