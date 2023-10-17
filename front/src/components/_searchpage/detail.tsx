@@ -2,8 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import styled from '../../styles/search_P_S/search.module.css';
-const KEY = process.env.NEXT_PUBLIC_KOPIC_KEY;
-const URL = process.env.NEXT_PUBLIC_KOPIC_URL;
+
 const KMDB_KEY = process.env.NEXT_PUBLIC_KMDB_KEY;
 const KMDB_URL = process.env.NEXT_PUBLIC_KMDB_URL;
 
@@ -59,6 +58,8 @@ const Detail = () => {
       } else {
         alert('올바르지 않은 파라미터값 입니다.');
       }
+      console.log(idParam);
+
       axios
         .get(`${KMDB_URL}`, {
           params: {
@@ -71,7 +72,6 @@ const Detail = () => {
         })
         .then((res) => {
           const result: MovieData = res.data.Data[0]?.Result[0] || {}; // 첫 번째 결과만 가져오기
-
           const contents = res.data.Data[0].Result[0].plots.plot[0].plotText;
           const movieDirectors =
             res.data.Data[0].Result[0].directors.director[0].directorNm;
@@ -148,7 +148,7 @@ const Detail = () => {
                 />
               </div>
               <p>{directors} 감독</p>
-              <p>{actors}</p>
+              <p>주연: {actors}</p>
               <p>개봉일: {formattedDate}</p>
               <p>장르: {movieData.genre}</p>
               <p>러닝타임: {movieData.runtime} 분</p>
