@@ -37,7 +37,9 @@ const initialState: MovieState = {
   repRatDate: ''
 };
 export async function generateStaticParams() {
-  const posts = await fetch('http://.../search').then((res) => res.json());
+  const posts = await fetch('https://omt-onmyticket.vercel.app/search').then(
+    (res) => res.json()
+  );
 
   return posts.map((post: any) => ({
     slug: post.slug
