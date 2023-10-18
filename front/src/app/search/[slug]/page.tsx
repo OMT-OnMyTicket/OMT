@@ -36,20 +36,16 @@ const initialState: MovieState = {
   movieSeq: '',
   repRatDate: ''
 };
+export async function generateStaticParams() {
+  const posts = await fetch('http://.../search').then((res) => res.json());
 
-export function generateStaticParams() {
-  // 동적으로 생성할 페이지의 id 목록을 반환
-  return [
-    { listName: 'F27886' },
-    { listName: 'F12345' },
-    { listName: 'F56789' },
-    { listName: 'K112356' },
-    { listName: 'F34267' }
-  ];
+  return posts.map((post: any) => ({
+    slug: post.slug
+  }));
 }
 
-const Detail = ({ params }: { params: { listName: string } }) => {
-  const { listName } = params;
+const Detail = ({ params }: { params: { slug: string } }) => {
+  const { slug } = params;
   const [movieData, setMovieData] = useState<MovieState>(initialState);
   const [movieContents, setMovieContents] = useState<string[]>([]);
   const [directors, setDirectors] = useState<string[]>([]);
@@ -62,8 +58,8 @@ const Detail = ({ params }: { params: { listName: string } }) => {
           params: {
             collection: 'kmdb_new2',
             detail: 'Y',
-            movieId: listName.charAt(0),
-            movieSeq: listName.substring(1),
+            movieId: slug.charAt(0),
+            movieSeq: slug.substring(1),
             ServiceKey: KMDB_KEY
           }
         });
@@ -98,7 +94,7 @@ const Detail = ({ params }: { params: { listName: string } }) => {
     if (typeof window !== 'undefined') {
       fetchData();
     }
-  }, [listName]);
+  }, [slug]);
 
   const inputDate = movieData.repRatDate;
   let formattedDate = '';
