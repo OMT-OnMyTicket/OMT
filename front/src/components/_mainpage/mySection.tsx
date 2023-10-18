@@ -19,7 +19,7 @@ const mySection = () => {
             <div>2023.06.10</div>
           </div>
 
-          <img src='/범죄도시.png' className={styled.poster} />
+          <img src='/png/범죄도시.png' className={styled.poster} />
         </div>
 
         <div className={styled.RightBox}>
@@ -29,7 +29,7 @@ const mySection = () => {
             <div>월 평균 관람 횟수: 3회</div>
           </div>
           <div>
-            <img src='/김세훈.png' className={styled.UserPhoto} />
+            <img src='/png/김세훈.png' className={styled.UserPhoto} />
             <div className={styled.UserName}>김세훈 님</div>
           </div>
         </div>

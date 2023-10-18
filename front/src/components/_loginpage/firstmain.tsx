@@ -25,7 +25,7 @@ const firstmain = () => {
     <>
       <div className={styled.Container}>
         <div className={styled.Background}>
-          <img className={styled.Background_IMG} src='/loginIMG.jpg' />
+          <img className={styled.Background_IMG} src='/png/loginIMG.jpg' />
         </div>
 
         <div className={styled.First_Title}>
