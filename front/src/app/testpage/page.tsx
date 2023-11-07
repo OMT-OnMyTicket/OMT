@@ -28,6 +28,10 @@ const initialState: MovieState = {
 export default function Page() {
   const [movieData, setMovieData] = useState<MovieState>(initialState);
 
+  const handelDetail = (id: string) => {
+    localStorage.setItem('MovieNum', id);
+  };
+
   useEffect(() => {
     const storedSearchText = localStorage.getItem('검색어');
 
@@ -65,7 +69,11 @@ export default function Page() {
           const splitTitle = title.split(':');
           const movieSeq = movieData.movieId[index] + movieData.movieSeq[index];
           return (
-            <Link key={index} href={`/testpage/${movieSeq}`}>
+            <Link
+              key={index}
+              href={`/testpage/${movieSeq}`}
+              onClick={() => handelDetail(movieSeq)}
+            >
               <div key={index} className={styled.Result}>
                 <h3 className={styled.Result_Title}>
                   {splitTitle.length > 1 ? (
