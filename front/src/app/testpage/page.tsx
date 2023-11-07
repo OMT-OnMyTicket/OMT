@@ -30,6 +30,7 @@ export default function Page() {
 
   const handelDetail = (id: string) => {
     localStorage.setItem('MovieNum', id);
+    window.location.href = `/testpage/${localStorage.getItem('MovieNum')}`;
   };
 
   useEffect(() => {
@@ -68,24 +69,29 @@ export default function Page() {
         {movieData.movieTitle.map((title, index) => {
           const splitTitle = title.split(':');
           const movieSeq = movieData.movieId[index] + movieData.movieSeq[index];
+
           return (
-            <Link
+            // <Link
+            //   key={index}
+            //   href={`/testpage/${movieSeq}`}
+            //    // +
+            // >
+            <div
               key={index}
-              href={`/testpage/${movieSeq}`}
+              className={styled.Result}
               onClick={() => handelDetail(movieSeq)}
             >
-              <div key={index} className={styled.Result}>
-                <h3 className={styled.Result_Title}>
-                  {splitTitle.length > 1 ? (
-                    <>
-                      {splitTitle[0]}: <br /> {splitTitle[1]}
-                    </>
-                  ) : (
-                    title
-                  )}
-                </h3>
-              </div>
-            </Link>
+              <h3 className={styled.Result_Title}>
+                {splitTitle.length > 1 ? (
+                  <>
+                    {splitTitle[0]}: <br /> {splitTitle[1]}
+                  </>
+                ) : (
+                  title
+                )}
+              </h3>
+            </div>
+            // </Link>
           );
         })}
       </div>
