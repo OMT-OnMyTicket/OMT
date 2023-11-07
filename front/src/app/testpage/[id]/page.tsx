@@ -1,12 +1,21 @@
 'use client';
+import { useEffect, useState } from 'react';
+// export function generateStaticParams() {
+//   const MovieNumber = localStorage.getItem('MovieNum');
+//   return [{ id: MovieNumber }];
+// }
 
-export function generateStaticParams() {
-  const MovieNumber = localStorage.getItem('MovieNum');
-  return [{ id: MovieNumber }];
-}
+export default function Page() {
+  //   const { id } = params;
+  const [MovieNumbers, setMovieNumbers] = useState('');
 
-export default function Page({ params }: { params: { id: string } }) {
-  const { id } = params;
+  useEffect(() => {
+    const storedMovieNumbers = localStorage.getItem('MovieNum');
 
-  return <div>{id} 페이지입니다.</div>;
+    if (storedMovieNumbers) {
+      setMovieNumbers(storedMovieNumbers);
+    }
+  });
+
+  return <div>{MovieNumbers.substring(1)} 페이지입니다.</div>;
 }
