@@ -78,10 +78,6 @@ const Result = () => {
     }
   }, []);
 
-  //   const handleDetail = (url: string) => {
-  //     window.location.href = `/search/${url}`;
-  //   };
-
   return (
     <div className={styled.Seaarch_layout}>
       <div className={styled.Search_Result}>
@@ -97,20 +93,17 @@ const Result = () => {
           const movieSeq = movieData.movieId[index] + movieData.movieSeq[index];
           return (
             <Link
+              key={index}
               href={{
-                pathname: `/search/${movieSeq}`,
+                pathname: '/search/[slug]',
                 query: {
-                  movieSeq,
+                  slug: `${movieSeq}`,
                   title: 'detailPage'
                 }
               }}
               as={`/search/${movieSeq}`}
             >
-              <div
-                key={index}
-                className={styled.Result}
-                //   onClick={() => handleDetail(movieSeq)}
-              >
+              <div key={index} className={styled.Result}>
                 <h3 className={styled.Result_Title}>
                   {splitTitle.length > 1 ? (
                     <>
