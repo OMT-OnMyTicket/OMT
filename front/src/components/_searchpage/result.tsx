@@ -42,6 +42,11 @@ const initialState: MovieState = {
 const Result = () => {
   const [movieData, setMovieData] = useState<MovieState>(initialState);
   const [SearchText, setSearchText] = useState('');
+
+  const handelDetail = (id: string) => {
+    localStorage.setItem('MovieNum', id);
+  };
+
   useEffect(() => {
     const storedSearchText = localStorage.getItem('검색어');
     if (storedSearchText) {
@@ -94,14 +99,8 @@ const Result = () => {
           return (
             <Link
               key={index}
-              href={{
-                pathname: '/search/[slug]',
-                query: {
-                  slug: `${movieSeq}`,
-                  title: 'detailPage'
-                }
-              }}
-              as={`/search/${movieSeq}`}
+              href={'/search/detail'}
+              onClick={() => handelDetail(movieSeq)}
             >
               <div key={index} className={styled.Result}>
                 <h3 className={styled.Result_Title}>
