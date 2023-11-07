@@ -1,12 +1,15 @@
-export function generateStaticParams(ids: any[] | undefined) {
-  if (!Array.isArray(ids)) {
-    // 만약 ids가 배열이 아니라면 빈 배열을 반환하거나 다른 처리를 할 수 있습니다.
+// generateStaticParams 함수의 반환 타입을 정확히 지정합니다.
+export function generateStaticParams(
+  ids: any[] | undefined
+): { params: any }[] {
+  if (!Array.isArray(ids) || ids.length === 0) {
     return [];
   }
 
-  return ids.map((id) => ({ id }));
+  return ids.map((id) => ({ params: { id: String(id) } }));
 }
 
+// Page 컴포넌트에서 params의 타입을 정확히 지정합니다.
 export default function Page({ params }: { params: { id: string } }) {
   const { id } = params;
   return <div>{id} 페이지입니다.</div>;
