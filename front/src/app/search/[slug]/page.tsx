@@ -36,9 +36,9 @@ const initialState: MovieState = {
   movieSeq: '',
   repRatDate: ''
 };
-export function generateStaticParams(slugs: string[]) {
-  return slugs.map((slug) => ({ slug }));
-}
+// export function generateStaticParams(slugs: string[]) {
+//   return slugs.map((slug) => ({ slug }));
+// }
 
 const Detail = ({ params }: { params: { slug: string } }) => {
   const { slug } = params;
