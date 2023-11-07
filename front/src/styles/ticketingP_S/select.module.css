@@ -81,12 +81,16 @@
   display: flex;
   flex-direction: column;
 }
+.Select_Top_txt {
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+}
 .Legion {
-  margin: 20px 0 20px 0;
-  overflow: scroll;
   cursor: pointer;
   padding: 20px;
-  border-radius: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
 }
 .Legion:hover,
 .CinemaName:hover {
@@ -100,7 +104,6 @@
   justify-content: space-around;
   height: 100%;
   padding: 30px 0 30px 0;
-  overflow: scroll;
 }
 .CinemaName {
   display: flex;
@@ -298,9 +301,8 @@
   align-items: center;
   line-height: 2;
   width: 200px;
-
   padding: 20px;
-  overflow: scroll;
+  overflow: auto;
   margin-top: 20px;
 }
 

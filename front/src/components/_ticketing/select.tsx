@@ -21,7 +21,6 @@ const SelectTheater = () => {
 
   useEffect(() => {
     const storedCinema = localStorage.getItem('영화관');
-
     if (storedCinema) {
       setCinema(storedCinema);
     }
@@ -71,56 +70,59 @@ const SelectTheater = () => {
     }
   };
 
+  type TheaterInfo = {
+    [key: string]: {
+      backgroundImage: string;
+      logoImage: string;
+    };
+  };
+
+  const theaterInfo: TheaterInfo = {
+    CGV: {
+      backgroundImage: '/png/CGV_세로.png',
+      logoImage: '/png/CGV.png'
+    },
+    메가박스: {
+      backgroundImage: '/png/메가박스_세로.png',
+      logoImage: '/png/메가박스.png'
+    },
+    롯데시네마: {
+      backgroundImage: '/png/롯데시네마_세로.png',
+      logoImage: '/png/롯데시네마.png'
+    },
+    씨네큐: {
+      backgroundImage: '/png/씨네큐_세로.png',
+      logoImage: '/png/씨네큐.png'
+    }
+  };
+
   const choicedTheater = () => {
-    if (cinema === 'CGV') {
+    const theater = theaterInfo[cinema];
+
+    if (theater) {
       return (
         <div
           className={styled.choicedTheater}
-          style={{
-            backgroundImage: `url('/png/CGV_세로.png')`
-          }}
+          style={{ backgroundImage: `url(${theater.backgroundImage})` }}
         >
-          <img src='/png/CGV.png' className={styled.choicedTheater_Logo} />
-        </div>
-      );
-    } else if (cinema === '메가박스') {
-      return (
-        <div
-          className={styled.choicedTheater}
-          style={{
-            backgroundImage: `url('/png/메가박스_세로.png')`
-          }}
-        >
-          <img src='/png/메가박스.png' className={styled.choicedTheater_Logo} />
-        </div>
-      );
-    } else if (cinema === '롯데시네마') {
-      return (
-        <div
-          className={styled.choicedTheater}
-          style={{
-            backgroundImage: `url('/png/롯데시네마_세로.png')`
-          }}
-        >
-          <img
-            src='/png/롯데시네마.png'
-            className={styled.choicedTheater_Logo}
-          />
-        </div>
-      );
-    } else if (cinema === '씨네큐') {
-      return (
-        <div
-          className={styled.choicedTheater}
-          style={{
-            backgroundImage: `url('/png/씨네큐_세로.png')`
-          }}
-        >
-          <img src='/png/씨네큐.png' className={styled.choicedTheater_Logo} />
+          <img src={theater.logoImage} className={styled.choicedTheater_Logo} />
         </div>
       );
     }
+
+    return null;
   };
+
+  const regions = [
+    '서울',
+    '경기,인천',
+    '강원',
+    '충청,대전',
+    '전라,광주',
+    '경북,대구',
+    '경남,부산,울산',
+    '제주'
+  ];
 
   const handleRegion = (region: string) => {
     axios
@@ -159,37 +161,22 @@ const SelectTheater = () => {
             {selectPage === 1 && (
               <div className={styled.Select_1}>
                 <div className={styled.Select_Local}>
-                  지역
-                  <div
-                    onClick={() => handleRegion('서울')}
-                    className={`${styled.Legion} ${
-                      selectedRegion === '서울' ? styled.Selected_Cinema : ''
-                    }`}
-                  >
-                    서울
-                  </div>
-                  <div
-                    onClick={() => handleRegion('경기,인천')}
-                    className={`${styled.Legion} ${
-                      selectedRegion === '경기,인천'
-                        ? styled.Selected_Cinema
-                        : ''
-                    }`}
-                  >
-                    경기/인천
-                  </div>
-                  <div
-                    onClick={() => handleRegion('강원')}
-                    className={`${styled.Legion} ${
-                      selectedRegion === '강원' ? styled.Selected_Cinema : ''
-                    }`}
-                  >
-                    강원
-                  </div>
+                  <p className={styled.Select_Top_txt}>지역</p>
+                  {regions.map((region, index) => (
+                    <div
+                      key={index}
+                      onClick={() => handleRegion(region)}
+                      className={`${styled.Legion} ${
+                        selectedRegion === region ? styled.Selected_Cinema : ''
+                      }`}
+                    >
+                      {region}
+                    </div>
+                  ))}
                 </div>
 
                 <div className={styled.Select_Theater}>
-                  지역별 영화관
+                  <p className={styled.Select_Top_txt}>지역별 영화관</p>
                   <div className={styled.Theaters}>
                     {theaters.map((cinemaName, index) => (
                       <div

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from '../../styles/ticketingP_S/select.module.css';
+import Link from 'next/link';
 
 const Select_Sit = () => {
   const numRows = 8;
@@ -91,7 +92,6 @@ const Select_Sit = () => {
       return;
     }
     localStorage.setItem('선택좌석', id);
-    window.location.href = 'http://localhost:3000/ticketing/pay'; // 수정해야함
   };
 
   return (
@@ -119,12 +119,12 @@ const Select_Sit = () => {
             {/* <img src={'/reset.svg'} /> */}
           </button>
         </div>
-        <div
-          className={styled.NextBtn}
+        <Link
+          href={'/ticketing/pay'}
           onClick={() => handleNextBtn(allSelectedSeat)}
         >
-          다음단계
-        </div>
+          <div className={styled.NextBtn}>다음단계</div>
+        </Link>
       </div>
     </>
   );

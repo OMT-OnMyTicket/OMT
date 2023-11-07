@@ -2,12 +2,10 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import axios from 'axios';
-const KEY = process.env.NEXT_PUBLIC_KOPIC_KEY;
-const URL = process.env.NEXT_PUBLIC_KOPIC_URL;
+import styled from '../../styles/search_P_S/search.module.css';
+
 const KMDB_KEY = process.env.NEXT_PUBLIC_KMDB_KEY;
 const KMDB_URL = process.env.NEXT_PUBLIC_KMDB_URL;
-
-import styled from '../../styles/search_P_S/search.module.css';
 
 type MovieData = {
   title: string;
