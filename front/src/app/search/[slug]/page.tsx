@@ -36,15 +36,22 @@ const initialState: MovieState = {
   movieSeq: '',
   repRatDate: ''
 };
-export async function generateStaticParams() {
-  const posts = await fetch('https://omt-onmyticket.vercel.app/search').then(
-    (res) => res.json()
-  );
+// export async function getDetailId() {
+//   // const posts = await fetch('https://omt-onmyticket.vercel.app/search').then(
+//   //   (res) => res.json()
+//   // );
 
-  return posts.map((post: any) => ({
-    slug: post.slug
-  }));
-}
+//   // return posts.map((post: any) => ({
+//   //   slug: post.slug
+//   // }));
+//   const res = await fetch('https://omt-onmyticket.vercel.app/search', {
+//     next: {
+//       revalidate: 0
+//     }
+//   });
+
+//   return res.json;
+// }
 
 const Detail = ({ params }: { params: { slug: string } }) => {
   const { slug } = params;
