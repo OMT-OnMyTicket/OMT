@@ -5,6 +5,7 @@ import styled from '../../styles/ticketingP_S/select.module.css';
 import PageCheck from '../pageCheck';
 import Select_Sit from './select_sit';
 import Date from './date';
+import Time from './time';
 import axios from 'axios';
 
 const URL = process.env.NEXT_PUBLIC_URL;
@@ -206,7 +207,7 @@ const SelectTheater = () => {
                     {localStorage.getItem('장소')}
                   </div>
                   <div className={styled.Select_Time}>
-                    날짜를 먼저 선택해주세요!
+                    <Time />
                   </div>
                 </div>
                 <div className={styled.Select_Others}>
