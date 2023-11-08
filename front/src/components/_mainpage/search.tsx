@@ -3,11 +3,13 @@
 import React, { useEffect, useState, useRef } from 'react';
 import styled from '../../styles/mainP_S/header.module.css';
 import axios from 'axios';
+import { useRouter } from 'next/navigation';
 
 const KMDB_KEY = process.env.NEXT_PUBLIC_KMDB_KEY;
 const KMDB_URL = process.env.NEXT_PUBLIC_KMDB_URL;
 
 const Search = () => {
+  const router = useRouter();
   const [inputText, setInputText] = useState('');
   const [movieTitle, setMovieTitle] = useState<string[]>([]);
   const textAreaRef = useRef<HTMLDivElement | null>(null);
@@ -68,7 +70,7 @@ const Search = () => {
   const handleClickSearch = (id: string) => {
     localStorage.clear;
     localStorage.setItem('검색어', id);
-    window.location.href = '/search';
+    router.push('/search');
   };
 
   return (

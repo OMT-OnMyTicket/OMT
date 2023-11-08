@@ -42,13 +42,10 @@ const Detail = () => {
   const [movieContents, setMovieContents] = useState<string[]>([]);
   const [directors, setDirectors] = useState<string[]>([]);
   const [actors, setAcrtors] = useState<string[]>([]);
-  const [MovieNumbers, setMovieNumbers] = useState('');
 
   useEffect(() => {
     const storedMovieNumbers = localStorage.getItem('MovieNum');
     if (storedMovieNumbers) {
-      setMovieNumbers(storedMovieNumbers);
-
       const fetchData = async () => {
         try {
           const response = await axios.get(`${KMDB_URL}`, {
@@ -155,7 +152,9 @@ const Detail = () => {
           </div>
           <div className={styled.Movie_box_Layout}>
             <div className={styled.Movie_box_Title}>영화 줄거리</div>
-            <p className={styled.Movie_Plots}>{movieContents}</p>
+            <p className={styled.Movie_Plots}>
+              {movieContents ? movieContents : '줄거리 준비중입니다...'}
+            </p>
           </div>
         </div>
       </div>

@@ -51,41 +51,49 @@ const Chart = () => {
             audiAcc: item.audiAcc
           })
         );
-        setMovieChart(extractedData);
 
-        // 영화 postURL 받아오기
-
-        const detailMovieInfo = extractedData.map((movie: any) => {
-          return axios.get(`${KMDB_URL}`, {
-            params: {
-              collection: 'kmdb_new2',
-              detail: 'Y',
-              title: movie.movieNm,
-              ServiceKey: `${KMDB_KEY}`,
-              releaseDts: 2023
-            }
-          });
+        // 영화 포스터 URL 받아오기
+        const detailMovieInfoPromises = extractedData.map((movie: any) => {
+          return axios
+            .get(`${KMDB_URL}`, {
+              params: {
+                collection: 'kmdb_new2',
+                detail: 'Y',
+                title: movie.movieNm,
+                ServiceKey: `${KMDB_KEY}`,
+                releaseDts: 2023
+              }
+            })
+            .then((res) => {
+              const results = res.data.Data[0]?.Result || [];
+              const posters = results.map(
+                (result: any) => result.posters.split('|')[0]
+              );
+              return posters[0] || '/png/preparing.png';
+            })
+            .catch((error) => {
+              console.error('에러 내용', error);
+              return '/png/preparing.png';
+            });
         });
 
-        Promise.all(detailMovieInfo)
-          .then((responses) => {
-            const posters = responses.map((res) => {
-              const data = res.data.Data[0].Result[0];
-              // console.log(data.posters.split('|')[0]);
-              if (data && data.posters) {
-                const posters = data.posters;
-                const posterArray = posters.split('|');
-                if (posterArray.length > 0) {
-                  return posterArray[0];
-                }
-              }
-            });
+        Promise.all(detailMovieInfoPromises)
+          .then((posters) => {
             setMoviePosters(posters);
+            setMovieChart(extractedData); //  영화 정보 및 포스터 정보가 모두 준비된 후에 상태를 업데이트
           })
-          .catch((error) => console.log(error));
+          .catch((error) => {
+            console.error('에러 내용', error);
+            setMoviePosters([]);
+            setMovieChart([]); // 포스터 정보를 가져오지 못할 경우 빈 배열로
+          });
       })
-      .catch((error) => console.log(error));
-  }, []);
+      .catch((error) => {
+        console.error('에러 내용', error);
+        setMovieChart([]);
+        setMoviePosters([]);
+      });
+  }, []); // 빈 의존성 배열을 사용하여 한 번만 실행되도록 하기
 
   // Slider settings
   const settings = {

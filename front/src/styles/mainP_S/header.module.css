@@ -9,10 +9,17 @@
 }
 
 .logo {
-  width: 12vw;
-  height: 4vw;
+  width: 10vw;
+  height: 6vw;
 }
+.Logo_Content {
+  display: flex;
+}
+.Logo_Content_Txt {
+  display: flex;
 
+  align-items: flex-end;
+}
 .conetent {
   display: flex;
   justify-content: space-between;

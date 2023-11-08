@@ -1,4 +1,5 @@
 import styled from '../../styles/mainP_S/preview.module.css';
+import Link from 'next/link';
 
 const preview = () => {
   return (
@@ -6,18 +7,21 @@ const preview = () => {
       <div className={styled.preview}>
         <iframe
           className={styled.video}
-          src='https://www.youtube.com/embed/yjHPb0UpRiQ?autoplay=1&mute=1&loop=1&playlist=yjHPb0UpRiQ'
-          title='화사한 그녀 예고편'
+          src='https://www.youtube.com/embed/-AZ7cnwn2YI?autoplay=1&mute=1&loop=1&playlist=-AZ7cnwn2YI'
+          title='서울의 봄 예고편'
           allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
           allowFullScreen
         />
-        <strong className={styled.title}>화사한 그녀 </strong>
+        <strong className={styled.title}>서울의 봄 </strong>
         <span className={styled.txt}>
-          600억을 털어라! <br /> 화사한 '엄정화'의 화끈한
+          1979.12.12 그날 밤 <br />
+          철저하게 감춰진 9시간
         </span>
-        <button className={styled.Ticketing}>
-          <p className={styled.TicketingTxt}>예매하기</p>
-        </button>
+        <Link href='/ticketing'>
+          <button className={styled.Ticketing}>
+            <p className={styled.TicketingTxt}>예매하기</p>
+          </button>
+        </Link>
       </div>
     </div>
   );
