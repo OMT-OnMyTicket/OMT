@@ -58,40 +58,58 @@ const ChoiceMovie = () => {
         );
         setMovieChart(extractedData);
 
-        // 영화 postURL 받아오기
-
-        const detailMovieInfo = extractedData.map((movie: any) => {
-          return axios.get(`${KMDB_URL}`, {
-            params: {
-              collection: 'kmdb_new2',
-              detail: 'Y',
-              title: movie.movieNm,
-              ServiceKey: `${KMDB_KEY}`,
-              releaseDts: 2023
-            }
-          });
+        // 영화 정보 가져오기
+        const movieDetailsPromises = extractedData.map((movie: any) => {
+          return axios
+            .get(`${KMDB_URL}`, {
+              params: {
+                collection: 'kmdb_new2',
+                detail: 'Y',
+                title: movie.movieNm,
+                ServiceKey: `${KMDB_KEY}`,
+                releaseDts: 2023
+              }
+            })
+            .then((res) => {
+              const results = res.data.Data[0]?.Result || [];
+              const posters = results.map(
+                (result: any) => result.posters.split('|')[0]
+              );
+              const contents = results.map(
+                (result: any) => result.plots?.plot[0]?.plotText || ''
+              );
+              return {
+                posters: posters[0] || '/png/preparing.png',
+                contents: contents[0] || ''
+              };
+            })
+            .catch((error) => {
+              console.error('에러 내용', error);
+              return { posters: '/png/preparing.png', contents: '' };
+            });
         });
 
-        Promise.all(detailMovieInfo)
-          // 영화 포스터 가져오기
-          .then((responses) => {
-            const posters = responses.map((res) => {
-              const posters = res.data.Data[0].Result[0].posters;
-              return posters.split('|')[0];
-            });
+        Promise.all(movieDetailsPromises)
+          .then((movieDetails) => {
+            const posters = movieDetails.map((detail) => detail.posters);
+            const contents = movieDetails.map((detail) => detail.contents);
             setMoviePosters(posters);
-
-            // 영화 줄거리 가져오기
-            const contents = responses.map((res) => {
-              const contents =
-                res.data.Data[0].Result[0].plots.plot[0].plotText;
-              return contents.split('.', 2);
-            });
             setMovieContents(contents);
+            setMovieChart(extractedData); // 영화 정보, 포스터, 줄거리 정보가 모두 준비된 후에 상태를 업데이트
           })
-          .catch((error) => console.log(error));
+          .catch((error) => {
+            console.error('에러 내용', error);
+            setMoviePosters([]);
+            setMovieContents([]);
+            setMovieChart([]); // 정보를 가져오지 못할 경우 빈 배열로
+          });
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.error('에러 내용', error);
+        setMovieChart([]);
+        setMoviePosters([]);
+        setMovieContents([]);
+      });
   }, []);
 
   return (
