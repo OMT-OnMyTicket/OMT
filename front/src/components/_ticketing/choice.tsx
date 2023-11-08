@@ -122,6 +122,7 @@ const ChoiceMovie = () => {
             <PageCheck activePage={activePage} />
           </div>
         </div>
+
         <div className={styled.Movie_Container}>
           {movieChart.map((a: DailyBoxOfficeItem, i: number) => {
             return (

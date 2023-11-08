@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import styled from '../../styles/ticketingP_S/select.module.css';
-import Link from 'next/link';
+
+import { useRouter } from 'next/navigation';
 
 const Select_Sit = () => {
+  const router = useRouter();
   const numRows = 8;
   const numColumns = 13;
   const totalSeats = numRows * numColumns;
@@ -89,9 +91,19 @@ const Select_Sit = () => {
   const handleNextBtn = (id: string) => {
     if (selectedCount < localStorage.인원수) {
       alert(`${availableSeats}명의 좌석을 추가로 선택해주세요`);
+      resetSeats();
+      return;
+    } else if (selectedCount > localStorage.인원수) {
+      alert(
+        `선택한 좌석이 ${localStorage.인원수}명을 초과하였습니다. 다시 선택해주세요.`
+      );
+      // 선택한 좌석 초기화
+      resetSeats();
       return;
     }
+    // 선택한 좌석이 인원수와 일치하면 다음 단계로 넘어감
     localStorage.setItem('선택좌석', id);
+    router.push('/ticketing/pay');
   };
 
   return (
@@ -119,12 +131,13 @@ const Select_Sit = () => {
             {/* <img src={'/reset.svg'} /> */}
           </button>
         </div>
-        <Link
-          href={'/ticketing/pay'}
+
+        <div
+          className={styled.NextBtn}
           onClick={() => handleNextBtn(allSelectedSeat)}
         >
-          <div className={styled.NextBtn}>다음단계</div>
-        </Link>
+          다음단계
+        </div>
       </div>
     </>
   );

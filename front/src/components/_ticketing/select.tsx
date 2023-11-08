@@ -257,7 +257,7 @@ const SelectTheater = () => {
             {selectPage === 3 && (
               <div className={styled.Select_3}>
                 <div className={styled.Select_Sit_Container}>
-                  <div className={styled.Select_Sit}>
+                  <div>
                     <Select_Sit />
                   </div>
                   <div className={styled.PrevBtn} onClick={handlePrevBtn}>
