@@ -7,6 +7,11 @@
 }
 .Time_Boxes {
   display: flex;
+  flex-wrap: wrap;
+  overflow: auto;
+  height: 500px;
+  justify-content: center;
+  align-items: center;
 }
 .Time_Box {
   display: flex;
@@ -14,11 +19,12 @@
   margin: 10px;
   border: 1px solid #f0f0f0;
   border-radius: 10px;
-  width: 120px;
-  height: 80px;
+  width: 160px;
+  height: 100px;
+  cursor: pointer;
 }
 .Time {
-  height: 40px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -28,7 +34,7 @@
 .Seat {
   display: flex;
   justify-content: center;
-  height: 40px;
+  height: 50px;
   padding-top: 10px;
   background-color: #ecdddd;
   text-align: center;
