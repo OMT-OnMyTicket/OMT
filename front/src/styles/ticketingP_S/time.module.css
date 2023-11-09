@@ -23,6 +23,35 @@
   height: 100px;
   cursor: pointer;
 }
+.Time_Box:hover > .Seat {
+  background-color: #f15b3a;
+  color: white;
+  transition-duration: 1s;
+}
+.Time_Box:hover {
+  border: 1px solid black;
+  transition-duration: 1s;
+}
+.Time_Box:hover > .Seat > .Out_Seat {
+  color: black;
+  transition-duration: 1s;
+}
+.Selected_Time_Box > .Seat {
+  background-color: #f15b3a;
+  color: white;
+}
+
+.Selected_Time_Box > .Seat {
+  background-color: #f15b3a;
+  color: white;
+}
+.Selected_Time_Box {
+  border: 1px solid black;
+}
+.Selected_Time_Box > .Seat > .Out_Seat {
+  color: black;
+}
+
 .Time {
   height: 50px;
   display: flex;
@@ -35,9 +64,8 @@
   display: flex;
   justify-content: center;
   height: 50px;
-  padding-top: 10px;
   background-color: #ecdddd;
-  text-align: center;
+  align-items: center;
   border-radius: 0 0 10px 10px;
 }
 .Out_Seat {

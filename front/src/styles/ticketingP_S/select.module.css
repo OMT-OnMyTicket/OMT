@@ -272,6 +272,7 @@
   flex-direction: column;
   height: 100%; */
 }
+
 .Select_Sit_Container {
   background-color: #333333;
   border-radius: 20px 20px 0 0;
@@ -340,10 +341,14 @@
   background-color: white;
   color: black;
 }
-
 .Unselected {
   background-color: initial;
 }
+.Reserved {
+  background-color: white;
+  color: black;
+}
+
 .Btn_Position {
   position: absolute;
   bottom: 0;

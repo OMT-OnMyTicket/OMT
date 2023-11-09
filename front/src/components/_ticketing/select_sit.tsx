@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import styled from '../../styles/ticketingP_S/select.module.css';
-
 import { useRouter } from 'next/navigation';
 
 const Select_Sit = () => {
@@ -8,7 +7,6 @@ const Select_Sit = () => {
   const numRows = 8;
   const numColumns = 13;
   const totalSeats = numRows * numColumns;
-
   const [selectedSeats, setSelectedSeats] = useState<boolean[][]>(
     Array(numRows)
       .fill(false)

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from '../../styles/ticketingP_S/time.module.css';
 
 function getRandomNumber(min: number, max: number): number {
@@ -61,14 +61,37 @@ function getRandomTimeWithSeat(): { time: string; outSeat: number }[] {
 }
 
 const Time = () => {
-  const randomTimesWithSeat = getRandomTimeWithSeat();
+  const [selectedTime, setSelectedTime] = useState<string | null>(null);
+  const [randomTimesWithSeat, setRandomTimesWithSeat] = useState(
+    getRandomTimeWithSeat()
+  );
+
+  useEffect(() => {
+    // 컴포넌트가 처음 마운트될 때 한 번만 랜덤 시간을 생성
+    setRandomTimesWithSeat(getRandomTimeWithSeat());
+  }, []); // 빈 배열을 두어 처음 한 번만 실행되도록 함
+
+  const handleTimeClick = (time: string, outSeat: number) => {
+    // 클릭한 시간과 잔여 좌석 정보를 객체로 묶어서 localStorage에 저장
+    const selectedTimeInfo = { time, outSeat };
+    localStorage.setItem('예매정보', JSON.stringify(selectedTimeInfo));
+
+    // 선택된 시간을 상태로 업데이트
+    setSelectedTime(time);
+  };
 
   return (
     <>
       <div className={styled.Time_Layout}>
         <div className={styled.Time_Boxes}>
           {randomTimesWithSeat.map(({ time, outSeat }, index) => (
-            <div className={styled.Time_Box} key={index}>
+            <div
+              className={`${styled.Time_Box} ${
+                time === selectedTime ? styled.Selected_Time_Box : ''
+              }`}
+              key={index}
+              onClick={() => handleTimeClick(time, outSeat)}
+            >
               <p className={styled.Time}>{time}</p>
               <div className={styled.Seat}>
                 <p className={styled.Out_Seat}>{outSeat}</p>
