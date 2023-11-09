@@ -344,9 +344,9 @@
 .Unselected {
   background-color: initial;
 }
-.Reserved {
-  background-color: white;
-  color: black;
+.impossible_Seat {
+  background-color: black;
+  color: red;
 }
 
 .Btn_Position {

@@ -18,6 +18,13 @@ const Select_Sit = () => {
   const selectedCount = selectedSeatLabels.length;
   const maxSelectedSeats = Number(localStorage.인원수);
 
+  // localStorage에서 예매정보를 가져옵니다.
+  const possibleSeatInfoString = localStorage.getItem('예매정보');
+  const possibleSeatInfo = possibleSeatInfoString
+    ? JSON.parse(possibleSeatInfoString)
+    : {};
+  const possibleSeats = possibleSeatInfo.outSeat || 0;
+
   useEffect(() => {
     setAvailableSeats(maxSelectedSeats - selectedCount);
   }, [selectedSeatLabels, maxSelectedSeats]);

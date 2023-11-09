@@ -41,7 +41,7 @@ function getRandomTimeWithSeat(): { time: string; outSeat: number }[] {
     const formattedTime = `${String(randomHour).padStart(2, '0')}:${String(
       randomMinutes
     ).padStart(2, '0')}`;
-    const outSeat = getRandomNumber(0, 200);
+    const outSeat = getRandomNumber(0, 104);
 
     // 마지막 숫자가 0이나 5로 떨어지는 시간들만 추가
     if (randomMinutes === 0 || randomMinutes === 30) {
@@ -96,7 +96,7 @@ const Time = () => {
               <div className={styled.Seat}>
                 <p className={styled.Out_Seat}>{outSeat}</p>
                 <p className={styled.Seat_Slash}>/</p>
-                <p className={styled.Posible_Seat}>200</p>
+                <p className={styled.Posible_Seat}>104</p>
               </div>
             </div>
           ))}
