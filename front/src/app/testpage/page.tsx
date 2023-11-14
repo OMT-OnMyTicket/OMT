@@ -1,100 +1,68 @@
 'use client';
+import styled from '@/styles/loginP_S/oauth.module.css';
+import { signIn, signOut, useSession } from 'next-auth/react';
 
-import React, { useEffect, useState } from 'react';
-import Link from 'next/link';
-import axios from 'axios';
-import styled from '../../styles/search_P_S/search.module.css';
-const KMDB_KEY = process.env.NEXT_PUBLIC_KMDB_KEY;
-const KMDB_URL = process.env.NEXT_PUBLIC_KMDB_URL;
+// {URL}/oauth2/authorization/{provider-id}
 
-type MovieData = {
-  title: string;
-  movieSeq: string;
-  movieId: string;
-};
+//  ?redirect_uri=http://localhost:3000/oauth
+// URL= http://ec2-3-34-47-93.ap-northeast-2.compute.amazonaws.com:8080/oauth2/authorization/google
 
-type MovieState = {
-  movieTitle: string[];
-  movieSeq: string[];
-  movieId: string[];
-};
+// RestAPI키  =  468cacaab5571ffd638f603554a8446d
+// Client Secret키 = hzbzLB1w1kFv5a1hkQM2EVfYAHaOvkos
 
-const initialState: MovieState = {
-  movieTitle: [],
-  movieSeq: [],
-  movieId: []
-};
-
-export default function Page() {
-  const [movieData, setMovieData] = useState<MovieState>(initialState);
-
-  const handelDetail = (id: string) => {
-    localStorage.setItem('MovieNum', id);
-    window.location.href = `/testpage/${localStorage.getItem('MovieNum')}`;
-  };
-
-  useEffect(() => {
-    const storedSearchText = localStorage.getItem('검색어');
-
-    axios
-      .get(`${KMDB_URL}`, {
-        params: {
-          collection: 'kmdb_new2',
-          detail: 'Y',
-          title: storedSearchText,
-          ServiceKey: KMDB_KEY
-        }
-      })
-      .then((res) => {
-        const results: MovieData[] = res.data.Data[0]?.Result || [];
-
-        const processedData: MovieState = {
-          movieTitle: results.map((result) =>
-            result.title.replace(/!HS|!HE/g, '')
-          ),
-          movieId: results.map((result) => result.movieId),
-          movieSeq: results.map((result) => result.movieSeq)
-        };
-
-        setMovieData(processedData);
-      })
-      .catch((error) => {
-        console.error('Error fetching data:', error);
-      });
-  }, []);
+// const URL = process.env.NEXT_PUBLIC_URL;
+const Page = () => {
+  const { data: session } = useSession();
 
   return (
-    <div className={styled.Seaarch_layout}>
-      <div className={styled.Result_Layout}>
-        {movieData.movieTitle.map((title, index) => {
-          const splitTitle = title.split(':');
-          const movieSeq = movieData.movieId[index] + movieData.movieSeq[index];
-
-          return (
-            // <Link
-            //   key={index}
-            //   href={`/testpage/${movieSeq}`}
-            //    // +
-            // >
-            <div
-              key={index}
-              className={styled.Result}
-              onClick={() => handelDetail(movieSeq)}
-            >
-              <h3 className={styled.Result_Title}>
-                {splitTitle.length > 1 ? (
-                  <>
-                    {splitTitle[0]}: <br /> {splitTitle[1]}
-                  </>
-                ) : (
-                  title
-                )}
-              </h3>
+    <>
+      <div className={styled.oauth_Layout}>
+        <ul className={styled.oauth_ul}>
+          <li className={styled.oauth_li}>
+            <div className={styled.oauth_li_Txt} onClick={() => signIn()}>
+              <div className={styled.oauth_Naming_Layout}>
+                <div className={styled.oauth_name1}>Naver</div>
+                <img src='/png/네이버.png' className={styled.oauth_Logo} />
+              </div>
+              <div className={styled.Login_Txt}>네이버로 로그인하기</div>
+              <div className={styled.Login_Txt_M}>Login</div>
+              <img src='/arrow.svg' className={styled.oauth_arrow} />
             </div>
-            // </Link>
-          );
-        })}
+          </li>
+          <li className={styled.oauth_li}>
+            <div
+              className={styled.oauth_li_Txt}
+              onClick={(e) => {
+                e.preventDefault();
+                signIn('kakao', {
+                  callbackUrl: 'http://localhost:3000/api/auth/callback/kakao'
+                });
+              }}
+            >
+              <div className={styled.oauth_Naming_Layout}>
+                <div className={styled.oauth_name2}>Kakao</div>
+                <img src='/png/카카오.png' className={styled.oauth_Logo} />
+              </div>
+              <div className={styled.Login_Txt}>카카오로 로그인하기</div>
+              <div className={styled.Login_Txt_M}>Login</div>
+              <img src='/arrow.svg' className={styled.oauth_arrow} />
+            </div>
+          </li>
+          <li className={styled.oauth_li}>
+            <div className={styled.oauth_li_Txt}>
+              <div className={styled.oauth_Naming_Layout}>
+                <div className={styled.oauth_name3}>Google</div>
+                <img src='/png/구글.png' className={styled.oauth_Logo} />
+              </div>
+              <div className={styled.Login_Txt}>구글로 로그인하기</div>
+              <div className={styled.Login_Txt_M}>Login</div>
+              <img src='/arrow.svg' className={styled.oauth_arrow} />
+            </div>
+          </li>
+        </ul>
       </div>
-    </div>
+    </>
   );
-}
+};
+
+export default Page;
