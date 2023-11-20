@@ -1,0 +1,46 @@
+.container {
+  position: fixed;
+  width: 400px;
+  height: 200px;
+  top: 10;
+  right: 0;
+  background-color: white;
+  margin: 1.38vw;
+  cursor: pointer;
+  transition-duration: 1s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border-radius: 0 0 20px 20px;
+  box-shadow: 10px 10px 5px 0 rgb(175, 173, 173);
+}
+.OauthBtns {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.oauth_Logo {
+  width: 50px;
+  height: 44px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+.OauthTxt {
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid black;
+  padding-bottom: 20px;
+}
+.OauthBtn {
+  background-color: white;
+  cursor: pointer;
+}
+.LoginTxt {
+  color: gray;
+}
+.OauthBtn:hover > .LoginTxt {
+  color: black;
+  font-weight: bold;
+
+  transition-duration: 1s;
+}

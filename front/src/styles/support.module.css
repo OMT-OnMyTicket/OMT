@@ -41,7 +41,6 @@
 }
 .Logout:hover {
   background-color: red;
-  height: 2vw;
 }
 .MyTicket {
   right: 9%;
@@ -55,7 +54,7 @@
 .Ticketing:hover {
   background-color: white;
   color: black;
-  height: 2.22vw;
+
   border: 1px solid black;
 }
 
@@ -77,9 +76,7 @@
     right: 16%;
     bottom: 2%;
   }
-  .Logout:hover {
-    height: 3vw;
-  }
+
   .MyTicket {
     right: 16%;
     bottom: 6%;
@@ -87,10 +84,6 @@
   .Ticketing {
     right: 16%;
     bottom: 10%;
-  }
-  .MyTicket:hover,
-  .Ticketing:hover {
-    height: 3vw;
   }
 }
 @media all and (max-width: 530px) {

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import styled from '../../styles/mainP_S/header.module.css';
+import LoginModal from './loginModal';
 import Search from './search';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -13,6 +14,7 @@ const Header = () => {
   const router = useRouter();
   const [UserName, setUserName] = useState<string | null>(null);
   const [UserProfile, setUserProfile] = useState<string | null>(null);
+  const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
     const storedUserName = localStorage.getItem('userName');
@@ -25,7 +27,9 @@ const Header = () => {
     }
   }, []);
 
-  const hadleLogin = () => {};
+  const handleClick = () => {
+    setModalOpen(true);
+  };
 
   return (
     <div className={styled.header}>
@@ -60,8 +64,11 @@ const Header = () => {
                 </li>
               </>
             ) : (
-              <div className={styled.Login} onClick={hadleLogin}>
-                로그인하기
+              <div className={styled.Login}>
+                <p className={styled.Login} onClick={handleClick}>
+                  로그인하기
+                </p>
+                {modalOpen && <LoginModal setModalOpen={setModalOpen} />}
               </div>
             )}
           </ul>
