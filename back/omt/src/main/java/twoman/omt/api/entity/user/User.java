@@ -13,7 +13,6 @@ import javax.validation.constraints.Size;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Table(name = "users")
 public class User extends BaseEntity {
     @Id
     @JsonIgnore
