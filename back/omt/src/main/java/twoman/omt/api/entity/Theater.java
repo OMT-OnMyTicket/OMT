@@ -1,6 +1,6 @@
-package twoman.omt.api.domain.theater.entity;
+package twoman.omt.api.entity;
 
-import lombok.AllArgsConstructor;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -10,12 +10,12 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Getter
-@NoArgsConstructor
-@AllArgsConstructor
-public class Theater {
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+public class Theater extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long theaterId;
+    @Column(name = "theater_id")
+    private Long Id;
 
     @Column(length = 16)
     @NotNull
@@ -31,6 +31,7 @@ public class Theater {
     @NotNull
     @Size(max = 16)
     private String cinemaName;
+
 
     public Theater(
             @NotNull @Size(max= 16) String region,
