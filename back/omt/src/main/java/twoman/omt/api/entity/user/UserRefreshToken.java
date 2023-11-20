@@ -1,9 +1,6 @@
 package twoman.omt.api.entity.user;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import net.minidev.json.annotate.JsonIgnore;
 
 import javax.persistence.*;
@@ -11,16 +8,15 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 @Table(name = "USER_REFRESH_TOKENS")
 public class UserRefreshToken {
     @JsonIgnore
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long UserRefreshTokenId;
+    @Column(name = "USER_REFRESH_TOKEN_ID")
+    private Long Id;
 
     @Column(length = 64, unique = true,nullable = false)
     @NotNull
@@ -40,4 +36,7 @@ public class UserRefreshToken {
         this.refreshToken = refreshToken;
     }
 
+    public void setRefreshToken(String refreshToken) {
+        this.refreshToken = refreshToken;
+    }
 }
