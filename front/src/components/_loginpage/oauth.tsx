@@ -1,23 +1,20 @@
 import styled from '@/styles/loginP_S/oauth.module.css';
-
-// {URL}/oauth2/authorization/{provider-id}
-
-//  ?redirect_uri=http://localhost:3000/oauth
-// URL= http://ec2-3-34-47-93.ap-northeast-2.compute.amazonaws.com:8080/oauth2/authorization/google
+import { useRouter } from 'next/navigation';
 
 const URL = process.env.NEXT_PUBLIC_URL;
 const Oauth = () => {
+  const router = useRouter();
+
   const handleNaverLogin = () => {
-    // window.open(`${URL}/oauth/authorization/naver`);
-    window.location.href = `${URL}/oauth2/authorization/naver`;
+    router.push(`${URL}/oauth2/authorization/naver`);
   };
 
   const handleKakaoLogin = () => {
-    window.location.href = `${URL}/oauth2/authorization/kakao`;
+    router.push(`${URL}/oauth2/authorization/kakao`);
   };
 
   const handleGoogleLogin = () => {
-    window.location.href = `${URL}/oauth2/authorization/google`;
+    router.push(`${URL}/oauth2/authorization/google`);
   };
 
   return (

@@ -2,17 +2,19 @@
 import styled from '@/styles/loginP_S/oauth.module.css';
 import { signIn, signOut, useSession } from 'next-auth/react';
 
-// {URL}/oauth2/authorization/{provider-id}
-
-//  ?redirect_uri=http://localhost:3000/oauth
-// URL= http://ec2-3-34-47-93.ap-northeast-2.compute.amazonaws.com:8080/oauth2/authorization/google
-
-// RestAPI키  =  468cacaab5571ffd638f603554a8446d
-// Client Secret키 = hzbzLB1w1kFv5a1hkQM2EVfYAHaOvkos
-
-// const URL = process.env.NEXT_PUBLIC_URL;
 const Page = () => {
   const { data: session } = useSession();
+
+  if (session && session.user) {
+    return (
+      <button
+        className='px-12 py-4 border rounded-xl bg-red-300'
+        onClick={() => signOut()}
+      >
+        {session.user.name}님 Log Out
+      </button>
+    );
+  }
 
   return (
     <>
@@ -30,15 +32,7 @@ const Page = () => {
             </div>
           </li>
           <li className={styled.oauth_li}>
-            <div
-              className={styled.oauth_li_Txt}
-              onClick={(e) => {
-                e.preventDefault();
-                signIn('kakao', {
-                  callbackUrl: 'http://localhost:3000/api/auth/callback/kakao'
-                });
-              }}
-            >
+            <div className={styled.oauth_li_Txt} onClick={() => signIn()}>
               <div className={styled.oauth_Naming_Layout}>
                 <div className={styled.oauth_name2}>Kakao</div>
                 <img src='/png/카카오.png' className={styled.oauth_Logo} />

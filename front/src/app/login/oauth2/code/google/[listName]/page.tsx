@@ -2,23 +2,11 @@
 // 홈으로 이동시킨다.
 // oauth/redirect
 
-// OMT
-
-// http://localhost:8080/oauth2/authorization/{provider-id}?redirect_uri=http://localhost:3000/oauth/redirect
-// http://localhost:3000/login/oauth2/code/google
-
-// http://localhost:8080/oauth?
-// http://localhost:3000/oauth/redirect?
-
-// http://localhost:3000/login/oauth2/code/google?state=KPhZSqaxlin89zYPbGk69pi5Z6cWc8F3BHSZptxXAfs%3D&code=4%2F0AfJohXnMXSLWP8pWPkxbjvFx55vEjqCi2hmZDR0vaTYcbByyoIu7r5YPfzEFUTd5c4HSeQ&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid&authuser=0&prompt=consent
-// state=KPhZSqaxlin89zYPbGk69pi5Z6cWc8F3BHSZptxXAfs%3D&
-// code=4%2F0AfJohXnMXSLWP8pWPkxbjvFx55vEjqCi2hmZDR0vaTYcbByyoIu7r5YPfzEFUTd5c4HSeQ&
-// scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid&
-// authuser=0&prompt=consent
-
 // 헬핏
 // http://localhost:3000/oauth2/receive?access_token=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMDAyNDY4NTgwMjYxOTI2NTM1OTkiLCJyb2xlIjoiUk9MRV9VU0VSIiwiZXhwIjoxNjc5NjcyMzYyfQ.9x6MEY0Z7DO2TvwBv8SRl0wuLkVWDnegyiKENdlFqiE
-// access_token=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMDAyNDY4NTgwMjYxOTI2NTM1OTkiLCJyb2xlIjoiUk9MRV9VU0VSIiwiZXhwIjoxNjc5NjcyMzYyfQ.9x6MEY0Z7DO2TvwBv8SRl0wuLkVWDnegyiKENdlFqiE
+
+// OMT
+//  http://ec2-3-34-47-93.ap-northeast-2.compute.amazonaws.com:8080/?token=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMDAyNDY4NTgwMjYxOTI2NTM1OTkiLCJyb2xlIjoiUk9MRV9VU0VSIiwiZXhwIjoxNzAxMDY4OTIxfQ.syvAn0ap4b1NLaVLwMegP8rMsFVcllGsd_b8ojb7nYI
 
 'use client';
 import { useRouter } from 'next/navigation';
@@ -34,7 +22,7 @@ const OAuth2 = () => {
     const urlSearchParams: URLSearchParams = new URLSearchParams(
       url.split('?')[1]
     );
-    const accessToken: string | null = urlSearchParams.get('access_token');
+    const accessToken: string | null = urlSearchParams.get('token');
 
     const OAuthURL = process.env.NEXT_PUBLIC_URL;
 

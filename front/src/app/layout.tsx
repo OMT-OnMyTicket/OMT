@@ -2,7 +2,6 @@ import Head from 'next/head';
 import '../styles/globals.css';
 import { Inter } from 'next/font/google';
 import GotoTop from '@/components/gotoTop';
-import AuthSession from '../app/AuthSession';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -27,9 +26,7 @@ export default function RootLayout({ children }: Props) {
           <meta name='description' content={metadata.description} />
         </Head>
         <GotoTop />
-        <body className={inter.className}>
-          <AuthSession>{children}</AuthSession>
-        </body>
+        <body className={inter.className}>{children}</body>
       </html>
     );
   }

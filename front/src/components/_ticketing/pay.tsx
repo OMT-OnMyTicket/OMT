@@ -43,7 +43,6 @@ const Pay = () => {
     }
   }, []);
 
-  // 테스트
   return (
     <div className={styled.Container}>
       <div className={styled.Top}>
