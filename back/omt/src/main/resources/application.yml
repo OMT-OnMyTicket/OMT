@@ -1,7 +1,7 @@
 
 spring:
   datasource:
-    url: ${DATASOURCE_URL}
+    url: jdbc:mysql://omtdb.cqhgwdvwwrxh.ap-northeast-2.rds.amazonaws.com:13306/omtDB?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false&allowPublicKeyRetrieval=true
     username: ${DATASOURCE_USERNAME}
     password: ${DATASOURCE_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
