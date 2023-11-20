@@ -1,13 +1,8 @@
 package twoman.omt.api.entity.auth;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-@Getter
-@Setter
-@NoArgsConstructor
+@Getter @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 public class AuthReqModel {
     private String id;

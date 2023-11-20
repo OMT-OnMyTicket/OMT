@@ -1,9 +1,9 @@
-package twoman.omt.api.domain.theater.controller;
+package twoman.omt.api.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import twoman.omt.api.domain.theater.dto.TheaterDto;
-import twoman.omt.api.domain.theater.service.TheaterService;
+import twoman.omt.api.dto.TheaterDto;
+import twoman.omt.api.service.TheaterService;
 import twoman.omt.common.ApiResponse;
 
 import java.util.List;

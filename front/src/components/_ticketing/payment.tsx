@@ -17,11 +17,12 @@ const Payment = () => {
 
   const [Users, setUsers] = useState('');
   const [MovieTitle, setMovieTitle] = useState('');
-  const price = Number(Users) * 12000;
+  const [price, setPrice] = useState(0);
 
   useEffect(() => {
     const storedMovieTitle = localStorage.getItem('영화');
     const storedUsers = localStorage.getItem('인원수');
+    const storedPrice = Number(storedUsers) * 12000;
 
     if (storedMovieTitle) {
       setMovieTitle(storedMovieTitle);
@@ -30,6 +31,9 @@ const Payment = () => {
       setUsers(storedUsers);
     }
 
+    if (storedPrice) {
+      setPrice(storedPrice);
+    }
     (async () => {
       const paymentWidget = await loadPaymentWidget(clientKey, customerKey);
       paymentWidget.renderAgreement('#agreement');
@@ -41,7 +45,7 @@ const Payment = () => {
       paymentWidgetRef.current = paymentWidget;
       paymentMethodsWidgetRef.current = paymentMethodsWidget;
     })();
-  }, []);
+  }, [Users]);
 
   useEffect(() => {
     const paymentMethodsWidget = paymentMethodsWidgetRef.current;
@@ -77,7 +81,7 @@ const Payment = () => {
           failUrl
         });
       } catch (err) {
-        console.error(err);
+        alert(err);
       }
     }
   };
@@ -88,7 +92,6 @@ const Payment = () => {
       <div id='payment-widget' />
       <div id='agreement' />
       <div className={styled.Btn_Layout}>
-        <div style={{ display: 'none' }}>{price}원 </div>
         <button onClick={handlePayment} className={styled.Pay_Btn}>
           결제하기
         </button>

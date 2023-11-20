@@ -1,13 +1,11 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-// import Link from 'next/link';
+import Link from 'next/link';
 import axios from 'axios';
-const KEY = process.env.NEXT_PUBLIC_KOPIC_KEY;
-const URL = process.env.NEXT_PUBLIC_KOPIC_URL;
+import styled from '../../styles/search_P_S/search.module.css';
+
 const KMDB_KEY = process.env.NEXT_PUBLIC_KMDB_KEY;
 const KMDB_URL = process.env.NEXT_PUBLIC_KMDB_URL;
-
-import styled from '../../styles/search_P_S/search.module.css';
 
 type MovieData = {
   title: string;
@@ -42,6 +40,11 @@ const initialState: MovieState = {
 const Result = () => {
   const [movieData, setMovieData] = useState<MovieState>(initialState);
   const [SearchText, setSearchText] = useState('');
+
+  const handelDetail = (id: string) => {
+    localStorage.setItem('MovieNum', id);
+  };
+
   useEffect(() => {
     const storedSearchText = localStorage.getItem('검색어');
     if (storedSearchText) {
@@ -78,10 +81,6 @@ const Result = () => {
     }
   }, []);
 
-  const handleDetail = (url: string) => {
-    window.location.href = `/search/${url}`;
-  };
-
   return (
     <div className={styled.Seaarch_layout}>
       <div className={styled.Search_Result}>
@@ -96,33 +95,33 @@ const Result = () => {
           const splitTitle = title.split(':');
           const movieSeq = movieData.movieId[index] + movieData.movieSeq[index];
           return (
-            // <Link href={`/search/id=${movieSeq}`}>
-            <div
+            <Link
               key={index}
-              className={styled.Result}
-              onClick={() => handleDetail(movieSeq)}
+              href={'/search/detail'}
+              onClick={() => handelDetail(movieSeq)}
             >
-              <h3 className={styled.Result_Title}>
-                {splitTitle.length > 1 ? (
-                  <>
-                    {splitTitle[0]}: <br /> {splitTitle[1]}
-                  </>
-                ) : (
-                  title
-                )}
-              </h3>
-              <div className={styled.Result_Poster_Layout}>
-                <img
-                  src={movieData.moviePosters[index] || '/png/preparing.png'}
-                  alt={`${title} 포스터`}
-                  className={styled.Result_Poster}
-                />
+              <div key={index} className={styled.Result}>
+                <h3 className={styled.Result_Title}>
+                  {splitTitle.length > 1 ? (
+                    <>
+                      {splitTitle[0]}: <br /> {splitTitle[1]}
+                    </>
+                  ) : (
+                    title
+                  )}
+                </h3>
+                <div className={styled.Result_Poster_Layout}>
+                  <img
+                    src={movieData.moviePosters[index] || '/png/preparing.png'}
+                    alt={`${title} 포스터`}
+                    className={styled.Result_Poster}
+                  />
+                </div>
+                <p>{movieData.rating[index]}</p>
+                <p>장르: {movieData.genre[index]}</p>
+                <p>러닝타임: {movieData.runtime[index]} 분</p>
               </div>
-              <p>{movieData.rating[index]}</p>
-              <p>장르: {movieData.genre[index]}</p>
-              <p>러닝타임: {movieData.runtime[index]} 분</p>
-            </div>
-            // </Link>
+            </Link>
           );
         })}
       </div>

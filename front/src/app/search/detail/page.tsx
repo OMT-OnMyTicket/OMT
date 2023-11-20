@@ -36,61 +36,61 @@ const initialState: MovieState = {
   movieSeq: '',
   repRatDate: ''
 };
-// export function generateStaticParams(slugs: string[]) {
-//   return slugs.map((slug) => ({ slug }));
-// }
 
-const Detail = ({ params }: { params: { slug: string } }) => {
-  const { slug } = params;
+const Detail = () => {
   const [movieData, setMovieData] = useState<MovieState>(initialState);
   const [movieContents, setMovieContents] = useState<string[]>([]);
   const [directors, setDirectors] = useState<string[]>([]);
   const [actors, setAcrtors] = useState<string[]>([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(`${KMDB_URL}`, {
-          params: {
-            collection: 'kmdb_new2',
-            detail: 'Y',
-            movieId: slug.charAt(0),
-            movieSeq: slug.substring(1),
-            ServiceKey: KMDB_KEY
-          }
-        });
+    const storedMovieNumbers = localStorage.getItem('MovieNum');
+    if (storedMovieNumbers) {
+      const fetchData = async () => {
+        try {
+          const response = await axios.get(`${KMDB_URL}`, {
+            params: {
+              collection: 'kmdb_new2',
+              detail: 'Y',
+              movieId: storedMovieNumbers.charAt(0),
+              movieSeq: storedMovieNumbers.substring(1),
+              ServiceKey: KMDB_KEY
+            }
+          });
 
-        const result: MovieData = response.data.Data[0]?.Result[0] || {};
-        const contents = response.data.Data[0].Result[0].plots.plot[0].plotText;
-        const movieDirectors =
-          response.data.Data[0].Result[0].directors.director[0].directorNm;
-        const movieActors = response.data.Data[0].Result[0].actors.actor
-          .map((actor: any) => actor.actorNm)
-          .join(', ');
+          const result: MovieData = response.data.Data[0]?.Result[0] || {};
+          const contents =
+            response.data.Data[0].Result[0].plots.plot[0].plotText;
+          const movieDirectors =
+            response.data.Data[0].Result[0].directors.director[0].directorNm;
+          const movieActors = response.data.Data[0].Result[0].actors.actor
+            .map((actor: any) => actor.actorNm)
+            .join(', ');
 
-        const processedData: MovieState = {
-          moviePosters: result.posters?.split('|')[0] || '',
-          movieTitle: result.title?.replace(/!HS|!HE/g, '') || '',
-          movieSeq: result.movieSeq || '',
-          rating: result.rating || '',
-          genre: result.genre || '',
-          runtime: result.runtime || '',
-          repRatDate: result.repRatDate || ''
-        };
+          const processedData: MovieState = {
+            moviePosters: result.posters?.split('|')[0] || '',
+            movieTitle: result.title?.replace(/!HS|!HE/g, '') || '',
+            movieSeq: result.movieSeq || '',
+            rating: result.rating || '',
+            genre: result.genre || '',
+            runtime: result.runtime || '',
+            repRatDate: result.repRatDate || ''
+          };
 
-        setAcrtors(movieActors);
-        setDirectors(movieDirectors);
-        setMovieData(processedData);
-        setMovieContents(contents);
-      } catch (error) {
-        console.error('Error fetching data:', error);
+          setAcrtors(movieActors);
+          setDirectors(movieDirectors);
+          setMovieData(processedData);
+          setMovieContents(contents);
+        } catch (error) {
+          console.error('Error fetching data:', error);
+        }
+      };
+
+      if (typeof window !== 'undefined') {
+        fetchData();
       }
-    };
-
-    if (typeof window !== 'undefined') {
-      fetchData();
     }
-  }, [slug]);
+  }, []);
 
   const inputDate = movieData.repRatDate;
   let formattedDate = '';
@@ -152,7 +152,9 @@ const Detail = ({ params }: { params: { slug: string } }) => {
           </div>
           <div className={styled.Movie_box_Layout}>
             <div className={styled.Movie_box_Title}>영화 줄거리</div>
-            <p className={styled.Movie_Plots}>{movieContents}</p>
+            <p className={styled.Movie_Plots}>
+              {movieContents ? movieContents : '줄거리 준비중입니다...'}
+            </p>
           </div>
         </div>
       </div>

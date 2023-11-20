@@ -13,7 +13,12 @@ const Header = () => {
     <div className={styled.header}>
       <div className={styled.header_content}>
         <div className={styled.conetent}>
-          <img src='/png/OMT_logo4.png' className={styled.logo} />
+          <Link href='/home'>
+            <div className={styled.Logo_Content}>
+              <img src='/png/OMT_web.png' className={styled.logo} />
+              <p className={styled.Logo_Content_Txt}>영화의 모든 것</p>
+            </div>
+          </Link>
           <ul className={styled.headerInfo}>
             <Search />
             <li>

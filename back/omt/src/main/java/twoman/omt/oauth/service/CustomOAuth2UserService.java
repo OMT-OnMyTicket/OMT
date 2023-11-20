@@ -17,8 +17,6 @@ import twoman.omt.oauth.exception.OAuthProviderMissMatchException;
 import twoman.omt.oauth.info.OAuth2UserInfo;
 import twoman.omt.oauth.info.OAuth2UserInfoFactory;
 
-import java.time.LocalDateTime;
-
 @Service
 @RequiredArgsConstructor
 public class CustomOAuth2UserService extends DefaultOAuth2UserService {
@@ -42,7 +40,7 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
         ProviderType providerType = ProviderType.valueOf(userRequest.getClientRegistration().getRegistrationId().toUpperCase());
 
         OAuth2UserInfo userInfo = OAuth2UserInfoFactory.getOAuth2UserInfo(providerType,user.getAttributes());
-        User savedUser = userRepository.findByUserIdentity(userInfo.getId());
+        User savedUser = userRepository.findByEmail(userInfo.getId());
 
         if (savedUser != null) {
             if (providerType != savedUser.getProviderType()) {
@@ -60,7 +58,6 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
     }
     private User createUser(OAuth2UserInfo userInfo, ProviderType providerType) {
         User user = new User(
-                userInfo.getId(),
                 userInfo.getName(),
                 userInfo.getEmail(),
                 "Y",
