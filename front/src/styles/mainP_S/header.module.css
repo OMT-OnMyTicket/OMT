@@ -116,3 +116,9 @@
   background-color: #eee;
   border-radius: 5px;
 }
+
+.Login {
+  font-size: 18px;
+  margin-left: 20px;
+  cursor: pointer;
+}
