@@ -7,6 +7,7 @@
   display: flex;
   justify-content: space-around;
   font-size: 1.38vw;
+  margin-bottom: 2vw;
 }
 .Boxes {
   display: flex;
@@ -40,6 +41,66 @@
   font-weight: bold;
   font-size: 1.1vw;
 }
+
+.Comment_Layout {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 3.47vw 1.38vw;
+  border-top: 1px solid #eee;
+}
+.Comment_Box {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 40px;
+  margin-bottom: 20px;
+}
+.Ticket_Price_Txt {
+  line-height: 1.6;
+}
+.ShowPng {
+  width: 550px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+.Movie_Price {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 40px;
+}
+.Movie_Tickets {
+  margin-top: 20px;
+}
+.ticket_png {
+  width: 100px;
+  margin-right: 20px;
+}
+.h3 {
+  margin-right: 20px;
+}
+.Notice {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 20px;
+}
+.Question {
+  padding-top: 20px;
+}
+.Notice,
+.Question {
+  display: flex;
+}
+
+.ticket_Info {
+  display: flex;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
 @media screen and (max-width: 600px) {
   .Layout {
     height: 90vw;

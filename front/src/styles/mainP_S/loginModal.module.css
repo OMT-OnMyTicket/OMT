@@ -1,13 +1,13 @@
 .container {
   position: fixed;
-  width: 400px;
-  height: 200px;
+  width: 350px;
+  height: 170px;
   top: 10;
   right: 0;
   background-color: white;
   margin: 1.38vw;
   cursor: pointer;
-  transition-duration: 1s;
+
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -28,7 +28,8 @@
 .OauthTxt {
   display: flex;
   justify-content: center;
-  border-bottom: 1px solid black;
+  color: rgb(106, 98, 98);
+  border-bottom: 1px solid gray;
   padding-bottom: 20px;
 }
 .OauthBtn {
@@ -41,6 +42,5 @@
 .OauthBtn:hover > .LoginTxt {
   color: black;
   font-weight: bold;
-
   transition-duration: 1s;
 }

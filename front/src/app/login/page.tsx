@@ -22,9 +22,16 @@ const OAuth2 = () => {
     // const urlSearchParams: URLSearchParams = new URLSearchParams(
     //   url.split('?')[1]
     // );
-    // const accessToken: string | null = urlSearchParams.get('token');
+    // const accessToken: string | null = urlSearchParams.get('code');
 
-    // const OAuthURL = process.env.NEXT_PUBLIC_URL;
+    const url: string = window.location.href;
+
+    const regex = /code=([^&]+)/;
+    const match = url.match(regex);
+
+    const accessToken: string | null = match ? match[1] : null;
+
+    const OAuthURL = process.env.NEXT_PUBLIC_URL;
 
     // if (accessToken) {
     //   localStorage.setItem('accessToken', accessToken);
@@ -44,7 +51,7 @@ const OAuth2 = () => {
     //       console.log(error);
     //     });
     // }
-    console.log('hello');
+    console.log(accessToken);
   }
   return (
     <>

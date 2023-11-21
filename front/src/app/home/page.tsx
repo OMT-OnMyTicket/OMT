@@ -6,6 +6,7 @@ import Chart from '@/components/_mainpage/chart';
 import Footer from '@/components/_mainpage/footer';
 import MySection from '@/components/_mainpage/mySection';
 import Support from '@/components/support';
+import Section from '@/components/_mainpage/Section';
 
 export default function Home() {
   return (
@@ -21,6 +22,9 @@ export default function Home() {
       </div>
       <div>
         <MySection />
+      </div>
+      <div>
+        <Section />
       </div>
       <div>
         <Support />
