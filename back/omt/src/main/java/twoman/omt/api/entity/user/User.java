@@ -20,7 +20,6 @@ public class User extends BaseEntity {
     @Column(name = "user_id")
     private Long id;
 
-
     @Column(length = 30)
     @NotNull
     @Size(max = 30)
@@ -36,7 +35,6 @@ public class User extends BaseEntity {
     private String emailVerifiedYn;
 
     @Column(length = 512)
-    @NotNull
     @Size(max = 512)
     private String profileImageUrl;
 
