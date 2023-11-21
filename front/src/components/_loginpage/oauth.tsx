@@ -14,6 +14,7 @@ const Oauth = () => {
   };
 
   const handleGoogleLogin = () => {
+    // router.push(`${URL}/oauth2/authorization/google`);
     router.push(`${URL}/oauth2/authorization/google`);
     // router.push(
     //   `https://accounts.google.com/o/oauth2/v2/auth?client_id=444069027831-cktffcsetgan0hvr0s91p6m636tjc83o.apps.googleusercontent.com&redirect_uri=http://localhost:3000/login&response_type=code&scope=profile`
