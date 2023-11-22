@@ -16,42 +16,33 @@ const OAuth2 = () => {
   const router = useRouter();
 
   if (typeof window !== 'undefined') {
-    // const url: string = window.location.href;
-
-    // // URLParams에서 잘라오기
-    // const urlSearchParams: URLSearchParams = new URLSearchParams(
-    //   url.split('?')[1]
-    // );
-    // const accessToken: string | null = urlSearchParams.get('code');
-
     const url: string = window.location.href;
 
-    const regex = /code=([^&]+)/;
-    const match = url.match(regex);
-
-    const accessToken: string | null = match ? match[1] : null;
+    // URLParams에서 잘라오기
+    const urlSearchParams: URLSearchParams = new URLSearchParams(
+      url.split('?')[1]
+    );
+    const accessToken: string | null = urlSearchParams.get('token');
 
     const OAuthURL = process.env.NEXT_PUBLIC_URL;
 
-    // if (accessToken) {
-    //   localStorage.setItem('accessToken', accessToken);
-    //   axios
-    //     .get(`${OAuthURL}/api/v1/users`, {
-    //       headers: {
-    //         Authorization: `Bearer ${accessToken}`
-    //       }
-    //     })
-    //     .then((res) => {
-    //       const UserInfo = res.data.body.data;
-    //       localStorage.setItem('UserInfo', JSON.stringify(UserInfo));
-    //       // console.log(JSON.parse(localStorage.UserInfo).email);
-    //       router.push('/home');
-    //     })
-    //     .catch((error) => {
-    //       console.log(error);
-    //     });
-    // }
-    console.log(accessToken);
+    if (accessToken) {
+      axios
+        .get(`${OAuthURL}/api/v1/users`, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`
+          }
+        })
+        .then((res) => {
+          const UserInfo = res.data.body.data;
+          localStorage.setItem('UserInfo', JSON.stringify(UserInfo));
+          // console.log(JSON.parse(localStorage.UserInfo).email);
+          router.push('/home');
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   }
   return (
     <>

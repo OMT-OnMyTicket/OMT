@@ -20,9 +20,9 @@ export default function Home() {
       <div>
         <Chart />
       </div>
-      <div>
+      {/* <div>
         <MySection />
-      </div>
+      </div> */}
       <div>
         <Section />
       </div>
