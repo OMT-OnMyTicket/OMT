@@ -38,8 +38,7 @@ const Header = () => {
         <div className={styled.conetent}>
           <Link href='/home'>
             <div className={styled.Logo_Content}>
-              <img src='/png/OMT_web.png' className={styled.logo} />
-              <p className={styled.Logo_Content_Txt}>영화의 모든 것</p>
+              <img src='/png/OMT_Home_Logo.png' className={styled.logo} />
             </div>
           </Link>
           <ul className={styled.headerInfo}>

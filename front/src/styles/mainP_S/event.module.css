@@ -48,6 +48,53 @@
   justify-content: center;
   align-items: center;
 }
+.loginBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 400px;
+}
+.loginBox_txt {
+  color: #776e6e;
+  text-align: center;
+}
+.naver,
+.kakao,
+.google {
+  width: 300px;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  border: 1px solid #cfcccc;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.login_Logo {
+  width: 50px;
+  border-radius: 10px;
+  margin-right: 50px;
+}
+.naver {
+  background-color: #6dba24;
+  color: white;
+}
+.kakao {
+  background-color: #f8e52e;
+}
+
+.naver:hover {
+  transform: scale(1.05);
+  transition-duration: 1s;
+}
+.kakao:hover {
+  transform: scale(1.05);
+  transition-duration: 1s;
+}
+.google:hover {
+  transform: scale(1.05);
+  transition-duration: 1s;
+}
 .Box_Layout {
   display: flex;
   position: absolute;

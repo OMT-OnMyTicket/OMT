@@ -21,7 +21,8 @@
   width: 220px;
   height: 350px;
   position: relative;
-  border-radius: 7px;
+  border-radius: 10px;
+  z-index: 1;
 }
 .moviePoster_Layout:hover > .moviePoster {
   transform: scale(1.05);
@@ -31,21 +32,43 @@
 .moviePoster_Layout:hover > .movieContents_Layout {
   display: block;
   transition-duration: 1s;
+  z-index: 3;
 }
-
+.moviePoster_Layout:hover > .moviesTxt2 {
+  display: none;
+}
 .movieTitle {
   font-size: 1.18vw;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   width: 200px;
+  margin-top: 1vw;
   margin-bottom: 1vw;
   font-size: 18px;
   font-weight: bold;
 }
 .moviesTxt2 {
-  font-size: 0.97vw;
-  margin: 20px 0 10px 0;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.09) 35%,
+    rgba(0, 0, 0, 0.85)
+  );
+  width: 220px;
+  height: 350px;
+  display: flex;
+  align-items: flex-end;
+  padding: 0 0 10px 10px;
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  border-radius: 10px;
+  font-weight: 400;
+  font-size: 50px;
+  font-style: italic;
+  color: #fff;
+  line-height: 1em;
 }
 
 .movieContents_Layout {

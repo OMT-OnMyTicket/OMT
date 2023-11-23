@@ -113,7 +113,23 @@ const Event = () => {
           </div>
         </div>
         <div className={styled.User}>
-          <div>로그인 후 이용가능한 페이지입니다.</div>
+          <div className={styled.loginBox}>
+            <p className={styled.loginBox_txt}>
+              로그인 후 이용 가능한 서비스입니다.
+            </p>
+            <div className={styled.naver}>
+              <img src={'/png/네이버.png'} className={styled.login_Logo} />
+              <p>네이버로 로그인하기</p>
+            </div>
+            <div className={styled.kakao}>
+              <img src={'/png/카카오.png'} className={styled.login_Logo} />
+              <p>카카오로 로그인하기</p>
+            </div>
+            <div className={styled.google}>
+              <img src={'/png/구글.png'} className={styled.login_Logo} />
+              <p>구글로 로그인하기</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

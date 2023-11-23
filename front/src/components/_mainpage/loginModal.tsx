@@ -32,11 +32,13 @@ const Modal = ({ setModalOpen }: PropsType) => {
 
     // 이벤트 핸들러 등록
     document.addEventListener('mousedown', handler);
+    document.body.style.overflow = 'hidden'; // 모달 생성시 스크롤 금지
     // document.addEventListener('touchstart', handler); // 모바일 대응
 
     return () => {
       // 이벤트 핸들러 해제
       document.removeEventListener('mousedown', handler);
+      document.body.style.overflow = 'unset'; // 모달 생성시 스크롤 금지
       // document.removeEventListener('touchstart', handler); // 모바일 대응
     };
   });
@@ -63,31 +65,19 @@ const Modal = ({ setModalOpen }: PropsType) => {
     <>
       <div ref={modalRef} className={styled.container}>
         <div className={styled.OauthTxt}>SNS 간편로그인</div>
-        <div className={styled.OauthBtns}>
-          <button className={styled.OauthBtn}>
-            <img
-              src='/png/네이버.png'
-              className={styled.oauth_Logo}
-              onClick={handleNaverLogin}
-            />
-            <p className={styled.LoginTxt}>네이버 로그인</p>
-          </button>
-          <button className={styled.OauthBtn}>
-            <img
-              src='/png/카카오.png'
-              className={styled.oauth_Logo}
-              onClick={handleKakaoLogin}
-            />
-            <p className={styled.LoginTxt}>카카오 로그인</p>
-          </button>
-          <button className={styled.OauthBtn}>
-            <img
-              src='/png/구글.png'
-              className={styled.oauth_Logo}
-              onClick={handleGoogleLogin}
-            />
-            <p className={styled.LoginTxt}>구글 로그인</p>
-          </button>
+        <div className={styled.loginBox}>
+          <div className={styled.naver} onClick={handleNaverLogin}>
+            <img src={'/png/네이버.png'} className={styled.login_Logo} />
+            <p>네이버로 로그인하기</p>
+          </div>
+          <div className={styled.kakao} onClick={handleKakaoLogin}>
+            <img src={'/png/카카오.png'} className={styled.login_Logo} />
+            <p>카카오로 로그인하기</p>
+          </div>
+          <div className={styled.google} onClick={handleGoogleLogin}>
+            <img src={'/png/구글.png'} className={styled.login_Logo} />
+            <p>구글로 로그인하기</p>
+          </div>
         </div>
       </div>
     </>

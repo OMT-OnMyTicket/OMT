@@ -167,7 +167,7 @@ const Chart = () => {
                   </Link>
                   <p className={styled.movieContents}>{movieContents[i]}</p>
                 </div>
-                <div className={styled.moviesTxt2}> {a.rank} 위</div>
+                <div className={styled.moviesTxt2}> {a.rank}.</div>
                 <div className={styled.movieTitle}>{a.movieNm}</div>
               </div>
             );
