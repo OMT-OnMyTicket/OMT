@@ -7,6 +7,7 @@ import Footer from '@/components/_mainpage/footer';
 import MySection from '@/components/_mainpage/mySection';
 import Support from '@/components/support';
 import Section from '@/components/_mainpage/Section';
+import Event from '@/components/_mainpage/event';
 
 export default function Home() {
   return (
@@ -19,6 +20,9 @@ export default function Home() {
       </div>
       <div>
         <Chart />
+      </div>
+      <div>
+        <Event />
       </div>
       {/* <div>
         <MySection />

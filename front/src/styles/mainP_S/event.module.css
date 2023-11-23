@@ -1,0 +1,87 @@
+.Container {
+  border-top: 1px solid #eee;
+  margin-top: 2vw;
+  padding: 3.47vw 8.3vw 4.2vw;
+}
+.Content_Layout {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  padding: 0 3vw;
+  margin-top: 30px;
+}
+.slider_control {
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 42px;
+  z-index: 2;
+}
+.Slider_Layout {
+  width: 700px;
+  height: 400px;
+}
+
+.Slider_Photo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 700px;
+}
+
+.singlePhoto {
+  height: 320px;
+  width: 630px;
+  border-radius: 20px;
+}
+
+.User {
+  width: 32vw;
+  height: 600px;
+  border: 1px solid #cfcccc;
+  background-color: white;
+  position: absolute;
+  right: 0;
+  box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Box_Layout {
+  display: flex;
+  position: absolute;
+  left: 3.5%;
+  bottom: -45%;
+}
+.left_Box {
+  width: 410px;
+  height: 200px;
+  background-color: black;
+  margin-right: 20px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.2);
+}
+.poster {
+  width: 350px;
+  position: relative;
+}
+.poster_Txt {
+  position: absolute;
+  color: white;
+  left: 2%;
+  top: 5%;
+  line-height: 2;
+}
+.right_Box {
+  width: 250px;
+  height: 200px;
+  background-image: url('/png/문화의날.png');
+  border-radius: 20px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.2);
+}

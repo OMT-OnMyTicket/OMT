@@ -46,8 +46,9 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 3.47vw 1.38vw;
+  padding: 12.47vw 1.38vw 3vw;
   border-top: 1px solid #eee;
+  background-color: rgb(247, 70, 70);
 }
 .Comment_Box {
   display: flex;
@@ -56,6 +57,8 @@
   border-radius: 10px;
   padding: 40px;
   margin-bottom: 20px;
+  border: 1px solid #cfcccc;
+  background-color: white;
 }
 .Ticket_Price_Txt {
   line-height: 1.6;
@@ -69,22 +72,32 @@
 .Movie_Price {
   display: flex;
   flex-direction: column;
-  border: 1px solid #eee;
+  border: 1px solid #cfcccc;
+  background-color: white;
   border-radius: 10px;
   padding: 40px;
+  width: 500px;
+}
+.title {
+  margin-bottom: 10px;
 }
 .Movie_Tickets {
-  margin-top: 20px;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .ticket_png {
   width: 150px;
-  margin-right: 20px;
+  margin-right: 50px;
+  cursor: pointer;
 }
 .h3 {
   margin-right: 20px;
 }
 .Notice {
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #cfcccc;
   padding-bottom: 20px;
 }
 .Question {

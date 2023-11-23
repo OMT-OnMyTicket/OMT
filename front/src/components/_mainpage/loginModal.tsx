@@ -1,11 +1,16 @@
 import { useEffect, useRef } from 'react';
 import styled from '../../styles/mainP_S/loginModal.module.css';
+import { useRouter } from 'next/navigation';
 
 interface PropsType {
   setModalOpen: (open: boolean) => void;
 }
 
+const URL = process.env.NEXT_PUBLIC_URL;
+
 const Modal = ({ setModalOpen }: PropsType) => {
+  const router = useRouter();
+
   const closeModal = () => {
     setModalOpen(false);
   };
@@ -36,21 +41,51 @@ const Modal = ({ setModalOpen }: PropsType) => {
     };
   });
 
+  const handleNaverLogin = () => {
+    router.push(
+      `${URL}/oauth2/authorization/naver?redirect_uri=http://localhost:3000/login`
+    );
+  };
+
+  const handleKakaoLogin = () => {
+    router.push(
+      `${URL}/oauth2/authorization/kakao?redirect_uri=http://localhost:3000/login`
+    );
+  };
+
+  const handleGoogleLogin = () => {
+    router.push(
+      `${URL}/oauth2/authorization/google?redirect_uri=http://localhost:3000/login`
+    );
+  };
+
   return (
     <>
       <div ref={modalRef} className={styled.container}>
         <div className={styled.OauthTxt}>SNS 간편로그인</div>
         <div className={styled.OauthBtns}>
           <button className={styled.OauthBtn}>
-            <img src='/png/네이버.png' className={styled.oauth_Logo} />
+            <img
+              src='/png/네이버.png'
+              className={styled.oauth_Logo}
+              onClick={handleNaverLogin}
+            />
             <p className={styled.LoginTxt}>네이버 로그인</p>
           </button>
           <button className={styled.OauthBtn}>
-            <img src='/png/카카오.png' className={styled.oauth_Logo} />
+            <img
+              src='/png/카카오.png'
+              className={styled.oauth_Logo}
+              onClick={handleKakaoLogin}
+            />
             <p className={styled.LoginTxt}>카카오 로그인</p>
           </button>
           <button className={styled.OauthBtn}>
-            <img src='/png/구글.png' className={styled.oauth_Logo} />
+            <img
+              src='/png/구글.png'
+              className={styled.oauth_Logo}
+              onClick={handleGoogleLogin}
+            />
             <p className={styled.LoginTxt}>구글 로그인</p>
           </button>
         </div>

@@ -7,12 +7,19 @@ const Section = () => {
         <div className={styled.Movie_Price}>
           <div>
             <div>
-              <h2>영화 관람권</h2>
-              <p style={{ color: '#bfbbbb' }}>해당 가격은 조조를 포함합니다.</p>
+              <h2 className={styled.title}>영화 관람권</h2>
+              <p style={{ color: '#bfbbbb' }}>
+                티켓 이미지를 클릭하면 상세한 가격 정보를 확인할 수 있습니다.
+              </p>
             </div>
             <div className={styled.Movie_Tickets}>
               <div className={styled.ticket_Info}>
-                <img src='/png/CGV관람권.png' className={styled.ticket_png} />
+                <a
+                  href={'http://www.cgv.co.kr/theaters/theaterPrice.aspx'}
+                  target='_blank'
+                >
+                  <img src='/png/CGV관람권.png' className={styled.ticket_png} />
+                </a>
                 <div className={styled.Ticket_Price_Txt}>
                   <h4>CGV</h4>
                   <p>평일: 10000 ~ 14000원</p>
@@ -20,6 +27,7 @@ const Section = () => {
                 </div>
               </div>
               <div className={styled.ticket_Info}>
+                <a href={''} target='_blank'></a>
                 <img
                   src='/png/메가박스관람권.png'
                   className={styled.ticket_png}
@@ -31,6 +39,7 @@ const Section = () => {
                 </div>
               </div>
               <div className={styled.ticket_Info}>
+                <a href={''} target='_blank'></a>
                 <img
                   src='/png/롯데시네마관람권.png'
                   className={styled.ticket_png}
@@ -42,10 +51,17 @@ const Section = () => {
                 </div>
               </div>
               <div className={styled.ticket_Info}>
-                <img
-                  src='/png/시네큐관람권.png'
-                  className={styled.ticket_png}
-                />
+                <a
+                  href={
+                    'https://www.cineq.co.kr/Theater/Price?TheaterCode=1001'
+                  }
+                  target='_blank'
+                >
+                  <img
+                    src='/png/시네큐관람권.png'
+                    className={styled.ticket_png}
+                  />
+                </a>
                 <div className={styled.Ticket_Price_Txt}>
                   <h4>시네큐</h4>
                   <p>평일: 9000 ~ 13000원</p>
@@ -57,7 +73,7 @@ const Section = () => {
         </div>
         <div>
           <div className={styled.Comment_Box}>
-            <h2>시사회 정보</h2>
+            <h2 className={styled.title}>시사회 정보</h2>
             <p style={{ color: '#bfbbbb' }}>
               아래를 클릭하면 시사회 정보를 얻는 페이지로 이동합니다.
             </p>
