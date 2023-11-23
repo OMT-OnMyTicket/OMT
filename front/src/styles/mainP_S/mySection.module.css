@@ -59,6 +59,7 @@
   margin-bottom: 20px;
   border: 1px solid #cfcccc;
   background-color: white;
+  box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.2);
 }
 .Ticket_Price_Txt {
   line-height: 1.6;
@@ -77,6 +78,7 @@
   border-radius: 10px;
   padding: 40px;
   width: 500px;
+  box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.2);
 }
 .title {
   margin-bottom: 10px;

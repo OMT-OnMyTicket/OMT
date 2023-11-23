@@ -31,7 +31,7 @@
 
 .singlePhoto {
   height: 320px;
-  width: 630px;
+  width: 700px;
   border-radius: 20px;
 }
 
@@ -64,16 +64,26 @@
   justify-content: center;
   align-items: center;
   box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
 }
 .poster {
   width: 350px;
+
   position: relative;
+  cursor: pointer;
+  border-radius: 20px;
 }
+.poster:hover {
+  width: 380px;
+
+  transition-duration: 1s;
+}
+
 .poster_Txt {
   position: absolute;
   color: white;
   left: 2%;
-  top: 5%;
+  top: 15%;
   line-height: 2;
 }
 .right_Box {

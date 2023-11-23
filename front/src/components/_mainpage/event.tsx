@@ -16,13 +16,13 @@ const Event = () => {
     autoplay: true,
     autoplaySpeed: 4000,
     pauseOnHover: true,
-    arrows: true,
+
     variableWidth: true
   };
 
   return (
     <div className={styled.Container}>
-      <h1>혜택</h1>
+      <h1>정보</h1>
       <div className={styled.Content_Layout}>
         <div className={styled.Slider_Layout}>
           <Slider {...settings}>
@@ -95,12 +95,18 @@ const Event = () => {
           </Slider>
           <div className={styled.Box_Layout}>
             <div className={styled.left_Box}>
-              <img
-                src='https://i.ytimg.com/vi/NKWE00yAk5s/maxresdefault.jpg'
-                className={styled.poster}
-              />
+              <a
+                href={'https://www.youtube.com/watch?v=OquYKZLUJmY'}
+                target='_blank'
+              >
+                <img
+                  src='https://i.ytimg.com/vi/OquYKZLUJmY/maxresdefault.jpg'
+                  className={styled.poster}
+                />
+              </a>
               <div className={styled.poster_Txt}>
                 <h3> 개봉예정작</h3>
+                <h5>싱글 인 서울</h5>
                 <h5>11월 29일 대개봉</h5>
               </div>
             </div>

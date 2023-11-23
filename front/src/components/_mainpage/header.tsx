@@ -1,3 +1,4 @@
+'use client';
 import Link from 'next/link';
 import styled from '../../styles/mainP_S/header.module.css';
 import LoginModal from './loginModal';
