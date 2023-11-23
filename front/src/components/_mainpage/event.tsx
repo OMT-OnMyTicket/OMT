@@ -16,7 +16,6 @@ const Event = () => {
     autoplay: true,
     autoplaySpeed: 4000,
     pauseOnHover: true,
-
     variableWidth: true
   };
 

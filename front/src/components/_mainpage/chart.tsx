@@ -155,7 +155,7 @@ const Chart = () => {
                 />
                 <div className={styled.movieContents_Layout}>
                   <p className={styled.Contentes_Title}>{a.movieNm}</p>
-                  <Link href='/ticketing/select'>
+                  <Link href='/ticketing/direct'>
                     <div
                       className={styled.Btn}
                       onClick={() =>

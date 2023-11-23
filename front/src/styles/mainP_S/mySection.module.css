@@ -1,52 +1,8 @@
-.Layout {
-  border-top: 1px solid #eee;
-  margin-top: 2vw;
-  padding: 3.47vw 1.38vw;
-}
-.Title {
-  display: flex;
-  justify-content: space-around;
-  font-size: 1.38vw;
-  margin-bottom: 2vw;
-}
-.Boxes {
-  display: flex;
-  justify-content: space-around;
-  height: 20.8vw;
-}
-
-.LeftBox,
-.RightBox {
-  border-radius: 1.38vw;
-  width: 34.7vw;
-  box-shadow: 0vw 0.5vw 1.66vw rgba(0, 0, 0, 0.12);
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-.poster,
-.UserPhoto {
-  width: 12.5vw;
-  border-radius: 1.38vw;
-  box-shadow: 0vw 0.5vw 1.66vw rgba(0, 0, 0, 0.12);
-}
-.recentTxt,
-.MyTxt {
-  line-height: 3.47vw;
-  font-size: 1.1vw;
-}
-.UserName {
-  display: flex;
-  justify-content: center;
-  font-weight: bold;
-  font-size: 1.1vw;
-}
-
 .Comment_Layout {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 12.47vw 1.38vw 3vw;
+  padding: 12.47vw 5.38vw 3vw;
   border-top: 1px solid #eee;
   background-color: rgb(247, 70, 70);
 }
