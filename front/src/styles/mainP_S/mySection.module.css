@@ -26,6 +26,10 @@
   cursor: pointer;
   margin-top: 20px;
 }
+.ShowPng:hover {
+  transform: scale(1.05);
+  transition-duration: 1s;
+}
 .Movie_Price {
   display: flex;
   flex-direction: column;
@@ -50,6 +54,10 @@
   width: 150px;
   margin-right: 50px;
   cursor: pointer;
+}
+.ticket_png:hover {
+  transform: scale(1.05);
+  transition-duration: 1s;
 }
 .h3 {
   margin-right: 20px;

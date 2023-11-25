@@ -21,6 +21,10 @@
   width: 700px;
   height: 400px;
 }
+.Slider:hover {
+  transform: scale(1.02);
+  transition-duration: 1s;
+}
 
 .Slider_Photo {
   display: flex;
@@ -30,8 +34,8 @@
 }
 
 .singlePhoto {
-  height: 320px;
-  width: 700px;
+  height: 300px;
+  max-width: 700px;
   border-radius: 20px;
 }
 

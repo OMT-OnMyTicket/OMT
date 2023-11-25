@@ -91,6 +91,36 @@ const Event = () => {
                 </div>
               </a>
             </div>
+            <div className={styled.Slider}>
+              <a
+                href={
+                  'https://event.lottecinema.co.kr/NLCHS/Event/EventTemplateInfo?eventId=501010024723036'
+                }
+                target='_blank'
+              >
+                <div className={styled.Slider_Photo}>
+                  <img
+                    src='https://caching.lottecinema.co.kr//Media/Event/630c3dda15864a92b9a6f9c87c136f19.png'
+                    className={styled.singlePhoto}
+                  />
+                </div>
+              </a>
+            </div>
+            <div className={styled.Slider}>
+              <a
+                href={
+                  'http://www.cgv.co.kr/culture-event/event/detailViewUnited.aspx?seq=38924'
+                }
+                target='_blank'
+              >
+                <div className={styled.Slider_Photo}>
+                  <img
+                    src='https://img.cgv.co.kr/WebApp/contents/eventV4/38924/16994915907830.jpg'
+                    className={styled.singlePhoto}
+                  />
+                </div>
+              </a>
+            </div>
           </Slider>
           <div className={styled.Box_Layout}>
             <div className={styled.left_Box}>

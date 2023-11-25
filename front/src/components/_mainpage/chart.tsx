@@ -119,7 +119,7 @@ const Chart = () => {
     slidesToShow: 5,
     slidesToScroll: 5,
     autoplay: true,
-    autoplaySpeed: 8000,
+    autoplaySpeed: 5000,
     responsive: [
       {
         breakpoint: 1024,

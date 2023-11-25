@@ -11,6 +11,8 @@ const DirectTicketing = () => {
     localStorage.setItem('영화관', id);
     if (localStorage.영화) {
       router.push('/ticketing/select');
+    } else {
+      router.push('/ticketing/choice');
     }
   };
 
