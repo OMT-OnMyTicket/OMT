@@ -1,7 +1,13 @@
+'use client';
+
 import styled from '../../styles/ticketingP_S/main.module.css';
 import Link from 'next/link';
 
 const TicketingMain = () => {
+  const handleTicketingWay = (id: string) => {
+    localStorage.setItem('예매방법', id);
+  };
+
   return (
     <>
       <div className={styled.Container}>
@@ -13,7 +19,10 @@ const TicketingMain = () => {
         </div>
 
         <div className={styled.Box_Container}>
-          <div className={styled.Left_Box}>
+          <div
+            className={styled.Left_Box}
+            onClick={() => handleTicketingWay('빠른예매')}
+          >
             <div className={styled.Box_Title}>
               빠른예매
               <img className={styled.arrow} src={'/ticketing_arrow.svg'} />
@@ -26,7 +35,10 @@ const TicketingMain = () => {
             </p>
           </div>
           <Link href='/ticketing/direct'>
-            <div className={styled.Right_Box}>
+            <div
+              className={styled.Right_Box}
+              onClick={() => handleTicketingWay('직접예매')}
+            >
               <div className={styled.Box_Title}>
                 직접예매
                 <img className={styled.arrow} src={'/ticketing_arrow.svg'} />

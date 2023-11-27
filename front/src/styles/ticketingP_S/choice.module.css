@@ -1,11 +1,11 @@
 .Container {
   width: 100%;
   height: 100%;
-  display: grid;
-  grid-template-rows: 1fr 8fr;
-  background-image: url('/Ticketing_Back.png');
+  background-image: url('/png/Ticketing_Back.png');
   padding: 200px 150px 100px 150px;
   background-attachment: fixed;
+  display: grid;
+  grid-template-rows: 1fr 8fr;
 }
 
 .Choice_Title {
@@ -33,14 +33,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 300px;
+  width: 280px;
   height: 400px;
   margin-bottom: 40px;
 }
 .moviePoster_Layout {
   cursor: pointer;
   position: relative;
-  height: 350px;
+  height: 400px;
   width: 220px;
   display: flex;
   justify-content: center;

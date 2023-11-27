@@ -20,18 +20,13 @@ interface MoviePosters {
 }
 
 // 전날 날짜 yyyymmdd 형식으로 추출하기 => targetDt 추출
-function get_date_str(date: any) {
-  var sYear = date.getFullYear();
-  var sMonth = date.getMonth() + 1;
-  var sDate = date.getDate();
 
-  sMonth = sMonth > 9 ? sMonth : '0' + sMonth;
-  sDate = sDate > 9 ? sDate : '0' + sDate;
-  return sYear + sMonth + sDate - 1;
-}
-function get_today() {
-  return get_date_str(new Date());
-}
+let today = new Date();
+let year = today.getFullYear();
+let month = ('0' + (today.getMonth() + 1)).slice(-2);
+let day = ('0' + today.getDate()).slice(-2);
+let dateString = year + month + day;
+let date = Number(dateString) - 1;
 
 const Chart = () => {
   const [movieChart, setMovieChart] = useState<DailyBoxOfficeItem[]>([]);
@@ -44,7 +39,7 @@ const Chart = () => {
       .get(`${URL}`, {
         params: {
           key: `${KEY}`,
-          targetDt: `${get_today()}`
+          targetDt: `${date}`
         }
       })
       .then((res) => {
@@ -56,34 +51,49 @@ const Chart = () => {
             audiAcc: item.audiAcc
           })
         );
-        setMovieChart(extractedData);
 
-        // 영화 postURL 받아오기
-
-        const detailMovieInfo = extractedData.map((movie: any) => {
-          return axios.get(`${KMDB_URL}`, {
-            params: {
-              collection: 'kmdb_new2',
-              detail: 'Y',
-              title: movie.movieNm,
-              ServiceKey: `${KMDB_KEY}`,
-              releaseDts: 2023
-            }
-          });
+        // 영화 포스터 URL 받아오기
+        const detailMovieInfoPromises = extractedData.map((movie: any) => {
+          return axios
+            .get(`${KMDB_URL}`, {
+              params: {
+                collection: 'kmdb_new2',
+                detail: 'Y',
+                title: movie.movieNm,
+                ServiceKey: `${KMDB_KEY}`,
+                releaseDts: 2023
+              }
+            })
+            .then((res) => {
+              const results = res.data.Data[0]?.Result || [];
+              const posters = results.map(
+                (result: any) => result.posters.split('|')[0]
+              );
+              return posters[0] || '/png/preparing.png';
+            })
+            .catch((error) => {
+              console.error('에러 내용', error);
+              return '/png/preparing.png';
+            });
         });
 
-        Promise.all(detailMovieInfo)
-          .then((responses) => {
-            const posters = responses.map((res) => {
-              const posters = res.data.Data[0].Result[0].posters;
-              return posters.split('|')[0];
-            });
+        Promise.all(detailMovieInfoPromises)
+          .then((posters) => {
             setMoviePosters(posters);
+            setMovieChart(extractedData); //  영화 정보 및 포스터 정보가 모두 준비된 후에 상태를 업데이트
           })
-          .catch((error) => console.log(error));
+          .catch((error) => {
+            console.error('에러 내용', error);
+            setMoviePosters([]);
+            setMovieChart([]); // 포스터 정보를 가져오지 못할 경우 빈 배열로
+          });
       })
-      .catch((error) => console.log(error));
-  }, []);
+      .catch((error) => {
+        console.error('에러 내용', error);
+        setMovieChart([]);
+        setMoviePosters([]);
+      });
+  }, []); // 빈 의존성 배열을 사용하여 한 번만 실행되도록 하기
 
   // Slider settings
   const settings = {
@@ -123,7 +133,7 @@ const Chart = () => {
             return (
               <div className={styled.movies} key={a.rank}>
                 <img
-                  src={moviePosters[i] || '/preparing.png'}
+                  src={moviePosters[i] || '/png/preparing.png'}
                   alt='movie poster'
                   className={styled.moviePoster}
                 />
