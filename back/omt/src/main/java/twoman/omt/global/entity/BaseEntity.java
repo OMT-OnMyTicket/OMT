@@ -1,4 +1,4 @@
-package twoman.omt.api.entity;
+package twoman.omt.global.entity;
 
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;

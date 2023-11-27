@@ -1,9 +1,12 @@
 package twoman.omt.api.repository.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import twoman.omt.api.entity.user.User;
 
 public interface UserRepository extends JpaRepository<User,Long> {
-    User findByEmail(String email);
+
+    User findByUserIdentity(String userIdentity);
+    Optional<User> findByUserSeq(Long userSeq);
 }

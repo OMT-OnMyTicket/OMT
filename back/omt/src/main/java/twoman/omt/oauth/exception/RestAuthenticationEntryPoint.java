@@ -25,5 +25,4 @@ public class RestAuthenticationEntryPoint implements AuthenticationEntryPoint {
                 authException.getLocalizedMessage()
         );
     }
-
 }
