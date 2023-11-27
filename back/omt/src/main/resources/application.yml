@@ -81,7 +81,7 @@ app:
     refreshTokenExpiry: 604800000
   oauth2:
     authorizedRedirectUris:
-      - http://localhost:3000
+      - http://localhost:3000/login
 
 logging.level:
   org.hibernate.SQL:  debug
