@@ -58,39 +58,39 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .cors()
+                    .cors()
                 .and()
-                .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                    .sessionManagement()
+                    .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
-                .csrf().disable()
-                .formLogin().disable()
-                .httpBasic().disable()
-                .exceptionHandling()
-                .authenticationEntryPoint(new RestAuthenticationEntryPoint())
-                .accessDeniedHandler(tokenAccessDeniedHandler)
+                    .csrf().disable()
+                    .formLogin().disable()
+                    .httpBasic().disable()
+                    .exceptionHandling()
+                    .authenticationEntryPoint(new RestAuthenticationEntryPoint())
+                    .accessDeniedHandler(tokenAccessDeniedHandler)
                 .and()
-                .authorizeRequests()
-                .requestMatchers(new AntPathRequestMatcher("/api/v1/theaters/**")) // 특정 요청과 일치하는 url애대한 액세스 설정
-                .permitAll() // requetMatchers 설정한 리소스의 접근을 인증 절차 없이 허용
-                .requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
-                .antMatchers("/api/**").hasAnyAuthority(RoleType.USER.getCode())
-                .antMatchers("/api/**/admin/**").hasAnyAuthority(RoleType.ADMIN.getCode())
-                .anyRequest().authenticated()
+                    .authorizeRequests()
+                    .requestMatchers(new AntPathRequestMatcher("/api/v1/theaters/**")) // 특정 요청과 일치하는 url애대한 액세스 설정
+                    .permitAll() // requetMatchers 설정한 리소스의 접근을 인증 절차 없이 허용
+                    .requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
+                    .antMatchers("/api/**").hasAnyAuthority(RoleType.USER.getCode())
+                    .antMatchers("/api/**/admin/**").hasAnyAuthority(RoleType.ADMIN.getCode())
+                    .anyRequest().authenticated()
                 .and()
-                .oauth2Login()
-                .authorizationEndpoint()
-                .baseUri("/oauth2/authorization")
-                .authorizationRequestRepository(oAuth2AuthorizationRequestBasedOnCookieRepository())
+                    .oauth2Login()
+                    .authorizationEndpoint()
+                    .baseUri("/oauth2/authorization")
+                    .authorizationRequestRepository(oAuth2AuthorizationRequestBasedOnCookieRepository())
                 .and()
-                .redirectionEndpoint()
-                .baseUri("/*/oauth2/code/*")
+                    .redirectionEndpoint()
+                    .baseUri("/*/oauth2/code/*")
+                    .and()
+                    .userInfoEndpoint()
+                    .userService(oAuth2UserService)
                 .and()
-                .userInfoEndpoint()
-                .userService(oAuth2UserService)
-                .and()
-                .successHandler(oAuth2AuthenticationSuccessHandler())
-                .failureHandler(oAuth2AuthenticationFailureHandler());
+                    .successHandler(oAuth2AuthenticationSuccessHandler())
+                    .failureHandler(oAuth2AuthenticationFailureHandler());
 
         http.addFilterBefore(tokenAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
     }

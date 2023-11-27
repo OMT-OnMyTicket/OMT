@@ -3,6 +3,7 @@ package twoman.omt.api.entity;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import twoman.omt.global.entity.BaseEntity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -11,7 +12,7 @@ import javax.validation.constraints.Size;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Theater extends BaseEntity{
+public class Theater extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "theater_id")

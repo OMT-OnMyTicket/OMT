@@ -22,7 +22,7 @@ import java.util.Map;
 @AllArgsConstructor
 @RequiredArgsConstructor
 public class UserPrincipal implements OAuth2User, UserDetails , OidcUser {
-    private final String userId;
+    private final String userIdentity;
     private final String password;
     private final ProviderType providerType;
     private final RoleType roleType;
@@ -38,13 +38,19 @@ public class UserPrincipal implements OAuth2User, UserDetails , OidcUser {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return authorities;
     }
+
+    @Override
+    public String getPassword() {
+        return null;
+    }
+
     @Override
     public String getName(){
-        return userId;
+        return userIdentity;
     }
     @Override
     public String getUsername() {
-        return userId;
+        return userIdentity;
     }
     @Override
     public boolean isAccountNonExpired() {
@@ -82,8 +88,8 @@ public class UserPrincipal implements OAuth2User, UserDetails , OidcUser {
 
     public static UserPrincipal create(User user){
         return new UserPrincipal(
-                user.getEmail(),
-                null,
+                user.getUserIdentity(),
+                user.getPassword(),
                 user.getProviderType(),
                 RoleType.USER,
                 Collections.singletonList(new SimpleGrantedAuthority(RoleType.USER.getCode()))
