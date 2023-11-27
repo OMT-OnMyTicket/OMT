@@ -2,103 +2,101 @@ import React, { useState, useEffect } from 'react';
 import styled from '../../styles/ticketingP_S/select.module.css';
 import { useRouter } from 'next/navigation';
 
-const Select_Sit = () => {
+interface ReservationInfo {
+  outSeat?: number;
+}
+
+const Select_Sit: React.FC = () => {
   const router = useRouter();
-  const numRows = 8;
-  const numColumns = 13;
-  const totalSeats = numRows * numColumns;
-  const [selectedSeats, setSelectedSeats] = useState<boolean[][]>(
-    Array(numRows)
-      .fill(false)
-      .map(() => Array(numColumns).fill(false))
-  );
+  const numRows: number = 8;
+  const numColumns: number = 13;
 
   const [selectedSeatLabels, setSelectedSeatLabels] = useState<string[]>([]);
-  const [availableSeats, setAvailableSeats] = useState<number>(totalSeats);
-  const selectedCount = selectedSeatLabels.length;
-  const maxSelectedSeats = Number(localStorage.인원수);
-
-  // localStorage에서 예매정보를 가져옵니다.
-  const reservationInfoString = localStorage.getItem('예매정보');
-
-  // reservationInfoString이 존재하면 JSON 형식으로 파싱하여 객체로 변환합니다.
-  // 존재하지 않으면 기본값으로 빈 객체를 사용합니다.
-  const reservationInfo = reservationInfoString
-    ? JSON.parse(reservationInfoString)
-    : {};
-
-  const reservedSeatsFromLocalStorage = reservationInfo.outSeat || 0;
-
   const [reservedSeats, setReservedSeats] = useState<string[]>([]);
 
+  const selectedCount: number = selectedSeatLabels.length;
+
   useEffect(() => {
-    setAvailableSeats(maxSelectedSeats - selectedCount);
+    const reservationInfo: ReservationInfo = JSON.parse(
+      localStorage.getItem('예매정보') || '{}'
+    );
+    const outSeat: number = 104 - Number(reservationInfo.outSeat) || 0;
 
-    // 랜덤으로 reservedSeatsFromLocalStorage 수만큼 좌석을 선택하여 검은색으로 설정
-    const randomlyReservedSeats: string[] = [];
-    while (randomlyReservedSeats.length < reservedSeatsFromLocalStorage) {
-      const randomRow = Math.floor(Math.random() * numRows);
-      const randomCol = Math.floor(Math.random() * numColumns);
-      const seatLabel = String.fromCharCode(65 + randomRow) + (randomCol + 1);
-      // 이미 선택되지 않은 좌석만 선택하도록 확인
-      if (!randomlyReservedSeats.includes(seatLabel)) {
-        randomlyReservedSeats.push(seatLabel);
-      }
+    // Generate a list of all seat labels
+    const allSeatLabels: string[] = Array.from(
+      { length: numRows * numColumns },
+      (_, index) =>
+        String.fromCharCode(65 + Math.floor(index / numColumns)) +
+        ((index % numColumns) + 1)
+    );
+
+    // Shuffle the array of all seat labels
+    const shuffledSeatLabels = shuffleArray(allSeatLabels);
+
+    // Select the first "outSeat" labels as reserved seats
+    const reservedSeatLabels: string[] = shuffledSeatLabels.slice(0, outSeat);
+
+    setReservedSeats(reservedSeatLabels);
+  }, []);
+
+  // Function to shuffle an array using Fisher-Yates algorithm
+  const shuffleArray = (array: any[]) => {
+    let currentIndex = array.length,
+      randomIndex;
+
+    while (currentIndex !== 0) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex],
+        array[currentIndex]
+      ];
     }
-    setReservedSeats(randomlyReservedSeats);
-    setSelectedSeats((prevSelectedSeats) => {
-      const newSelectedSeats = prevSelectedSeats.map((row) => [...row]);
-      for (const seat of randomlyReservedSeats) {
-        const row = seat.charCodeAt(0) - 65;
-        const col = parseInt(seat.slice(1)) - 1;
-        newSelectedSeats[row][col] = true;
-      }
-      return newSelectedSeats;
-    });
-  }, [reservedSeatsFromLocalStorage]);
 
-  const toggleSeat = (row: number, col: number) => {
-    if (availableSeats > 0 || selectedSeats[row][col]) {
-      setSelectedSeats((prevSelectedSeats) => {
-        const newSelectedSeats = [...prevSelectedSeats];
-        newSelectedSeats[row][col] = !newSelectedSeats[row][col];
-        return newSelectedSeats;
-      });
-
-      const seatLabel = String.fromCharCode(65 + row) + (col + 1);
-      setSelectedSeatLabels((prevSelectedSeatLabels) => {
-        if (prevSelectedSeatLabels.includes(seatLabel)) {
-          return prevSelectedSeatLabels.filter((label) => label !== seatLabel);
-        } else {
-          return [...prevSelectedSeatLabels, seatLabel];
-        }
-      });
-    }
+    return array;
   };
 
   const renderSeatGrid = () => {
-    const seatGrid = [];
+    const seatGrid: JSX.Element[] = [];
+
+    const handleSeatClick = (seatLabel: string) => {
+      if (reservedSeats.includes(seatLabel)) {
+        alert('이 좌석은 이미 선택된 좌석입니다.');
+        return;
+      }
+
+      if (selectedSeatLabels.includes(seatLabel)) {
+        setSelectedSeatLabels((prevSelected) =>
+          prevSelected.filter((label) => label !== seatLabel)
+        );
+      } else {
+        if (selectedCount >= Number(localStorage.인원수)) {
+          alert('선택 가능 인원을 초과했습니다.');
+          return;
+        }
+        setSelectedSeatLabels((prevSelected) => [...prevSelected, seatLabel]);
+      }
+    };
 
     for (let row = 0; row < numRows; row++) {
-      const rowSeats = [];
+      const rowSeats: JSX.Element[] = [];
 
       for (let col = 0; col < numColumns; col++) {
-        const seatLabel = String.fromCharCode(65 + row) + (col + 1);
-        const isSeatSelected = selectedSeats[row][col];
+        const seatLabel: string = String.fromCharCode(65 + row) + (col + 1);
 
         rowSeats.push(
           <div
             key={col}
             className={`${styled.Seat} ${
-              isSeatSelected ? styled.Selected : styled.Unselected
-            }`}
-            onClick={() => toggleSeat(row, col)}
+              selectedSeatLabels.includes(seatLabel) && styled.userSelect
+            } ${reservedSeats.includes(seatLabel) && styled.Selected}`}
+            onClick={() => handleSeatClick(seatLabel)}
           >
             {seatLabel}
           </div>
         );
       }
-
       seatGrid.push(
         <div key={row} className={styled.SeatRow}>
           {rowSeats}
@@ -109,12 +107,14 @@ const Select_Sit = () => {
     return seatGrid;
   };
 
-  const allSelectedSeat = selectedSeatLabels.join(', ');
+  const allSelectedSeat: string = selectedSeatLabels.join(', ');
 
   // 다음단계 버튼
   const handleNextBtn = (id: string) => {
     if (selectedCount < localStorage.인원수) {
-      alert(`${availableSeats}명의 좌석을 추가로 선택해주세요`);
+      alert(
+        `${localStorage.인원수 - selectedCount}명의 좌석을 추가로 선택해주세요`
+      );
 
       return;
     } else if (selectedCount > localStorage.인원수) {
@@ -153,7 +153,7 @@ const Select_Sit = () => {
           className={styled.NextBtn}
           onClick={() => handleNextBtn(allSelectedSeat)}
         >
-          다음단계
+          다음으로
         </div>
       </div>
     </>

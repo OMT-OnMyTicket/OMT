@@ -299,6 +299,7 @@
   justify-content: space-around;
   align-items: center;
 }
+
 .Info_Txt {
   color: white;
   display: flex;
@@ -342,6 +343,10 @@
   color: gray;
   pointer-events: none;
   border: 1px solid red;
+}
+.userSelect {
+  background-color: white;
+  color: black;
 }
 .Unselected {
   background-color: initial;
