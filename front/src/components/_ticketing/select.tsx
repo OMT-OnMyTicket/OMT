@@ -59,12 +59,17 @@ const SelectTheater = () => {
 
     if (selectPage === 2) {
       localStorage.setItem('인원수', id);
-      if (
-        localStorage.getItem('예매정보') === null ||
-        localStorage.getItem('예매정보') === undefined
-      ) {
-        alert('시간을 선택하세요');
-        return; // 시간을 선택되지 않은 경우 다음 페이지로 넘어가지 않음
+      const reservationTime = localStorage.getItem('예매정보');
+      const reservationDate = localStorage.getItem('예매날짜');
+
+      if (!reservationTime) {
+        alert('시간을 선택하세요 ');
+        return; // If no time is selected, do not proceed to the next page
+      }
+
+      if (!reservationDate) {
+        alert('날짜를 선택하세요 ');
+        return; // If no date is selected, do not proceed to the next page
       }
     }
     if (selectPage < 3) {

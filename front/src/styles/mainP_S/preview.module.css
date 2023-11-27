@@ -46,8 +46,9 @@
   -webkit-box-orient: vertical;
 }
 .Ticketing {
-  display: inline-flex;
   position: absolute;
+  display: flex;
+  justify-content: center;
   align-items: center;
   top: 27vw;
   left: 8vw;
@@ -57,12 +58,12 @@
   color: white;
   border-radius: 0.7vw;
   height: 2.4vw;
-  width: 9.9vw;
+  width: 8vw;
   cursor: pointer;
 }
 .Ticketing:hover {
   background-color: red;
-  padding-left: 3.4vw;
+  transform: scale(1.05);
   transition-duration: 1s;
 }
 .TicketingTxt {
@@ -96,9 +97,6 @@
     top: 42vw;
     left: 8vw;
     height: 4.4vw;
-    width: 15.9vw;
-  }
-  .Ticketing:hover {
-    padding-left: 4.4vw;
+    width: 12.9vw;
   }
 }
