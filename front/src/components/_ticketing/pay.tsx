@@ -14,6 +14,8 @@ const Pay = () => {
   const [ChoicedSeat, setChoicedSeat] = useState('');
   const [Theater, setTheater] = useState('');
   const [Poster, setPoster] = useState('');
+  const [Date, setDate] = useState('');
+  const [Time, setTime] = useState('');
 
   useEffect(() => {
     const storedMovieTitle = localStorage.getItem('영화');
@@ -21,6 +23,11 @@ const Pay = () => {
     const storedChoicedSeat = localStorage.getItem('선택좌석');
     const storedTheater = localStorage.getItem('장소');
     const storedPoster = localStorage.getItem('포스터URL');
+    const storedDate = localStorage.getItem('예매날짜');
+    const storedInformation = localStorage.getItem('예매정보');
+    const storedTime = storedInformation
+      ? JSON.parse(storedInformation).time
+      : null;
 
     if (storedMovieTitle) {
       setMovieTitle(storedMovieTitle);
@@ -37,13 +44,17 @@ const Pay = () => {
     if (storedTheater) {
       setTheater(storedTheater);
     }
-
+    if (storedDate) {
+      setDate(storedDate);
+    }
     if (storedPoster) {
       setPoster(storedPoster);
     }
+    if (storedTime) {
+      setTime(storedTime);
+    }
   }, []);
 
-  // 테스트
   return (
     <div className={styled.Container}>
       <div className={styled.Top}>
@@ -58,6 +69,8 @@ const Pay = () => {
           <InfoTicket
             MovieTitle={MovieTitle}
             Theater={Theater}
+            Date={Date}
+            Time={Time}
             Users={Users}
             ChoicedSeat={ChoicedSeat}
             posterURL={Poster}

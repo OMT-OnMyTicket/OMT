@@ -7,6 +7,11 @@
 }
 .Time_Boxes {
   display: flex;
+  flex-wrap: wrap;
+  overflow: auto;
+  height: 500px;
+  justify-content: center;
+  align-items: center;
 }
 .Time_Box {
   display: flex;
@@ -14,11 +19,41 @@
   margin: 10px;
   border: 1px solid #f0f0f0;
   border-radius: 10px;
-  width: 120px;
-  height: 80px;
+  width: 160px;
+  height: 100px;
+  cursor: pointer;
 }
+.Time_Box:hover > .Seat {
+  background-color: #f15b3a;
+  color: white;
+  transition-duration: 1s;
+}
+.Time_Box:hover {
+  border: 1px solid black;
+  transition-duration: 1s;
+}
+.Time_Box:hover > .Seat > .Out_Seat {
+  color: black;
+  transition-duration: 1s;
+}
+.Selected_Time_Box > .Seat {
+  background-color: #f15b3a;
+  color: white;
+}
+
+.Selected_Time_Box > .Seat {
+  background-color: #f15b3a;
+  color: white;
+}
+.Selected_Time_Box {
+  border: 1px solid black;
+}
+.Selected_Time_Box > .Seat > .Out_Seat {
+  color: black;
+}
+
 .Time {
-  height: 40px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -28,10 +63,9 @@
 .Seat {
   display: flex;
   justify-content: center;
-  height: 40px;
-  padding-top: 10px;
+  height: 50px;
   background-color: #ecdddd;
-  text-align: center;
+  align-items: center;
   border-radius: 0 0 10px 10px;
 }
 .Out_Seat {

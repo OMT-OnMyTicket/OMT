@@ -1,0 +1,83 @@
+.container {
+  position: fixed;
+  width: 350px;
+  height: 350px;
+  top: 10;
+  right: 0;
+  background: linear-gradient(
+      180deg,
+      #ffffff 23.77%,
+      rgba(189, 189, 189, 0.595663) 90.89%,
+      rgba(92, 92, 92, 0) 108.47%
+    ),
+    #ffffff;
+  box-shadow: 20px 20px 4px rgba(0, 0, 0, 0.25);
+  margin: 1.38vw;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0 0 10px 10px;
+  padding: 20px;
+}
+
+/* Rectangle 54 */
+
+.OauthTxt {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  color: rgb(106, 98, 98);
+  border-bottom: 1px solid gray;
+  padding-bottom: 20px;
+}
+
+.loginBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 400px;
+}
+
+.naver,
+.kakao,
+.google {
+  width: 280px;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  border: 1px solid #cfcccc;
+  padding: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.login_Logo {
+  width: 40px;
+  border-radius: 10px;
+  margin-right: 50px;
+}
+.naver {
+  background-color: #6dba24;
+  color: white;
+}
+.kakao {
+  background-color: #f8e52e;
+}
+.google {
+  background-color: white;
+}
+
+.naver:hover {
+  transform: scale(1.05);
+  transition-duration: 1s;
+}
+.kakao:hover {
+  transform: scale(1.05);
+  transition-duration: 1s;
+}
+.google:hover {
+  transform: scale(1.05);
+  transition-duration: 1s;
+}

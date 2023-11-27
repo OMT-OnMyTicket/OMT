@@ -12,6 +12,8 @@
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 
+const OAuthURL = process.env.NEXT_PUBLIC_URL;
+
 const OAuth2 = () => {
   const router = useRouter();
 
@@ -24,10 +26,7 @@ const OAuth2 = () => {
     );
     const accessToken: string | null = urlSearchParams.get('token');
 
-    const OAuthURL = process.env.NEXT_PUBLIC_URL;
-
     if (accessToken) {
-      localStorage.setItem('accessToken', accessToken);
       axios
         .get(`${OAuthURL}/api/v1/users`, {
           headers: {
@@ -35,16 +34,16 @@ const OAuth2 = () => {
           }
         })
         .then((res) => {
-          const UserInfo = res.data.body.data;
-          localStorage.setItem('UserInfo', JSON.stringify(UserInfo));
-          // console.log(JSON.parse(localStorage.UserInfo).email);
-          router.push('/home');
+          // const UserInfo = res.data.body.data;
+          // localStorage.setItem('UserInfo', JSON.stringify(UserInfo));
+          // // console.log(JSON.parse(localStorage.UserInfo).email);
+          // router.push('/home');
+          console.log(res);
         })
         .catch((error) => {
           console.log(error);
         });
     }
-    console.log('hello');
   }
   return (
     <>

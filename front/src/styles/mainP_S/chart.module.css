@@ -1,31 +1,116 @@
 .contents {
-  padding: 3.47vw 8.3vw 4.2vw;
+  padding: 3.47vw 8.3vw 2vw;
 }
-
+.movieSlider {
+  margin-top: 3vw;
+}
 .chartTitle {
   display: flex;
   font-size: 1.38vw;
 }
 
-.moviePoster {
-  width: 11.83vw;
-  height: 16.6vw;
-  background-color: white;
-  border-radius: 0.7vw;
-  margin-bottom: 1.38vw;
+.moviePoster_Layout {
+  cursor: pointer;
+  position: relative;
+  height: 400px;
+  width: 220px;
+  display: flex;
+  justify-content: center;
 }
-
-.movieSlider {
-  margin-left: 0.7vw;
+.moviePoster {
+  width: 220px;
+  height: 350px;
+  position: relative;
+  border-radius: 10px;
+  z-index: 1;
+}
+.moviePoster_Layout:hover > .moviePoster {
+  transform: scale(1.05);
+  transition-duration: 1s;
+  filter: brightness(23%);
+}
+.moviePoster_Layout:hover > .movieContents_Layout {
+  display: block;
+  transition-duration: 1s;
+  z-index: 3;
+}
+.moviePoster_Layout:hover > .moviesTxt2 {
+  display: none;
 }
 .movieTitle {
   font-size: 1.18vw;
-  display: flex;
-  width: 12.5vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 200px;
+  margin-top: 1vw;
   margin-bottom: 1vw;
+  font-size: 18px;
+  font-weight: bold;
 }
 .moviesTxt2 {
-  font-size: 0.97vw;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.09) 35%,
+    rgba(0, 0, 0, 0.85)
+  );
+  width: 220px;
+  height: 350px;
+  display: flex;
+  align-items: flex-end;
+  padding: 0 0 10px 10px;
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  border-radius: 10px;
+  font-weight: 400;
+  font-size: 50px;
+  font-style: italic;
+  color: #fff;
+  line-height: 1em;
+}
+
+.movieContents_Layout {
+  position: absolute;
+  width: 200px;
+  height: 340px;
+  display: none;
+  top: 0;
+  left: 5%;
+}
+
+.movieContents {
+  width: 200px;
+  height: 150px;
+  overflow-y: auto;
+  color: white;
+  position: absolute;
+  line-height: 1.5;
+}
+
+.Contentes_Title {
+  font-size: 24px;
+  color: white;
+  margin-top: 30px;
+  font-weight: bold;
+}
+
+.Btn {
+  background-color: white;
+  border-radius: 20px;
+  width: 80px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+  align-items: center;
+}
+.Btn:hover {
+  background-color: #f15b3a;
+  color: white;
+  transition-duration: 1s;
+  font-weight: bold;
 }
 
 @media screen and (max-width: 600px) {
