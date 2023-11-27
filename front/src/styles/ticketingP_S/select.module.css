@@ -156,6 +156,8 @@
   color: white;
   font-weight: bold;
   margin-bottom: 20px;
+  width: 240px;
+  text-align: center;
 }
 .Selected_Movie {
   width: 280px;

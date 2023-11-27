@@ -60,6 +60,8 @@
   font-size: 18px;
   font-weight: bold;
   color: white;
+  text-align: center;
+  width: 170px;
 }
 .Txt_Conetent {
   line-height: 1.5;

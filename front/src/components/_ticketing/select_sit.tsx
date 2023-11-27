@@ -17,6 +17,7 @@ const Select_Sit: React.FC = () => {
   const selectedCount: number = selectedSeatLabels.length;
 
   useEffect(() => {
+    // 선택 불가 좌석 랜덤 setting
     const reservationInfo: ReservationInfo = JSON.parse(
       localStorage.getItem('예매정보') || '{}'
     );
@@ -29,17 +30,13 @@ const Select_Sit: React.FC = () => {
         String.fromCharCode(65 + Math.floor(index / numColumns)) +
         ((index % numColumns) + 1)
     );
-
-    // Shuffle the array of all seat labels
     const shuffledSeatLabels = shuffleArray(allSeatLabels);
 
-    // Select the first "outSeat" labels as reserved seats
     const reservedSeatLabels: string[] = shuffledSeatLabels.slice(0, outSeat);
 
     setReservedSeats(reservedSeatLabels);
   }, []);
 
-  // Function to shuffle an array using Fisher-Yates algorithm
   const shuffleArray = (array: any[]) => {
     let currentIndex = array.length,
       randomIndex;
