@@ -19,12 +19,13 @@ import static twoman.omt.oauth.repository.OAuth2AuthorizationRequestBasedOnCooki
 
 @Component
 @RequiredArgsConstructor
-public class OAuth2AuthenticationFailureHandler  extends SimpleUrlAuthenticationFailureHandler {
+public class OAuth2AuthenticationFailureHandler extends SimpleUrlAuthenticationFailureHandler {
+
     private final OAuth2AuthorizationRequestBasedOnCookieRepository authorizationRequestRepository;
 
     @Override
-    public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException{
-        String targetUrl = CookieUtil.getCookie(request,REDIRECT_URI_PARAM_COOKIE_NAME)
+    public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
+        String targetUrl = CookieUtil.getCookie(request, REDIRECT_URI_PARAM_COOKIE_NAME)
                 .map(Cookie::getValue)
                 .orElse(("/"));
 
@@ -34,8 +35,8 @@ public class OAuth2AuthenticationFailureHandler  extends SimpleUrlAuthentication
                 .queryParam("error", exception.getLocalizedMessage())
                 .build().toUriString();
 
-        authorizationRequestRepository.removeAuthorizationRequestCookies(request,response);
+        authorizationRequestRepository.removeAuthorizationRequestCookies(request, response);
 
-        getRedirectStrategy().sendRedirect(request,response,targetUrl);
+        getRedirectStrategy().sendRedirect(request, response, targetUrl);
     }
 }

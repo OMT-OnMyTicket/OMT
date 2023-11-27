@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 @Component
 @RequiredArgsConstructor
 public class TokenAccessDeniedHandler implements AccessDeniedHandler {
+
     private final HandlerExceptionResolver handlerExceptionResolver;
 
     @Override
@@ -22,5 +23,4 @@ public class TokenAccessDeniedHandler implements AccessDeniedHandler {
         //response.sendError(HttpServletResponse.SC_FORBIDDEN, accessDeniedException.getMessage());
         handlerExceptionResolver.resolveException(request, response, null, accessDeniedException);
     }
-
 }

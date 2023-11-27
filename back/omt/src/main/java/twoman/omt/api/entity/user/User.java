@@ -2,7 +2,7 @@ package twoman.omt.api.entity.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
-import twoman.omt.api.entity.BaseEntity;
+import twoman.omt.global.entity.BaseEntity;
 import twoman.omt.oauth.entity.ProviderType;
 import twoman.omt.oauth.entity.RoleType;
 
@@ -17,17 +17,27 @@ public class User extends BaseEntity {
     @Id
     @JsonIgnore
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id")
-    private Long id;
+    private Long userSeq;
 
-    @Column(length = 30)
+    @Column(length = 64, unique = true)
     @NotNull
-    @Size(max = 30)
-    private String nickname;
+    @Size(max = 64)
+    private String userIdentity;
+
+    @Column(length = 100)
+    @NotNull
+    @Size(max = 100)
+    private String username;
+
+    @JsonIgnore
+    @Column(length = 128, nullable = false)
+    private String password;
+
     @Column(length = 512, unique = true)
     @NotNull
     @Size(max = 512)
     private String email;
+
 
     @Column(length = 1)
     @NotNull
@@ -35,6 +45,7 @@ public class User extends BaseEntity {
     private String emailVerifiedYn;
 
     @Column(length = 512)
+    @NotNull
     @Size(max = 512)
     private String profileImageUrl;
 
@@ -49,14 +60,18 @@ public class User extends BaseEntity {
     private RoleType roleType;
 
     public User(
-            @NotNull @Size(max = 100) String nickname,
+            @NotNull @Size(max = 64) String userIdentity
+            ,
+            @NotNull @Size(max = 100) String username,
             @NotNull @Size(max = 512) String email,
             @NotNull @Size(max = 1) String emailVerifiedYn,
             @NotNull @Size(max = 512) String profileImageUrl,
             @NotNull ProviderType providerType,
             @NotNull RoleType roleType
     ) {
-        this.nickname = nickname;
+        this.userIdentity = userIdentity;
+        this.username = username;
+        this.password = "NO_PASS";
         this.email = email !=null ? email : "NO_EMAIL";
         this.emailVerifiedYn = emailVerifiedYn;
         this.profileImageUrl = profileImageUrl != null ? profileImageUrl : "";
@@ -64,11 +79,15 @@ public class User extends BaseEntity {
         this.roleType =roleType;
     }
 
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
+    public void setUsername(String nickname) {
+        this.username = nickname;
     }
 
     public void setProfileImageUrl(String profileImageUrl) {
         this.profileImageUrl = profileImageUrl;
+    }
+
+    public String getRoleCode(){
+        return this.roleType.getCode();
     }
 }

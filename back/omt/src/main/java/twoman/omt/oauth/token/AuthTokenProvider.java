@@ -22,15 +22,16 @@ import java.util.stream.Collectors;
 
 @Slf4j
 public class AuthTokenProvider {
+
     private final Key key;
     private static final String AUTHORITIES_KEY = "role";
 
-    public AuthTokenProvider(String secret){
+    public AuthTokenProvider(String secret) {
         this.key = Keys.hmacShaKeyFor(secret.getBytes());
     }
 
-    public AuthToken createAuthToken(String id, Date expiry){
-        return new AuthToken(id,expiry,key);
+    public AuthToken createAuthToken(String id, Date expiry) {
+        return new AuthToken(id, expiry, key);
     }
 
     public AuthToken createAuthToken(String id, String role, Date expiry) {
@@ -43,7 +44,7 @@ public class AuthTokenProvider {
 
     public Authentication getAuthentication(AuthToken authToken) {
 
-        if (authToken.validate()) {
+        if(authToken.validate()) {
 
             Claims claims = authToken.getTokenClaims();
             Collection<? extends GrantedAuthority> authorities =
@@ -54,11 +55,9 @@ public class AuthTokenProvider {
             log.debug("claims subject := [{}]", claims.getSubject());
             User principal = new User(claims.getSubject(), "", authorities);
 
-
             return new UsernamePasswordAuthenticationToken(principal, authToken, authorities);
         } else {
             throw new TokenValidFailedException();
         }
     }
-
 }

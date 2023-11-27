@@ -21,7 +21,7 @@ public class UserRefreshToken {
     @Column(length = 64, unique = true,nullable = false)
     @NotNull
     @Size(max = 64)
-    private String userId;
+    private String userIdentity;
 
     @Column(length = 256)
     @NotNull
@@ -29,10 +29,10 @@ public class UserRefreshToken {
     private String refreshToken;
 
     public UserRefreshToken(
-            @NotNull @Size(max =64 ) String userId,
+            @NotNull @Size(max =64 ) String userIdentity,
             @NotNull @Size(max = 256) String refreshToken
     ) {
-        this.userId = userId;
+        this.userIdentity = userIdentity;
         this.refreshToken = refreshToken;
     }
 
