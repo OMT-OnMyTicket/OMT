@@ -12,7 +12,7 @@ import javax.validation.constraints.Size;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Theater extends BaseEntity {
+public class Theater{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "theater_id")
