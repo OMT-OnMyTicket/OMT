@@ -1,6 +1,6 @@
 // InfoTicket.tsx
 import React from 'react';
-import styled from '../styles/ticket.module.css';
+import styled from '../../styles/ticket.module.css';
 
 interface InfoTicketProps {
   MovieTitle: string | null;

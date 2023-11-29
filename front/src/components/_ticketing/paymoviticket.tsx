@@ -1,4 +1,4 @@
-import styled from '../styles/ticket.module.css';
+import styled from '../../styles/ticket.module.css';
 import React from 'react';
 interface MovieTicketProps {
   posterURL: string;
