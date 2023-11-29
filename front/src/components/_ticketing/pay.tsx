@@ -1,8 +1,8 @@
 'use client';
 
 import styled from '../../styles/ticketingP_S/pay.module.css';
-import MovieTicket from '../movieticket';
-import InfoTicket from '../infoTicket';
+import MovieTicket from '../Movieticket';
+import InfoTicket from '../InfoTicket';
 import Payment from './payment';
 import PageCheck from '../pageCheck';
 import { useEffect, useState } from 'react';
