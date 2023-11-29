@@ -1,7 +1,10 @@
+@import url('https://static.toss.im/tps/main.css');
+@import url('https://static.toss.im/tps/others.css');
+
 *,
 *:before,
 *:after {
-  font-family: 'pretendard' !important;
+  font-family: 'Toss Product Sans' !important;
   box-sizing: border-box;
   border: none;
   list-style: none;

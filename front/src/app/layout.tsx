@@ -12,21 +12,22 @@ export const metadata = {
     icon: '/png/OMT_web.png'
   }
 };
-
-export default function RootLayout({
-  children
-}: {
+type Props = {
   children: React.ReactNode;
-}) {
-  return (
-    <html lang='en'>
-      <Head>
-        <link rel='icon' href='/favicon.ico' />
-        <title>{metadata.title}</title>
-        <meta name='description' content={metadata.description} />
-      </Head>
-      <GotoTop />
-      <body className={inter.className}>{children}</body>
-    </html>
-  );
+};
+
+export default function RootLayout({ children }: Props) {
+  {
+    return (
+      <html lang='en'>
+        <Head>
+          <link rel='icon' href='/favicon.ico' />
+          <title>{metadata.title}</title>
+          <meta name='description' content={metadata.description} />
+        </Head>
+        <GotoTop />
+        <body className={inter.className}>{children}</body>
+      </html>
+    );
+  }
 }

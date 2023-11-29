@@ -1,0 +1,148 @@
+.Container {
+  border-top: 1px solid #eee;
+  margin-top: 2vw;
+  padding: 3.47vw 8.3vw 4.2vw;
+}
+.Content_Layout {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  padding: 0 3vw;
+  margin-top: 30px;
+}
+.slider_control {
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 42px;
+  z-index: 2;
+}
+.Slider_Layout {
+  width: 700px;
+  height: 400px;
+}
+.Slider:hover {
+  transform: scale(1.02);
+  transition-duration: 1s;
+}
+
+.Slider_Photo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 700px;
+}
+
+.singlePhoto {
+  height: 300px;
+  max-width: 700px;
+  border-radius: 20px;
+}
+
+.User {
+  width: 32vw;
+  height: 600px;
+  border: 1px solid #cfcccc;
+  background-color: white;
+  position: absolute;
+  right: 0;
+  box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loginBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 400px;
+}
+.loginBox_txt {
+  color: #776e6e;
+  text-align: center;
+}
+.naver,
+.kakao,
+.google {
+  width: 300px;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  border: 1px solid #cfcccc;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.login_Logo {
+  width: 50px;
+  border-radius: 10px;
+  margin-right: 50px;
+}
+.naver {
+  background-color: #6dba24;
+  color: white;
+}
+.kakao {
+  background-color: #f8e52e;
+}
+
+.naver:hover {
+  transform: scale(1.05);
+  transition-duration: 1s;
+}
+.kakao:hover {
+  transform: scale(1.05);
+  transition-duration: 1s;
+}
+.google:hover {
+  transform: scale(1.05);
+  transition-duration: 1s;
+}
+.Box_Layout {
+  display: flex;
+  position: absolute;
+  left: 3.5%;
+  bottom: -45%;
+}
+.left_Box {
+  width: 410px;
+  height: 200px;
+  background-color: black;
+  margin-right: 20px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+.poster {
+  width: 350px;
+
+  position: relative;
+  cursor: pointer;
+  border-radius: 20px;
+}
+.poster:hover {
+  width: 380px;
+
+  transition-duration: 1s;
+}
+
+.poster_Txt {
+  position: absolute;
+  color: white;
+  left: 2%;
+  top: 15%;
+  line-height: 2;
+}
+.right_Box {
+  width: 250px;
+  height: 200px;
+  background-image: url('/png/문화의날.png');
+  border-radius: 20px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.2);
+}

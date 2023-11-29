@@ -60,8 +60,7 @@ public class User extends BaseEntity {
     private RoleType roleType;
 
     public User(
-            @NotNull @Size(max = 64) String userIdentity
-            ,
+            @NotNull @Size(max = 64) String userIdentity,
             @NotNull @Size(max = 100) String username,
             @NotNull @Size(max = 512) String email,
             @NotNull @Size(max = 1) String emailVerifiedYn,
@@ -89,5 +88,9 @@ public class User extends BaseEntity {
 
     public String getRoleCode(){
         return this.roleType.getCode();
+    }
+
+    public void setPassword(String pass) {
+        this.password = pass;
     }
 }

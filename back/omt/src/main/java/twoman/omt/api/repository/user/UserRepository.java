@@ -11,4 +11,5 @@ public interface UserRepository extends JpaRepository<User,Long> {
 
     User findByUserIdentity(String userIdentity);
     Optional<User> findByUserSeq(Long userSeq);
+
 }

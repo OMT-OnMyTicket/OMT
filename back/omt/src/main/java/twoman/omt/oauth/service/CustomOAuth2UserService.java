@@ -8,6 +8,7 @@ import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import twoman.omt.api.entity.user.User;
 import twoman.omt.api.repository.user.UserRepository;
 import twoman.omt.oauth.entity.ProviderType;
@@ -18,8 +19,8 @@ import twoman.omt.oauth.info.OAuth2UserInfo;
 import twoman.omt.oauth.info.OAuth2UserInfoFactory;
 
 import java.time.LocalDateTime;
-
 @Service
+@Transactional
 @RequiredArgsConstructor
 public class CustomOAuth2UserService extends DefaultOAuth2UserService {
 
@@ -59,6 +60,7 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
 
         return UserPrincipal.create(savedUser, user.getAttributes());
     }
+
 
     private User createUser(OAuth2UserInfo userInfo, ProviderType providerType) {
         LocalDateTime now = LocalDateTime.now();

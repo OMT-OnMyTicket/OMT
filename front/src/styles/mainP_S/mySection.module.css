@@ -1,45 +1,85 @@
-.Layout {
-  border-top: 1px solid #eee;
-  margin-top: 2vw;
-  padding: 3.47vw 1.38vw;
-}
-.Title {
-  display: flex;
-  justify-content: space-around;
-  font-size: 1.38vw;
-}
-.Boxes {
-  display: flex;
-  justify-content: space-around;
-  height: 20.8vw;
-}
-
-.LeftBox,
-.RightBox {
-  border-radius: 1.38vw;
-  width: 34.7vw;
-  box-shadow: 0vw 0.5vw 1.66vw rgba(0, 0, 0, 0.12);
+.Comment_Layout {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  padding: 12.47vw 5.38vw 3vw;
+  border-top: 1px solid #eee;
+  background-color: rgb(247, 70, 70);
 }
-.poster,
-.UserPhoto {
-  width: 12.5vw;
-  border-radius: 1.38vw;
-  box-shadow: 0vw 0.5vw 1.66vw rgba(0, 0, 0, 0.12);
-}
-.recentTxt,
-.MyTxt {
-  line-height: 3.47vw;
-  font-size: 1.1vw;
-}
-.UserName {
+.Comment_Box {
   display: flex;
-  justify-content: center;
-  font-weight: bold;
-  font-size: 1.1vw;
+  flex-direction: column;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 40px;
+  margin-bottom: 20px;
+  border: 1px solid #cfcccc;
+  background-color: white;
+  box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.2);
 }
+.Ticket_Price_Txt {
+  line-height: 1.6;
+}
+.ShowPng {
+  width: 550px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+.ShowPng:hover {
+  transform: scale(1.05);
+  transition-duration: 1s;
+}
+.Movie_Price {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #cfcccc;
+  background-color: white;
+  border-radius: 10px;
+  padding: 40px;
+  width: 500px;
+  box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.2);
+}
+.title {
+  margin-bottom: 10px;
+}
+.Movie_Tickets {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.ticket_png {
+  width: 150px;
+  margin-right: 50px;
+  cursor: pointer;
+}
+.ticket_png:hover {
+  transform: scale(1.05);
+  transition-duration: 1s;
+}
+.h3 {
+  margin-right: 20px;
+}
+.Notice {
+  border-bottom: 1px solid #cfcccc;
+  padding-bottom: 20px;
+}
+.Question {
+  padding-top: 20px;
+}
+.Notice,
+.Question {
+  display: flex;
+}
+
+.ticket_Info {
+  display: flex;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
 @media screen and (max-width: 600px) {
   .Layout {
     height: 90vw;

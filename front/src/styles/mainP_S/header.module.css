@@ -9,17 +9,13 @@
 }
 
 .logo {
-  width: 10vw;
+  width: 15vw;
   height: 6vw;
 }
 .Logo_Content {
   display: flex;
 }
-.Logo_Content_Txt {
-  display: flex;
 
-  align-items: flex-end;
-}
 .conetent {
   display: flex;
   justify-content: space-between;
@@ -116,4 +112,10 @@
 .movieTitle_search:hover {
   background-color: #eee;
   border-radius: 5px;
+}
+
+.Login {
+  font-size: 18px;
+  margin-left: 20px;
+  cursor: pointer;
 }
