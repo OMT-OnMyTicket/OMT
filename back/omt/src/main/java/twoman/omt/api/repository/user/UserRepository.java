@@ -5,8 +5,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import twoman.omt.api.entity.user.User;
 
-import java.util.Optional;
-
 public interface UserRepository extends JpaRepository<User,Long> {
 
     User findByUserIdentity(String userIdentity);

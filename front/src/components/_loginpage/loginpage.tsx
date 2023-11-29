@@ -17,14 +17,11 @@ const Loginpage = () => {
       <div className={styled.login_Layout}>
         <div className={styled.login_Back}>
           <div>
-            <div
-              className={styled.login_Txt}
-              data-aos='fade-up'
-              data-aos-duration='2000'
-            >
+            <div className={styled.Txt_Layout}>
               <p className={styled.login_Txt1}>LOGIN</p>
               <p className={styled.login_Txt2}>소셜 로그인으로 간편하게.</p>
             </div>
+
             <div
               className={styled.OauthBox}
               data-aos='fade-up'
@@ -34,7 +31,7 @@ const Loginpage = () => {
             </div>
           </div>
           <div className={styled.Character_Position}>
-            <img className={styled.Character} src='/캐릭터.png' />
+            <img className={styled.Character} src='/png/캐릭터.png' />
           </div>
         </div>
       </div>

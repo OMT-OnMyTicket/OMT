@@ -25,7 +25,18 @@ jobs:
       with:
         java-version: '11'
         distribution: 'temurin'
-
+    - name: DATASOURCE_URL
+      env:
+        DATASOURCE_URL: ${{secrets.DATASOURCE_URL}}
+      run: echo $DATASOURCE_URL
+    - name: DATASOURCE_USERNAME
+      env:
+        DATASOURCE_USERNAME: ${{secrets.DATASOURCE_USERNAME}}
+      run: echo $DATASOURCE_USERNAME
+    - name: DATASOURCE_PASSWORD
+      env:
+        DATASOURCE_PASSWORD: ${{secrets.DATASOURCE_PASSWORD}}
+      run: echo $DATASOURCE_PASSWORD
     - name: GOOGLE_CLIENT_ID
       env: 
         GOOGLE_CLIENT_ID: ${{secrets.GOOGLE_CLIENT_ID}}

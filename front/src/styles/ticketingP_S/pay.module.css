@@ -1,0 +1,73 @@
+.Container {
+  width: 100%;
+  background-attachment: fixed;
+  padding: 150px 150px 100px 150px;
+  background: linear-gradient(
+      254.01deg,
+      rgba(0, 0, 0, 0) 31.07%,
+      rgba(0, 0, 0, 0) 31.07%,
+      #000000 49.48%
+    ),
+    url('/png/Ticketing_Back.png');
+}
+
+.Top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Boxes {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px 0 20px 0;
+}
+.Pay_Coment {
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
+  line-height: 1.4;
+  margin-bottom: 20px;
+}
+.Ticket_Container {
+  display: flex;
+}
+.Payment_Title {
+  font-size: 20px;
+  font-weight: bold;
+  padding-left: 23px;
+}
+.Charge {
+  font-size: 20px;
+  font-weight: bold;
+  margin-right: 30px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.Payment {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 500px;
+  padding: 50px 0 50px 0;
+  border-radius: 10px;
+  background-color: white;
+}
+.Btn_Layout {
+  display: flex;
+  justify-content: center;
+}
+
+.Pay_Btn {
+  cursor: pointer;
+  width: 200px;
+  height: 40px;
+  border-radius: 10px;
+}
+.Pay_Btn:hover {
+  background-color: #53a2ff;
+  transition-duration: 1s;
+  color: white;
+  font-weight: bold;
+}

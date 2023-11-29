@@ -1,0 +1,43 @@
+.Time_Layout {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.Time_Boxes {
+  display: flex;
+}
+.Time_Box {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  border: 1px solid #f0f0f0;
+  border-radius: 10px;
+  width: 120px;
+  height: 80px;
+}
+.Time {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: bold;
+}
+.Seat {
+  display: flex;
+  justify-content: center;
+  height: 40px;
+  padding-top: 10px;
+  background-color: #ecdddd;
+  text-align: center;
+  border-radius: 0 0 10px 10px;
+}
+.Out_Seat {
+  color: green;
+  font-weight: bold;
+}
+.Seat_Slash {
+  margin: 0 5px 0 5px;
+}
