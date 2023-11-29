@@ -119,7 +119,6 @@
 }
 .poster {
   width: 350px;
-
   position: relative;
   cursor: pointer;
   border-radius: 20px;
@@ -145,4 +144,54 @@
   background-repeat: no-repeat;
   background-size: cover;
   box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.2);
+}
+.AferLogin {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+}
+.AferLogin_User {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+}
+.UserProfile {
+  width: 130px;
+  height: 130px;
+  border-radius: 10px;
+}
+.UserName {
+  display: flex;
+}
+.UserBox {
+  width: 200px;
+  height: 180px;
+  box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  border: 1px solid #cfcccc;
+  display: flex;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.recent_Movie_Box {
+  display: flex;
+}
+
+.recent_Movie {
+  background-color: #6dba24;
+  border-radius: 10px;
+  width: 210px;
+  height: 280px;
+  box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.2);
+  margin: 0 10px;
+}
+.recent_Movie_bar {
+  width: 100%;
+  padding-left: 20px;
+  display: flex;
 }

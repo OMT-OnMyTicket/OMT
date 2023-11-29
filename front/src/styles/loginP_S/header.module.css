@@ -5,6 +5,7 @@
   right: 0;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin: 0 auto;
   border-bottom: 1px solid #ddd;
   padding: 30px 80px;
@@ -18,4 +19,18 @@
 .Login,
 .Home {
   cursor: pointer;
+}
+
+.User {
+  display: flex;
+}
+.UserProfile {
+  width: 2vw;
+  border-radius: 5px;
+}
+.UserName {
+  font-size: 14px;
+  display: flex;
+  align-items: flex-end;
+  margin-left: 10px;
 }

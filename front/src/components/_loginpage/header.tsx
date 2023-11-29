@@ -6,14 +6,28 @@ import { useRouter } from 'next/navigation';
 
 const Header = () => {
   const [loginClicked, setLoginClicked] = useState(false);
+  const [UserProfile, setUserProfile] = useState<string | null>(null);
+  const [UserName, setUserName] = useState<string | null>(null);
   const router = useRouter();
 
   const handleHome = () => {
+    const userInfo = localStorage.getItem('UserInfo');
     localStorage.clear();
+    if (userInfo) {
+      localStorage.setItem('UserInfo', userInfo);
+    }
     router.push('/home');
   };
 
   useEffect(() => {
+    const storedUserInfo = localStorage.getItem('UserInfo');
+
+    if (storedUserInfo) {
+      const userInfo = JSON.parse(storedUserInfo);
+      setUserName(userInfo.userName);
+      setUserProfile(userInfo.imageUrl);
+    }
+
     const handleScroll = () => {
       const header = document.getElementById('header');
 
@@ -48,9 +62,21 @@ const Header = () => {
         <div className={styled.Home} onClick={handleHome}>
           Home
         </div>
-        <div className={styled.Login} onClick={handleLoginClick}>
-          Login
-        </div>
+        {UserName ? (
+          <>
+            <li className={styled.User}>
+              <img
+                src={UserProfile ? `${UserProfile}` : '/userProfile.svg'}
+                className={styled.UserProfile}
+              />
+              <div className={styled.UserName}>{UserName} 님</div>
+            </li>
+          </>
+        ) : (
+          <div className={styled.Login} onClick={handleLoginClick}>
+            Login
+          </div>
+        )}
       </div>
     </>
   );
