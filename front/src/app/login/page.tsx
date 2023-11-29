@@ -34,11 +34,12 @@ const OAuth2 = () => {
           }
         })
         .then((res) => {
-          // const UserInfo = res.data.body.data;
-          // localStorage.setItem('UserInfo', JSON.stringify(UserInfo));
-          // // console.log(JSON.parse(localStorage.UserInfo).email);
-          // router.push('/home');
-          console.log(res);
+          const UserInfo = res.data.body.user;
+          localStorage.setItem('UserInfo', JSON.stringify(UserInfo));
+          // console.log(JSON.parse(localStorage.UserInfo).userName); // 유저명
+          // console.log(JSON.parse(localStorage.UserInfo).imageUrl); // 프로필사진
+          router.push('/home');
+          // console.log(UserInfo);
         })
         .catch((error) => {
           console.log(error);
