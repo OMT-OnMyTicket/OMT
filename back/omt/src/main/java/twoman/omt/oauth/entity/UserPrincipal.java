@@ -1,9 +1,6 @@
 package twoman.omt.oauth.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -19,56 +16,45 @@ import java.util.Map;
 
 @Getter
 @Setter
+@NoArgsConstructor
 @AllArgsConstructor
-@RequiredArgsConstructor
-public class UserPrincipal implements OAuth2User, UserDetails , OidcUser {
-    private final String userIdentity;
-    private final String password;
-    private final ProviderType providerType;
-    private final RoleType roleType;
-    private final Collection<GrantedAuthority> authorities;
+public class UserPrincipal implements UserDetails, OAuth2User, OidcUser {
+    private User user;
+    private Collection<? extends GrantedAuthority> authorities;
     private Map<String, Object> attributes;
 
-    @Override
-    public Map<String, Object> getAttributes() {
-        return attributes;
+    public UserPrincipal(User user, Collection<? extends GrantedAuthority> authorities) {
+        this.user = user;
+        this.authorities = authorities;
+    }
+
+    public static UserPrincipal create(User user) {
+        return new UserPrincipal(
+                user,
+                Collections.singletonList(new SimpleGrantedAuthority(RoleType.USER.getCode()))
+        );
+    }
+
+    public static UserPrincipal create(User user, Map<String, Object> attributes) {
+        UserPrincipal userPrincipal = UserPrincipal.create(user);
+        userPrincipal.setAttributes(attributes);
+
+        return userPrincipal;
     }
 
     @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return authorities;
+    public String getName() {
+        return user.getUsername();
+    }
+
+    @Override
+    public String getUsername() {
+        return user.getUserIdentity();
     }
 
     @Override
     public String getPassword() {
-        return null;
-    }
-
-    @Override
-    public String getName(){
-        return userIdentity;
-    }
-    @Override
-    public String getUsername() {
-        return userIdentity;
-    }
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
+        return user.getPassword();
     }
 
     @Override
@@ -86,20 +72,37 @@ public class UserPrincipal implements OAuth2User, UserDetails , OidcUser {
         return null;
     }
 
-    public static UserPrincipal create(User user){
-        return new UserPrincipal(
-                user.getUserIdentity(),
-                user.getPassword(),
-                user.getProviderType(),
-                RoleType.USER,
-                Collections.singletonList(new SimpleGrantedAuthority(RoleType.USER.getCode()))
-        );
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
     }
 
-    public static UserPrincipal create(User user, Map<String,Object> attributes){
-        UserPrincipal userPrincipal = create(user);
-        userPrincipal.setAttributes(attributes);
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
 
-        return userPrincipal;
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
+    @Override
+    public Map<String, Object> getAttributes() {
+        return attributes;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return authorities;
+    }
+
+    public void setAttributes(Map<String, Object> attributes) {
+        this.attributes = attributes;
     }
 }
