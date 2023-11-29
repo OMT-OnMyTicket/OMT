@@ -8,6 +8,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import twoman.omt.api.entity.auth.AuthReqModel;
+import twoman.omt.api.entity.user.User;
 import twoman.omt.api.entity.user.UserRefreshToken;
 import twoman.omt.api.repository.user.UserRefreshTokenRepository;
 import twoman.omt.common.ApiResponse;
@@ -22,6 +23,7 @@ import twoman.omt.utils.HeaderUtil;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 import java.util.Date;
 
 @RestController
@@ -41,22 +43,24 @@ public class AuthController {
     public ApiResponse login(
             HttpServletRequest request,
             HttpServletResponse response,
-            @RequestBody AuthReqModel authReqModel
+            @Valid @RequestBody AuthReqModel authReqModel
     ) {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
-                        authReqModel.getId(),
+                        authReqModel.getIdentity(),
                         authReqModel.getPassword()
                 )
         );
 
-        String userId = authReqModel.getId();
+        UserPrincipal userPrincipal = (UserPrincipal) authentication.getPrincipal();
+        User user = userPrincipal.getUser();
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
+        String id = user.getUserIdentity();
         Date now = new Date();
         AuthToken accessToken = tokenProvider.createAuthToken(
-                userId,
-                ((UserPrincipal) authentication.getPrincipal()).getRoleType().getCode(),
+                id,
+                ((UserPrincipal) authentication.getPrincipal()).getUser().getRoleType().getCode(),
                 new Date(now.getTime() + appProperties.getAuth().getTokenExpiry())
         );
 
@@ -66,11 +70,11 @@ public class AuthController {
                 new Date(now.getTime() + refreshTokenExpiry)
         );
 
-        // userId refresh token 으로 DB 확인
-        UserRefreshToken userRefreshToken = userRefreshTokenRepository.findByUserIdentity(userId);
+        // userIdentity refresh token 으로 DB 확인
+        UserRefreshToken userRefreshToken = userRefreshTokenRepository.findByUserIdentity(id);
         if (userRefreshToken == null) {
             // 없는 경우 새로 등록
-            userRefreshToken = new UserRefreshToken(userId, refreshToken.getToken());
+            userRefreshToken = new UserRefreshToken(id, refreshToken.getToken());
             userRefreshTokenRepository.saveAndFlush(userRefreshToken);
         } else {
             // DB에 refresh 토큰 업데이트
