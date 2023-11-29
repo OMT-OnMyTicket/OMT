@@ -34,6 +34,7 @@
 .User {
   font-size: 1.1vw;
 }
+
 .Textarea {
   width: 280px;
   resize: none;
@@ -60,12 +61,18 @@
 }
 .UserProfile {
   width: 4.17vw;
+  border-radius: 5px;
 }
 .UserName {
   margin-top: 10px;
-  font-size: 14px;
+  font-size: 16px;
   display: flex;
-  justify-content: center;
+  align-items: flex-end;
+
+  margin-left: 10px;
+}
+.User {
+  display: flex;
 }
 
 @media screen and (max-width: 600px) {
