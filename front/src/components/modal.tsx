@@ -1,19 +1,19 @@
 import { useEffect, useRef } from 'react';
 import styled from '../styles/support.module.css';
+import { useRouter } from 'next/navigation';
 
 interface PropsType {
   setModalOpen: (open: boolean) => void;
 }
 
 const Modal = ({ setModalOpen }: PropsType) => {
-  const closeModal = () => {
-    setModalOpen(false);
-  };
-  // 모달 외부 클릭시 끄기 기능
+  const router = useRouter();
+
+  // Turn off function when clicking outside the modal
   const modalRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // 이벤트 핸들러 함수
+    // event handler function
     const handler = (event?: MouseEvent) => {
       if (event) {
         if (
@@ -25,26 +25,41 @@ const Modal = ({ setModalOpen }: PropsType) => {
       }
     };
 
-    // 이벤트 핸들러 등록
+    // Register event handler
     document.addEventListener('mousedown', handler);
-    // document.addEventListener('touchstart', handler); // 모바일 대응
+    // document.addEventListener('touchstart', handler); // Mobile response
 
     return () => {
-      // 이벤트 핸들러 해제
+      // Release event handler
       document.removeEventListener('mousedown', handler);
-      // document.removeEventListener('touchstart', handler); // 모바일 대응
+      // document.removeEventListener('touchstart', handler); // Mobile response
     };
   });
+
+  const handleLogOut = () => {
+    localStorage.clear();
+    router.push('/');
+  };
+  const handleLogin = () => {
+    router.push('/');
+  };
+
+  const isLogIn = !!localStorage.getItem('UserInfo');
 
   return (
     <>
       <div ref={modalRef} className={styled.container}>
-        {/* <button className={styled.close} onClick={closeModal}>
-          X
-        </button> */}
-        <button className={styled.Ticketing}>예매하기</button>
+        <button className={styled.Ticketing}>Book</button>
         <button className={styled.MyTicket}>MyTicket</button>
-        <button className={styled.Logout}>LogOut</button>
+        {isLogIn ? (
+          <button className={styled.Logout} onClick={handleLogOut}>
+            Logout
+          </button>
+        ) : (
+          <button className={styled.Logout} onClick={handleLogin}>
+            Login
+          </button>
+        )}
       </div>
     </>
   );
