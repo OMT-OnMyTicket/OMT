@@ -13,7 +13,7 @@ interface InfoTicketProps {
   showCircles: boolean; // 새로운 prop 추가
 }
 
-const InfoTicket: React.FC<InfoTicketProps> = ({
+const PayInfoTicket: React.FC<InfoTicketProps> = ({
   MovieTitle,
   Theater,
   Users,
@@ -64,4 +64,4 @@ const InfoTicket: React.FC<InfoTicketProps> = ({
   );
 };
 
-export default InfoTicket;
+export default PayInfoTicket;

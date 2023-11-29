@@ -1,8 +1,8 @@
 'use client';
 
 import styled from '../../styles/ticketingP_S/pay.module.css';
-import MovieTicket from '../Movieticket';
-import InfoTicket from '../InfoTicket';
+import PayMovieTicket from './paymoviticket';
+import PayInfoTicket from './payInfoticket';
 import Payment from './payment';
 import PageCheck from '../pageCheck';
 import { useEffect, useState } from 'react';
@@ -65,8 +65,8 @@ const Pay = () => {
       </div>
       <div className={styled.Boxes}>
         <div className={styled.Ticket_Container}>
-          <MovieTicket posterURL={Poster} showCircles={true} />
-          <InfoTicket
+          <PayMovieTicket posterURL={Poster} showCircles={true} />
+          <PayInfoTicket
             MovieTitle={MovieTitle}
             Theater={Theater}
             Date={Date}

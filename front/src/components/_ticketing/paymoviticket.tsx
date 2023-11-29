@@ -5,7 +5,7 @@ interface MovieTicketProps {
   showCircles: boolean;
 }
 
-const MovieTicket: React.FC<MovieTicketProps> = ({
+const PayMovieTicket: React.FC<MovieTicketProps> = ({
   posterURL,
   showCircles
 }) => {
@@ -30,4 +30,4 @@ const MovieTicket: React.FC<MovieTicketProps> = ({
   );
 };
 
-export default MovieTicket;
+export default PayMovieTicket;
