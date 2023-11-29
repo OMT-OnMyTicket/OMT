@@ -49,18 +49,31 @@ const SelectTheater = () => {
       if (
         localStorage.getItem('장소') === null ||
         localStorage.getItem('장소') === undefined
+        // setSelectedRegion === null ||
+        // setSelectedRegion === undefined
       ) {
         alert('장소를 선택하세요');
         return; // 장소가 선택되지 않은 경우 다음 페이지로 넘어가지 않음
       }
     }
 
-    if (selectPage < 3) {
-      setSelectPage(selectPage + 1);
-    }
-
     if (selectPage === 2) {
       localStorage.setItem('인원수', id);
+      const reservationTime = localStorage.getItem('예매정보');
+      const reservationDate = localStorage.getItem('예매날짜');
+
+      if (!reservationTime) {
+        alert('시간을 선택하세요 ');
+        return; // If no time is selected, do not proceed to the next page
+      }
+
+      if (!reservationDate) {
+        alert('날짜를 선택하세요 ');
+        return; // If no date is selected, do not proceed to the next page
+      }
+    }
+    if (selectPage < 3) {
+      setSelectPage(selectPage + 1);
     }
   };
 

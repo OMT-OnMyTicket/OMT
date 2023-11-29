@@ -14,6 +14,8 @@
   z-index: 1;
   background-color: white;
 }
-.Login {
+
+.Login,
+.Home {
   cursor: pointer;
 }
