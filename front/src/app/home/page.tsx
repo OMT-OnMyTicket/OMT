@@ -5,7 +5,7 @@ import Preview from '@/components/_mainpage/preview';
 import Chart from '@/components/_mainpage/chart';
 import Footer from '@/components/_mainpage/footer';
 import Support from '@/components/support';
-import Section from '@/components/_mainpage/section';
+import Price from '@/components/_mainpage/price';
 import Event from '@/components/_mainpage/event';
 
 export default function Home() {
@@ -24,7 +24,7 @@ export default function Home() {
         <Event />
       </div>
       <div>
-        <Section />
+        <Price />
       </div>
       <div>
         <Support />

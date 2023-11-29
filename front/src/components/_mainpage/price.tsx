@@ -1,6 +1,6 @@
 import styled from '../../styles/mainP_S/mySection.module.css';
 
-const Section = () => {
+const Price = () => {
   return (
     <>
       <div className={styled.Comment_Layout}>
@@ -99,4 +99,4 @@ const Section = () => {
   );
 };
 
-export default Section;
+export default Price;
