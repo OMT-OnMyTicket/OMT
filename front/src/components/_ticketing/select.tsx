@@ -96,17 +96,13 @@ const SelectTheater = () => {
       backgroundImage: '/png/CGV_세로.png',
       logoImage: '/png/CGV.png'
     },
-    메가박스: {
+    MEGABOX: {
       backgroundImage: '/png/메가박스_세로.png',
       logoImage: '/png/메가박스.png'
     },
-    롯데시네마: {
+    LOTTE: {
       backgroundImage: '/png/롯데시네마_세로.png',
       logoImage: '/png/롯데시네마.png'
-    },
-    씨네큐: {
-      backgroundImage: '/png/씨네큐_세로.png',
-      logoImage: '/png/씨네큐.png'
     }
   };
 

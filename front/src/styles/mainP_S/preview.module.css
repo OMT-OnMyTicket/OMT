@@ -45,36 +45,8 @@
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 }
-.Ticketing {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  top: 27vw;
-  left: 8vw;
-  z-index: 4;
-  background-color: black;
-  border: none;
-  color: white;
-  border-radius: 0.7vw;
-  height: 2.4vw;
-  width: 8vw;
-  cursor: pointer;
-}
-.Ticketing:hover {
-  background-color: red;
-  transform: scale(1.05);
-  transition-duration: 1s;
-}
-.TicketingTxt {
-  font-size: 1.4vw;
-  font-weight: bold;
-}
 
 @media screen and (max-width: 600px) {
-  .Ticketing {
-    width: 11.9vw;
-  }
   .allContents {
     height: 60.7vw;
   }
@@ -92,11 +64,5 @@
     left: 8.3vw;
     font-size: 2.4vw;
     line-height: 2.45em;
-  }
-  .Ticketing {
-    top: 42vw;
-    left: 8vw;
-    height: 4.4vw;
-    width: 12.9vw;
   }
 }

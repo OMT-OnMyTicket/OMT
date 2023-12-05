@@ -17,11 +17,6 @@ const preview = () => {
           1979.12.12 그날 밤 <br />
           철저하게 감춰진 9시간
         </span>
-        <Link href='/ticketing'>
-          <button className={styled.Ticketing}>
-            <p className={styled.TicketingTxt}>예매하기</p>
-          </button>
-        </Link>
       </div>
     </div>
   );
