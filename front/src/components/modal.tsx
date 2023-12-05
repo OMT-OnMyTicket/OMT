@@ -43,18 +43,25 @@ const Modal = ({ setModalOpen }: PropsType) => {
   const handleLogin = () => {
     router.push('/');
   };
+  const handleTicketing = () => {
+    router.push('/ticketing');
+  };
 
   const isLogIn = !!localStorage.getItem('UserInfo');
 
   return (
     <>
       <div ref={modalRef} className={styled.container}>
-        <button className={styled.Ticketing}>Book</button>
-        <button className={styled.MyTicket}>MyTicket</button>
+        <button className={styled.Ticketing} onClick={handleTicketing}>
+          예매하기
+        </button>
         {isLogIn ? (
-          <button className={styled.Logout} onClick={handleLogOut}>
-            Logout
-          </button>
+          <>
+            <button className={styled.Logout} onClick={handleLogOut}>
+              Logout
+            </button>
+            <button className={styled.MyTicket}>MyTicket</button>
+          </>
         ) : (
           <button className={styled.Logout} onClick={handleLogin}>
             Login
