@@ -45,7 +45,7 @@ const DirectTicketing = () => {
 
         <div
           className={styled.Theater_Box2}
-          onClick={() => handleTheaterChoice('메가박스')}
+          onClick={() => handleTheaterChoice('MEGABOX')}
         >
           <div className={styled.Theater_special}>
             <div>Dolby</div>
@@ -62,7 +62,7 @@ const DirectTicketing = () => {
 
         <div
           className={styled.Theater_Box3}
-          onClick={() => handleTheaterChoice('롯데시네마')}
+          onClick={() => handleTheaterChoice('LOTTE')}
         >
           <div className={styled.Theater_special}>
             <div>S PLEX</div>
@@ -72,22 +72,6 @@ const DirectTicketing = () => {
           <img src='/png/롯데시네마.png' className={styled.Theater_Logo} />
           <div className={styled.Theater_Title}>
             롯데시네마에서 관람하기
-            <img src='/directarrow.svg' className={styled.arrow} />
-          </div>
-        </div>
-
-        <div
-          className={styled.Theater_Box4}
-          onClick={() => handleTheaterChoice('씨네큐')}
-        >
-          <div className={styled.Theater_special}>
-            <div>RESERVE</div>
-            <div>&</div>
-            <div>SUITE</div>
-          </div>
-          <img className={styled.Theater_Logo} src='/png/씨네큐.png' />
-          <div className={styled.Theater_Title}>
-            시네큐에서 관람하기
             <img src='/directarrow.svg' className={styled.arrow} />
           </div>
         </div>
