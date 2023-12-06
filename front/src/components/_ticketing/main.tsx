@@ -19,21 +19,24 @@ const TicketingMain = () => {
         </div>
 
         <div className={styled.Box_Container}>
-          <div
-            className={styled.Left_Box}
-            onClick={() => handleTicketingWay('빠른예매')}
-          >
-            <div className={styled.Box_Title}>
-              빠른예매
-              <img className={styled.arrow} src={'/ticketing_arrow.svg'} />
+          <Link href='/ticketing/choice'>
+            <div
+              className={styled.Left_Box}
+              onClick={() => handleTicketingWay('빠른예매')}
+            >
+              <div className={styled.Box_Title}>
+                빠른예매
+                <img className={styled.arrow} src={'/ticketing_arrow.svg'} />
+              </div>
+              <p className={styled.Box_Txt}>
+                가장 가까운 시간과
+                <br />
+                가장자리 좌석이 <br />
+                자동으로 선택되어 <br />
+                빠르고 간편하게 예매가 가능합니다.
+              </p>
             </div>
-            <p className={styled.Box_Txt}>
-              자주가는 극장과 결제수단이
-              <br />
-              등록되어 있다면 <br />
-              빠르고 간편하게 예매가 가능합니다.
-            </p>
-          </div>
+          </Link>
           <Link href='/ticketing/direct'>
             <div
               className={styled.Right_Box}
@@ -46,7 +49,7 @@ const TicketingMain = () => {
               <p className={styled.Box_Txt}>
                 일반적인 예매방식과
                 <br />
-                비슷하게 <br />
+                마찬가지로 <br />
                 모든 것을 선택할 수 있습니다.
               </p>
             </div>

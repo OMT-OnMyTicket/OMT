@@ -23,6 +23,7 @@ export default function RootLayout({ children }: Props) {
         <Head>
           <link rel='icon' href='/favicon.ico' />
           <title>{metadata.title}</title>
+
           <meta name='description' content={metadata.description} />
         </Head>
         <GotoTop />

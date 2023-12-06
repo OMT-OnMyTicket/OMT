@@ -15,7 +15,6 @@ const Header = () => {
 
   useEffect(() => {
     const storedUserInfo = localStorage.getItem('UserInfo');
-    console.log('Stored UserInfo:', storedUserInfo);
 
     if (storedUserInfo) {
       const userInfo = JSON.parse(storedUserInfo);

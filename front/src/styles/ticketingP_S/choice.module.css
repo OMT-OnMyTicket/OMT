@@ -1,28 +1,3 @@
-.Container {
-  width: 100%;
-  height: 100%;
-  background-image: url('/png/Ticketing_Back.png');
-  padding: 200px 150px 100px 150px;
-  background-attachment: fixed;
-  display: grid;
-  grid-template-rows: 1fr 8fr;
-}
-
-.Choice_Title {
-  font-size: 38px;
-  color: white;
-  font-weight: bold;
-}
-.PageCheck_Layout {
-  display: flex;
-  justify-content: space-between;
-}
-.Choice_Txt {
-  font-size: 28px;
-  font-weight: bold;
-  color: white;
-  margin: 40px 0;
-}
 .Movie_Container {
   display: flex;
   flex-wrap: wrap;
