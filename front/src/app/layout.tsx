@@ -26,6 +26,7 @@ export default function RootLayout({ children }: Props) {
 
           <meta name='description' content={metadata.description} />
         </Head>
+
         <GotoTop />
         <body className={inter.className}>{children}</body>
       </html>

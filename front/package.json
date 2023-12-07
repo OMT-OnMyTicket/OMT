@@ -16,7 +16,6 @@
   "dependencies": {
     "@tosspayments/payment-widget-sdk": "^0.10.0",
     "@types/aos": "^3.0.7",
-    "@types/navermaps": "^3.7.3",
     "@types/node": "^20.10.0",
     "@types/react": "^18.2.39",
     "@types/react-datepicker": "^4.19.3",
@@ -33,5 +32,8 @@
     "react-datepicker": "^4.23.0",
     "react-slick": "^0.29.0",
     "slick-carousel": "^1.8.1"
+  },
+  "devDependencies": {
+    "@types/navermaps": "^3.7.3"
   }
 }
