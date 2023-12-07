@@ -3,6 +3,7 @@ import styled from '../../../styles/ticketingP_S/map.module.css';
 
 const Map: React.FC = () => {
   const CLIENT_ID = process.env.NEXT_PUBLIC_MAP_KEY;
+  let map: naver.maps.Map | null = null;
 
   useEffect(() => {
     if (!CLIENT_ID) {
@@ -16,13 +17,13 @@ const Map: React.FC = () => {
         (position) => {
           const { latitude, longitude } = position.coords;
 
-          var map = new naver.maps.Map('map', {
+          map = new naver.maps.Map('map', {
             center: new naver.maps.LatLng(latitude, longitude),
             zoom: 15
           });
 
           // Add a marker for the user's current location
-          var marker = new naver.maps.Marker({
+          const marker = new naver.maps.Marker({
             position: new naver.maps.LatLng(latitude, longitude),
             map: map
           });
@@ -47,10 +48,37 @@ const Map: React.FC = () => {
     };
   }, [CLIENT_ID]);
 
+  const handleCurrentLocation = () => {
+    if (map) {
+      // Try to get the current location again
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          // Center the map on the new location
+          map!.setCenter(new naver.maps.LatLng(latitude, longitude));
+        },
+        (error) => {
+          console.error('Error getting current location:', error.message);
+        }
+      );
+    }
+  };
+
   return (
     <>
       <div className={styled.Map_Container}>
-        <div id='map' style={{ width: '100%', height: '500px' }}></div>
+        <div
+          id='map'
+          style={{ width: '100%', height: '500px' }}
+          className={styled.naverMap}
+        >
+          <div
+            className={styled.current_location}
+            onClick={handleCurrentLocation}
+          >
+            <img src='/png/현재위치.png' alt='Current Location' />
+          </div>
+        </div>
       </div>
     </>
   );
