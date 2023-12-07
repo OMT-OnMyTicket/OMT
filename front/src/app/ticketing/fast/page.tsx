@@ -4,7 +4,8 @@ import Header from '@/components/_loginpage/header';
 import styled from '../../../styles/ticketingP_S/page/ticketing.module.css';
 import React, { useEffect, useState } from 'react';
 import PageCheck from '@/components/pageCheck';
-import Map from '@/components/_ticketing/fast/map';
+
+import KakaoMap from '@/components/_ticketing/fast/kakaoMap';
 
 const FastTheater = () => {
   const [TicketingWay, setTicketingWay] = useState<string | null>(null);
@@ -29,8 +30,9 @@ const FastTheater = () => {
             <PageCheck activePage={activePage} />
           </div>
         </div>
+
         <section className={styled.section}>
-          <Map />
+          <KakaoMap />
         </section>
       </div>
     </div>
