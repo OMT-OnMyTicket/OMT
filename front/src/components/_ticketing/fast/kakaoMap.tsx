@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import styled from '../../../styles/ticketingP_S/map.module.css';
 import Script from 'next/script';
-declare const kakao: any;
 
 const KakaoMap: React.FC = () => {
   const CLIENT_ID = process.env.NEXT_PUBLIC_KAKAO_MAP_KEY;
-  const KAKAO_SDK_URL = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${CLIENT_ID}&autoload=false`;
+  const KAKAO_SDK_URL = `"//dapi.kakao.com/v2/maps/sdk.js?appkey=${CLIENT_ID}&libraries=services,clusterer"`;
 
   const [currentLocation, setCurrentLocation] = useState({ lat: 0, lng: 0 });
   const [map, setMap] = useState<any>(null);
   const [marker, setMarker] = useState<any>(null);
+  const kakao = (window as any).kakao;
 
   useEffect(() => {
     // Get current location
@@ -27,7 +27,6 @@ const KakaoMap: React.FC = () => {
       console.error('Geolocation is not supported by this browser.');
     }
   }, []);
-
   useEffect(() => {
     // Load Kakao Map SDK
     const script = document.createElement('script');
