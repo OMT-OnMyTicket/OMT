@@ -1,19 +1,32 @@
 import React, { useEffect, useState } from 'react';
 import styled from '../../../styles/ticketingP_S/map.module.css';
 import Script from 'next/script';
+import FastTicket from './fastTicket';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 declare const kakao: any;
 
 const KakaoMap: React.FC = () => {
   const CLIENT_ID = process.env.NEXT_PUBLIC_KAKAO_MAP_KEY;
   const KAKAO_SDK_URL = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${CLIENT_ID}&autoload=false&libraries=services`;
-
+  const [currentMarker, setCurrentMarker] = useState<any>(null);
   const [currentLocation, setCurrentLocation] = useState({ lat: 0, lng: 0 });
   const [map, setMap] = useState<any>(null);
   const [marker, setMarker] = useState<any>(null);
-  const [infowindow, setInfowindow] = useState<any>(null);
-  const [currentMarker, setCurrentMarker] = useState<any>(null);
+
+  //영화 티켓 데이터
+  const [MovieTitle, setMovieTitle] = useState('');
+  const [Users, setUsers] = useState('');
+  const [Theater, setTheater] = useState('');
+  const [Poster, setPoster] = useState('');
 
   useEffect(() => {
+    const storedMovieTitle = localStorage.getItem('영화');
+    const storedUsers = localStorage.getItem('인원수');
+    const storedChoicedSeat = localStorage.getItem('선택좌석');
+    const storedTheater = localStorage.getItem('장소');
+    const storedPoster = localStorage.getItem('포스터URL');
+
     // 현재 위치 가져오기
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -27,6 +40,21 @@ const KakaoMap: React.FC = () => {
       );
     } else {
       console.error('Geolocation is not supported by this browser.');
+    }
+    if (storedMovieTitle) {
+      setMovieTitle(storedMovieTitle);
+    }
+
+    if (storedUsers) {
+      setUsers(storedUsers);
+    }
+
+    if (storedTheater) {
+      setTheater(storedTheater);
+    }
+
+    if (storedPoster) {
+      setPoster(storedPoster);
     }
   }, []);
 
@@ -46,16 +74,16 @@ const KakaoMap: React.FC = () => {
           ),
           level: 5
         };
-
+        AOS.init();
         const mapInstance = new kakao.maps.Map(container, options);
         setMap(mapInstance);
         const ps = new kakao.maps.services.Places();
 
         // Define a red marker image
         const redMarkerImage = new kakao.maps.MarkerImage(
-          '/png/영화관마커.png',
-          new kakao.maps.Size(30, 30),
-          { offset: new kakao.maps.Point(15, 30) }
+          '/png/영화관마커.png', // Replace with the path to your red marker image
+          new kakao.maps.Size(30, 30), // Set the size of the image
+          { offset: new kakao.maps.Point(15, 30) } // Set the offset for the anchor
         );
 
         // Function to add markers with the red marker image
@@ -69,17 +97,9 @@ const KakaoMap: React.FC = () => {
                 image: redMarkerImage
               });
 
-              // Register a click event on the marker
+              // Add a click event listener to update the currentMarker state
               kakao.maps.event.addListener(marker, 'click', function () {
-                // Update the currentMarker state
                 setCurrentMarker(place);
-
-                // Create and set content for the infowindow
-                const infowindowContent = `<div style="padding:5px;font-size:12px;">${place.place_name}</div>`;
-                infowindow.setContent(infowindowContent);
-
-                // Open the infowindow at the marker's position
-                infowindow.open(map, marker);
               });
             });
           }
@@ -103,21 +123,11 @@ const KakaoMap: React.FC = () => {
     };
   }, [currentLocation]);
 
-  useEffect(() => {
-    // Initialize the infowindow
-    if (map) {
-      const infowindowInstance = new kakao.maps.InfoWindow({
-        zIndex: 1
-      });
-
-      setInfowindow(infowindowInstance);
-
-      // Close the infowindow when the map is clicked
-      kakao.maps.event.addListener(map, 'click', function () {
-        infowindowInstance.close();
-      });
-    }
-  }, [map]);
+  const handleXClick = () => {
+    // Handle the X click event here
+    // For example, you can reset the currentMarker state
+    setCurrentMarker(null);
+  };
 
   const handleCurrentLocation = () => {
     if (map && marker) {
@@ -146,6 +156,34 @@ const KakaoMap: React.FC = () => {
         >
           <img src='/png/현재위치.png' alt='Current Location' />
         </div>
+        {currentMarker && (
+          <div
+            className={styled.Theater_Marker}
+            data-aos='fade-left'
+            data-aos-duration='1000'
+            id='Img'
+          >
+            <img
+              src='/png/closed.png'
+              onClick={handleXClick}
+              className={styled.close}
+            />
+
+            <div className={styled.Theater_Content}>
+              <div className={styled.Theater_Title}>
+                {currentMarker.place_name}
+              </div>
+              <FastTicket
+                MovieTitle={MovieTitle}
+                Theater={Theater}
+                Users={Users}
+                posterURL={Poster}
+                showCircles={true}
+              />
+            </div>
+            <div className={styled.NextBtn}>완료 & 예매하기</div>
+          </div>
+        )}
       </div>
     </>
   );

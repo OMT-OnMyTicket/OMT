@@ -30,7 +30,6 @@ const FastTheater = () => {
             <PageCheck activePage={activePage} />
           </div>
         </div>
-
         <section className={styled.section}>
           <KakaoMap />
         </section>

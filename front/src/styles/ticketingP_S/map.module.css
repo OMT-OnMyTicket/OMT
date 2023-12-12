@@ -3,6 +3,7 @@
   height: 500px;
   background-color: white;
   border-radius: 10px;
+  position: relative;
 }
 .current_location {
   width: 35px;
@@ -23,9 +24,164 @@
   border-radius: 10px;
   position: relative;
 }
-.MakerName {
+
+.Theater_Marker {
   background-color: white;
   position: absolute;
   top: 0;
   z-index: 1;
+  right: 0;
+  height: 500px;
+  width: 300px;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.NextBtn {
+  cursor: pointer;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 0 10px 10px 0;
+  background-color: rgb(171, 170, 170);
+  padding: 10px;
+  border-radius: 10px;
+}
+.NextBtn:hover {
+  background-color: #f15b3a;
+  color: white;
+  font-weight: bolder;
+  transition-duration: 1s;
+}
+
+.close {
+  cursor: pointer;
+  position: absolute;
+  bottom: 0;
+}
+.close:hover {
+  animation: wobble 2s ease infinite;
+}
+@keyframes wobble {
+  0% {
+    transform: translateX(0%);
+  }
+
+  60% {
+    transform: translateX(50%) rotate(2deg);
+  }
+
+  100% {
+    transform: translateX(0%);
+  }
+}
+.Theater_Content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.Theater_Title {
+  margin-top: 20px;
+}
+
+/* 맵 티켓 */
+
+.Ticket_Info {
+  width: 180px;
+  height: 280px;
+  border: 3px solid black;
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+}
+.Ticket_Info_Title,
+.Ticket_Info_Seat {
+  height: 120px;
+}
+.Ticket_Info_Release {
+  height: 160px;
+}
+
+.Ticket_Info_Title,
+.Ticket_Info_Release {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+.Ticket_Info_Seat {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+.Txt_Title {
+  font-size: 15px;
+  font-weight: bold;
+  position: absolute;
+  top: 8px;
+  left: 8px;
+}
+.Txt_Conetent_Title {
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  width: 170px;
+}
+.Txt_Conetent {
+  line-height: 1.5;
+  font-size: 15px;
+  color: white;
+}
+
+.Ticket_Box_MovieInfo2 {
+  height: 300px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 60px;
+}
+.Ticket_Box_Poster2 {
+  width: 220px;
+  height: 340px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  filter: invert(35%);
+}
+
+.Circle_Line_T2 {
+  display: flex;
+  position: absolute;
+  top: -48px;
+}
+.Circle_T2 {
+  box-sizing: border-box;
+  border-radius: 50px;
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  margin-left: 8px;
+}
+.Circle_Line_B2 {
+  display: flex;
+  position: absolute;
+  bottom: -48px;
+}
+.Circle_B2 {
+  box-sizing: border-box;
+  border-radius: 50px;
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  margin-left: 8px;
 }
