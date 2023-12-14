@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import styled from '../../../styles/ticketingP_S/map.module.css';
-import Script from 'next/script';
+import { useRouter } from 'next/navigation';
 import FastTicket from './fastTicket';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import LodingModal from './loding';
 declare const kakao: any;
 
 const KakaoMap: React.FC = () => {
@@ -13,17 +14,17 @@ const KakaoMap: React.FC = () => {
   const [currentLocation, setCurrentLocation] = useState({ lat: 0, lng: 0 });
   const [map, setMap] = useState<any>(null);
   const [marker, setMarker] = useState<any>(null);
-
   //영화 티켓 데이터
   const [MovieTitle, setMovieTitle] = useState('');
   const [Users, setUsers] = useState('');
   const [Theater, setTheater] = useState('');
   const [Poster, setPoster] = useState('');
+  const [modalOpen, setModalOpen] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     const storedMovieTitle = localStorage.getItem('영화');
     const storedUsers = localStorage.getItem('인원수');
-    const storedChoicedSeat = localStorage.getItem('선택좌석');
     const storedTheater = localStorage.getItem('장소');
     const storedPoster = localStorage.getItem('포스터URL');
 
@@ -124,9 +125,10 @@ const KakaoMap: React.FC = () => {
   }, [currentLocation]);
 
   const handleXClick = () => {
-    // Handle the X click event here
-    // For example, you can reset the currentMarker state
     setCurrentMarker(null);
+  };
+  const handleNextClick = () => {
+    setModalOpen(true);
   };
 
   const handleCurrentLocation = () => {
@@ -181,10 +183,13 @@ const KakaoMap: React.FC = () => {
                 showCircles={true}
               />
             </div>
-            <div className={styled.NextBtn}>완료 & 예매하기</div>
+            <div className={styled.NextBtn} onClick={handleNextClick}>
+              완료 & 예매하기
+            </div>
           </div>
         )}
       </div>
+      {modalOpen && <LodingModal setModalOpen={setModalOpen} />}
     </>
   );
 };
