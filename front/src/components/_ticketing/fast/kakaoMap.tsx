@@ -127,7 +127,8 @@ const KakaoMap: React.FC = () => {
   const handleXClick = () => {
     setCurrentMarker(null);
   };
-  const handleNextClick = () => {
+  const handleNextClick = (id: string) => {
+    localStorage.setItem('장소', id);
     setModalOpen(true);
   };
 
@@ -183,7 +184,10 @@ const KakaoMap: React.FC = () => {
                 showCircles={true}
               />
             </div>
-            <div className={styled.NextBtn} onClick={handleNextClick}>
+            <div
+              className={styled.NextBtn}
+              onClick={() => handleNextClick(currentMarker.place_name)}
+            >
               완료 & 예매하기
             </div>
           </div>
