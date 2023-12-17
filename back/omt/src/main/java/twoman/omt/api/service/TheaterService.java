@@ -3,7 +3,7 @@ package twoman.omt.api.service;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import twoman.omt.api.dto.TheaterDto;
+import twoman.omt.api.entity.dto.TheaterDto;
 import twoman.omt.api.entity.Cinema;
 import twoman.omt.api.entity.Theater;
 import twoman.omt.api.repository.TheaterRepository;

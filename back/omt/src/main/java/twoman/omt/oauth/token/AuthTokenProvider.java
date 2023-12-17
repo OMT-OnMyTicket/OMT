@@ -2,17 +2,22 @@ package twoman.omt.oauth.token;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.security.Keys;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 
-
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.stereotype.Component;
 import twoman.omt.oauth.exception.TokenValidFailedException;
 
+import javax.annotation.PostConstruct;
 import java.security.Key;
 
 import java.util.Arrays;
@@ -21,14 +26,18 @@ import java.util.Date;
 import java.util.stream.Collectors;
 
 @Slf4j
+@Component
 public class AuthTokenProvider {
 
-    private final Key key;
-    private static final String AUTHORITIES_KEY = "role";
+    @Value("${app.auth.tokenSecret}")
+    private String secretKey;
+    private Key key;
 
-    public AuthTokenProvider(String secret) {
-        this.key = Keys.hmacShaKeyFor(secret.getBytes());
+    @PostConstruct
+    protected void init() {
+        this.key = Keys.hmacShaKeyFor(secretKey.getBytes());
     }
+    private static final String AUTHORITIES_KEY = "role";
 
     public AuthToken createAuthToken(String id, Date expiry) {
         return new AuthToken(id, expiry, key);

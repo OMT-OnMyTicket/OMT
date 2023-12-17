@@ -29,8 +29,8 @@ public class UserRefreshToken {
     private String refreshToken;
 
     public UserRefreshToken(
-            @NotNull @Size(max =64 ) String userIdentity,
-            @NotNull @Size(max = 256) String refreshToken
+             String userIdentity,
+             String refreshToken
     ) {
         this.userIdentity = userIdentity;
         this.refreshToken = refreshToken;
