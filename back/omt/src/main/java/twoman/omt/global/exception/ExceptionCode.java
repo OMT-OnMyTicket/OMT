@@ -1,4 +1,4 @@
-package twoman.omt.exception;
+package twoman.omt.global.exception;
 
 import lombok.Getter;
 

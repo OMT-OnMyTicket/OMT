@@ -16,7 +16,6 @@ spring:
       ddl-auto: create
     defer-datasource-initialization: true
     generate-ddl: true
-    ddl-auto: update
     properties:
       hibernate:
         highlight_sql: true
@@ -75,12 +74,10 @@ cors:
   allowed-headers: '*'
   max-age: 3600
 
-jwt:
-  secret: ${JWT_SECRET_KEY}
 
 app:
   auth:
-    tokenSecret: 926D96C90030DD58429D2751AC1BDBBC
+    tokenSecret: ${JWT_SECRET_KEY}
     tokenExpiry: 1800000
     refreshTokenExpiry: 604800000
   oauth2:
