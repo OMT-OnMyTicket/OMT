@@ -50,24 +50,6 @@ const Price = () => {
                   <p>공휴일: 11000 ~ 15000원</p>
                 </div>
               </div>
-              <div className={styled.ticket_Info}>
-                <a
-                  href={
-                    'https://www.cineq.co.kr/Theater/Price?TheaterCode=1001'
-                  }
-                  target='_blank'
-                >
-                  <img
-                    src='/png/시네큐관람권.png'
-                    className={styled.ticket_png}
-                  />
-                </a>
-                <div className={styled.Ticket_Price_Txt}>
-                  <h4>시네큐</h4>
-                  <p>평일: 9000 ~ 13000원</p>
-                  <p>공휴일: 10000 ~ 14000원</p>
-                </div>
-              </div>
             </div>
           </div>
         </div>

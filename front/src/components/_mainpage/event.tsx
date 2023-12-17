@@ -1,10 +1,16 @@
+'use client';
 import styled from '../../styles/mainP_S/event.module.css';
 import Slider from 'react-slick';
+import { useEffect, useState } from 'react';
+
+import { useRouter } from 'next/navigation';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-
+const URL = process.env.NEXT_PUBLIC_URL;
 const Event = () => {
   // Slider settings
+  const [UserProfile, setUserProfile] = useState<string | null>(null);
+  const [UserName, setUserName] = useState<string | null>(null);
   const settings = {
     rows: 1,
     dots: true,
@@ -18,10 +24,48 @@ const Event = () => {
     pauseOnHover: true,
     variableWidth: true
   };
+  useEffect(() => {
+    const storedUserInfo = localStorage.getItem('UserInfo');
+
+    if (storedUserInfo) {
+      const userInfo = JSON.parse(storedUserInfo);
+      setUserName(userInfo.userName);
+      setUserProfile(userInfo.imageUrl);
+    }
+  }, []);
+
+  const router = useRouter();
+
+  const handleNaverLogin = () => {
+    router.push(
+      `${URL}/oauth2/authorization/naver?redirect_uri=http://localhost:3000/login`
+    );
+    // router.push(
+    //   `${URL}/oauth2/authorization/naver?redirect_uri=https://omt-onmyticket.vercel.app/login`
+    // );
+  };
+
+  const handleKakaoLogin = () => {
+    router.push(
+      `${URL}/oauth2/authorization/kakao?redirect_uri=http://localhost:3000/login`
+    );
+    // router.push(
+    //   `${URL}/oauth2/authorization/kakao?redirect_uri=https://omt-onmyticket.vercel.app/login`
+    // );
+  };
+
+  const handleGoogleLogin = () => {
+    router.push(
+      `${URL}/oauth2/authorization/google?redirect_uri=http://localhost:3000/login`
+    );
+    // router.push(
+    //   `${URL}/oauth2/authorization/google?redirect_uri=https://omt-onmyticket.vercel.app/login`
+    // );
+  };
 
   return (
     <div className={styled.Container}>
-      <h1>정보</h1>
+      <h2>정보</h2>
       <div className={styled.Content_Layout}>
         <div className={styled.Slider_Layout}>
           <Slider {...settings}>
@@ -143,23 +187,44 @@ const Event = () => {
           </div>
         </div>
         <div className={styled.User}>
-          <div className={styled.loginBox}>
-            <p className={styled.loginBox_txt}>
-              로그인 후 이용 가능한 서비스입니다.
-            </p>
-            <div className={styled.naver}>
-              <img src={'/png/네이버.png'} className={styled.login_Logo} />
-              <p>네이버로 로그인하기</p>
+          {UserName ? (
+            <div className={styled.AferLogin}>
+              <div className={styled.AferLogin_User}>
+                <img
+                  src={UserProfile ? `${UserProfile}` : '/userProfile.svg'}
+                  className={styled.UserProfile}
+                />
+                <div className={styled.UserBox}>
+                  <div className={styled.UserName}>{UserName} 님</div>
+                  <div>등급 : 영화광</div>
+                  <div>월 평균 : 2회 </div>
+                </div>
+              </div>
+              <h4 className={styled.recent_Movie_bar}>최근 시청 영화</h4>
+              <div className={styled.recent_Movie_Box}>
+                <img src='/png/범죄도시.png' className={styled.recent_Movie} />
+                <img src='/png/범죄도시.png' className={styled.recent_Movie} />
+              </div>
             </div>
-            <div className={styled.kakao}>
-              <img src={'/png/카카오.png'} className={styled.login_Logo} />
-              <p>카카오로 로그인하기</p>
+          ) : (
+            <div className={styled.loginBox}>
+              <p className={styled.loginBox_txt}>
+                로그인 후 이용 가능한 서비스입니다.
+              </p>
+              <div className={styled.naver} onClick={handleNaverLogin}>
+                <img src={'/png/네이버.png'} className={styled.login_Logo} />
+                <p>네이버로 로그인하기</p>
+              </div>
+              <div className={styled.kakao} onClick={handleKakaoLogin}>
+                <img src={'/png/카카오.png'} className={styled.login_Logo} />
+                <p>카카오로 로그인하기</p>
+              </div>
+              <div className={styled.google} onClick={handleGoogleLogin}>
+                <img src={'/png/구글.png'} className={styled.login_Logo} />
+                <p>구글로 로그인하기</p>
+              </div>
             </div>
-            <div className={styled.google}>
-              <img src={'/png/구글.png'} className={styled.login_Logo} />
-              <p>구글로 로그인하기</p>
-            </div>
-          </div>
+          )}
         </div>
       </div>
     </div>

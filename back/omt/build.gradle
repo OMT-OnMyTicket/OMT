@@ -51,12 +51,13 @@ dependencies {
 	testImplementation 'org.springframework.security:spring-security-test'
 	implementation 'javax.xml.bind:jaxb-api:2.4.0-b180830.0359'
 
+
 	implementation 'com.google.code.gson:gson'
 	implementation 'org.apache.commons:commons-lang3'
 	testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
 	implementation 'org.springframework.restdocs:spring-restdocs-asciidoctor'
 
-	implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.5.7'
+	//implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.5.7'
 
 	//querydsl 추가
 	implementation "com.querydsl:querydsl-jpa:${queryDslVersion}"
