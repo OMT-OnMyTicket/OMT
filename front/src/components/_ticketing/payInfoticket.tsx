@@ -1,6 +1,6 @@
 // InfoTicket.tsx
 import React from 'react';
-import styled from '../styles/ticket.module.css';
+import styled from '../../styles/ticket.module.css';
 
 interface InfoTicketProps {
   MovieTitle: string | null;
@@ -8,15 +8,19 @@ interface InfoTicketProps {
   Users: string | null;
   ChoicedSeat: string | null;
   posterURL: string;
+  Date: string | null;
+  Time: string | null;
   showCircles: boolean; // 새로운 prop 추가
 }
 
-const InfoTicket: React.FC<InfoTicketProps> = ({
+const PayInfoTicket: React.FC<InfoTicketProps> = ({
   MovieTitle,
   Theater,
   Users,
   ChoicedSeat,
   posterURL,
+  Date,
+  Time,
   showCircles // 새로운 prop 사용
 }) => {
   return (
@@ -30,7 +34,8 @@ const InfoTicket: React.FC<InfoTicketProps> = ({
         <div className={styled.Ticket_Info_Release}>
           <div className={styled.Txt_Title}>Release :</div>
           <div className={styled.Txt_Conetent}>{Theater}</div>
-          <div className={styled.Txt_Conetent}>00시 00분</div>
+          <div className={styled.Txt_Conetent}>{Date}</div>
+          <div className={styled.Txt_Conetent}>{Time}</div>
         </div>
         <div className={styled.Ticket_Info_Seat}>
           <div className={styled.Txt_Title}>Seat :</div>
@@ -59,4 +64,4 @@ const InfoTicket: React.FC<InfoTicketProps> = ({
   );
 };
 
-export default InfoTicket;
+export default PayInfoTicket;

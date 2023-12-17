@@ -1,10 +1,17 @@
 'use client';
 import { useEffect, useState } from 'react';
-import Link from 'next/link';
+
 import styled from '@/styles/loginP_S/header.module.css';
+import { useRouter } from 'next/navigation';
 
 const Header = () => {
   const [loginClicked, setLoginClicked] = useState(false);
+  const router = useRouter();
+
+  const handleHome = () => {
+    localStorage.clear();
+    router.push('/home');
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,9 +45,9 @@ const Header = () => {
   return (
     <>
       <div id='header' className={styled.Layout}>
-        <Link href='/home' className={styled.Home}>
+        <div className={styled.Home} onClick={handleHome}>
           Home
-        </Link>
+        </div>
         <div className={styled.Login} onClick={handleLoginClick}>
           Login
         </div>
