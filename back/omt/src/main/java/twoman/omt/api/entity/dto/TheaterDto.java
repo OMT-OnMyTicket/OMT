@@ -1,4 +1,4 @@
-package twoman.omt.api.dto;
+package twoman.omt.api.entity.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
