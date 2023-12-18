@@ -65,8 +65,8 @@ const Chart = () => {
                 collection: 'kmdb_new2',
                 detail: 'Y',
                 title: movie.movieNm,
-                ServiceKey: `${KMDB_KEY}`
-                // releaseDts: 2023
+                ServiceKey: `${KMDB_KEY}`,
+                releaseDts: 2023
               }
             })
             .then((res) => {

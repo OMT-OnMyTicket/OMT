@@ -7,15 +7,15 @@ const preview = () => {
       <div className={styled.preview}>
         <iframe
           className={styled.video}
-          src='https://www.youtube.com/embed/-AZ7cnwn2YI?autoplay=1&mute=1&loop=1&playlist=-AZ7cnwn2YI'
-          title='서울의 봄 예고편'
+          src='https://www.youtube.com/embed/gXEpZpnImY8?autoplay=1&mute=1&loop=1&playlist=gXEpZpnImY8'
+          title='노량: 죽음의 바다 예고편'
           allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
           allowFullScreen
         />
-        <strong className={styled.title}>서울의 봄 </strong>
+        <strong className={styled.title}>노량: 죽음의 바다 </strong>
         <span className={styled.txt}>
-          1979.12.12 그날 밤 <br />
-          철저하게 감춰진 9시간
+          이순신 3부작의 마침표 <br />
+          12월 20일 대개봉
         </span>
       </div>
     </div>
