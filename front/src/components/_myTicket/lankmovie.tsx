@@ -13,28 +13,28 @@ const LankedMovie = () => {
       <div className={styled.MoviePosters}>
         <div
           className={styled.MoviePoster}
-          data-aos='fade-up'
+          data-aos='flip-left'
           data-aos-duration='1500'
         >
           1
         </div>
         <div
           className={styled.MoviePoster}
-          data-aos='fade-up'
+          data-aos='flip-left'
           data-aos-duration='2000'
         >
           2
         </div>
         <div
           className={styled.MoviePoster}
-          data-aos='fade-up'
+          data-aos='flip-left'
           data-aos-duration='2500'
         >
           3
         </div>
         <div
           className={styled.MoviePoster}
-          data-aos='fade-up'
+          data-aos='flip-left'
           data-aos-duration='3000'
         >
           4

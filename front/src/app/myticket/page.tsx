@@ -35,7 +35,7 @@ const MyTicketHome = () => {
           <img
             src='/png/light.png'
             className={styled.lignt}
-            data-aos='fade-down'
+            data-aos='zoom-in-down'
             data-aos-duration='1500'
           />
 
@@ -50,7 +50,7 @@ const MyTicketHome = () => {
             <div
               className={styled.Home_Txt2}
               data-aos='fade-down'
-              data-aos-duration='3000'
+              data-aos-duration='2000'
             >
               영화와 함께 한 좋은 추억들을 직접 기록하고 만들어요.
             </div>
@@ -79,7 +79,7 @@ const MyTicketHome = () => {
             data-aos-duration='3000'
           >
             <div>나만의 영화 순위</div>
-            <div>전체 보기</div>
+            <div>순위 바꾸기</div>
           </div>
         </div>
         <LankedMovie />

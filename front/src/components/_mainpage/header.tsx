@@ -47,7 +47,7 @@ const Header = () => {
               <>
                 <li>
                   <div className={styled.myTickets}>
-                    <Link href='/'>My Tickets</Link>
+                    <Link href='/myticket'>My Tickets</Link>
                   </div>
                 </li>
                 <li className={styled.User}>
