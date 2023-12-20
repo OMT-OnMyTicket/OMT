@@ -1,0 +1,106 @@
+/* 모달창의 배경을 만든다 */
+.Modal_background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 1;
+}
+
+/* 모달창 영역을 꾸민다 */
+.Modal_Container {
+  position: absolute;
+  top: calc(50vh - 100px);
+  left: calc(50vw - 250px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 10px;
+  width: 500px;
+  height: 350px;
+  background-color: white;
+  color: black;
+}
+.Lank_Container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 200px;
+  margin: 20px;
+}
+.Lank_div {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 390px;
+}
+.Lank {
+  width: 20%;
+}
+.Lanked_moive {
+  width: 60%;
+  padding-left: 20px;
+}
+.Moving_Lank {
+  width: 11%;
+  display: flex;
+  height: 10px;
+  cursor: pointer;
+  justify-content: space-between;
+}
+
+.Moving_UP:hover {
+  animation: bounce2 1s ease infinite;
+}
+@keyframes bounce2 {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  60% {
+    transform: translateY(-2px);
+  }
+}
+
+.Moving_Down:hover {
+  animation: bounce 1s ease infinite;
+}
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  60% {
+    transform: translateY(2px);
+  }
+}
+
+/* Button */
+.Okay {
+  width: 420px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.Okay_btn {
+  width: 60px;
+  height: 25px;
+  border-radius: 10px;
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  cursor: pointer;
+}
+.Okay_btn:hover {
+  transform: scale(1.05);
+  transition-duration: 1s;
+  background-color: #f35a3d;
+}

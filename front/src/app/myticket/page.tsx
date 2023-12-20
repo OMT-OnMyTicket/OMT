@@ -6,10 +6,12 @@ import { useEffect, useState } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import LankedMovie from '@/components/_myTicket/lankmovie';
+import ChangeLankModal from '@/components/_myTicket/changeLankModal';
 
 const MyTicketHome = () => {
   const [UserProfile, setUserProfile] = useState<string | null>(null);
   const [UserName, setUserName] = useState<string | null>(null);
+  const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
     AOS.init();
@@ -24,6 +26,9 @@ const MyTicketHome = () => {
       setUserProfile(userInfo.imageUrl);
     }
   }, []);
+  const handleChangeLack = () => {
+    setModalOpen(true);
+  };
 
   return (
     <>
@@ -55,6 +60,7 @@ const MyTicketHome = () => {
               영화와 함께 한 좋은 추억들을 직접 기록하고 만들어요.
             </div>
           </div>
+          <img className={styled.ScrollDown} src='/ScrollDown.svg'></img>
         </div>
       </div>
 
@@ -79,8 +85,11 @@ const MyTicketHome = () => {
             data-aos-duration='3000'
           >
             <div>나만의 영화 순위</div>
-            <div>순위 바꾸기</div>
+            <div className={styled.change_lank_txt} onClick={handleChangeLack}>
+              순위 바꾸기
+            </div>
           </div>
+          {modalOpen && <ChangeLankModal setModalOpen={setModalOpen} />}
         </div>
         <LankedMovie />
       </div>
