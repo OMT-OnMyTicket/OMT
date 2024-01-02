@@ -107,11 +107,3 @@
   border-bottom: 1px solid black;
   padding-bottom: 20px;
 }
-
-/* Check List */
-
-.CheckList {
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-}

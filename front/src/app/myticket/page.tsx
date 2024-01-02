@@ -7,6 +7,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import LankedMovie from '@/components/_myTicket/lankmovie';
 import ChangeLankModal from '@/components/_myTicket/changeLankModal';
+import Link from 'next/link';
 
 const MyTicketHome = () => {
   const [UserProfile, setUserProfile] = useState<string | null>(null);
@@ -21,9 +22,13 @@ const MyTicketHome = () => {
     const storedUserInfo = localStorage.getItem('UserInfo');
 
     if (storedUserInfo) {
-      const userInfo = JSON.parse(storedUserInfo);
-      setUserName(userInfo.userName);
-      setUserProfile(userInfo.imageUrl);
+      try {
+        const userInfo = JSON.parse(storedUserInfo);
+        setUserName(userInfo.userName);
+        setUserProfile(userInfo.imageUrl);
+      } catch (error) {
+        console.error('Error parsing storedUserInfo:', error);
+      }
     }
   }, []);
   const handleChangeLack = () => {
@@ -85,6 +90,9 @@ const MyTicketHome = () => {
             data-aos-duration='3000'
           >
             <div>나만의 영화 순위</div>
+            <Link href={'/myticket/ticketroom'}>
+              <div>Ticket Room으로 이동</div>
+            </Link>
             <div className={styled.change_lank_txt} onClick={handleChangeLack}>
               순위 바꾸기
             </div>

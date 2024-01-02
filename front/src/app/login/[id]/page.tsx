@@ -34,7 +34,7 @@ const OAuth2 = () => {
           }
         })
         .then((res) => {
-          const UserInfo = res.data.body.user;
+          const UserInfo = res.data.body.response;
           localStorage.setItem('UserInfo', JSON.stringify(UserInfo));
           // console.log(JSON.parse(localStorage.UserInfo).userName); // 유저명
           // console.log(JSON.parse(localStorage.UserInfo).imageUrl); // 프로필사진
