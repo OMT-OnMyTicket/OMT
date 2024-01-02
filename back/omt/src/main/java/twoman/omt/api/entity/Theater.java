@@ -3,7 +3,7 @@ package twoman.omt.api.entity;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import twoman.omt.global.entity.BaseEntity;
+import twoman.omt.api.entity.movie.Cinema;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;

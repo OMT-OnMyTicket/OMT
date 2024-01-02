@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
-@AllArgsConstructor
 public enum Grade {
     BRONZE,SILVER,GOLD,PLATINUM,DIAMOND
 }

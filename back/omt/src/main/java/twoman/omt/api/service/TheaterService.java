@@ -1,10 +1,10 @@
 package twoman.omt.api.service;
 
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import twoman.omt.api.entity.dto.TheaterDto;
-import twoman.omt.api.entity.Cinema;
+import twoman.omt.api.entity.movie.Cinema;
 import twoman.omt.api.entity.Theater;
 import twoman.omt.api.repository.TheaterRepository;
 
@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class TheaterService {
     TheaterRepository repository;
