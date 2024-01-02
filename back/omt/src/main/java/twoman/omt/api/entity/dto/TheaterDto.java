@@ -1,11 +1,8 @@
 package twoman.omt.api.entity.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import twoman.omt.api.entity.Cinema;
+import twoman.omt.api.entity.movie.Cinema;
 import twoman.omt.api.entity.Theater;
-
-import java.util.List;
 
 public class TheaterDto {
 

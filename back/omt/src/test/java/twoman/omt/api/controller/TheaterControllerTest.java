@@ -3,30 +3,23 @@ package twoman.omt.api.controller;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.BDDMockito;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.boot.test.mock.mockito.MockBeans;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import twoman.omt.api.entity.Cinema;
+import twoman.omt.api.entity.movie.Cinema;
 import twoman.omt.api.entity.Theater;
 import twoman.omt.api.entity.dto.TheaterDto;
 import twoman.omt.api.repository.user.UserRefreshTokenRepository;
 import twoman.omt.api.service.TheaterService;
 import twoman.omt.api.support.ControllerTest;
 import twoman.omt.config.properties.AppProperties;
-import twoman.omt.oauth.handler.TokenAccessDeniedHandler;
-import twoman.omt.oauth.service.CustomOAuth2UserService;
-import twoman.omt.oauth.service.CustomUserDetailsService;
 import twoman.omt.oauth.token.AuthTokenProvider;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.BDDMockito.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 

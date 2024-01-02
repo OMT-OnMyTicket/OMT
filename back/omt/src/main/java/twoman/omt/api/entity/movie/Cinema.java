@@ -1,4 +1,4 @@
-package twoman.omt.api.entity;
+package twoman.omt.api.entity.movie;
 
 import lombok.Getter;
 

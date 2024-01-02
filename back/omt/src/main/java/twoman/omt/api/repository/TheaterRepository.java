@@ -1,7 +1,7 @@
 package twoman.omt.api.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import twoman.omt.api.entity.Cinema;
+import twoman.omt.api.entity.movie.Cinema;
 import twoman.omt.api.entity.Theater;
 
 import java.util.List;
