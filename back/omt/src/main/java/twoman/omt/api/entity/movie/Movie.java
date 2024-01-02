@@ -1,4 +1,4 @@
-package twoman.omt.api.entity;
+package twoman.omt.api.entity.movie;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -36,8 +36,9 @@ public class Movie extends BaseEntity {
     @Column(length = 1024)@Size(max = 1024)
     private String review;
 
-    private Boolean isLike = null;
+    private Boolean isLike = false;
 
+    //평점 추가
 
     @JoinColumn(name = "USER_SEQ")
     @ManyToOne(fetch = FetchType.LAZY)
@@ -58,8 +59,8 @@ public class Movie extends BaseEntity {
     }
 
     public void setUser(User user){
-        this.user.getMovies().add(this);
         this.user = user;
+        this.user.getMovies().add(this);
     }
 
 }

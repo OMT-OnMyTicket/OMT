@@ -9,6 +9,7 @@ import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import twoman.omt.api.entity.user.Grade;
 import twoman.omt.api.entity.user.User;
 import twoman.omt.api.repository.user.UserRepository;
 import twoman.omt.oauth.entity.ProviderType;

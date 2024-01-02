@@ -2,7 +2,7 @@ package twoman.omt.api.entity.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
-import twoman.omt.api.entity.Movie;
+import twoman.omt.api.entity.movie.Movie;
 import twoman.omt.global.entity.BaseEntity;
 import twoman.omt.oauth.entity.ProviderType;
 import twoman.omt.oauth.entity.RoleType;
@@ -10,7 +10,6 @@ import twoman.omt.oauth.entity.RoleType;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
