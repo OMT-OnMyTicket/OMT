@@ -21,11 +21,14 @@ const Header = () => {
 
   useEffect(() => {
     const storedUserInfo = localStorage.getItem('UserInfo');
-
     if (storedUserInfo) {
-      const userInfo = JSON.parse(storedUserInfo);
-      setUserName(userInfo.userName);
-      setUserProfile(userInfo.imageUrl);
+      try {
+        const userInfo = JSON.parse(storedUserInfo);
+        setUserName(userInfo.userName);
+        setUserProfile(userInfo.imageUrl);
+      } catch (error) {
+        console.error('Error parsing storedUserInfo:', error);
+      }
     }
 
     const handleScroll = () => {

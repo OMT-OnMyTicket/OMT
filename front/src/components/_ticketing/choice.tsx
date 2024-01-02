@@ -4,6 +4,7 @@ import styled from '../../styles/ticketingP_S/choice.module.css';
 import PeopleModal from './fast/peopleModal';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import GlobalLoding from '../globalloding';
 
 import { useRouter } from 'next/navigation';
 
@@ -31,6 +32,7 @@ let date = Number(dateString) - 1;
 
 const ChoiceMovie = () => {
   const router = useRouter();
+  const [loading, setLoading] = useState(true);
   const [movieChart, setMovieChart] = useState<DailyBoxOfficeItem[]>([]);
   const [moviePosters, setMoviePosters] = useState<string[]>([]);
   const [movieContents, setMovieContents] = useState<string[]>([]);
@@ -99,12 +101,14 @@ const ChoiceMovie = () => {
             setMoviePosters(posters);
             setMovieContents(contents);
             setMovieChart(extractedData); // 영화 정보, 포스터, 줄거리 정보가 모두 준비된 후에 상태를 업데이트
+            setLoading(false);
           })
           .catch((error) => {
             console.error('에러 내용', error);
             setMoviePosters([]);
             setMovieContents([]);
             setMovieChart([]); // 정보를 가져오지 못할 경우 빈 배열로
+            setLoading(true);
           });
       })
       .catch((error) => {
@@ -112,6 +116,7 @@ const ChoiceMovie = () => {
         setMovieChart([]);
         setMoviePosters([]);
         setMovieContents([]);
+        setLoading(false);
       });
   }, []);
 
@@ -126,6 +131,13 @@ const ChoiceMovie = () => {
       setModalOpen(true);
     }
   };
+  if (loading) {
+    return (
+      <>
+        <GlobalLoding LodingTxt={'영화정보를 로드중입니다.'} />
+      </>
+    );
+  }
 
   return (
     <>

@@ -5,9 +5,12 @@ import FastTicket from './fastTicket';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import LodingModal from './loding';
+import GlobalLoding from '@/components/globalloding';
 declare const kakao: any;
 
 const KakaoMap: React.FC = () => {
+  // const [loading, setLoading] = useState(true);
+
   const CLIENT_ID = process.env.NEXT_PUBLIC_KAKAO_MAP_KEY;
   const KAKAO_SDK_URL = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${CLIENT_ID}&autoload=false&libraries=services`;
   const [currentMarker, setCurrentMarker] = useState<any>(null);
@@ -143,6 +146,13 @@ const KakaoMap: React.FC = () => {
       );
     }
   };
+  // if (loading) {
+  //   return (
+  //     <>
+  //       <GlobalLoding LodingTxt={'영화관 정보를 로드중입니다.'} />
+  //     </>
+  //   );
+  // }
 
   return (
     <>

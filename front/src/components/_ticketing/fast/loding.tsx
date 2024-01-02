@@ -35,11 +35,11 @@ const LodingModal = ({ setModalOpen }: PropsType) => {
     document.body.style.overflow = 'hidden'; // Do not scroll when creating a modal
     // document.addEventListener('touchstart', handler); // Mobile response
 
-    // Change loading text after 5 seconds
+    // 5초 후 로딩 텍스트 변경
     const timeoutId = setTimeout(() => {
       setLoadingText('후방 가장자리를 탐색중입니다.');
 
-      // Save today's date in yyyy-mm-dd format to local storage
+      // 오늘 날짜 yyyy-mm-dd 변환
       const currentDate = new Date();
       const formattedDate = `${currentDate.getFullYear()}-${(
         currentDate.getMonth() + 1
@@ -51,11 +51,11 @@ const LodingModal = ({ setModalOpen }: PropsType) => {
         .padStart(2, '0')}`;
       localStorage.setItem('예매날짜', formattedDate);
 
-      // Find the closest time (current time + 1 hour)
+      // 현재시각에서 1시간 + 하기
       const closestTime = new Date(currentDate.getTime() + 60 * 60 * 1000);
       closestTime.setMinutes(30 * Math.ceil(closestTime.getMinutes() / 30)); // Round to the nearest 30 minutes
 
-      // Save the closest time to local storage
+      // localSotrage에 예매정보 저장
       const formattedTime = `${closestTime
         .getHours()
         .toString()
@@ -65,7 +65,7 @@ const LodingModal = ({ setModalOpen }: PropsType) => {
         .padStart(2, '0')}`;
       localStorage.setItem('예매정보', JSON.stringify({ time: formattedTime }));
 
-      // Generate random seat selections based on the number of attendees
+      // 인원 수에 따라 임의 좌석 선택 생성
       const numberOfAttendees = parseInt(
         localStorage.getItem('인원수') || '0',
         10
@@ -73,19 +73,18 @@ const LodingModal = ({ setModalOpen }: PropsType) => {
       const selectedSeats = generateConsecutiveSeats(numberOfAttendees);
       localStorage.setItem('선택좌석', selectedSeats);
 
-      // Redirect to the ticketing/pay page after another 5 seconds
+      // 5초 후에 티켓팅/결제 페이지로 리디렉션
       setTimeout(() => {
         router.push('/ticketing/pay');
       }, 5000);
     }, 5000);
 
     return () => {
-      // Release event handler
       document.removeEventListener('mousedown', handler);
       document.body.style.overflow = 'unset'; // Do not scroll when creating a modal
       // document.removeEventListener('touchstart', handler); // Mobile response
 
-      // Clear the timeouts when the component unmounts or the effect is re-run
+      // 구성 요소가 마운트 해제되거나 효과가 다시 실행될 때의 시간 초과를 지우기
       clearTimeout(timeoutId);
     };
   }, [router]);

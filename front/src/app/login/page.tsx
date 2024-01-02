@@ -27,6 +27,7 @@ const OAuth2 = () => {
     const accessToken: string | null = urlSearchParams.get('token');
 
     if (accessToken) {
+      localStorage.setItem('Token', JSON.stringify(accessToken));
       axios
         .get(`${OAuthURL}/api/v1/users`, {
           headers: {

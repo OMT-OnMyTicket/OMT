@@ -28,9 +28,14 @@ const Event = () => {
     const storedUserInfo = localStorage.getItem('UserInfo');
 
     if (storedUserInfo) {
-      const userInfo = JSON.parse(storedUserInfo);
-      setUserName(userInfo.userName);
-      setUserProfile(userInfo.imageUrl);
+      try {
+        const userInfo = JSON.parse(storedUserInfo);
+        setUserName(userInfo.userName);
+        setUserProfile(userInfo.imageUrl);
+      } catch (error) {
+        console.error('Error parsing storedUserInfo:', error);
+        // Handle the error accordingly, e.g., set default values or show a message to the user
+      }
     }
   }, []);
 
