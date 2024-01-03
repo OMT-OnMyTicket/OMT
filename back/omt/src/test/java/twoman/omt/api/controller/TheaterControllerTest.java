@@ -25,7 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @WebMvcTest(TheaterController.class)
 class TheaterControllerTest extends ControllerTest{
-    final String DEFAULT_URL = "/api/v1/theaters";
+    final String DEFAULT_URL = "/api/all/theaters";
 
     @MockBean
     TheaterService theaterService;
