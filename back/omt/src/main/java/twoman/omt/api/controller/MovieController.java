@@ -22,4 +22,12 @@ public class MovieController {
         return ApiResponse.success("save",null);
     }
 
+    @DeleteMapping()
+    public ApiResponse deleteMovie(@RequestParam Long movieId){
+        User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        movieService.delete(movieId,  principal.getUsername());
+        return ApiResponse.success("delete",null);
+    }
+
 }

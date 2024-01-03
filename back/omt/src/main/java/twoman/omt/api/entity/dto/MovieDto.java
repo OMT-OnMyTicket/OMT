@@ -22,10 +22,13 @@ public class MovieDto {
 
     @Getter
     public static class Response{
+
+        Long movieId;
         String title;
         String posterImageUrl;
 
         public Response(Movie movie) {
+            this.movieId = movie.getId();
             this.title = movie.getTitle();
             this.posterImageUrl = movie.getPosterImageUrl();
         }

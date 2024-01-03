@@ -8,19 +8,27 @@ import twoman.omt.api.entity.movie.Movie;
 import twoman.omt.api.entity.user.User;
 import twoman.omt.api.repository.MovieRepository;
 import twoman.omt.api.repository.user.UserRepository;
+import twoman.omt.global.exception.BusinessLogicException;
+import twoman.omt.global.exception.ExceptionCode;
 
-@Transactional(readOnly = true)
+@Transactional
 @Service
 @RequiredArgsConstructor
 public class MovieService {
     private final MovieRepository movieRepository;
     private final UserRepository userRepository;
 
-    @Transactional
     public void save(Movie movie,String userIdentity){
         User findUser = userRepository.findByUserIdentity(userIdentity);
         movie.setUser(findUser);
         movieRepository.save(movie);
     }
 
+    public void delete(Long movieId,String userIdentity) {
+        User findUser = userRepository.findByUserIdentity(userIdentity);
+        Movie findMovie = movieRepository.findById(movieId).orElseThrow(()->new BusinessLogicException(ExceptionCode.MOVIE_NOT_FOUND, "존재하지 않는 영화입니다."));
+
+        findMovie.deleteMovie(findUser);
+        movieRepository.delete(findMovie);
+    }
 }
