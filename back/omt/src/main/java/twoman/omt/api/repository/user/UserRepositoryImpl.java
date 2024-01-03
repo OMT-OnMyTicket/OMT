@@ -23,6 +23,7 @@ public class UserRepositoryImpl implements UserRepositoryCustom{
         return queryFactory
                 .selectFrom(user)
                 .join(user.movies, movie).fetchJoin()
+                .where(user.userIdentity.eq(userIdentity))
                 .fetchOne();
     }
 }

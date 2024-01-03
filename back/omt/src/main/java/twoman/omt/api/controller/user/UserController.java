@@ -35,7 +35,7 @@ public class UserController {
         User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         List<MovieDto.Response> response = userService.GAMovies(principal.getUsername());
-
+        if(response.size() ==0) return ApiResponse.success("response", null);
         return ApiResponse.success("response", response);
     }
 
