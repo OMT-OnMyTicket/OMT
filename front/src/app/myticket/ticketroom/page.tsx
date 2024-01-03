@@ -5,12 +5,11 @@ import styled from '../../../styles/myticketP_S/ticketRoom.module.css';
 import { useEffect, useState } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import Search from '@/components/_mainpage/search';
+import MyMovies from '@/components/_myTicket/myMovies';
 
 const TicketRoom = () => {
   const [UserProfile, setUserProfile] = useState<string | null>(null);
   const [UserName, setUserName] = useState<string | null>(null);
-  const [showSearch, setShowSearch] = useState(false);
 
   useEffect(() => {
     AOS.init();
@@ -29,10 +28,6 @@ const TicketRoom = () => {
       }
     }
   }, []);
-
-  const handleEmptyTicketClick = () => {
-    setShowSearch(true);
-  };
 
   return (
     <>
@@ -61,22 +56,9 @@ const TicketRoom = () => {
             <div>순위 바꾸기</div>
           </div>
         </div>
-
-        {showSearch ? (
-          <div className={styled.Search}>
-            <Search />
-          </div>
-        ) : (
-          <div className={styled.emptyTicket} onClick={handleEmptyTicketClick}>
-            <div className={styled.emptyTxt}>TicketRoom이 비어있습니다.</div>
-            <div className={styled.empty_SubTxt}>
-              위 메시지를 클릭하면 검색창이 나옵니다.
-            </div>
-            <div className={styled.empty_SubTxt}>
-              영화를 검색하고 나만의 Ticket Room을 채워보세요.
-            </div>
-          </div>
-        )}
+        <div className={styled.myMovies_Layout}>
+          <MyMovies />
+        </div>
       </div>
     </>
   );
