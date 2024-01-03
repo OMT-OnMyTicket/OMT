@@ -41,9 +41,16 @@ const Result = () => {
   const [movieData, setMovieData] = useState<MovieState>(initialState);
   const [SearchText, setSearchText] = useState('');
 
-  const handelDetail = (id: string, name: string) => {
+  const handelDetail = (
+    id: string,
+    name: string,
+    posterUrl: string,
+    genre: string
+  ) => {
     localStorage.setItem('MovieNum', id);
     localStorage.setItem('영화제목', name);
+    localStorage.setItem('posterUrl', posterUrl);
+    localStorage.setItem('장르', genre);
   };
 
   useEffect(() => {
@@ -99,7 +106,14 @@ const Result = () => {
             <Link
               key={index}
               href={'/search/detail'}
-              onClick={() => handelDetail(movieSeq, title)}
+              onClick={() =>
+                handelDetail(
+                  movieSeq,
+                  title,
+                  movieData.moviePosters[index],
+                  movieData.genre[index]
+                )
+              }
             >
               <div key={index} className={styled.Result}>
                 <h3 className={styled.Result_Title}>

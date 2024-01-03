@@ -7,15 +7,14 @@ const preview = () => {
       <div className={styled.preview}>
         <iframe
           className={styled.video}
-          src='https://www.youtube.com/embed/gXEpZpnImY8?autoplay=1&mute=1&loop=1&playlist=gXEpZpnImY8'
-          title='노량: 죽음의 바다 예고편'
+          src='https://www.youtube.com/embed/BR5YCAxjbwc?autoplay=1&mute=1&loop=1&playlist=BR5YCAxjbwc'
+          title='듄: 파트2 예고편'
           allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
           allowFullScreen
         />
-        <strong className={styled.title}>노량: 죽음의 바다 </strong>
+        <strong className={styled.title}>듄: Part2 </strong>
         <span className={styled.txt}>
-          이순신 3부작의 마침표 <br />
-          12월 20일 대개봉
+          전사의 운명을 찾아라 <br />전 세계가 기다린 단 하나의 블록버스터🔥
         </span>
       </div>
     </div>

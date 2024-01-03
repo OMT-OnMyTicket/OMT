@@ -4,25 +4,99 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const URL = process.env.NEXT_PUBLIC_URL;
+
 const Check = () => {
-  const accessToken: string | null = localStorage.getItem('Token');
+  const [accessToken, setToken] = useState<string | null>(null);
+  const [Title, setTitle] = useState<string | null>(null);
+  const [posterImageUrl, setPosterImageUrl] = useState<string | null>(null);
+  const [Genre, setGenre] = useState<string | null>(null);
+  const [hasWatched, setHasWatched] = useState<boolean | undefined>(undefined);
+  const [watchTxt, setWatchTxt] = useState<string | null>(
+    '아직 관람하지 않은 영화입니다.'
+  );
+
   useEffect(() => {
+    const storedTitle = localStorage.getItem('영화제목');
+    const storedPosterUrl = localStorage.getItem('posterUrl');
+    const storedGenre = localStorage.getItem('장르');
+    const storedToken: string | null = localStorage.getItem('Token');
+
+    if (storedTitle) {
+      setTitle(storedTitle);
+    }
+    if (storedPosterUrl) {
+      setPosterImageUrl(storedPosterUrl);
+    }
+    if (storedGenre) {
+      setGenre(storedGenre);
+    }
+    if (storedToken) {
+      setToken(JSON.parse(storedToken));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (accessToken !== null) {
+      console.log(accessToken);
+      axios
+        .get(`${URL}/api/v1/users/movies`, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+            'Content-Type': 'application/json'
+          }
+        })
+        .then((res) => {
+          const WatchedMovies = res.data.body.response;
+          const hasWatched = WatchedMovies.some(
+            (movie: any) => movie.title === Title
+          );
+          if (hasWatched) {
+            setHasWatched(hasWatched);
+            setWatchTxt('이미 관람한 영화입니다.');
+          } else {
+            console.log('아직 시청하지 않은 영화입니다.');
+          }
+        })
+        .catch((err) => {
+          console.log('토큰이 만료되었습니다.');
+        });
+    }
+  }, [accessToken]);
+
+  const handleCheckMovie = () => {
+    const movieData = {
+      title: Title,
+      posterImageUrl: posterImageUrl,
+      genre: Genre
+    };
+
     axios
-      .get(`${URL}/api/v1/users/movies`, {
+      .post(`${URL}/api/v1/movies`, movieData, {
         headers: {
-          Authorization: `Bearer ${accessToken}`
+          Authorization: `Bearer ${accessToken}`,
+          'Content-Type': 'application/json'
         }
       })
-      .then((res) => {
-        console.log(res);
+      .then((response) => {
+        console.log('Success:', response);
+        setHasWatched(true);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
       });
-  });
+  };
 
   return (
     <div className={styled.CheckList}>
-      <div>이 영화를 시청했습니다.</div>
-      <div>내 인생작입니다.</div>
+      <input
+        type='checkbox'
+        checked={hasWatched}
+        readOnly
+        onClick={handleCheckMovie}
+      />
+      <div>{watchTxt}</div>
     </div>
   );
 };
+
 export default Check;
