@@ -9,7 +9,7 @@ import twoman.omt.common.ApiResponse;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/theaters")
+@RequestMapping("api/all/theaters")
 @RequiredArgsConstructor
 public class TheaterController {
 
