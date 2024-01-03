@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class TheaterService {
-    TheaterRepository repository;
+    private final TheaterRepository repository;
 
     public List<TheaterDto.Response> findTheaters(String region){
         List<Theater> theaters = repository.findByRegion(region);
