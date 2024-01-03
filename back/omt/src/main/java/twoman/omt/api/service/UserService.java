@@ -46,12 +46,12 @@ public class UserService {
 
     public List<MovieDto.Response> GAMovies(String userIdentity) {
         User user = userRepository.findUserWithFetch(userIdentity);
-        List<Movie> movies = user.getMovies();
+        if(user != null && user.getMovies() != null && !user.getMovies().isEmpty()) {
+            List<Movie> movies = user.getMovies();
+            movies.sort(Comparator.comparing(BaseEntity::getCreatedDate).reversed());
 
-        if(movies.size() == 0) return null;
-
-        movies.sort(Comparator.comparing(BaseEntity::getCreatedDate).reversed());
-
-        return movies.stream().map(MovieDto.Response::new).collect(Collectors.toList());
+            return movies.stream().map(MovieDto.Response::new).collect(Collectors.toList());
+        }
+        else return Collections.emptyList();
     }
 }

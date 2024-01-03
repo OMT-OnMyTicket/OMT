@@ -63,4 +63,9 @@ public class Movie extends BaseEntity {
         this.user.getMovies().add(this);
     }
 
+    public void deleteMovie(User user){
+        this.user.getMovies().remove(this);
+        this.user = null;
+    }
+
 }
