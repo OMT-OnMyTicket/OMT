@@ -79,10 +79,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .accessDeniedHandler(tokenAccessDeniedHandler)
                 .and()
                     .authorizeRequests()
-                    .requestMatchers(new AntPathRequestMatcher("/api/v1/theaters/**")) // 특정 요청과 일치하는 url애대한 액세스 설정
+                    .requestMatchers(new AntPathRequestMatcher("/api/all/**")) // 특정 요청과 일치하는 url애대한 액세스 설정
                     .permitAll() // requetMatchers 설정한 리소스의 접근을 인증 절차 없이 허용
                     .requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
-                    .antMatchers("/api/**").hasAnyAuthority(RoleType.USER.getCode())
+                    .antMatchers("/api/v1/**").hasAnyAuthority(RoleType.USER.getCode())
                     .antMatchers("/api/**/admin/**").hasAnyAuthority(RoleType.ADMIN.getCode())
                     .anyRequest().authenticated()
                 .and()
