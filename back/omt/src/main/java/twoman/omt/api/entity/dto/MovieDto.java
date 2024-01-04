@@ -4,8 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import twoman.omt.api.entity.Theater;
-import twoman.omt.api.entity.movie.Cinema;
 import twoman.omt.api.entity.movie.Movie;
 
 public class MovieDto {
@@ -14,10 +12,19 @@ public class MovieDto {
     @AllArgsConstructor
     @Setter
     @NoArgsConstructor
-    public static class Request {
+    public static class PostRequest {
         String title;
         String posterImageUrl;
         String genre;
+    }
+
+    @Getter
+    @AllArgsConstructor
+    @Setter
+    @NoArgsConstructor
+    public static class PutRequest {
+        Long id;
+        int rank;
     }
 
     @Getter

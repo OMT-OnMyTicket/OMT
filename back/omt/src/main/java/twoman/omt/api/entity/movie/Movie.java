@@ -38,6 +38,8 @@ public class Movie extends BaseEntity {
 
     private Boolean isLike = false;
 
+    private Integer myRank;
+
     //평점 추가
 
     @JoinColumn(name = "USER_SEQ")
@@ -66,6 +68,10 @@ public class Movie extends BaseEntity {
     public void deleteMovie(User user){
         this.user.getMovies().remove(this);
         this.user = null;
+    }
+
+    public void changeRank(int num){
+        this.myRank = num;
     }
 
 }
