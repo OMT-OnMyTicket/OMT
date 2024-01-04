@@ -32,7 +32,7 @@ public class UserRepositoryImpl implements UserRepositoryCustom{
         return queryFactory.select(user)
                 .from(user)
                 .join(user.movies, movie).fetchJoin()
-                .where(movie.myRank.isNotNull())
+                .where(user.userIdentity.eq(userIdentity).and(movie.myRank.isNotNull()))
                 .orderBy(movie.myRank.asc())
                 .limit(4)
                 .fetchOne();
