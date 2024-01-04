@@ -54,4 +54,14 @@ public class UserService {
         }
         else return Collections.emptyList();
     }
+
+    public List<MovieDto.Response> getTop4Movies(String userIdentity) {
+        User user = userRepository.findUserTop4Fetch(userIdentity);
+
+        if(user != null && user.getMovies() != null && !user.getMovies().isEmpty()) {
+            List<Movie> movies = user.getMovies();
+            return movies.stream().map(MovieDto.Response::new).collect(Collectors.toList());
+        }
+        else return Collections.emptyList();
+    }
 }

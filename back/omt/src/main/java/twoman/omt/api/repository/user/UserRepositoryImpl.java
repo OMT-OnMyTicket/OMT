@@ -26,4 +26,15 @@ public class UserRepositoryImpl implements UserRepositoryCustom{
                 .where(user.userIdentity.eq(userIdentity))
                 .fetchOne();
     }
+
+    @Override
+    public User findUserTop4Fetch(String userIdentity) {
+        return queryFactory.select(user)
+                .from(user)
+                .join(user.movies, movie).fetchJoin()
+                .where(movie.myRank.isNotNull())
+                .orderBy(movie.myRank.asc())
+                .limit(4)
+                .fetchOne();
+    }
 }
