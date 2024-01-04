@@ -9,15 +9,17 @@ import twoman.omt.api.entity.movie.Movie;
 import twoman.omt.api.service.MovieService;
 import twoman.omt.common.ApiResponse;
 
+import java.util.List;
+
 @RestController()
 @RequestMapping("/api/v1/movies")
 @RequiredArgsConstructor
 public class MovieController {
     private final MovieService movieService;
     @PostMapping()
-    public ApiResponse postMovie(@RequestBody MovieDto.Request request){
+    public ApiResponse postMovie(@RequestBody MovieDto.PostRequest postRequest){
         User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        Movie movie = new Movie(request.getTitle(),request.getPosterImageUrl(),request.getGenre());
+        Movie movie = new Movie(postRequest.getTitle(), postRequest.getPosterImageUrl(), postRequest.getGenre());
         movieService.save(movie, principal.getUsername());
         return ApiResponse.success("save",null);
     }
@@ -30,4 +32,12 @@ public class MovieController {
         return ApiResponse.success("delete",null);
     }
 
+    @PutMapping()
+    public ApiResponse putRank(@RequestBody List<MovieDto.PutRequest> request){
+        User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        movieService.setRank(request);
+
+        return ApiResponse.success("Ranking completed",null);
+    }
 }

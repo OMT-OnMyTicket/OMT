@@ -39,6 +39,15 @@ public class UserController {
         return ApiResponse.success("response", response);
     }
 
+    @GetMapping("/movies/top4")
+    public ApiResponse getTop4Movies() {
+        User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        List<MovieDto.Response> response = userService.getTop4Movies(principal.getUsername());
+        if(response.size() ==0) return ApiResponse.success("response", null);
+        return ApiResponse.success("response", response);
+    }
+
     @PatchMapping("/image")
     public ApiResponse updateUser(@RequestBody UserDto.Update updateDto){
         User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();

@@ -11,6 +11,9 @@ import twoman.omt.api.repository.user.UserRepository;
 import twoman.omt.global.exception.BusinessLogicException;
 import twoman.omt.global.exception.ExceptionCode;
 
+import java.util.List;
+import java.util.Optional;
+
 @Transactional
 @Service
 @RequiredArgsConstructor
@@ -30,5 +33,12 @@ public class MovieService {
 
         findMovie.deleteMovie(findUser);
         movieRepository.delete(findMovie);
+    }
+
+    public void setRank(List<MovieDto.PutRequest> putDtos) {
+        for (MovieDto.PutRequest putDto : putDtos) {
+            Movie findMovie = movieRepository.findById(putDto.getId()).orElseThrow(() -> new BusinessLogicException(ExceptionCode.MOVIE_NOT_FOUND, "존재하지 않는 영화입니다."));
+            findMovie.changeRank(putDto.getRank());
+        }
     }
 }
