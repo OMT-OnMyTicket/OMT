@@ -54,19 +54,88 @@
   justify-content: center;
   align-items: center;
 }
+.TextTicket {
+  z-index: 1;
+  filter: invert(35%);
+}
+
 .Circle {
   position: absolute;
-  z-index: 1;
+  z-index: 2;
 }
 .WriteHand {
   width: 180px;
   position: absolute;
   bottom: 0;
   right: 20%;
-  z-index: 2;
+  z-index: 3;
   cursor: pointer;
 }
 .WriteHand:hover {
   width: 200px;
   transition-duration: 1s;
+}
+.Write_Layout {
+  border: 2px solid black;
+  position: absolute;
+  width: 270px;
+  height: 440px;
+  z-index: 3;
+}
+.Togeter {
+  border-bottom: 2px solid black;
+  height: 20%;
+  padding: 10px;
+}
+.MyRewiew {
+  border-bottom: 2px solid black;
+  height: 60%;
+  padding: 10px;
+}
+.MyScore {
+  height: 15%;
+  padding: 10px;
+}
+.Write_Title {
+  font-size: 16px;
+  font-weight: bold;
+}
+.Togeter_TextArea,
+.Review_TextArea {
+  z-index: 3;
+  resize: none;
+  width: 100%;
+  padding: 10px;
+  background-color: transparent;
+  border: 1px solid black;
+  border-radius: 10px;
+  color: white;
+  outline-color: white;
+}
+.Togeter_TextArea {
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+}
+.Review_TextArea {
+  height: 100%;
+  margin-top: 20px;
+  line-height: 1.4;
+}
+.TextArea_Layout {
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Togeter_TextArea::placeholder {
+  color: white;
+  font-weight: bold;
+}
+
+.Review_TextArea::placeholder {
+  color: white;
+  font-weight: bold;
 }

@@ -6,9 +6,7 @@ interface InfoTicketProps {
   MovieTitle: string | null;
   Theater: string | null;
   Users: string | null;
-
   posterURL: string;
-
   showCircles: boolean; // 새로운 prop 추가
 }
 
