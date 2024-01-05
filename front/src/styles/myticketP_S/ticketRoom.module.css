@@ -17,6 +17,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 20px 0;
 }
 .UserProfile {
   width: 50px;
@@ -91,4 +92,10 @@
 .Posters:hover {
   transform: scale(1.05);
   transition-duration: 1s;
+}
+.AddTicket {
+  cursor: pointer;
+}
+.AddTicket_Search {
+  position: absolute;
 }

@@ -1,8 +1,9 @@
 'use client';
 import Search from '@/components/_mainpage/search';
 import styled from '../../styles/myticketP_S/ticketRoom.module.css';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
+import { useRouter } from 'next/navigation';
 
 const URL = process.env.NEXT_PUBLIC_URL;
 
@@ -10,7 +11,8 @@ const MyMovies = () => {
   const [showSearch, setShowSearch] = useState(false);
   const [accessToken, setToken] = useState<string | null>(null);
   const [watchedMovies, setWatchedMovies] = useState<any[] | null>(null);
-
+  const searchContainerRef = useRef<HTMLDivElement | null>(null);
+  const router = useRouter();
   useEffect(() => {
     const storedToken: string | null = localStorage.getItem('Token');
 
@@ -39,10 +41,32 @@ const MyMovies = () => {
   const handleEmptyTicketClick = () => {
     setShowSearch(true);
   };
+  const handleCloseSearch = () => {
+    setShowSearch(false);
+  };
+
+  const handleClickOutside = (event: any) => {
+    if (
+      searchContainerRef.current &&
+      !searchContainerRef.current.contains(event.target)
+    ) {
+      // Clicked outside the search container, close search
+      handleCloseSearch();
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('click', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, []); // Run this effect only once
 
   const handleMakeTicket = (title: string, posterUrl: string) => {
     localStorage.setItem('Ticket_Title', title);
     localStorage.setItem('posterUrl', posterUrl);
+    router.push('/myticket/ticket');
   };
 
   return (

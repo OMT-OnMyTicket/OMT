@@ -2,14 +2,17 @@
 
 import Header from '@/components/_loginpage/header';
 import styled from '../../../styles/myticketP_S/ticketRoom.module.css';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import MyMovies from '@/components/_myTicket/myMovies';
+import Search from '@/components/_mainpage/search';
 
 const TicketRoom = () => {
   const [UserProfile, setUserProfile] = useState<string | null>(null);
   const [UserName, setUserName] = useState<string | null>(null);
+  const [showSearch, setShowSearch] = useState(false);
+  const searchContainerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     AOS.init();
@@ -28,6 +31,32 @@ const TicketRoom = () => {
       }
     }
   }, []);
+
+  const handleAddTicket = () => {
+    setShowSearch(true);
+  };
+
+  const handleCloseSearch = () => {
+    setShowSearch(false);
+  };
+
+  const handleClickOutside = (event: any) => {
+    if (
+      searchContainerRef.current &&
+      !searchContainerRef.current.contains(event.target)
+    ) {
+      // Clicked outside the search container, close search
+      handleCloseSearch();
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('click', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, []); // Run this effect only once
 
   return (
     <>
@@ -52,8 +81,16 @@ const TicketRoom = () => {
             data-aos='fade-down'
             data-aos-duration='3000'
           >
-            <div>Ticket Room 채우러가기</div>
-            <div>순위 바꾸기</div>
+            {showSearch ? (
+              <div className={styled.AddTicket_Search} ref={searchContainerRef}>
+                <Search />
+              </div>
+            ) : (
+              <div onClick={handleAddTicket} className={styled.AddTicket}>
+                Ticket Room 채우러가기
+              </div>
+            )}
+            <div>정렬 바꾸기</div>
           </div>
         </div>
         <div className={styled.myMovies_Layout}>

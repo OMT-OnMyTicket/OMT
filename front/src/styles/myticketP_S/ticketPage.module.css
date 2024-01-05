@@ -1,0 +1,72 @@
+.Layout {
+  width: 100%;
+  height: 100vh;
+  background-color: black;
+  padding: 100px 50px 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.back {
+  position: absolute;
+  left: 10%;
+  cursor: pointer;
+}
+.back:hover {
+  transform: scale(1.15);
+  transition-duration: 1s;
+}
+.ticket_header {
+  margin-bottom: 80px;
+}
+.Ticket_Tilte {
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.Ticket_Layout {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+.MovieTicket,
+.TextTicket {
+  width: 300px;
+  height: 500px;
+  position: relative;
+}
+.MovieTicket_Layout {
+  margin-right: 50px;
+}
+.TextTicket_Layout {
+  margin-left: 50px;
+}
+.MovieTicket_Layout,
+.TextTicket_Layout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Circle {
+  position: absolute;
+  z-index: 1;
+}
+.WriteHand {
+  width: 180px;
+  position: absolute;
+  bottom: 0;
+  right: 20%;
+  z-index: 2;
+  cursor: pointer;
+}
+.WriteHand:hover {
+  width: 200px;
+  transition-duration: 1s;
+}
