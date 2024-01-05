@@ -2,7 +2,7 @@
 import styled from '../../styles/search_P_S/checkList.module.css';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-
+import { useRouter } from 'next/navigation';
 const URL = process.env.NEXT_PUBLIC_URL;
 
 const Check = () => {
@@ -14,6 +14,9 @@ const Check = () => {
   const [watchTxt, setWatchTxt] = useState<string | null>(
     '아직 관람하지 않은 영화입니다.'
   );
+  const [movieId, setMovieId] = useState<string | null>('');
+
+  const router = useRouter();
 
   useEffect(() => {
     const storedTitle = localStorage.getItem('영화제목');
@@ -34,50 +37,35 @@ const Check = () => {
       setToken(JSON.parse(storedToken));
     }
   }, []);
-  useEffect(() => {
-    axios
-      .get(`${URL}/api/v1/users/movies`, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-          'Content-Type': 'application/json'
-        }
-      })
-      .then((res) => {
-        console.log(res);
-        //   const watchedMoviesResponse = res.data.body.response;
-        //   setWatchedMovies(watchedMoviesResponse);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [accessToken]);
 
-  // useEffect(() => {
-  //   if (accessToken !== null) {
-  //     axios
-  //       .get(`${URL}/api/v1/users/movies`, {
-  //         headers: {
-  //           Authorization: `Bearer ${accessToken}`,
-  //           'Content-Type': 'application/json'
-  //         }
-  //       })
-  //       .then((res) => {
-  //         const WatchedMovies = res.data.body.response;
-  //         const hasWatched = WatchedMovies.some(
-  //           (movie: any) => movie.title === Title
-  //         );
-  //         if (hasWatched) {
-  //           setHasWatched(hasWatched);
-  //           setWatchTxt('이미 관람한 영화입니다.');
-  //         } else {
-  //           console.log('아직 시청하지 않은 영화입니다.');
-  //         }
-  //       })
-  //       .catch((err) => {
-  //         console.log('토큰이 만료되었습니다.');
-  //       });
-  //   }
-  // }, [accessToken, Title]);
+  useEffect(() => {
+    if (accessToken !== null) {
+      axios
+        .get(`${URL}/api/v1/users/movies`, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+            'Content-Type': 'application/json'
+          }
+        })
+        .then((res) => {
+          const watchedMovies = res.data.body.response;
+
+          const hasWatched = watchedMovies.some(
+            (movie: any) => movie.title === Title
+          );
+          if (hasWatched) {
+            setHasWatched(hasWatched);
+            setWatchTxt('이미 관람한 영화입니다.');
+            setMovieId(watchedMovies[0].movieId);
+          } else {
+            console.log('아직 시청하지 않은 영화입니다.');
+          }
+        })
+        .catch((err) => {
+          console.log('토큰이 만료되었습니다.');
+        });
+    }
+  }, [accessToken, Title]);
 
   const handleCheckMovie = () => {
     const movieData = {
@@ -86,20 +74,42 @@ const Check = () => {
       genre: Genre
     };
 
-    axios
-      .post(`${URL}/api/v1/movies`, movieData, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-          'Content-Type': 'application/json'
-        }
-      })
-      .then((response) => {
-        console.log('Success:', response);
-        setHasWatched(true);
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
+    if (hasWatched) {
+      // If the movie has been watched, send a DELETE request
+      axios
+        .delete(`${URL}/api/v1/movies?movieId=${movieId}`, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+            'Content-Type': 'application/json'
+          }
+        })
+        .then((response) => {
+          console.log('Delete Success:', response);
+          setHasWatched(false); // to empty the checkbox
+          window.location.reload();
+        })
+        .catch((error) => {
+          console.error('Delete Error:', error);
+        });
+    } else {
+      // If the movie has not been watched, send a POST request
+      axios
+        .post(`${URL}/api/v1/movies`, movieData, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+            'Content-Type': 'application/json'
+          }
+        })
+        .then((response) => {
+          console.log('Create Success:', response);
+          setHasWatched(true);
+          setMovieId(response.data.body.movieId);
+          window.location.reload();
+        })
+        .catch((error) => {
+          console.error('Create Error:', error);
+        });
+    }
   };
 
   return (
