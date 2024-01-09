@@ -151,6 +151,7 @@
   justify-content: space-around;
   align-items: center;
   height: 100%;
+  width: 100%;
 }
 .AferLogin_User {
   display: flex;
@@ -194,4 +195,29 @@
   width: 100%;
   padding-left: 20px;
   display: flex;
+}
+.EmptyMovie {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.EmptyMovie_Txt {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  font-size: 18px;
+  font-weight: bold;
+}
+.WarningLine {
+  width: 32vw;
+  height: 180px;
+  position: relative;
+}
+.EmptyMovie_SubTxt {
+  font-size: 12px;
+  color: gray;
+  text-align: center;
+  line-height: 1.5;
+  margin-top: 5px;
 }

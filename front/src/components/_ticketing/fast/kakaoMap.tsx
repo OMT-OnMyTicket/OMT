@@ -176,11 +176,9 @@ const KakaoMap: React.FC = () => {
             data-aos-duration='1000'
             id='Img'
           >
-            <img
-              src='/png/closed.png'
-              onClick={handleXClick}
-              className={styled.close}
-            />
+            <div className={styled.close} onClick={handleXClick}>
+              x
+            </div>
 
             <div className={styled.Theater_Content}>
               <div className={styled.Theater_Title}>

@@ -2,15 +2,20 @@
 import styled from '../../styles/mainP_S/event.module.css';
 import Slider from 'react-slick';
 import { useEffect, useState } from 'react';
-
+import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import Link from 'next/link';
 const URL = process.env.NEXT_PUBLIC_URL;
 const Event = () => {
   // Slider settings
   const [UserProfile, setUserProfile] = useState<string | null>(null);
   const [UserName, setUserName] = useState<string | null>(null);
+  const [accessToken, setToken] = useState<string | null>(null);
+  const [watchedMovies, setWatchedMovies] = useState<any[] | null>(null);
+  const storedToken: string | null = localStorage.getItem('Token');
+
   const settings = {
     rows: 1,
     dots: true,
@@ -25,6 +30,13 @@ const Event = () => {
     variableWidth: true
   };
   useEffect(() => {
+    const storedToken: string | null = localStorage.getItem('Token');
+
+    if (storedToken) {
+      setToken(JSON.parse(storedToken));
+    }
+  }, []);
+  useEffect(() => {
     const storedUserInfo = localStorage.getItem('UserInfo');
 
     if (storedUserInfo) {
@@ -32,12 +44,27 @@ const Event = () => {
         const userInfo = JSON.parse(storedUserInfo);
         setUserName(userInfo.userName);
         setUserProfile(userInfo.imageUrl);
+        if (accessToken !== null) {
+          axios
+            .get(`${URL}/api/v1/users/movies`, {
+              headers: {
+                Authorization: `Bearer ${accessToken}`,
+                'Content-Type': 'application/json'
+              }
+            })
+            .then((res) => {
+              const watchedMovies = res.data.body.response;
+              setWatchedMovies(watchedMovies);
+            })
+            .catch((err) => {
+              console.log('토큰이 만료되었습니다.');
+            });
+        }
       } catch (error) {
         console.error('Error parsing storedUserInfo:', error);
-        // Handle the error accordingly, e.g., set default values or show a message to the user
       }
     }
-  }, []);
+  }, [accessToken]);
 
   const router = useRouter();
 
@@ -206,10 +233,35 @@ const Event = () => {
                 </div>
               </div>
               <h4 className={styled.recent_Movie_bar}>최근 시청 영화</h4>
-              <div className={styled.recent_Movie_Box}>
-                <img src='/png/범죄도시.png' className={styled.recent_Movie} />
-                <img src='/png/범죄도시.png' className={styled.recent_Movie} />
-              </div>
+              {watchedMovies && watchedMovies.length > 0 ? (
+                <div className={styled.recent_Movie_Box}>
+                  {watchedMovies.slice(0, 2).map((movie, index) => (
+                    <div key={index} className={styled.Movies}>
+                      <img
+                        src={movie.posterImageUrl}
+                        alt='영화 포스터'
+                        className={styled.recent_Movie}
+                      />
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className={styled.EmptyMovie}>
+                  <img
+                    src='/png/WarningLine.png'
+                    className={styled.WarningLine}
+                  />
+                  <Link href={'/myticket/ticketroom'}>
+                    <div className={styled.EmptyMovie_Txt}>
+                      최근 시청한 영화가 없습니다.
+                      <p className={styled.EmptyMovie_SubTxt}>
+                        해당 메시지를 클릭하면 <br />
+                        My Ticket Room으로 이동합니다.
+                      </p>
+                    </div>
+                  </Link>
+                </div>
+              )}
             </div>
           ) : (
             <div className={styled.loginBox}>
