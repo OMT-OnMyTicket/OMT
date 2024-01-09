@@ -63,18 +63,7 @@
   position: absolute;
   z-index: 2;
 }
-.WriteHand {
-  width: 180px;
-  position: absolute;
-  bottom: 0;
-  right: 20%;
-  z-index: 3;
-  cursor: pointer;
-}
-.WriteHand:hover {
-  width: 200px;
-  transition-duration: 1s;
-}
+
 .Write_Layout {
   border: 2px solid black;
   position: absolute;
@@ -138,4 +127,75 @@
 .Review_TextArea::placeholder {
   color: white;
   font-weight: bold;
+}
+.StarRating {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100%;
+}
+.Star {
+  width: 30px;
+  margin-left: 5px;
+}
+.SaveBtn {
+  width: 180px;
+  position: absolute;
+  bottom: 0;
+  right: 20%;
+  z-index: 3;
+  cursor: pointer;
+  background-color: yellow;
+  width: 40px;
+  height: 80px;
+  border-radius: 10px 10px 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  writing-mode: vertical-lr;
+  font-size: 14px;
+  color: gray;
+}
+.SaveBtn:hover {
+  height: 120px;
+  transition-duration: 1s;
+  font-size: 16px;
+  color: black;
+  font-weight: bold;
+}
+.goHome {
+  width: 180px;
+  position: absolute;
+  bottom: 0;
+  right: 15%;
+  z-index: 3;
+  cursor: pointer;
+  background-color: red;
+  width: 40px;
+  height: 80px;
+  border-radius: 10px 10px 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  writing-mode: vertical-lr;
+  font-size: 14px;
+  color: gray;
+}
+.goHome:hover {
+  height: 120px;
+  transition-duration: 1s;
+  font-size: 16px;
+  color: black;
+  font-weight: bold;
+}
+.SaveTxt {
+  position: absolute;
+  bottom: 0;
+  right: 25%;
+  z-index: 3;
+  font-size: 14px;
+  font-weight: bold;
+  font-size: 14px;
+  color: white;
 }

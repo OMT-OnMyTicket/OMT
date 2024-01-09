@@ -2,12 +2,14 @@
 
 import styled from '../../../styles/myticketP_S/ticketPage.module.css';
 import React, { useEffect, useState } from 'react';
-
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 const Ticket = () => {
   const [Title, setTitle] = useState<string | null>(null);
   const [posterImageUrl, setPosterImageUrl] = useState<string>('');
   const [textValue, setTextValue] = useState('');
-
+  const [userRating, setUserRating] = useState<number | null>(null);
+  const router = useRouter();
   useEffect(() => {
     const storedTitle = localStorage.getItem('영화제목');
     const storedPosterUrl = localStorage.getItem('posterUrl');
@@ -20,14 +22,19 @@ const Ticket = () => {
     }
   }, []);
 
+  const handleStarClick = (rating: number) => {
+    setUserRating(rating);
+  };
+
   return (
     <>
       <div className={styled.Layout}>
         <div className={styled.ticket_header}>
-          <img src='/back.svg' className={styled.back} />
+          <Link href={'/myticket/ticketroom'}>
+            <img src='/back.svg' className={styled.back} />
+          </Link>
           <div className={styled.Ticket_Tilte}>{Title}</div>
         </div>
-
         <div className={styled.Ticket_Layout}>
           <div className={styled.MovieTicket_Layout}>
             <img src='/png/Circle.png' className={styled.Circle} />
@@ -60,12 +67,36 @@ const Ticket = () => {
               </div>
               <div className={styled.MyScore}>
                 <div className={styled.Write_Title}>나만의 평점</div>
+                <div className={styled.StarRating}>
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <img
+                      key={star}
+                      src={
+                        userRating && star <= userRating
+                          ? '/png/fill_star.png'
+                          : '/png/empty_star.png'
+                      }
+                      className={styled.Star}
+                      onClick={() => handleStarClick(star)}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
           </div>
         </div>
-
-        <img src='/png/글쓰기.png' className={styled.WriteHand} />
+        {/* <img src='/png/글쓰기.png' className={styled.WriteHand} /> */}\
+        <div className={styled.SaveTxt}>
+          우측 저장하기를 누르면 내용이 저장됩니다.
+        </div>
+        <div className={styled.SaveBtn}>
+          <p>저장하기</p>
+        </div>
+        <Link href={'/home'}>
+          <div className={styled.goHome}>
+            <p>Hoom</p>
+          </div>
+        </Link>
       </div>
     </>
   );
