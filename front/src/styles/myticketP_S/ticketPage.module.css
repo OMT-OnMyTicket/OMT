@@ -15,6 +15,7 @@
   position: absolute;
   left: 10%;
   cursor: pointer;
+  width: 50px;
 }
 .back:hover {
   transform: scale(1.15);
@@ -30,6 +31,12 @@
   width: 100%;
   justify-content: center;
   align-items: center;
+}
+.Lank_star {
+  width: 80px;
+  position: absolute;
+  right: 10%;
+  z-index: 3;
 }
 .Ticket_Layout {
   display: flex;

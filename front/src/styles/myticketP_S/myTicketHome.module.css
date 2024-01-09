@@ -111,3 +111,24 @@
     transform: translate3d(0, 50px, 0);
   }
 }
+
+.RankedMovie {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50%;
+}
+
+.EmptyMovie_Txt {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+}
+
+.EmptyMovie_SubTxt {
+  font-size: 16px;
+  color: rgb(164, 164, 164);
+  text-align: center;
+  line-height: 1.5;
+  margin-top: 30px;
+}

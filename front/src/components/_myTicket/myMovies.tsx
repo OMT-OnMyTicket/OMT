@@ -63,9 +63,14 @@ const MyMovies = () => {
     };
   }, []); // Run this effect only once
 
-  const handleMakeTicket = (title: string, posterUrl: string) => {
+  const handleMakeTicket = (
+    title: string,
+    posterUrl: string,
+    movieId: string
+  ) => {
     localStorage.setItem('Ticket_Title', title);
     localStorage.setItem('posterUrl', posterUrl);
+    localStorage.setItem('movieId', movieId);
     router.push('/myticket/ticket');
   };
 
@@ -80,7 +85,11 @@ const MyMovies = () => {
                 alt='영화 포스터'
                 className={styled.Posters}
                 onClick={() => {
-                  handleMakeTicket(movie.title, movie.posterImageUrl);
+                  handleMakeTicket(
+                    movie.title,
+                    movie.posterImageUrl,
+                    movie.movieId
+                  );
                 }}
               />
               <div className={styled.MovieTitle}>{movie.title.trim()}</div>

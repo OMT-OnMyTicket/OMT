@@ -4,15 +4,22 @@ import styled from '../../../styles/myticketP_S/ticketPage.module.css';
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import axios from 'axios';
+
+const URL = process.env.NEXT_PUBLIC_URL;
 const Ticket = () => {
   const [Title, setTitle] = useState<string | null>(null);
+  const [movieid, setMovieId] = useState<string | null>(null);
+  const [accessToken, setToken] = useState<string | null>(null);
   const [posterImageUrl, setPosterImageUrl] = useState<string>('');
   const [textValue, setTextValue] = useState('');
   const [userRating, setUserRating] = useState<number | null>(null);
   const router = useRouter();
   useEffect(() => {
-    const storedTitle = localStorage.getItem('영화제목');
+    const storedTitle = localStorage.getItem('Ticket_Title');
     const storedPosterUrl = localStorage.getItem('posterUrl');
+    const storedMovieId = localStorage.getItem('posterUrl');
+    const storedToken: string | null = localStorage.getItem('Token');
 
     if (storedTitle) {
       setTitle(storedTitle);
@@ -20,11 +27,33 @@ const Ticket = () => {
     if (storedPosterUrl) {
       setPosterImageUrl(storedPosterUrl);
     }
+    if (storedMovieId) {
+      setMovieId(storedMovieId);
+    }
+    if (storedToken) {
+      setToken(JSON.parse(storedToken));
+    }
   }, []);
 
   const handleStarClick = (rating: number) => {
     setUserRating(rating);
   };
+
+  //   const handleLankStar = () => {
+  //     axios
+  //     .get(`${URL}/api/v1/users/movies`, {
+  //       headers: {
+  //         Authorization: `Bearer ${accessToken}`,
+  //         'Content-Type': 'application/json'
+  //       }
+  //     })
+  //     .then((res) => {
+  //       alert('성공적으로 등록되었습니다.')
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  //   }
 
   return (
     <>
@@ -34,6 +63,7 @@ const Ticket = () => {
             <img src='/back.svg' className={styled.back} />
           </Link>
           <div className={styled.Ticket_Tilte}>{Title}</div>
+          <img src='/png/fill_star.png' className={styled.Lank_star} />
         </div>
         <div className={styled.Ticket_Layout}>
           <div className={styled.MovieTicket_Layout}>
@@ -47,6 +77,7 @@ const Ticket = () => {
             <div className={styled.Write_Layout}>
               <div className={styled.Togeter}>
                 <div className={styled.Write_Title}>함께 본 사람</div>
+
                 <div className={styled.TextArea_Layout}>
                   <textarea
                     placeholder='영화를 함께 본 사람을 입력해주세요.'

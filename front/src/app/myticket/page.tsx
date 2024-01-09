@@ -5,7 +5,7 @@ import styled from '../../styles/myticketP_S/myTicketHome.module.css';
 import { useEffect, useState } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import LankedMovie from '@/components/_myTicket/lankmovie';
+import RankedMovie from '@/components/_myTicket/rankmovie';
 import ChangeLankModal from '@/components/_myTicket/changeLankModal';
 import Link from 'next/link';
 
@@ -99,7 +99,9 @@ const MyTicketHome = () => {
           </div>
           {modalOpen && <ChangeLankModal setModalOpen={setModalOpen} />}
         </div>
-        <LankedMovie />
+        <div className={styled.RankedMovie}>
+          <RankedMovie />
+        </div>
       </div>
     </>
   );
