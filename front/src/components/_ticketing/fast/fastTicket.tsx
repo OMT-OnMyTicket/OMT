@@ -40,18 +40,7 @@ const FastTicket: React.FC<InfoTicketProps> = ({
       <img src={posterURL} className={styled.Ticket_Box_Poster2} />
 
       {showCircles && (
-        <>
-          <div className={styled.Circle_Line_T2}>
-            {[...Array(4)].map((_, index) => (
-              <div className={styled.Circle_T2} key={index}></div>
-            ))}
-          </div>
-          <div className={styled.Circle_Line_B2}>
-            {[...Array(4)].map((_, index) => (
-              <div className={styled.Circle_B2} key={index}></div>
-            ))}
-          </div>
-        </>
+        <img src={'/png/Circle.png'} className={styled.Ticket_Circle} />
       )}
     </div>
   );
