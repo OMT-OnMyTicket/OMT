@@ -1,21 +1,13 @@
 'use client';
 import styled from '../../styles/mainP_S/event.module.css';
 import Slider from 'react-slick';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import { useRouter } from 'next/navigation';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Link from 'next/link';
-const URL = process.env.NEXT_PUBLIC_URL;
+import SubLogin from './subLogin';
+
 const Event = () => {
   // Slider settings
-  const [UserProfile, setUserProfile] = useState<string | null>(null);
-  const [UserName, setUserName] = useState<string | null>(null);
-  const [accessToken, setToken] = useState<string | null>(null);
-  const [watchedMovies, setWatchedMovies] = useState<any[] | null>(null);
-  const storedToken: string | null = localStorage.getItem('Token');
-
   const settings = {
     rows: 1,
     dots: true,
@@ -29,71 +21,34 @@ const Event = () => {
     pauseOnHover: true,
     variableWidth: true
   };
-  useEffect(() => {
-    const storedToken: string | null = localStorage.getItem('Token');
 
-    if (storedToken) {
-      setToken(JSON.parse(storedToken));
+  const eventDetails = [
+    {
+      title: '< 위시 >',
+      imgSrc:
+        'https://img.megabox.co.kr/SharedImg/BnftMng/2024/01/01/lqIzLCekvJjaNDEU5Yx6LDETHqS9S7MM.jpg'
+    },
+    {
+      title: '< 사카모토 >',
+      imgSrc:
+        'https://img.megabox.co.kr/SharedImg/BnftMng/2023/12/26/wVnat2pnIJ4nKdNPR4dKVnfLwBKgP97Z.jpg'
+    },
+    {
+      title: '< 서울의 봄 >',
+      imgSrc:
+        'https://img.megabox.co.kr/SharedImg/BnftMng/2023/12/21/x3FACJZL2PfZTESeNzRIfqsmyTEzl5CE.jpg'
+    },
+    {
+      title: '< 노량 >',
+      imgSrc:
+        'https://img.megabox.co.kr/SharedImg/BnftMng/2023/12/20/vBEJB2GJgcTwyl0D9ZW7HeDempMBWqj4.png'
+    },
+    {
+      title: '< 아쿠아맨 >',
+      imgSrc:
+        'https://img.megabox.co.kr/SharedImg/BnftMng/2023/12/18/ddLigu5OiSTbl83TFLws9KklWzRajrv3.jpg'
     }
-  }, []);
-  useEffect(() => {
-    const storedUserInfo = localStorage.getItem('UserInfo');
-
-    if (storedUserInfo) {
-      try {
-        const userInfo = JSON.parse(storedUserInfo);
-        setUserName(userInfo.userName);
-        setUserProfile(userInfo.imageUrl);
-        if (accessToken !== null) {
-          axios
-            .get(`${URL}/api/v1/users/movies`, {
-              headers: {
-                Authorization: `Bearer ${accessToken}`,
-                'Content-Type': 'application/json'
-              }
-            })
-            .then((res) => {
-              const watchedMovies = res.data.body.response;
-              setWatchedMovies(watchedMovies);
-            })
-            .catch((err) => {
-              console.log('토큰이 만료되었습니다.');
-            });
-        }
-      } catch (error) {
-        console.error('Error parsing storedUserInfo:', error);
-      }
-    }
-  }, [accessToken]);
-
-  const router = useRouter();
-
-  const handleNaverLogin = () => {
-    router.push(
-      `${URL}/oauth2/authorization/naver?redirect_uri=http://localhost:3000/login`
-    );
-    // router.push(
-    //   `${URL}/oauth2/authorization/naver?redirect_uri=https://omt-onmyticket.vercel.app/login`
-    // );
-  };
-
-  const handleKakaoLogin = () => {
-    router.push(
-      `${URL}/oauth2/authorization/kakao?redirect_uri=http://localhost:3000/login`
-    );
-    // router.push(
-    //   `${URL}/oauth2/authorization/kakao?redirect_uri=https://omt-onmyticket.vercel.app/login`
-    // );
-  };
-
-  const handleGoogleLogin = () => {
-    router.push(
-      `${URL}/oauth2/authorization/google?redirect_uri=http://localhost:3000/login`
-    );
-    // router.push(
-    //   `${URL}/oauth2/authorization/google?redirect_uri=https://omt-onmyticket.vercel.app/login`
-    // );
-  };
+  ];
 
   return (
     <div className={styled.Container}>
@@ -101,187 +56,52 @@ const Event = () => {
       <div className={styled.Content_Layout}>
         <div className={styled.Slider_Layout}>
           <Slider {...settings}>
-            <div className={styled.Slider}>
-              <a
-                href={'https://www.megabox.co.kr/event/detail?eventNo=14543'}
-                target='_blank'
-              >
-                <div className={styled.Slider_Photo}>
-                  <img
-                    src='https://img.megabox.co.kr/SharedImg/BnftMng/2023/11/20/GPU5O3hjlotPlK3raMmDn8kb8v3BNMJb.png'
-                    className={styled.leftPhoto}
-                  />
-
-                  <img
-                    src='https://img.megabox.co.kr/SharedImg/BnftMng/2023/11/20/zFurfr7mJnyn3SSMs47MgMAjGuOOAkeV.png'
-                    className={styled.rightPhoto}
-                  />
-                </div>
-              </a>
-            </div>
-            <div className={styled.Slider}>
-              <a
-                href={'https://thessencard.co.kr/event/megabox'}
-                target='_blank'
-              >
-                <div className={styled.Slider_Photo}>
-                  <img
-                    src='https://img.megabox.co.kr/SharedImg/BnftMng/2023/03/14/epS6oiqHOSFccJicF3hl5x6xZeIgjP22.png'
-                    className={styled.leftPhoto}
-                  />
-
-                  <img
-                    src='https://img.megabox.co.kr/SharedImg/BnftMng/2023/03/14/h8fwVvz9E5ktcOWtHjWSR0mMN2XnpxO0.png'
-                    className={styled.rightPhoto}
-                  />
-                </div>
-              </a>
-            </div>
-            <div className={styled.Slider}>
-              <a
-                href={
-                  'http://www.cgv.co.kr/culture-event/event/detailViewUnited.aspx?SEQ=37443'
-                }
-                target='_blank'
-              >
-                <div className={styled.Slider_Photo}>
-                  <img
-                    src='http://img.cgv.co.kr/Event/Event/2023/0616/16869060915990.jpg'
-                    className={styled.singlePhoto}
-                  />
-                </div>
-              </a>
-            </div>
-            <div className={styled.Slider}>
-              <a
-                href={
-                  'http://www.cgv.co.kr/culture-event/event/detailViewUnited.aspx?seq=39014&menu=001'
-                }
-                target='_blank'
-              >
-                <div className={styled.Slider_Photo}>
-                  <img
-                    src='https://img.cgv.co.kr/WebApp/contents/eventV4/39014/17001853707260.jpg'
-                    className={styled.singlePhoto}
-                  />
-                </div>
-              </a>
-            </div>
-            <div className={styled.Slider}>
-              <a
-                href={
-                  'https://event.lottecinema.co.kr/NLCHS/Event/EventTemplateInfo?eventId=501010024723036'
-                }
-                target='_blank'
-              >
-                <div className={styled.Slider_Photo}>
-                  <img
-                    src='https://caching.lottecinema.co.kr//Media/Event/630c3dda15864a92b9a6f9c87c136f19.png'
-                    className={styled.singlePhoto}
-                  />
-                </div>
-              </a>
-            </div>
-            <div className={styled.Slider}>
-              <a
-                href={
-                  'http://www.cgv.co.kr/culture-event/event/detailViewUnited.aspx?seq=38924'
-                }
-                target='_blank'
-              >
-                <div className={styled.Slider_Photo}>
-                  <img
-                    src='https://img.cgv.co.kr/WebApp/contents/eventV4/38924/16994915907830.jpg'
-                    className={styled.singlePhoto}
-                  />
-                </div>
-              </a>
-            </div>
+            {eventDetails.map((event, index) => (
+              <div key={index} className={styled.Slider}>
+                <Link href={'/myticket/ticketroom'}>
+                  <div className={styled.Slider_Photo}>
+                    <img
+                      src='/png/omt_event.png'
+                      className={styled.leftPhoto}
+                    />
+                    <img
+                      src={event.imgSrc}
+                      alt={`${event.title} 티켓`}
+                      className={styled.rightPhoto}
+                    />
+                    <div className={styled.event_ticketTxt}>
+                      {event.title} 본 뒤 OMT가 제안하는 <br /> 나만의 티켓 제작
+                      <p className={styled.event_ticket_SubTxt}>
+                        해당 이미지를 클릭하면 나만의 티켓룸으로 이동합니다.
+                      </p>
+                    </div>
+                  </div>
+                </Link>
+              </div>
+            ))}
           </Slider>
           <div className={styled.Box_Layout}>
             <div className={styled.left_Box}>
               <a
-                href={'https://www.youtube.com/watch?v=OquYKZLUJmY'}
+                href={'https://www.youtube.com/watch?v=BR5YCAxjbwc&t=5s'}
                 target='_blank'
               >
                 <img
-                  src='https://i.ytimg.com/vi/OquYKZLUJmY/maxresdefault.jpg'
+                  src='https://i.ytimg.com/vi/81JOj5-xNGc/maxresdefault.jpg'
                   className={styled.poster}
                 />
               </a>
               <div className={styled.poster_Txt}>
                 <h3> 개봉예정작</h3>
-                <h5>싱글 인 서울</h5>
-                <h5>11월 29일 대개봉</h5>
+                <h5>듄 파트2</h5>
+                <h5>2월 IMAX 대개봉</h5>
               </div>
             </div>
             <div className={styled.right_Box}></div>
           </div>
         </div>
         <div className={styled.User}>
-          {UserName ? (
-            <div className={styled.AferLogin}>
-              <div className={styled.AferLogin_User}>
-                <img
-                  src={UserProfile ? `${UserProfile}` : '/userProfile.svg'}
-                  className={styled.UserProfile}
-                />
-                <div className={styled.UserBox}>
-                  <div className={styled.UserName}>{UserName} 님</div>
-                  <div>등급 : 영화광</div>
-                  <div>월 평균 : 2회 </div>
-                </div>
-              </div>
-              <h4 className={styled.recent_Movie_bar}>최근 시청 영화</h4>
-              {watchedMovies && watchedMovies.length > 0 ? (
-                <div className={styled.recent_Movie_Box}>
-                  {watchedMovies.slice(0, 2).map((movie, index) => (
-                    <div key={index} className={styled.Movies}>
-                      <img
-                        src={movie.posterImageUrl}
-                        alt='영화 포스터'
-                        className={styled.recent_Movie}
-                      />
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <div className={styled.EmptyMovie}>
-                  <img
-                    src='/png/WarningLine.png'
-                    className={styled.WarningLine}
-                  />
-                  <Link href={'/myticket/ticketroom'}>
-                    <div className={styled.EmptyMovie_Txt}>
-                      최근 시청한 영화가 없습니다.
-                      <p className={styled.EmptyMovie_SubTxt}>
-                        해당 메시지를 클릭하면 <br />
-                        My Ticket Room으로 이동합니다.
-                      </p>
-                    </div>
-                  </Link>
-                </div>
-              )}
-            </div>
-          ) : (
-            <div className={styled.loginBox}>
-              <p className={styled.loginBox_txt}>
-                로그인 후 이용 가능한 서비스입니다.
-              </p>
-              <div className={styled.naver} onClick={handleNaverLogin}>
-                <img src={'/png/네이버.png'} className={styled.login_Logo} />
-                <p>네이버로 로그인하기</p>
-              </div>
-              <div className={styled.kakao} onClick={handleKakaoLogin}>
-                <img src={'/png/카카오.png'} className={styled.login_Logo} />
-                <p>카카오로 로그인하기</p>
-              </div>
-              <div className={styled.google} onClick={handleGoogleLogin}>
-                <img src={'/png/구글.png'} className={styled.login_Logo} />
-                <p>구글로 로그인하기</p>
-              </div>
-            </div>
-          )}
+          <SubLogin />
         </div>
       </div>
     </div>

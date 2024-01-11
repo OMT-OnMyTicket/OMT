@@ -12,14 +12,15 @@ const Ticket = () => {
   const [movieid, setMovieId] = useState<string | null>(null);
   const [accessToken, setToken] = useState<string | null>(null);
   const [posterImageUrl, setPosterImageUrl] = useState<string>('');
-  const [textValue, setTextValue] = useState('');
+  const [review, setReview] = useState<string>('');
+  const [companion, setCompanion] = useState<string>('');
   const [userRating, setUserRating] = useState<number | null>(null);
 
   const router = useRouter();
   useEffect(() => {
     const storedTitle = localStorage.getItem('Ticket_Title');
     const storedPosterUrl = localStorage.getItem('posterUrl');
-    const storedMovieId = localStorage.getItem('posterUrl');
+    const storedMovieId = localStorage.getItem('movieId');
     const storedToken: string | null = localStorage.getItem('Token');
 
     if (storedTitle) {
@@ -36,8 +37,59 @@ const Ticket = () => {
     }
   }, []);
 
+  //   useEffect(() => {
+  //     axios
+  //       .get(`${URL}/api/v1/movies/review`, {
+  //         headers: {
+  //           Authorization: `Bearer ${accessToken}`,
+  //           'Content-Type': 'application/json'
+  //         }
+  //       })
+  //       .then((res) => {
+  //         console.log(res);
+  //       })
+  //       .catch((err) => {
+  //         console.log(err);
+  //       });
+  //   }, [accessToken]);
+
   const handleStarClick = (rating: number) => {
     setUserRating(rating);
+  };
+
+  const handleCompanionChange = (
+    event: React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
+    setCompanion(event.target.value);
+  };
+
+  const handleReviewChange = (
+    event: React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
+    setReview(event.target.value);
+  };
+
+  const UserReview = {
+    movieid,
+    companion,
+    userRating,
+    review
+  };
+
+  const handleSaveReview = () => {
+    axios
+      .put(`${URL}/api/v1/movies/review`, UserReview, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          'Content-Type': 'application/json'
+        }
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -65,7 +117,7 @@ const Ticket = () => {
                 <div className={styled.TextArea_Layout}>
                   <textarea
                     placeholder='영화를 함께 본 사람을 입력해주세요.'
-                    // value={textValue}
+                    onChange={handleCompanionChange}
                     className={styled.Togeter_TextArea}
                   ></textarea>
                 </div>
@@ -75,7 +127,7 @@ const Ticket = () => {
                 <div className={styled.TextArea_Layout}>
                   <textarea
                     placeholder='영화에 대한 나만의 리뷰를 남겨봐요.'
-                    // value={textValue}
+                    onChange={handleReviewChange}
                     className={styled.Review_TextArea}
                   ></textarea>
                 </div>
@@ -104,7 +156,7 @@ const Ticket = () => {
         <div className={styled.SaveTxt}>
           우측 저장하기를 누르면 내용이 저장됩니다.
         </div>
-        <div className={styled.SaveBtn}>
+        <div className={styled.SaveBtn} onClick={handleSaveReview}>
           <p>저장하기</p>
         </div>
         <Link href={'/home'}>

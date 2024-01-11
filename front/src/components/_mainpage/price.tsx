@@ -1,6 +1,36 @@
 import styled from '../../styles/mainP_S/mySection.module.css';
 
 const Price = () => {
+  const ticketInfo = [
+    {
+      name: 'CGV',
+      link: 'http://www.cgv.co.kr/theaters/theaterPrice.aspx',
+      imageSrc: '/png/CGV관람권.png',
+      prices: {
+        weekday: '평일: 10000 ~ 14000원',
+        holiday: '공휴일: 11000 ~ 15000원'
+      }
+    },
+    {
+      name: '메가박스',
+      link: 'https://www.megabox.co.kr/store/megaticket',
+      imageSrc: '/png/메가박스관람권.png',
+      prices: {
+        weekday: '평일: 10000 ~ 14000원',
+        holiday: '공휴일: 11000 ~ 15000원'
+      }
+    },
+    {
+      name: '롯데시네마',
+      link: 'https://www.lottecinema.co.kr/NLCHS/CinemaMall',
+      imageSrc: '/png/롯데시네마관람권.png',
+      prices: {
+        weekday: '평일: 10000 ~ 14000원',
+        holiday: '공휴일: 11000 ~ 15000원'
+      }
+    }
+  ];
+
   return (
     <>
       <div className={styled.Comment_Layout}>
@@ -13,43 +43,18 @@ const Price = () => {
               </p>
             </div>
             <div className={styled.Movie_Tickets}>
-              <div className={styled.ticket_Info}>
-                <a
-                  href={'http://www.cgv.co.kr/theaters/theaterPrice.aspx'}
-                  target='_blank'
-                >
-                  <img src='/png/CGV관람권.png' className={styled.ticket_png} />
-                </a>
-                <div className={styled.Ticket_Price_Txt}>
-                  <h4>CGV</h4>
-                  <p>평일: 10000 ~ 14000원</p>
-                  <p>공휴일: 11000 ~ 15000원</p>
+              {ticketInfo.map((ticket, index) => (
+                <div key={index} className={styled.ticket_Info}>
+                  <a href={ticket.link} target='_blank'>
+                    <img src={ticket.imageSrc} className={styled.ticket_png} />
+                  </a>
+                  <div className={styled.Ticket_Price_Txt}>
+                    <h4>{ticket.name}</h4>
+                    <p>{ticket.prices.weekday}</p>
+                    <p>{ticket.prices.holiday}</p>
+                  </div>
                 </div>
-              </div>
-              <div className={styled.ticket_Info}>
-                <a href={''} target='_blank'></a>
-                <img
-                  src='/png/메가박스관람권.png'
-                  className={styled.ticket_png}
-                />
-                <div className={styled.Ticket_Price_Txt}>
-                  <h4>메가박스</h4>
-                  <p>평일: 10000 ~ 14000원</p>
-                  <p>공휴일: 11000 ~ 15000원</p>
-                </div>
-              </div>
-              <div className={styled.ticket_Info}>
-                <a href={''} target='_blank'></a>
-                <img
-                  src='/png/롯데시네마관람권.png'
-                  className={styled.ticket_png}
-                />
-                <div className={styled.Ticket_Price_Txt}>
-                  <h4>롯데시네마</h4>
-                  <p>평일: 10000 ~ 14000원</p>
-                  <p>공휴일: 11000 ~ 15000원</p>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>

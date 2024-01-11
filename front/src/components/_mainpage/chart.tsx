@@ -70,6 +70,7 @@ const Chart = () => {
               }
             })
             .then((res) => {
+              // console.log(res);
               const results = res.data.Data[0]?.Result || [];
               const posters = results.map(
                 (result: any) => result.posters.split('|')[0]

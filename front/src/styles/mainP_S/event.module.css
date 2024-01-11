@@ -31,6 +31,19 @@
   justify-content: center;
   align-items: center;
   width: 700px;
+  position: relative;
+}
+
+.event_ticketTxt {
+  position: absolute;
+  left: 2.5%;
+  bottom: 5%;
+  font-weight: bold;
+  line-height: 1.8;
+}
+.event_ticket_SubTxt {
+  font-size: 10px;
+  color: rgb(156, 156, 156);
 }
 
 .singlePhoto {
