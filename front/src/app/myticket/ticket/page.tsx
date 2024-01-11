@@ -14,7 +14,7 @@ const Ticket = () => {
   const [posterImageUrl, setPosterImageUrl] = useState<string>('');
   const [textValue, setTextValue] = useState('');
   const [userRating, setUserRating] = useState<number | null>(null);
-  const [lank, setLank] = useState<string | boolean>(false);
+
   const router = useRouter();
   useEffect(() => {
     const storedTitle = localStorage.getItem('Ticket_Title');
@@ -40,42 +40,6 @@ const Ticket = () => {
     setUserRating(rating);
   };
 
-  // body에 무비 id와 rank
-  const handleLankStar = () => {
-    // axios
-    //   .get(`${URL}/api/v1/users/movies`, {
-    //     headers: {
-    //       Authorization: `Bearer ${accessToken}`,
-    //       'Content-Type': 'application/json'
-    //     }
-    //   })
-    //   .then((res) => {
-    //     setLank(true);
-    //     alert('성공적으로 등록되었습니다.');
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
-    setLank(true);
-  };
-  const handleDeleteLankStar = () => {
-    // axios
-    //   .get(`${URL}/api/v1/users/movies`, {
-    //     headers: {
-    //       Authorization: `Bearer ${accessToken}`,
-    //       'Content-Type': 'application/json'
-    //     }
-    //   })
-    //   .then((res) => {
-    //     setLank(true);
-    //     alert('성공적으로 등록되었습니다.');
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
-    setLank(false);
-  };
-
   return (
     <>
       <div className={styled.Layout}>
@@ -84,19 +48,6 @@ const Ticket = () => {
             <img src='/back.svg' className={styled.back} />
           </Link>
           <div className={styled.Ticket_Tilte}>{Title}</div>
-          {lank ? (
-            <img
-              src='/png/fill_star.png'
-              className={styled.Lank_star}
-              onClick={handleDeleteLankStar}
-            />
-          ) : (
-            <img
-              src='/png/empty_star.png'
-              className={styled.Lank_star}
-              onClick={handleLankStar}
-            />
-          )}
         </div>
         <div className={styled.Ticket_Layout}>
           <div className={styled.MovieTicket_Layout}>
