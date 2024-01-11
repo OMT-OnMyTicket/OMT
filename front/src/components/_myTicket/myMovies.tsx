@@ -34,7 +34,7 @@ const MyMovies = () => {
         setWatchedMovies(watchedMoviesResponse);
       })
       .catch((err) => {
-        console.log(err);
+        console.log('에러메시지 :', err);
       });
   }, [accessToken]);
 

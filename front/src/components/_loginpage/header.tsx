@@ -8,13 +8,16 @@ const Header = () => {
   const [loginClicked, setLoginClicked] = useState(false);
   const [UserProfile, setUserProfile] = useState<string | null>(null);
   const [UserName, setUserName] = useState<string | null>(null);
+
   const router = useRouter();
 
   const handleHome = () => {
     const userInfo = localStorage.getItem('UserInfo');
+    const Token = localStorage.getItem('Token');
     localStorage.clear();
-    if (userInfo) {
+    if (userInfo && Token) {
       localStorage.setItem('UserInfo', userInfo);
+      localStorage.setItem('Token', Token);
     }
     router.push('/home');
   };

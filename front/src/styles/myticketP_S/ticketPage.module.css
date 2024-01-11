@@ -37,6 +37,11 @@
   position: absolute;
   right: 10%;
   z-index: 3;
+  cursor: pointer;
+}
+.Lank_star:hover {
+  transform: scale(1.2);
+  transition-duration: 1s;
 }
 .Ticket_Layout {
   display: flex;
