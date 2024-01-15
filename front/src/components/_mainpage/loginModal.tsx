@@ -62,14 +62,12 @@ const Modal = ({ setModalOpen }: PropsType) => {
   };
 
   const handleGoogleLogin = () => {
-    // router.push(
-    //   `${URL}/oauth2/authorization/google?redirect_uri=http://localhost:3000/login`
-    // );
     router.push(
-      `${URL}/oauth2/authorization/google?redirect_uri=https://omt-onmyticket.vercel.app/login`
+      `${URL}/oauth2/authorization/google?redirect_uri=http://localhost:3000/login`
     );
-    // 메인 배포에서 발생되는 url
-    // http://ec2-3-34-47-93.ap-northeast-2.compute.amazonaws.com:8080/login/oauth2/code/google?state=GB180u0rA6dJ3CaMOl7XwMrybf7gpMIb3khlQ-pFeRE%3D&code=4%2F0AfJohXl_oaYdUSWeZMM45t5Z9atgKkphWamDoRAz3Z8s-xbUIrTVEWmnMMuqv87JlCrwcg&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid&authuser=1&prompt=consent
+    // router.push(
+    //   `${URL}/oauth2/authorization/google?redirect_uri=https://omt-onmyticket.vercel.app/login`
+    // );
   };
 
   return (

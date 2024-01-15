@@ -11,8 +11,8 @@
   flex-direction: column;
   border: 1px solid #eee;
   border-radius: 10px;
-  padding: 40px;
-  margin-bottom: 20px;
+  padding: 2.8vw;
+  margin-bottom: 1.4vw;
   border: 1px solid #cfcccc;
   background-color: white;
   box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.2);
@@ -21,10 +21,10 @@
   line-height: 1.6;
 }
 .ShowPng {
-  width: 550px;
+  width: 38.2vw;
   border-radius: 10px;
   cursor: pointer;
-  margin-top: 20px;
+  margin-top: 1.4vw;
 }
 .ShowPng:hover {
   transform: scale(1.05);
@@ -36,23 +36,23 @@
   border: 1px solid #cfcccc;
   background-color: white;
   border-radius: 10px;
-  padding: 40px;
-  width: 500px;
+  padding: 2.8vw;
+  width: 34.7vw;
   box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.2);
 }
 .title {
-  margin-bottom: 10px;
+  margin-bottom: 0.7vw;
 }
 .Movie_Tickets {
-  margin-top: 50px;
+  margin-top: 3.5vw;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 .ticket_png {
-  width: 150px;
-  margin-right: 50px;
+  width: 10.5vw;
+  margin-right: 3.5vw;
   cursor: pointer;
 }
 .ticket_png:hover {
@@ -60,14 +60,14 @@
   transition-duration: 1s;
 }
 .h3 {
-  margin-right: 20px;
+  margin-right: 1.4vw;
 }
 .Notice {
   border-bottom: 1px solid #cfcccc;
-  padding-bottom: 20px;
+  padding-bottom: 1.4vw;
 }
 .Question {
-  padding-top: 20px;
+  padding-top: 1.4vw;
 }
 .Notice,
 .Question {
@@ -76,7 +76,7 @@
 
 .ticket_Info {
   display: flex;
-  margin-bottom: 20px;
+  margin-bottom: 1.4vw;
   align-items: center;
 }
 

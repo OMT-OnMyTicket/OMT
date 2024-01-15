@@ -1,9 +1,10 @@
 .Container {
   width: 100%;
   height: 100vh;
-  display: grid;
-  grid-template-rows: 1fr 2fr;
   background-image: url('/png/Ticketing_Back.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
   padding: 140px 50px 0;
 }
 
@@ -14,6 +15,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-bottom: 80px;
 }
 
 .Main_Title {
@@ -67,7 +69,7 @@
 
 .Left_Box:hover,
 .Right_Box:hover {
-  width: 480px;
+  transform: scale(1.05);
   transition-duration: 1s;
 }
 .Left_Box:hover > .Box_Title,

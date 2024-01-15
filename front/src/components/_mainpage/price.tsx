@@ -72,8 +72,9 @@ const Price = () => {
             <div className={styled.Notice}>
               <h3 className={styled.h3}>공지사항</h3>
               <p className={styled.Txt}>
-                [개발] 나만의 티켓, 빠른예매는 현재 개발 진행중입니다.
+                [개발] PC,Tablet 환경을 지원중입니다. 모바일 - 개발예정
               </p>
+              <p className={styled.Txt}></p>
             </div>
             <div className={styled.Question}>
               <h3 className={styled.h3}>문의사항</h3>
