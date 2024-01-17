@@ -65,11 +65,12 @@ const Chart = () => {
                 collection: 'kmdb_new2',
                 detail: 'Y',
                 title: movie.movieNm,
-                ServiceKey: `${KMDB_KEY}`
-                // releaseDts: 2023
+                ServiceKey: `${KMDB_KEY}`,
+                releaseDts: 2023
               }
             })
             .then((res) => {
+              // console.log(res);
               const results = res.data.Data[0]?.Result || [];
               const posters = results.map(
                 (result: any) => result.posters.split('|')[0]

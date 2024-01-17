@@ -1,0 +1,202 @@
+.Layout {
+  width: 100%;
+  height: 100vh;
+  background-color: black;
+  padding: 100px 50px 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.back {
+  position: absolute;
+  left: 10%;
+  cursor: pointer;
+  width: 50px;
+}
+.back:hover {
+  transform: scale(1.15);
+  transition-duration: 1s;
+}
+.ticket_header {
+  margin-bottom: 80px;
+}
+.Ticket_Tilte {
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.Ticket_Layout {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+.MovieTicket,
+.TextTicket {
+  width: 300px;
+  height: 500px;
+  position: relative;
+}
+.MovieTicket_Layout {
+  margin-right: 50px;
+}
+.TextTicket_Layout {
+  margin-left: 50px;
+}
+.MovieTicket_Layout,
+.TextTicket_Layout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.TextTicket {
+  z-index: 1;
+  filter: invert(35%);
+}
+
+.Circle {
+  position: absolute;
+  z-index: 2;
+}
+
+.Write_Layout {
+  border: 2px solid black;
+  position: absolute;
+  width: 270px;
+  height: 440px;
+  z-index: 3;
+}
+.Togeter {
+  border-bottom: 2px solid black;
+  height: 20%;
+  padding: 10px;
+}
+.MyRewiew {
+  border-bottom: 2px solid black;
+  height: 60%;
+  padding: 10px;
+}
+.MyScore {
+  height: 15%;
+  padding: 10px;
+}
+.Write_Title {
+  font-size: 16px;
+  font-weight: bold;
+}
+.Togeter_TextArea,
+.Review_TextArea {
+  z-index: 3;
+  resize: none;
+  width: 100%;
+  padding: 10px;
+  background-color: transparent;
+  border: 1px solid black;
+  border-radius: 10px;
+  color: white;
+  outline-color: white;
+}
+.Togeter_TextArea {
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+}
+.Review_TextArea {
+  height: 100%;
+  margin-top: 20px;
+  line-height: 1.4;
+}
+.TextArea_Layout {
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Togeter_TextArea::placeholder {
+  color: white;
+  font-weight: bold;
+}
+
+.Review_TextArea::placeholder {
+  color: white;
+  font-weight: bold;
+}
+.StarRating {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100%;
+}
+.Star {
+  width: 30px;
+  margin-left: 5px;
+}
+.SaveBtn {
+  width: 180px;
+  position: absolute;
+  bottom: 0;
+  right: 20%;
+  z-index: 3;
+  cursor: pointer;
+  background-color: yellow;
+  width: 40px;
+  height: 80px;
+  border-radius: 10px 10px 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  writing-mode: vertical-lr;
+  font-size: 14px;
+  color: gray;
+}
+.SaveBtn:hover {
+  height: 120px;
+  transition-duration: 1s;
+  font-size: 16px;
+  color: black;
+  font-weight: bold;
+}
+.goHome {
+  width: 180px;
+  position: absolute;
+  bottom: 0;
+  right: 15%;
+  z-index: 3;
+  cursor: pointer;
+  background-color: red;
+  width: 40px;
+  height: 80px;
+  border-radius: 10px 10px 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  writing-mode: vertical-lr;
+  font-size: 14px;
+  color: gray;
+}
+.goHome:hover {
+  height: 120px;
+  transition-duration: 1s;
+  font-size: 16px;
+  color: black;
+  font-weight: bold;
+}
+.SaveTxt {
+  position: absolute;
+  bottom: 0;
+  right: 25%;
+  z-index: 3;
+  font-size: 14px;
+  font-weight: bold;
+  font-size: 14px;
+  color: white;
+}

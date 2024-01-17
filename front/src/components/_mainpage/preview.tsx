@@ -7,15 +7,15 @@ const preview = () => {
       <div className={styled.preview}>
         <iframe
           className={styled.video}
-          src='https://www.youtube.com/embed/-AZ7cnwn2YI?autoplay=1&mute=1&loop=1&playlist=-AZ7cnwn2YI'
-          title='서울의 봄 예고편'
+          src='https://www.youtube.com/embed/rjW9E1BR_30?autoplay=1&mute=1&loop=1&playlist=rjW9E1BR_30'
+          title='파묘 예고편'
           allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
           allowFullScreen
         />
-        <strong className={styled.title}>서울의 봄 </strong>
+        <strong className={styled.title}>파묘 </strong>
         <span className={styled.txt}>
-          1979.12.12 그날 밤 <br />
-          철저하게 감춰진 9시간
+          "뭐가 나왔다고 거기서, 겁나 험한 게" <br />
+          모두가 기다린 오컬트 미스터리
         </span>
       </div>
     </div>

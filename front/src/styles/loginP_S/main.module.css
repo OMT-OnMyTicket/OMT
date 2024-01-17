@@ -106,17 +106,17 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16vw 16vw;
+  padding: 16vw;
 }
 .mainTxt2_1 {
   font-weight: 600;
-  font-size: 34px;
+  font-size: 2.4vw;
   line-height: 80px;
   color: blue;
 }
 .mainTxt2_2 {
   font-weight: 600;
-  font-size: 44px;
+  font-size: 3.1vw;
   line-height: 80px;
   color: #000000;
   margin: 70px 0;
@@ -131,7 +131,7 @@
 }
 
 .ticketImg2 {
-  width: 350px;
+  width: 24.3vw;
   filter: drop-shadow(20px 20px 2px rgba(150, 150, 150, 0.25));
 }
 
@@ -186,24 +186,24 @@
   position: relative;
 }
 .phoneImg {
-  width: 600px;
+  width: 41.7vw;
   margin: 0 3vw;
 }
 .theater_Layout {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 80px 0;
+  margin: 5.6vw 0;
 }
 .theater,
 .theater1 {
-  width: 190px;
-  height: 170px;
+  width: 13.2vw;
+  height: 11.8vw;
   border-radius: 20px;
   background-color: white;
   box-shadow: 20px 20px 2px rgba(150, 150, 150, 0.25);
-  margin: 10px;
-  padding: 10px;
+  margin: 0.7vw;
+  padding: 0.7vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -228,8 +228,8 @@
 }
 .phoneTop,
 .phoneBtm {
-  width: 280px;
-  margin-top: 40px;
+  width: 19.4vw;
+  margin-top: 2.8vw;
   border-radius: 20px;
 }
 .phoneTop {
@@ -240,7 +240,6 @@
   .third_Container {
     display: flex;
     padding: 8vw;
-
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;

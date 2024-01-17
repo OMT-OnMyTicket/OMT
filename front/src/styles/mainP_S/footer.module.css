@@ -19,3 +19,7 @@
   color: gray;
   font-size: 0.9vw;
 }
+.footerL,
+.footerR {
+  line-height: 1.8;
+}

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Header from '@/components/_mainpage/header';
 import styled from '@/styles/search_P_S/search.module.css';
-
+import Check from '@/components/_searchpage/check';
 const KMDB_KEY = process.env.NEXT_PUBLIC_KMDB_KEY;
 const KMDB_URL = process.env.NEXT_PUBLIC_KMDB_URL;
 
@@ -127,6 +127,9 @@ const Detail = () => {
       </nav>
       <div className={styled.Detail_Layout}>
         <h3 className={styled.MovieTitle}> {movieData.movieTitle}</h3>
+        <div className={styled.CheckList}>
+          <Check />
+        </div>
         <div className={styled.Detail_Contents}>
           <img
             src={movieData.moviePosters || '/png/preparing.png'}

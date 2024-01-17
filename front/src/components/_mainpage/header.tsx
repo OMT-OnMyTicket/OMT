@@ -15,12 +15,16 @@ const Header = () => {
 
   useEffect(() => {
     const storedUserInfo = localStorage.getItem('UserInfo');
-    console.log('Stored UserInfo:', storedUserInfo);
 
     if (storedUserInfo) {
-      const userInfo = JSON.parse(storedUserInfo);
-      setUserName(userInfo.userName);
-      setUserProfile(userInfo.imageUrl);
+      try {
+        const userInfo = JSON.parse(storedUserInfo);
+        setUserName(userInfo.userName);
+        setUserProfile(userInfo.imageUrl);
+      } catch (error) {
+        console.error('Error parsing storedUserInfo:', error);
+        // Handle the error accordingly, e.g., set default values or show a message to the user
+      }
     }
   }, []);
 
@@ -48,7 +52,7 @@ const Header = () => {
               <>
                 <li>
                   <div className={styled.myTickets}>
-                    <Link href='/'>My Tickets</Link>
+                    <Link href='/myticket'>My Tickets</Link>
                   </div>
                 </li>
                 <li className={styled.User}>

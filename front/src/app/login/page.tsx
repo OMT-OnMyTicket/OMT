@@ -27,6 +27,7 @@ const OAuth2 = () => {
     const accessToken: string | null = urlSearchParams.get('token');
 
     if (accessToken) {
+      localStorage.setItem('Token', JSON.stringify(accessToken));
       axios
         .get(`${OAuthURL}/api/v1/users`, {
           headers: {
@@ -34,11 +35,11 @@ const OAuth2 = () => {
           }
         })
         .then((res) => {
-          const UserInfo = res.data.body.user;
+          const UserInfo = res.data.body.response;
           localStorage.setItem('UserInfo', JSON.stringify(UserInfo));
+          router.push('/home');
           // console.log(JSON.parse(localStorage.UserInfo).userName); // 유저명
           // console.log(JSON.parse(localStorage.UserInfo).imageUrl); // 프로필사진
-          router.push('/home');
           // console.log(UserInfo);
         })
         .catch((error) => {
