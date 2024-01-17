@@ -18,36 +18,58 @@
   z-index: 2;
 }
 .Slider_Layout {
-  width: 700px;
-  height: 400px;
+  width: 48.6vw;
+  height: 27.7vw;
 }
-.Slider:hover {
-  transform: scale(1.02);
+
+.Slider_Photo:hover > .rightPhoto {
+  transform: scale(1.08);
   transition-duration: 1s;
+}
+
+.leftPhoto {
+  width: 20.8vw;
+  height: 20.8vw;
+}
+.rightPhoto {
+  width: 26.7vw;
 }
 
 .Slider_Photo {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 700px;
+  width: 48.6vw;
+  position: relative;
+}
+
+.event_ticketTxt {
+  position: absolute;
+  left: 2.5%;
+  bottom: 5%;
+  font-weight: bold;
+  line-height: 1.8;
+}
+.event_ticket_SubTxt {
+  font-size: 10px;
+  color: rgb(156, 156, 156);
 }
 
 .singlePhoto {
-  height: 300px;
-  max-width: 700px;
-  border-radius: 20px;
+  height: 20.8vw;
+  max-width: 48.6vw;
+  border-radius: 1.4vw;
 }
 
 .User {
   width: 32vw;
-  height: 600px;
+  height: 41.6vw;
   border: 1px solid #cfcccc;
   background-color: white;
   position: absolute;
   right: 0;
   box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.2);
-  border-radius: 20px;
+  border-radius: 1.4vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -56,7 +78,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  height: 400px;
+  height: 27.7vw;
 }
 .loginBox_txt {
   color: #776e6e;
@@ -65,7 +87,7 @@
 .naver,
 .kakao,
 .google {
-  width: 300px;
+  width: 20.8vw;
   display: flex;
   align-items: center;
   border-radius: 10px;
@@ -75,9 +97,9 @@
 }
 
 .login_Logo {
-  width: 50px;
+  width: 3.47vw;
   border-radius: 10px;
-  margin-right: 50px;
+  margin-right: 3.47vw;
 }
 .naver {
   background-color: #6dba24;
@@ -106,11 +128,11 @@
   bottom: -45%;
 }
 .left_Box {
-  width: 410px;
-  height: 200px;
+  width: 28.4vw;
+  height: 13.8vw;
   background-color: black;
-  margin-right: 20px;
-  border-radius: 20px;
+  margin-right: 1.4vw;
+  border-radius: 1.4vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -118,13 +140,13 @@
   overflow: hidden;
 }
 .poster {
-  width: 350px;
+  width: 24.3vw;
   position: relative;
   cursor: pointer;
-  border-radius: 20px;
+  border-radius: 1.4vw;
 }
 .poster:hover {
-  width: 380px;
+  width: 26.3vw;
 
   transition-duration: 1s;
 }
@@ -137,10 +159,10 @@
   line-height: 2;
 }
 .right_Box {
-  width: 250px;
-  height: 200px;
+  width: 17.3vw;
+  height: 13.8vw;
   background-image: url('/png/문화의날.png');
-  border-radius: 20px;
+  border-radius: 1.4vw;
   background-repeat: no-repeat;
   background-size: cover;
   box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.2);
@@ -151,6 +173,7 @@
   justify-content: space-around;
   align-items: center;
   height: 100%;
+  width: 100%;
 }
 .AferLogin_User {
   display: flex;
@@ -159,21 +182,21 @@
   align-items: center;
 }
 .UserProfile {
-  width: 130px;
-  height: 130px;
+  width: 9vw;
+  height: 9vw;
   border-radius: 10px;
 }
 .UserName {
   display: flex;
 }
 .UserBox {
-  width: 200px;
-  height: 180px;
+  width: 13.8vw;
+  height: 12.5vw;
   box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   border: 1px solid #cfcccc;
   display: flex;
-  padding-left: 20px;
+  padding-left: 1.4vw;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -185,13 +208,38 @@
 .recent_Movie {
   background-color: #6dba24;
   border-radius: 10px;
-  width: 210px;
-  height: 280px;
+  width: 14.6vw;
+  height: 19.4vw;
   box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.2);
   margin: 0 10px;
 }
 .recent_Movie_bar {
   width: 100%;
-  padding-left: 20px;
+  padding-left: 1.4vw;
   display: flex;
+}
+.EmptyMovie {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.EmptyMovie_Txt {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  font-size: 18px;
+  font-weight: bold;
+}
+.WarningLine {
+  width: 32vw;
+  height: 12.5vw;
+  position: relative;
+}
+.EmptyMovie_SubTxt {
+  font-size: 12px;
+  color: gray;
+  text-align: center;
+  line-height: 1.5;
+  margin-top: 5px;
 }

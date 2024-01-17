@@ -156,3 +156,158 @@
   margin-left: 10px;
   font-size: 15px;
 }
+
+/* 로딩창 */
+
+/* 모달창의 배경을 만든다 */
+.Modal_background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  /* background: rgba(0, 0, 0, 0.8); */
+  background: black;
+  z-index: 1;
+}
+
+/* 모달창 영역을 꾸민다 */
+.Modal_Container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Loding_Container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Loder_Layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.Loding_Txt {
+  color: white;
+  font-size: 26px;
+  font-weight: bold;
+}
+.loader {
+  width: 16px;
+  height: 16px;
+  position: relative;
+  left: -32px;
+  border-radius: 50%;
+  color: #fff;
+  background: currentColor;
+  box-shadow: 32px 0, -32px 0, 64px 0;
+  margin-top: 50px;
+  margin-left: 20px;
+}
+
+.loader::after {
+  content: '';
+  position: absolute;
+  left: -32px;
+  top: 0;
+  width: 16px;
+  height: 16px;
+  border-radius: 10px;
+  background: #ff3d00;
+  animation: move 3s linear infinite alternate;
+}
+
+@keyframes move {
+  0%,
+  5% {
+    left: -32px;
+    width: 16px;
+  }
+  15%,
+  20% {
+    left: -32px;
+    width: 48px;
+  }
+  30%,
+  35% {
+    left: 0px;
+    width: 16px;
+  }
+  45%,
+  50% {
+    left: 0px;
+    width: 48px;
+  }
+  60%,
+  65% {
+    left: 32px;
+    width: 16px;
+  }
+
+  75%,
+  80% {
+    left: 32px;
+    width: 48px;
+  }
+  95%,
+  100% {
+    left: 64px;
+    width: 16px;
+  }
+}
+.loader1 {
+  color: #fff;
+  position: relative;
+  display: inline-block;
+  margin-top: 50px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 48px;
+  letter-spacing: 4px;
+  box-sizing: border-box;
+}
+.loader1::before {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  right: 70px;
+  bottom: 10px;
+  height: 24px;
+  width: 5.15px;
+  background: currentColor;
+}
+.loader1::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  position: absolute;
+  left: 125px;
+  top: 2px;
+  border-radius: 50%;
+  background: red;
+  box-sizing: border-box;
+  animation: animloader 1s ease-in infinite;
+}
+
+@keyframes animloader {
+  0% {
+    transform: translateY(8px) scaleY(1) scaleX(1.25);
+  }
+  25%,
+  75% {
+    transform: translateY(-5px) scaleY(1.2) scaleX(1);
+  }
+  50% {
+    transform: translateY(-10px) scaleY(1) scaleX(1);
+  }
+  100% {
+    transform: translateY(8px) scaleY(0.8) scaleX(0.8);
+  }
+}

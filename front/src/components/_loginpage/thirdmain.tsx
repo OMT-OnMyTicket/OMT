@@ -54,13 +54,6 @@ const Third = () => {
           >
             <img src='/png/메가박스.png' className={styled.theater_icon} />
           </div>
-          <div
-            className={styled.theater}
-            data-aos='fade-down'
-            data-aos-duration='3000'
-          >
-            <img src='/png/씨네큐.png' className={styled.theater_icon} />
-          </div>
         </div>
 
         {/* 세번째 섹션 */}

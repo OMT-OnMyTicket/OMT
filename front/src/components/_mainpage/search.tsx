@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState, useRef } from 'react';
-import styled from '../../styles/mainP_S/header.module.css';
+import styled from '../../styles/search_P_S/searchComp.module.css';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 

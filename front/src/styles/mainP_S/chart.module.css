@@ -12,14 +12,14 @@
 .moviePoster_Layout {
   cursor: pointer;
   position: relative;
-  height: 400px;
-  width: 220px;
+  height: 27vw;
+  width: 15.2vw;
   display: flex;
   justify-content: center;
 }
 .moviePoster {
-  width: 220px;
-  height: 350px;
+  width: 15.2vw;
+  height: 24.3vw;
   position: relative;
   border-radius: 10px;
   z-index: 1;
@@ -42,7 +42,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  width: 200px;
+  width: 13.8vw;
   margin-top: 1vw;
   margin-bottom: 1vw;
   font-size: 18px;
@@ -55,8 +55,8 @@
     rgba(0, 0, 0, 0.09) 35%,
     rgba(0, 0, 0, 0.85)
   );
-  width: 220px;
-  height: 350px;
+  width: 15.2vw;
+  height: 24.3vw;
   display: flex;
   align-items: flex-end;
   padding: 0 0 10px 10px;
@@ -73,16 +73,16 @@
 
 .movieContents_Layout {
   position: absolute;
-  width: 200px;
-  height: 340px;
+  width: 15.2vw;
+  height: 24.3vw;
   display: none;
   top: 0;
   left: 5%;
 }
 
 .movieContents {
-  width: 200px;
-  height: 150px;
+  width: 13.8vw;
+  height: 10.4vw;
   overflow-y: auto;
   color: white;
   position: absolute;
@@ -90,21 +90,26 @@
 }
 
 .Contentes_Title {
-  font-size: 24px;
+  font-size: 1.4rem;
+  height: 3.48vw;
   color: white;
-  margin-top: 30px;
+  margin-top: 2vw;
   font-weight: bold;
+  width: 13.8vw;
+  display: flex;
+  align-items: center;
 }
 
 .Btn {
   background-color: white;
   border-radius: 20px;
-  width: 80px;
-  height: 30px;
+  width: 5.5vw;
+  height: 2vw;
   display: flex;
   justify-content: center;
-  margin: 30px 0;
+  margin: 2vw 0;
   align-items: center;
+  font-size: 1vw;
 }
 .Btn:hover {
   background-color: #f15b3a;
