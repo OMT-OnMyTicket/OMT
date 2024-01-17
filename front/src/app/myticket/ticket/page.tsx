@@ -37,21 +37,48 @@ const Ticket = () => {
     }
   }, []);
 
-  //   useEffect(() => {
-  //     axios
-  //       .get(`${URL}/api/v1/movies/review`, {
-  //         headers: {
-  //           Authorization: `Bearer ${accessToken}`,
-  //           'Content-Type': 'application/json'
-  //         }
-  //       })
-  //       .then((res) => {
-  //         console.log(res);
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //       });
-  //   }, [accessToken]);
+  const UserReview = {
+    movieid,
+    companion,
+    userRating,
+    review
+  };
+
+  // 기본적으로 유저 리뷰를 띄우기 위한 Code
+  useEffect(() => {
+    axios
+      .get(`${URL}/api/v1/movies/review`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          'Content-Type': 'application/json'
+        }
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [accessToken]);
+
+  // 리뷰 저장하기 버튼을 통한 Code
+  const handleSaveReview = () => {
+    // axios
+    //   .put(`${URL}/api/v1/movies/review`, UserReview, {
+    //     headers: {
+    //       Authorization: `Bearer ${accessToken}`,
+    //       'Content-Type': 'application/json'
+    //     }
+    //   })
+    //   .then((res) => {
+    //     console.log(res);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
+
+    console.log(UserReview);
+  };
 
   const handleStarClick = (rating: number) => {
     setUserRating(rating);
@@ -67,29 +94,6 @@ const Ticket = () => {
     event: React.ChangeEvent<HTMLTextAreaElement>
   ) => {
     setReview(event.target.value);
-  };
-
-  const UserReview = {
-    movieid,
-    companion,
-    userRating,
-    review
-  };
-
-  const handleSaveReview = () => {
-    axios
-      .put(`${URL}/api/v1/movies/review`, UserReview, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-          'Content-Type': 'application/json'
-        }
-      })
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
   };
 
   return (
@@ -152,7 +156,7 @@ const Ticket = () => {
             </div>
           </div>
         </div>
-        {/* <img src='/png/글쓰기.png' className={styled.WriteHand} /> */}\
+
         <div className={styled.SaveTxt}>
           우측 저장하기를 누르면 내용이 저장됩니다.
         </div>
