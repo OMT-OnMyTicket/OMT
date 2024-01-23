@@ -13,6 +13,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import twoman.omt.api.annotations.WithMockUserCustom;
+import twoman.omt.api.entity.dto.MovieDto;
 import twoman.omt.api.entity.dto.UserDto;
 import twoman.omt.api.entity.user.User;
 import twoman.omt.api.entity.user.UserRefreshToken;
@@ -27,6 +28,7 @@ import twoman.omt.oauth.token.AuthToken;
 import twoman.omt.oauth.token.AuthTokenProvider;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -59,6 +61,7 @@ class UserControllerTest extends ControllerTest {
 
     private User user;
     private UserDto.Response userDtoResponse;
+    private List<MovieDto.Response> movieDtoResponse;
     private Authentication authentication;
     private Auth auth;
     private AuthToken accessToken;
@@ -76,6 +79,7 @@ class UserControllerTest extends ControllerTest {
         accessToken = (AuthToken) userResource.get("accessToken");
         refreshToken = (AuthToken) userResource.get("refreshToken");
         userRefreshToken = (UserRefreshToken) userResource.get("userRefreshToken");
+        movieDtoResponse = (List<MovieDto.Response>) userResource.get("moviesAllResponse");
     }
 
     @Test
@@ -87,6 +91,19 @@ class UserControllerTest extends ControllerTest {
 
 
         getResource(DEFAULT_URL)
+                .apply(true)
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.body.response").isNotEmpty());
+    }
+
+    @Test
+    @DisplayName("[테스트] 유저 시청영화 목록 조회")
+    @WithMockUser
+    void getMoviesTest() throws Exception {
+        given(userService.GAMovies(anyString()))
+                .willReturn(movieDtoResponse);
+
+        getResource(DEFAULT_URL + "/movies")
                 .apply(true)
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.body.response").isNotEmpty());
