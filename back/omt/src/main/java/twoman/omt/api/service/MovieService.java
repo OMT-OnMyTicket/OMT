@@ -12,7 +12,7 @@ import twoman.omt.global.exception.BusinessLogicException;
 import twoman.omt.global.exception.ExceptionCode;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.Objects;
 
 @Transactional
 @Service
@@ -30,15 +30,32 @@ public class MovieService {
     public void delete(Long movieId,String userIdentity) {
         User findUser = userRepository.findByUserIdentity(userIdentity);
         Movie findMovie = movieRepository.findById(movieId).orElseThrow(()->new BusinessLogicException(ExceptionCode.MOVIE_NOT_FOUND, "존재하지 않는 영화입니다."));
-
-        findMovie.deleteMovie(findUser);
-        movieRepository.delete(findMovie);
+        if(!Objects.equals(findMovie.getUser(), findUser)){
+            throw new BusinessLogicException(ExceptionCode.UNAUTHORIZED, "해당 영화에 대한 권한이 없습니다.");
+        }else{
+            findMovie.deleteMovie(findUser);
+            movieRepository.delete(findMovie);
+        }
     }
 
-    public void setRank(List<MovieDto.PutRequest> putDtos) {
-        for (MovieDto.PutRequest putDto : putDtos) {
+    public void setRank(String userIdentity, List<MovieDto.PutTop4Request> putDtos) {
+        for (MovieDto.PutTop4Request putDto : putDtos) {
             Movie findMovie = movieRepository.findById(putDto.getId()).orElseThrow(() -> new BusinessLogicException(ExceptionCode.MOVIE_NOT_FOUND, "존재하지 않는 영화입니다."));
-            findMovie.changeRank(putDto.getRank());
+            if(!Objects.equals(findMovie.getUser().getUserIdentity(), userIdentity)){
+                throw new BusinessLogicException(ExceptionCode.UNAUTHORIZED, "해당 영화에 대한 권한이 없습니다.");
+            }else{
+                findMovie.changeRank(putDto.getRank());
+            }
+
+        }
+    }
+
+    public void setTicketValues(String userIdentity ,MovieDto.PutMyTicketRequest request) {
+        Movie findMovie = movieRepository.findById(request.getId()).orElseThrow(() -> new BusinessLogicException(ExceptionCode.MOVIE_NOT_FOUND, "존재하지 않는 영화입니다."));
+        if(!Objects.equals(findMovie.getUser().getUserIdentity(), userIdentity)){
+            throw new BusinessLogicException(ExceptionCode.UNAUTHORIZED, "해당 영화에 대한 권한이 없습니다.");
+        }else{
+            findMovie.setTicketValues(request.getReview(), request.getGrade(), request.getCompanion());
         }
     }
 }

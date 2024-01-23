@@ -22,6 +22,7 @@ public class Movie extends BaseEntity {
 
     @Column(length = 64)
     @NotNull
+    @Size(max = 512)
     private String title;
 
     @Column(length = 512)
@@ -31,6 +32,7 @@ public class Movie extends BaseEntity {
 
     @Column(length = 64)
     @NotNull
+    @Size(max = 512)
     private String genre;
 
     @Column(length = 1024)@Size(max = 1024)
@@ -38,9 +40,14 @@ public class Movie extends BaseEntity {
 
     private Boolean isLike = false;
 
-    private Integer myRank;
+    private Integer myRank; // 나만의 순위
 
-    //평점 추가
+    private Double grade; // 나만의 평점
+
+    @Column(length = 512)
+    @Size(max = 512)
+    private String companion; // 같이 관람한 사람
+
 
     @JoinColumn(name = "USER_SEQ")
     @ManyToOne(fetch = FetchType.LAZY)
@@ -56,8 +63,10 @@ public class Movie extends BaseEntity {
         isLike = bool;
     }
 
-    public void setReview(String review){
+    public void setTicketValues(String review, Double grade, String companion){
         this.review =review;
+        this.grade = grade;
+        this.companion = companion;
     }
 
     public void setUser(User user){

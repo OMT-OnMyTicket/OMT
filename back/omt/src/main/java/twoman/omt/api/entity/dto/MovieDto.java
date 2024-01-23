@@ -6,15 +6,25 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import twoman.omt.api.entity.movie.Movie;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.Size;
+
 public class MovieDto {
 
     @Getter
     @AllArgsConstructor
     @Setter
     @NoArgsConstructor
-    public static class PostRequest {
+    public static class PostMovieRequest {
+        @Size(max = 64)
+        @NotNull
         String title;
+        @Size(max = 512)
+        @NotNull
         String posterImageUrl;
+        @NotNull
+        @Size(max = 64)
         String genre;
     }
 
@@ -22,14 +32,36 @@ public class MovieDto {
     @AllArgsConstructor
     @Setter
     @NoArgsConstructor
-    public static class PutRequest {
+    public static class PutMyTicketRequest {
+        @NotNull
+        @Positive
+        long id;
+        @NotNull
+        @Size(max = 512)
+        String companion;
+        @NotNull
+        @Positive
+        double grade;
+        @NotNull
+        @Size(max = 1024)
+        String review;
+    }
+
+    @Getter
+    @AllArgsConstructor
+    @Setter
+    @NoArgsConstructor
+    public static class PutTop4Request {
+        @NotNull
+        @Positive
         Long id;
+        @NotNull
+        @Positive
         int rank;
     }
 
     @Getter
     public static class Response{
-
         Long movieId;
         String title;
         String posterImageUrl;
@@ -39,5 +71,12 @@ public class MovieDto {
             this.title = movie.getTitle();
             this.posterImageUrl = movie.getPosterImageUrl();
         }
+    }
+
+    @Getter
+    public static class TicketResponse{
+        String companion;
+        String review;
+        double grade;
     }
 }
