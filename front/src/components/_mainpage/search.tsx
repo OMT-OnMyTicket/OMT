@@ -70,6 +70,10 @@ const Search = () => {
 
   const handleClickSearch = (id: string) => {
     localStorage.removeItem('검색어');
+    localStorage.removeItem('영화제목');
+    localStorage.removeItem('장르');
+    localStorage.removeItem('posterUrl');
+    localStorage.removeItem('MovieNum');
     localStorage.setItem('검색어', id);
 
     if (pathname === '/search') {
