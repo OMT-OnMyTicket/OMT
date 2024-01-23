@@ -1,6 +1,10 @@
 .CheckList {
   display: flex;
   width: 100%;
-  justify-content: space-between;
   align-items: center;
+}
+
+.CkeckBox {
+  cursor: pointer;
+  margin-right: 10px;
 }

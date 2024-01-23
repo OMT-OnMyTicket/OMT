@@ -119,7 +119,15 @@ const Check = () => {
         checked={hasWatched}
         readOnly
         onClick={handleCheckMovie}
+        className={styled.CheckBox}
       ></input>
+
+      <img
+        src={hasWatched ? '/checkbox.svg' : '/emptybox.svg'}
+        className={styled.CkeckBox}
+        onClick={handleCheckMovie}
+      />
+
       <div>{watchTxt}</div>
     </div>
   );

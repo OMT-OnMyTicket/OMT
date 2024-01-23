@@ -9,8 +9,8 @@
 }
 
 .logo {
-  width: 15vw;
-  height: 6vw;
+  width: 11vw;
+  height: 4vw;
 }
 .Logo_Content {
   display: flex;
@@ -26,13 +26,25 @@
   display: flex;
   align-items: center;
 }
-.headerInfo > li {
-  margin-left: 3.05vw;
-}
+
 .ticketing,
 .myTickets,
 .User {
-  font-size: 1.1vw;
+  font-size: 0.9vw;
+}
+.ticketing,
+.myTickets {
+  color: gray;
+  border-right: 1px solid rgb(187, 187, 187);
+  display: flex;
+  justify-content: center;
+  width: 10vw;
+}
+.ticketingTxt:hover,
+.myTicketTxt:hover {
+  transform: scale(1.05);
+  transition-duration: 1s;
+  color: black;
 }
 
 .UserProfile {
@@ -41,19 +53,20 @@
 }
 .UserName {
   margin-top: 10px;
-  font-size: 16px;
-  display: flex;
-  align-items: flex-end;
-
-  margin-left: 10px;
 }
 .User {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 10vw;
 }
 .Login {
-  font-size: 18px;
-  margin-left: 20px;
+  width: 10vw;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media screen and (max-width: 600px) {

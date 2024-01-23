@@ -45,15 +45,15 @@ const Header = () => {
             <Search />
             <li>
               <Link href='/ticketing' className={styled.ticketing}>
-                예매하기
+                <p className={styled.ticketingTxt}>예매하기</p>
               </Link>
             </li>
             {UserName ? (
               <>
                 <li>
-                  <div className={styled.myTickets}>
-                    <Link href='/myticket'>My Tickets</Link>
-                  </div>
+                  <Link href='/myticket' className={styled.myTickets}>
+                    <p className={styled.myTicketTxt}>My Tickets</p>
+                  </Link>
                 </li>
                 <li className={styled.User}>
                   <img

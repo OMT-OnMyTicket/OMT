@@ -3,13 +3,14 @@
 import React, { useEffect, useState, useRef } from 'react';
 import styled from '../../styles/search_P_S/searchComp.module.css';
 import axios from 'axios';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 
 const KMDB_KEY = process.env.NEXT_PUBLIC_KMDB_KEY;
 const KMDB_URL = process.env.NEXT_PUBLIC_KMDB_URL;
 
 const Search = () => {
   const router = useRouter();
+  const pathname = usePathname();
   const [inputText, setInputText] = useState('');
   const [movieTitle, setMovieTitle] = useState<string[]>([]);
   const textAreaRef = useRef<HTMLDivElement | null>(null);
@@ -68,9 +69,14 @@ const Search = () => {
   }, [inputText]);
 
   const handleClickSearch = (id: string) => {
-    localStorage.clear;
+    localStorage.removeItem('검색어');
     localStorage.setItem('검색어', id);
-    router.push('/search');
+
+    if (pathname === '/search') {
+      location.reload();
+    } else {
+      router.push('/search');
+    }
   };
 
   return (
