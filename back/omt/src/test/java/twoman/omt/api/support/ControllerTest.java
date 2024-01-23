@@ -33,11 +33,14 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import twoman.omt.api.config.RestDocsConfig;
+import twoman.omt.api.entity.dto.MovieDto;
 import twoman.omt.api.entity.dto.UserDto;
+import twoman.omt.api.entity.movie.Movie;
 import twoman.omt.api.entity.user.Grade;
 import twoman.omt.api.entity.user.User;
 import twoman.omt.api.entity.user.UserRefreshToken;
 import twoman.omt.config.properties.AppProperties;
+import twoman.omt.global.entity.BaseEntity;
 import twoman.omt.global.exception.BusinessLogicException;
 import twoman.omt.global.exception.ExceptionCode;
 import twoman.omt.oauth.entity.ProviderType;
@@ -53,6 +56,7 @@ import javax.servlet.http.Cookie;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static twoman.omt.config.properties.AppProperties.*;
 
@@ -130,6 +134,29 @@ public abstract class ControllerTest {
 
         UserRefreshToken userRefreshToken = new UserRefreshToken(user.getUserIdentity(), Objects.requireNonNull(refreshToken).getToken());
 
+        List<Movie> movies = new ArrayList<>();
+        Movie movie1 = new Movie("서울의 봄", "absd@@1", "드라마");
+        Movie movie2 = new Movie("타잔", "absd@@1", "액션");
+        Movie movie3 = new Movie("내부자들", "absd@@1", "드라마");
+        Movie movie4 = new Movie("스파이더맨", "absd@@1", "액션");
+        movie1.setCreatedDate(LocalDateTime.now());
+        movie1.setLastModifiedDate(LocalDateTime.now());
+        movie2.setCreatedDate(LocalDateTime.now());
+        movie2.setLastModifiedDate(LocalDateTime.now());
+        movie3.setCreatedDate(LocalDateTime.now());
+        movie3.setLastModifiedDate(LocalDateTime.now());
+        movie4.setCreatedDate(LocalDateTime.now());
+        movie4.setLastModifiedDate(LocalDateTime.now());
+        movies.add(movie1);
+        movies.add(movie2);
+        movies.add(movie3);
+        movies.add(movie4);
+
+
+        movies.sort(Comparator.comparing(BaseEntity::getCreatedDate).reversed());
+
+        List<MovieDto.Response> MoviesAllResponse = movies.stream().map(MovieDto.Response::new).collect(Collectors.toList());
+
         resource.put("user", user);
         resource.put("userDtoResponse", userDtoResponse);
         resource.put("authentication", authentication);
@@ -137,6 +164,7 @@ public abstract class ControllerTest {
         resource.put("accessToken", accessToken);
         resource.put("refreshToken", refreshToken);
         resource.put("userRefreshToken", userRefreshToken);
+        resource.put("moviesAllResponse", MoviesAllResponse);
 
         return resource;
     }

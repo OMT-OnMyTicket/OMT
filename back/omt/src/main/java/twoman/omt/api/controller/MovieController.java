@@ -9,6 +9,7 @@ import twoman.omt.api.entity.movie.Movie;
 import twoman.omt.api.service.MovieService;
 import twoman.omt.common.ApiResponse;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController()
@@ -17,9 +18,9 @@ import java.util.List;
 public class MovieController {
     private final MovieService movieService;
     @PostMapping()
-    public ApiResponse postMovie(@RequestBody MovieDto.PostRequest postRequest){
+    public ApiResponse postMovie(@Valid @RequestBody MovieDto.PostMovieRequest postMovieRequest){
         User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        Movie movie = new Movie(postRequest.getTitle(), postRequest.getPosterImageUrl(), postRequest.getGenre());
+        Movie movie = new Movie(postMovieRequest.getTitle(), postMovieRequest.getPosterImageUrl(), postMovieRequest.getGenre());
         movieService.save(movie, principal.getUsername());
         return ApiResponse.success("save",null);
     }
@@ -33,11 +34,19 @@ public class MovieController {
     }
 
     @PutMapping()
-    public ApiResponse putRank(@RequestBody List<MovieDto.PutRequest> request){
+    public ApiResponse putRank( @Valid @RequestBody List<MovieDto.PutTop4Request> request){
         User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-        movieService.setRank(request);
+        movieService.setRank(principal.getUsername(),request);
 
         return ApiResponse.success("Ranking completed",null);
+    }
+
+    @PutMapping("/ticket")
+    public ApiResponse putReview(@Valid @RequestBody MovieDto.PutMyTicketRequest request){
+        User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        movieService.setTicketValues(principal.getUsername(), request);
+        return ApiResponse.success("Set my Ticket Complete",null);
     }
 }
