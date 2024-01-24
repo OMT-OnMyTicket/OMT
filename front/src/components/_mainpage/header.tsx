@@ -8,10 +8,20 @@ import { useRouter } from 'next/navigation';
 
 const Header = () => {
   const router = useRouter();
-
   const [UserProfile, setUserProfile] = useState<string | null>(null);
   const [UserName, setUserName] = useState<string | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
+
+  const handleHome = () => {
+    const userInfo = localStorage.getItem('UserInfo');
+    const Token = localStorage.getItem('Token');
+    localStorage.clear();
+    if (userInfo && Token) {
+      localStorage.setItem('UserInfo', userInfo);
+      localStorage.setItem('Token', Token);
+    }
+    router.push('/home');
+  };
 
   useEffect(() => {
     const storedUserInfo = localStorage.getItem('UserInfo');
@@ -36,24 +46,25 @@ const Header = () => {
     <div className={styled.header}>
       <div className={styled.header_content}>
         <div className={styled.conetent}>
-          <Link href='/home'>
-            <div className={styled.Logo_Content}>
-              <img src='/png/OMT_Home_Logo.png' className={styled.logo} />
-            </div>
-          </Link>
+          <img
+            src='/png/OMT_Home_Logo.png'
+            className={styled.logo}
+            onClick={handleHome}
+          />
+
           <ul className={styled.headerInfo}>
             <Search />
             <li>
               <Link href='/ticketing' className={styled.ticketing}>
-                예매하기
+                <p className={styled.ticketingTxt}>예매하기</p>
               </Link>
             </li>
             {UserName ? (
               <>
                 <li>
-                  <div className={styled.myTickets}>
-                    <Link href='/myticket'>My Tickets</Link>
-                  </div>
+                  <Link href='/myticket' className={styled.myTickets}>
+                    <p className={styled.myTicketTxt}>My Tickets</p>
+                  </Link>
                 </li>
                 <li className={styled.User}>
                   <img

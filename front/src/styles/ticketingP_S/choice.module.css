@@ -2,6 +2,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
 }
 .movies {
   display: flex;
@@ -9,7 +10,7 @@
   justify-content: center;
   align-items: center;
   width: 280px;
-  height: 400px;
+  height: 420px;
   margin-bottom: 40px;
 }
 .moviePoster_Layout {

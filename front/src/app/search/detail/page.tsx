@@ -65,6 +65,7 @@ const Detail = () => {
             response.data.Data[0].Result[0].directors.director[0].directorNm;
           const movieActors = response.data.Data[0].Result[0].actors.actor
             .map((actor: any) => actor.actorNm)
+            .slice(0, 15)
             .join(', ');
 
           const processedData: MovieState = {
