@@ -55,10 +55,10 @@ const Check = () => {
           );
           if (hasWatched) {
             setHasWatched(hasWatched);
-            setWatchTxt('이미 관람한 영화입니다.');
+            setWatchTxt('이 영화 봤어요 !');
             setMovieId(watchedMovies[0].movieId);
           } else {
-            console.log('아직 시청하지 않은 영화입니다.');
+            console.log('아직 시청하지 않은 영화예요 !');
           }
         })
         .catch((err) => {
@@ -114,13 +114,13 @@ const Check = () => {
 
   return (
     <div className={styled.CheckList}>
-      <input
-        type='checkbox'
-        checked={hasWatched}
-        readOnly
+      <img
+        src={hasWatched ? '/checkbox.svg' : '/emptybox.svg'}
+        className={styled.CkeckBox}
         onClick={handleCheckMovie}
-      ></input>
-      <div>{watchTxt}</div>
+      />
+
+      <div className={styled.CheckTxt}>{watchTxt}</div>
     </div>
   );
 };

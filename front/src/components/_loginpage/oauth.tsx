@@ -5,32 +5,44 @@ const URL = process.env.NEXT_PUBLIC_URL;
 const Oauth = () => {
   const router = useRouter();
 
+  // Main 버전
   const handleNaverLogin = () => {
-    // router.push(
-    //   `${URL}/oauth2/authorization/naver?redirect_uri=http://localhost:3000/login`
-    // );
     router.push(
       `${URL}/oauth2/authorization/naver?redirect_uri=https://omt-onmyticket.vercel.app/login`
     );
   };
 
   const handleKakaoLogin = () => {
-    // router.push(
-    //   `${URL}/oauth2/authorization/kakao?redirect_uri=http://localhost:3000/login`
-    // );
-    // router.push(
-    //   `${URL}/oauth2/authorization/kakao?redirect_uri=https://omt-onmyticket.vercel.app/login`
-    // );
+    router.push(
+      `${URL}/oauth2/authorization/kakao?redirect_uri=https://omt-onmyticket.vercel.app/login`
+    );
   };
 
   const handleGoogleLogin = () => {
-    // router.push(
-    //   `${URL}/oauth2/authorization/google?redirect_uri=http://localhost:3000/login`
-    // );
     router.push(
       `${URL}/oauth2/authorization/google?redirect_uri=https://omt-onmyticket.vercel.app/login`
     );
   };
+
+  // 로컬버전
+
+  // const handleNaverLogin = () => {
+  //   router.push(
+  //     `${URL}/oauth2/authorization/naver?redirect_uri=http://localhost:3000/login`
+  //   );
+  // };
+
+  // const handleKakaoLogin = () => {
+  //   router.push(
+  //     `${URL}/oauth2/authorization/kakao?redirect_uri=http://localhost:3000/login`
+  //   );
+  // };
+
+  // const handleGoogleLogin = () => {
+  //   router.push(
+  //     `${URL}/oauth2/authorization/google?redirect_uri=http://localhost:3000/login`
+  //   );
+  // };
 
   return (
     <>
