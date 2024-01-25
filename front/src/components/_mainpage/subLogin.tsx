@@ -5,9 +5,10 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
 const URL = process.env.NEXT_PUBLIC_URL;
-const subLogin = () => {
-  const [UserProfile, setUserProfile] = useState<string | null>(null);
-  const [UserName, setUserName] = useState<string | null>(null);
+
+const SubLogin = () => {
+  const [userProfile, setUserProfile] = useState<string | null>(null);
+  const [userName, setUserName] = useState<string | null>(null);
   const [accessToken, setToken] = useState<string | null>(null);
   const [watchedMovies, setWatchedMovies] = useState<any[] | null>(null);
   const storedToken: string | null = localStorage.getItem('Token');
@@ -20,6 +21,7 @@ const subLogin = () => {
       setToken(JSON.parse(storedToken));
     }
   }, []);
+
   useEffect(() => {
     const storedUserInfo = localStorage.getItem('UserInfo');
     if (storedUserInfo) {
@@ -27,6 +29,7 @@ const subLogin = () => {
         const userInfo = JSON.parse(storedUserInfo);
         setUserName(userInfo.userName);
         setUserProfile(userInfo.imageUrl);
+
         if (accessToken !== null) {
           axios
             .get(`${URL}/api/v1/users/movies`, {
@@ -49,56 +52,32 @@ const subLogin = () => {
     }
   }, [accessToken]);
 
-  // Main 버전
-  const handleNaverLogin = () => {
+  const handleLogin = (provider: string) => {
+    const currentUrl = window.location.href;
+
+    // 시작 URL이 localhost3000인지 체크
+    const isLocal = currentUrl.startsWith('http://localhost:3000');
+
+    const redirectUri = isLocal
+      ? 'http://localhost:3000/login'
+      : 'https://omt-onmyticket.vercel.app/login';
+
     router.push(
-      `${URL}/oauth2/authorization/naver?redirect_uri=https://omt-onmyticket.vercel.app/login`
+      `${URL}/oauth2/authorization/${provider}?redirect_uri=${redirectUri}`
     );
   };
-
-  const handleKakaoLogin = () => {
-    router.push(
-      `${URL}/oauth2/authorization/kakao?redirect_uri=https://omt-onmyticket.vercel.app/login`
-    );
-  };
-
-  const handleGoogleLogin = () => {
-    router.push(
-      `${URL}/oauth2/authorization/google?redirect_uri=https://omt-onmyticket.vercel.app/login`
-    );
-  };
-
-  // 로컬버전
-
-  // const handleNaverLogin = () => {
-  //   router.push(
-  //     `${URL}/oauth2/authorization/naver?redirect_uri=http://localhost:3000/login`
-  //   );
-  // };
-
-  // const handleKakaoLogin = () => {
-  //   router.push(
-  //     `${URL}/oauth2/authorization/kakao?redirect_uri=http://localhost:3000/login`
-  //   );
-  // };
-
-  // const handleGoogleLogin = () => {
-  //   router.push(
-  //     `${URL}/oauth2/authorization/google?redirect_uri=http://localhost:3000/login`
-  //   );
-  // };
 
   return (
     <>
-      {UserName ? (
+      {userName ? (
         <div className={styled.AferLogin}>
           <div className={styled.AferLogin_User}>
             <img
-              src={UserProfile ? `${UserProfile}` : '/userProfile.svg'}
+              src={userProfile ? `${userProfile}` : '/userProfile.svg'}
               className={styled.UserProfile}
             />
             <div className={styled.UserBox}>
-              <div className={styled.UserName}>{UserName} 님</div>
+              <div className={styled.UserName}>{userName} 님</div>
               <div>등급 : 영화광</div>
               <div>월 평균 : 2회 </div>
             </div>
@@ -136,15 +115,15 @@ const subLogin = () => {
           <p className={styled.loginBox_txt}>
             로그인 후 이용 가능한 서비스입니다.
           </p>
-          <div className={styled.naver} onClick={handleNaverLogin}>
+          <div className={styled.naver} onClick={() => handleLogin('naver')}>
             <img src={'/png/네이버.png'} className={styled.login_Logo} />
             <p>네이버로 로그인하기</p>
           </div>
-          <div className={styled.kakao} onClick={handleKakaoLogin}>
+          <div className={styled.kakao} onClick={() => handleLogin('kakao')}>
             <img src={'/png/카카오.png'} className={styled.login_Logo} />
             <p>카카오로 로그인하기</p>
           </div>
-          <div className={styled.google} onClick={handleGoogleLogin}>
+          <div className={styled.google} onClick={() => handleLogin('google')}>
             <img src={'/png/구글.png'} className={styled.login_Logo} />
             <p>구글로 로그인하기</p>
           </div>
@@ -154,4 +133,4 @@ const subLogin = () => {
   );
 };
 
-export default subLogin;
+export default SubLogin;

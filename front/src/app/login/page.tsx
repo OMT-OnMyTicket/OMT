@@ -2,12 +2,6 @@
 // 홈으로 이동시킨다.
 // oauth/redirect
 
-// 헬핏
-// http://localhost:3000/oauth2/receive?access_token=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMDAyNDY4NTgwMjYxOTI2NTM1OTkiLCJyb2xlIjoiUk9MRV9VU0VSIiwiZXhwIjoxNjc5NjcyMzYyfQ.9x6MEY0Z7DO2TvwBv8SRl0wuLkVWDnegyiKENdlFqiE
-
-// OMT
-//  http://ec2-3-34-47-93.ap-northeast-2.compute.amazonaws.com:8080/?token=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMDAyNDY4NTgwMjYxOTI2NTM1OTkiLCJyb2xlIjoiUk9MRV9VU0VSIiwiZXhwIjoxNzAxMDY4OTIxfQ.syvAn0ap4b1NLaVLwMegP8rMsFVcllGsd_b8ojb7nYI
-
 'use client';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
@@ -27,7 +21,10 @@ const OAuth2 = () => {
     const accessToken: string | null = urlSearchParams.get('token');
 
     if (accessToken) {
+      console.log('Access Token:', accessToken);
+
       localStorage.setItem('Token', JSON.stringify(accessToken));
+
       axios
         .get(`${OAuthURL}/api/v1/users`, {
           headers: {
@@ -35,15 +32,13 @@ const OAuth2 = () => {
           }
         })
         .then((res) => {
+          console.log('Axios Response:', res.data);
           const UserInfo = res.data.body.response;
           localStorage.setItem('UserInfo', JSON.stringify(UserInfo));
           router.push('/home');
-          // console.log(JSON.parse(localStorage.UserInfo).userName); // 유저명
-          // console.log(JSON.parse(localStorage.UserInfo).imageUrl); // 프로필사진
-          // console.log(UserInfo);
         })
         .catch((error) => {
-          console.log(error);
+          console.error('Axios Error:', error);
         });
     }
   }
