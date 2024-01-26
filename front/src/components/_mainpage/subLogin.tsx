@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
 const URL = process.env.NEXT_PUBLIC_URL;
+const MAINURL = process.env.NEXT_MAIN_PUBLIC_URL;
 
 const SubLogin = () => {
   const [userProfile, setUserProfile] = useState<string | null>(null);
@@ -55,15 +56,18 @@ const SubLogin = () => {
   const handleLogin = (provider: string) => {
     const currentUrl = window.location.href;
 
-    // 시작 URL이 localhost3000인지 체크
+    // 시작 URL이 local3000인지 체크
     const isLocal = currentUrl.startsWith('http://localhost:3000');
+
+    // URL 세팅
+    const baseURL = isLocal ? URL : MAINURL;
 
     const redirectUri = isLocal
       ? 'http://localhost:3000/login'
       : 'https://omt-onmyticket.vercel.app/login';
 
     router.push(
-      `${URL}/oauth2/authorization/${provider}?redirect_uri=${redirectUri}`
+      `${baseURL}/oauth2/authorization/${provider}?redirect_uri=${redirectUri}`
     );
   };
 
