@@ -7,7 +7,7 @@ interface OAuthButtonProps {
 }
 
 const URL = process.env.NEXT_PUBLIC_URL;
-const MAINURL = process.env.NEXT_MAIN_PUBLIC_URL;
+
 const OAuthButton: React.FC<OAuthButtonProps> = ({ provider, name }) => {
   const router = useRouter();
 
@@ -22,7 +22,7 @@ const OAuthButton: React.FC<OAuthButtonProps> = ({ provider, name }) => {
       : 'https://omt-onmyticket.vercel.app/login';
 
     router.push(
-      `${MAINURL}/oauth2/authorization/${provider}?redirect_uri=${redirectUri}`
+      `${URL}/oauth2/authorization/${provider}?redirect_uri=${redirectUri}`
     );
   };
 
