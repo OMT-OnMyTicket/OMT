@@ -1,9 +1,11 @@
+domain:
+  front: https://omt-onmyticket.vercel.app
+  back: https://backomt.shop
 
 spring:
   config:
     activate:
       on-profile: local
-
   datasource:
     url: jdbc:mysql://localhost:3306/omtdb?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false&allowPublicKeyRetrieval=true
     username: ${DATASOURCE_USERNAME}
@@ -13,7 +15,7 @@ spring:
     database: mysql
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     defer-datasource-initialization: true
     generate-ddl: true
     properties:
@@ -69,11 +71,10 @@ spring:
             userInfoUri: https://kapi.kakao.com/v2/user/me
             userNameAttribute: id
 cors:
-  allowed-origins: 'http://localhost:3000'
+  allowed-origins: -'https://omt-onmyticket.vercel.app' -'http://localhost:3000'
   allowed-methods: GET,POST,PUT,DELETE,OPTIONS
   allowed-headers: '*'
   max-age: 3600
-
 
 app:
   auth:
@@ -82,7 +83,8 @@ app:
     refreshTokenExpiry: 604800000
   oauth2:
     authorizedRedirectUris:
-      - http://localhost:3000/login
+      - http://localhost:3000
+      - https://omt-onmyticket.vercel.app/login
 
 logging.level:
   org.hibernate.SQL:  debug
