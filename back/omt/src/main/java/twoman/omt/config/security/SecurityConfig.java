@@ -2,6 +2,7 @@ package twoman.omt.config.security;
 
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -46,6 +47,8 @@ import java.util.Arrays;
 @RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    @Value("${domain.front}")
+    private String frontDomain;
     private final CorsProperties corsProperties;
     private final AppProperties appProperties;
     private final AuthTokenProvider tokenProvider;
@@ -66,6 +69,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+                .headers()
+                    .xssProtection()
+                .and()
+                    .contentSecurityPolicy("script-src 'self'")
+                .and()
+                    .frameOptions()
+                    .sameOrigin()
+                .and()
                     .cors()
                 .and()
                     .sessionManagement()
@@ -74,14 +85,31 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .csrf().disable()
                     .formLogin().disable()
                     .httpBasic().disable()
+                    .logout()
+                    .logoutSuccessUrl(frontDomain)
+                    .invalidateHttpSession(true)
+                    .clearAuthentication(true)
+                    .deleteCookies("JSESSIONID", "refresh_token")
+                .and()
                     .exceptionHandling()
                     .authenticationEntryPoint(new RestAuthenticationEntryPoint())
                     .accessDeniedHandler(tokenAccessDeniedHandler)
                 .and()
                     .authorizeRequests()
+                    .requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
+                    .antMatchers("/",
+                            "/error",
+                            "/favicon.ico",
+                            "/**/*.png",
+                            "/**/*.gif",
+                            "/**/*.svg",
+                            "/**/*.jpg",
+                            "/**/*.html",
+                            "/**/*.css",
+                            "/**/*.js"
+                    ).permitAll()
                     .requestMatchers(new AntPathRequestMatcher("/api/all/**")) // 특정 요청과 일치하는 url애대한 액세스 설정
                     .permitAll() // requetMatchers 설정한 리소스의 접근을 인증 절차 없이 허용
-                    .requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
                     .antMatchers("/api/v1/**").hasAnyAuthority(RoleType.USER.getCode())
                     .antMatchers("/api/**/admin/**").hasAnyAuthority(RoleType.ADMIN.getCode())
                     .anyRequest().authenticated()
