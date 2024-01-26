@@ -67,7 +67,7 @@ spring:
             userInfoUri: https://kapi.kakao.com/v2/user/me
             userNameAttribute: id
 cors:
-  allowed-origins: 'http://localhost:3000'
+  allowed-origins: -'https://omt-onmyticket.vercel.app' -'http://localhost:3000'
   allowed-methods: GET,POST,PUT,DELETE,OPTIONS
   allowed-headers: '*'
   max-age: 3600
@@ -80,7 +80,7 @@ app:
   oauth2:
     authorizedRedirectUris:
       - http://localhost:3000
-      - https://omt-onmyticket.vercel.app/login`
+      - https://omt-onmyticket.vercel.app/login
 
 logging.level:
   org.hibernate.SQL:  debug
