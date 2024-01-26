@@ -71,9 +71,12 @@ spring:
             userInfoUri: https://kapi.kakao.com/v2/user/me
             userNameAttribute: id
 cors:
-  allowed-origins: -'https://omt-onmyticket.vercel.app' -'http://localhost:3000' -'http://backomt.shop'
+  allowed-origins:
+    - 'https://omt-onmyticket.vercel.app'
+    - 'http://localhost:3000'
+    - 'https://backomt.shop'
   allowed-methods: GET,POST,PUT,DELETE,OPTIONS
-  allowed-headers: '*'
+  allowed-headers: "*"
   max-age: 3600
 
 app:
