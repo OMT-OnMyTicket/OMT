@@ -7,7 +7,7 @@ interface PropsType {
 }
 
 const URL = process.env.NEXT_PUBLIC_URL;
-
+const MAINURL = process.env.NEXT_MAIN_PUBLIC_URL;
 const Modal = ({ setModalOpen }: PropsType) => {
   const router = useRouter();
   const modalRef = useRef<HTMLDivElement>(null);
@@ -35,15 +35,18 @@ const Modal = ({ setModalOpen }: PropsType) => {
   const handleLogin = (provider: string) => {
     const currentUrl = window.location.href;
 
-    // 시작 URL이 localhost3000인지 체크
+    // Check if the starting URL is localhost:3000
     const isLocal = currentUrl.startsWith('http://localhost:3000');
+
+    // Set the base URL accordingly
+    const baseURL = isLocal ? URL : MAINURL;
 
     const redirectUri = isLocal
       ? 'http://localhost:3000/login'
       : 'https://omt-onmyticket.vercel.app/login';
 
     router.push(
-      `${URL}/oauth2/authorization/${provider}?redirect_uri=${redirectUri}`
+      `${baseURL}/oauth2/authorization/${provider}?redirect_uri=${redirectUri}`
     );
   };
 
