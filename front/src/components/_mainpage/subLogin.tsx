@@ -5,7 +5,6 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
 const URL = process.env.NEXT_PUBLIC_URL;
-const MAINURL = process.env.NEXT_MAIN_PUBLIC_URL;
 
 const SubLogin = () => {
   const [userProfile, setUserProfile] = useState<string | null>(null);
@@ -64,7 +63,7 @@ const SubLogin = () => {
       : 'https://omt-onmyticket.vercel.app/login';
 
     router.push(
-      `${MAINURL}/oauth2/authorization/${provider}?redirect_uri=${redirectUri}`
+      `${URL}/oauth2/authorization/${provider}?redirect_uri=${redirectUri}`
     );
   };
 

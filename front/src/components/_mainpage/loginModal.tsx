@@ -7,7 +7,7 @@ interface PropsType {
 }
 
 const URL = process.env.NEXT_PUBLIC_URL;
-const MAINURL = process.env.NEXT_MAIN_PUBLIC_URL;
+
 const Modal = ({ setModalOpen }: PropsType) => {
   const router = useRouter();
   const modalRef = useRef<HTMLDivElement>(null);
@@ -42,7 +42,7 @@ const Modal = ({ setModalOpen }: PropsType) => {
       : 'https://omt-onmyticket.vercel.app/login';
 
     router.push(
-      `${MAINURL}/oauth2/authorization/${provider}?redirect_uri=${redirectUri}`
+      `${URL}/oauth2/authorization/${provider}?redirect_uri=${redirectUri}`
     );
   };
 
@@ -56,12 +56,7 @@ const Modal = ({ setModalOpen }: PropsType) => {
             className={styled[provider]}
             onClick={() => handleLogin(provider)}
           >
-            <img
-              src={`/png/${
-                provider.charAt(0).toUpperCase() + provider.slice(1)
-              }.png`}
-              className={styled.login_Logo}
-            />
+            <img src={`/png/${provider}.png`} className={styled.login_Logo} />
             <p>{` ${
               provider.charAt(0).toUpperCase() + provider.slice(1)
             } 로 로그인`}</p>
