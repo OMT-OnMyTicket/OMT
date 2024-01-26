@@ -1,5 +1,9 @@
 running: test
 
+domain:
+  front: https://omt-onmyticket.vercel.app
+  back: https://backomt.shop
+
 spring:
   profiles:
     active: test
