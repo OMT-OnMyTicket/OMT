@@ -196,9 +196,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         CorsConfiguration corsConfig = new CorsConfiguration();
         corsConfig.setAllowCredentials(true);
-        corsConfig.setAllowedOrigins(List.of("http://localhost:3000"));
-        corsConfig.setAllowedMethods(List.of("https://omt-onmyticket.vercel.app",
-        "http://localhost:3000", "https://backomt.shop"));
+        corsConfig.setAllowedOrigins(List.of("http://localhost:3000", "https://backomt.shop", "https://omt-onmyticket.vercel.app"));
+        corsConfig.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
         corsConfig.setAllowedHeaders(List.of("*"));
         corsConfig.setExposedHeaders(List.of("*"));
 //        corsConfig.setAllowedHeaders(Arrays.asList(corsProperties.getAllowedHeaders().split(",")));
