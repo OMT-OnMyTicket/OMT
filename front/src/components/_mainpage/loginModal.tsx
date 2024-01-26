@@ -31,22 +31,18 @@ const Modal = ({ setModalOpen }: PropsType) => {
       document.body.style.overflow = 'unset';
     };
   }, [setModalOpen]);
-
   const handleLogin = (provider: string) => {
     const currentUrl = window.location.href;
 
-    // Check if the starting URL is localhost:3000
+    // 시작 URL이 localhost3000인지 체크
     const isLocal = currentUrl.startsWith('http://localhost:3000');
-
-    // Set the base URL accordingly
-    const baseURL = isLocal ? URL : MAINURL;
 
     const redirectUri = isLocal
       ? 'http://localhost:3000/login'
       : 'https://omt-onmyticket.vercel.app/login';
 
     router.push(
-      `${baseURL}/oauth2/authorization/${provider}?redirect_uri=${redirectUri}`
+      `${MAINURL}/oauth2/authorization/${provider}?redirect_uri=${redirectUri}`
     );
   };
 
