@@ -9,12 +9,12 @@ import axios from 'axios';
 const URL = process.env.NEXT_PUBLIC_URL;
 const Ticket = () => {
   const [Title, setTitle] = useState<string | null>(null);
-  const [movieid, setMovieId] = useState<string | null>(null);
+  const [id, setMovieId] = useState<string | null>(null);
   const [accessToken, setToken] = useState<string | null>(null);
   const [posterImageUrl, setPosterImageUrl] = useState<string>('');
   const [review, setReview] = useState<string>('');
   const [companion, setCompanion] = useState<string>('');
-  const [userRating, setUserRating] = useState<number | null>(null);
+  const [grade, setGrade] = useState<number | null>(null);
 
   const router = useRouter();
   useEffect(() => {
@@ -38,50 +38,60 @@ const Ticket = () => {
   }, []);
 
   const UserReview = {
-    movieid,
+    id,
     companion,
-    userRating,
+    grade,
     review
   };
 
   // 기본적으로 유저 리뷰를 띄우기 위한 Code
-  useEffect(() => {
+
+  // useEffect(() => {
+  //   axios
+  //     .get(`${URL}/api/v1/movies/ticket`, {
+  //       headers: {
+  //         Authorization: `Bearer ${accessToken}`,
+  //         'Content-Type': 'application/json'
+  //       }
+  //     })
+  //     .then((res) => {
+  //       console.log(res);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }, [accessToken]);
+
+  const handleSaveReview = () => {
+    if (!companion || !review || !grade) {
+      alert(
+        `${!companion ? '함께 본 사람' : ''}` +
+          `${!companion && !review ? ', ' : ''}` +
+          `${!review ? '나만의 리뷰' : ''}` +
+          `${(!companion || !review) && !grade ? ', ' : ''}` +
+          `${!grade ? '나만의 평점' : ''}` +
+          '을(를) 추가로 채워주세요!'
+      );
+      return;
+    }
+
     axios
-      .get(`${URL}/api/v1/movies/review`, {
+      .put(`${URL}/api/v1/movies/ticket`, UserReview, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
           'Content-Type': 'application/json'
         }
       })
       .then((res) => {
-        console.log(res);
+        router.push('/myticket/ticketroom');
       })
       .catch((err) => {
         console.log(err);
       });
-  }, [accessToken]);
-
-  // 리뷰 저장하기 버튼을 통한 Code
-  const handleSaveReview = () => {
-    // axios
-    //   .put(`${URL}/api/v1/movies/review`, UserReview, {
-    //     headers: {
-    //       Authorization: `Bearer ${accessToken}`,
-    //       'Content-Type': 'application/json'
-    //     }
-    //   })
-    //   .then((res) => {
-    //     console.log(res);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
-
-    console.log(UserReview);
   };
 
   const handleStarClick = (rating: number) => {
-    setUserRating(rating);
+    setGrade(rating);
   };
 
   const handleCompanionChange = (
@@ -143,7 +153,7 @@ const Ticket = () => {
                     <img
                       key={star}
                       src={
-                        userRating && star <= userRating
+                        grade && star <= grade
                           ? '/png/fill_star.png'
                           : '/png/empty_star.png'
                       }

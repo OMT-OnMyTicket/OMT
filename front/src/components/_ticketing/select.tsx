@@ -136,7 +136,7 @@ const SelectTheater = () => {
 
   const handleRegion = (region: string) => {
     axios
-      .get(`${URL}/api/v1/theaters/region/cinema`, {
+      .get(`${URL}/api/all/theaters/region/cinema`, {
         params: {
           region,
           cinema: cinema

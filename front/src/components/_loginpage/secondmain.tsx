@@ -1,7 +1,5 @@
 'use client';
 
-// next.js 13 with AOS 자료 찾기
-
 import styled from '@/styles/loginP_S/main.module.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -24,6 +22,7 @@ const Second = () => {
             재미있는 영화로 <br />
             만드는 나만의 티켓
           </h2>
+
           <div
             className={styled.ticketImg_layout}
             data-aos='fade-rignt'
