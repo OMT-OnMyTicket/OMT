@@ -20,7 +20,7 @@ const KakaoMap: React.FC = () => {
   //영화 티켓 데이터
   const [MovieTitle, setMovieTitle] = useState('');
   const [Users, setUsers] = useState('');
-  const [Theater, setTheater] = useState('');
+
   const [Poster, setPoster] = useState('');
   const [modalOpen, setModalOpen] = useState(false);
   const router = useRouter();
@@ -51,10 +51,6 @@ const KakaoMap: React.FC = () => {
 
     if (storedUsers) {
       setUsers(storedUsers);
-    }
-
-    if (storedTheater) {
-      setTheater(storedTheater);
     }
 
     if (storedPoster) {
@@ -186,7 +182,6 @@ const KakaoMap: React.FC = () => {
               </div>
               <FastTicket
                 MovieTitle={MovieTitle}
-                Theater={Theater}
                 Users={Users}
                 posterURL={Poster}
                 showCircles={true}
