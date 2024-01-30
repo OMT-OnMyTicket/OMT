@@ -181,13 +181,50 @@
   justify-content: space-around;
   align-items: center;
 }
+.Detail_User {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.UserRating {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.subTxt {
+  font-size: 10px;
+  color: gray;
+  cursor: pointer;
+}
+
+.subTxt:hover {
+  color: black;
+  transform: scale(1.05);
+  transition-duration: 1s;
+  font-weight: bold;
+}
+
+.ratingPNG {
+  width: 60px;
+  z-index: 1;
+  position: absolute;
+  bottom: -20%;
+  right: -20%;
+}
 .UserProfile {
-  width: 9vw;
-  height: 9vw;
+  width: 150px;
   border-radius: 10px;
+  border: 4px solid rgb(0, 0, 0);
 }
 .UserName {
-  display: flex;
+  font-weight: bold;
+  width: 100%;
+  text-align: center;
+  border: 1px solid black;
+
+  padding: 10px 0;
+  border-radius: 5px;
 }
 .UserBox {
   width: 13.8vw;
@@ -196,7 +233,7 @@
   border-radius: 10px;
   border: 1px solid #cfcccc;
   display: flex;
-  padding-left: 1.4vw;
+  padding: 1.4vw;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
