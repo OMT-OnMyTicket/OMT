@@ -12,7 +12,7 @@ const KakaoMap: React.FC = () => {
   // const [loading, setLoading] = useState(true);
 
   const CLIENT_ID = process.env.NEXT_PUBLIC_KAKAO_MAP_KEY;
-  const KAKAO_SDK_URL = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${CLIENT_ID}&autoload=false&libraries=services`;
+  const KAKAO_SDK_URL = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${CLIENT_ID}&autoload=false&libraries=services`;
   const [currentMarker, setCurrentMarker] = useState<any>(null);
   const [currentLocation, setCurrentLocation] = useState({ lat: 0, lng: 0 });
   const [map, setMap] = useState<any>(null);
@@ -20,15 +20,12 @@ const KakaoMap: React.FC = () => {
   //영화 티켓 데이터
   const [MovieTitle, setMovieTitle] = useState('');
   const [Users, setUsers] = useState('');
-  const [Theater, setTheater] = useState('');
   const [Poster, setPoster] = useState('');
   const [modalOpen, setModalOpen] = useState(false);
-  const router = useRouter();
 
   useEffect(() => {
     const storedMovieTitle = localStorage.getItem('영화');
     const storedUsers = localStorage.getItem('인원수');
-    const storedTheater = localStorage.getItem('장소');
     const storedPoster = localStorage.getItem('포스터URL');
 
     // 현재 위치 가져오기
@@ -51,10 +48,6 @@ const KakaoMap: React.FC = () => {
 
     if (storedUsers) {
       setUsers(storedUsers);
-    }
-
-    if (storedTheater) {
-      setTheater(storedTheater);
     }
 
     if (storedPoster) {
@@ -85,12 +78,11 @@ const KakaoMap: React.FC = () => {
 
         // Define a red marker image
         const redMarkerImage = new kakao.maps.MarkerImage(
-          '/png/영화관마커.png', // Replace with the path to your red marker image
-          new kakao.maps.Size(30, 30), // Set the size of the image
-          { offset: new kakao.maps.Point(15, 30) } // Set the offset for the anchor
+          '/png/영화관마커.png',
+          new kakao.maps.Size(30, 30),
+          { offset: new kakao.maps.Point(15, 30) }
         );
 
-        // Function to add markers with the red marker image
         const addMarkers = (data: any, status: any) => {
           if (status === kakao.maps.services.Status.OK) {
             data.forEach((place: any) => {
@@ -101,7 +93,6 @@ const KakaoMap: React.FC = () => {
                 image: redMarkerImage
               });
 
-              // Add a click event listener to update the currentMarker state
               kakao.maps.event.addListener(marker, 'click', function () {
                 setCurrentMarker(place);
               });
@@ -146,13 +137,6 @@ const KakaoMap: React.FC = () => {
       );
     }
   };
-  // if (loading) {
-  //   return (
-  //     <>
-  //       <GlobalLoding LodingTxt={'영화관 정보를 로드중입니다.'} />
-  //     </>
-  //   );
-  // }
 
   return (
     <>
@@ -186,7 +170,6 @@ const KakaoMap: React.FC = () => {
               </div>
               <FastTicket
                 MovieTitle={MovieTitle}
-                Theater={Theater}
                 Users={Users}
                 posterURL={Poster}
                 showCircles={true}

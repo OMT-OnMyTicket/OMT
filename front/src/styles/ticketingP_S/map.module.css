@@ -46,6 +46,7 @@
   background-color: rgb(171, 170, 170);
   padding: 10px;
   border-radius: 10px;
+  z-index: 3;
 }
 .NextBtn:hover {
   background-color: #f15b3a;
@@ -121,7 +122,7 @@
   font-size: 15px;
   font-weight: bold;
   position: absolute;
-  top: 8px;
+  top: 5px;
   left: 8px;
 }
 .Txt_Conetent_Title {
@@ -132,8 +133,8 @@
   width: 170px;
 }
 .Txt_Conetent {
-  line-height: 1.5;
-  font-size: 15px;
+  line-height: 2;
+  font-size: 12.5px;
   color: white;
 }
 
@@ -146,8 +147,8 @@
   margin-top: 60px;
 }
 .Ticket_Box_Poster2 {
-  width: 220px;
-  height: 340px;
+  width: 200px;
+  height: 350px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -158,6 +159,6 @@
 .Ticket_Circle {
   position: absolute;
   z-index: 2;
-  width: 250px;
-  height: 370px;
+  width: 240px;
+  height: 390px;
 }

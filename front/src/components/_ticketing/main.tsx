@@ -29,11 +29,12 @@ const TicketingMain = () => {
                 <img className={styled.arrow} src={'/ticketing_arrow.svg'} />
               </div>
               <p className={styled.Box_Txt}>
+                오늘 날짜를 기준으로
+                <br />
                 가장 가까운 시간과
                 <br />
-                가장자리 좌석이 <br />
-                자동으로 선택되어 <br />
-                빠르고 간편하게 예매가 가능합니다.
+                가장자리 좌석으로 <br />
+                자동예매가 가능합니다.
               </p>
             </div>
           </Link>
