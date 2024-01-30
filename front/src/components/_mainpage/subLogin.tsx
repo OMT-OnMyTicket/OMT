@@ -7,12 +7,20 @@ import Link from 'next/link';
 const URL = process.env.NEXT_PUBLIC_URL;
 
 const SubLogin = () => {
+  const router = useRouter();
   const [userProfile, setUserProfile] = useState<string | null>(null);
   const [userName, setUserName] = useState<string | null>(null);
   const [accessToken, setToken] = useState<string | null>(null);
   const [watchedMovies, setWatchedMovies] = useState<any[] | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const router = useRouter();
+  const handleModalOpen = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+  };
 
   useEffect(() => {
     const storedToken: string | null = localStorage.getItem('Token');
@@ -105,10 +113,21 @@ const SubLogin = () => {
             </div>
             <div className={styled.UserBox}>
               <div className={styled.UserName}>{userName}</div>
-              <div className={styled.UserRating}>
+              <div className={styled.UserRating} onClick={handleModalOpen}>
                 <p>{getUserRating(watchedMovies?.length)}</p>
                 <p className={styled.subTxt}>등급 상세보기</p>
               </div>
+              {isModalOpen && (
+                <div
+                  className={styled.ModalBackground}
+                  onClick={handleModalClose}
+                >
+                  <div className={styled.ModalContent}>
+                    <img src={`/png/rating/OMTrating.png`} alt='Rating Image' />
+                  </div>
+                </div>
+              )}
+
               <div>보유 티켓 : {watchedMovies?.length || 0} 개</div>
             </div>
           </div>
