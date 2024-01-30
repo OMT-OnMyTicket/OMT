@@ -83,7 +83,10 @@ const Ticket = () => {
         }
       })
       .then((res) => {
-        router.push('/myticket/ticketroom');
+        if (res.status === 200) {
+          alert('성공적으로 리뷰를 저장했습니다.');
+          router.push('/myticket/ticketroom');
+        }
       })
       .catch((err) => {
         console.log(err);

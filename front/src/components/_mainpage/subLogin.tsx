@@ -7,12 +7,20 @@ import Link from 'next/link';
 const URL = process.env.NEXT_PUBLIC_URL;
 
 const SubLogin = () => {
+  const router = useRouter();
   const [userProfile, setUserProfile] = useState<string | null>(null);
   const [userName, setUserName] = useState<string | null>(null);
   const [accessToken, setToken] = useState<string | null>(null);
   const [watchedMovies, setWatchedMovies] = useState<any[] | null>(null);
-  const storedToken: string | null = localStorage.getItem('Token');
-  const router = useRouter();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleModalOpen = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+  };
 
   useEffect(() => {
     const storedToken: string | null = localStorage.getItem('Token');
@@ -67,19 +75,60 @@ const SubLogin = () => {
     );
   };
 
+  // 유저의 영화 등급
+
+  const getUserRating = (numTickets: number | undefined): string => {
+    if (numTickets === undefined) {
+      return 'Bronze';
+    }
+
+    if (numTickets >= 0 && numTickets <= 5) {
+      return 'Bronze';
+    } else if (numTickets <= 10) {
+      return 'Silver';
+    } else if (numTickets <= 20) {
+      return 'Gold';
+    } else if (numTickets <= 40) {
+      return 'Diamond';
+    } else {
+      return 'VIP';
+    }
+  };
+
   return (
     <>
       {userName ? (
         <div className={styled.AferLogin}>
           <div className={styled.AferLogin_User}>
-            <img
-              src={userProfile ? `${userProfile}` : '/userProfile.svg'}
-              className={styled.UserProfile}
-            />
+            <div className={styled.Detail_User}>
+              <img
+                src={`/png/rating/${getUserRating(watchedMovies?.length)}.png`}
+                className={styled.ratingPNG}
+              />
+
+              <img
+                src={userProfile ? `${userProfile}` : '/userProfile.svg'}
+                className={styled.UserProfile}
+              />
+            </div>
             <div className={styled.UserBox}>
-              <div className={styled.UserName}>{userName} 님</div>
-              <div>등급 : 영화광</div>
-              <div>월 평균 : 2회 </div>
+              <div className={styled.UserName}>{userName}</div>
+              <div className={styled.UserRating} onClick={handleModalOpen}>
+                <p>{getUserRating(watchedMovies?.length)}</p>
+                <p className={styled.subTxt}>등급 상세보기</p>
+              </div>
+              {isModalOpen && (
+                <div
+                  className={styled.ModalBackground}
+                  onClick={handleModalClose}
+                >
+                  <div className={styled.ModalContent}>
+                    <img src={`/png/rating/OMTrating.png`} alt='Rating Image' />
+                  </div>
+                </div>
+              )}
+
+              <div>보유 티켓 : {watchedMovies?.length || 0} 개</div>
             </div>
           </div>
           <h4 className={styled.recent_Movie_bar}>최근 시청 영화</h4>
@@ -116,15 +165,15 @@ const SubLogin = () => {
             로그인 후 이용 가능한 서비스입니다.
           </p>
           <div className={styled.naver} onClick={() => handleLogin('naver')}>
-            <img src={'/png/네이버.png'} className={styled.login_Logo} />
+            <img src={'/png/naver.png'} className={styled.login_Logo} />
             <p>네이버로 로그인하기</p>
           </div>
           <div className={styled.kakao} onClick={() => handleLogin('kakao')}>
-            <img src={'/png/카카오.png'} className={styled.login_Logo} />
+            <img src={'/png/kakao.png'} className={styled.login_Logo} />
             <p>카카오로 로그인하기</p>
           </div>
           <div className={styled.google} onClick={() => handleLogin('google')}>
-            <img src={'/png/구글.png'} className={styled.login_Logo} />
+            <img src={'/png/google.png'} className={styled.login_Logo} />
             <p>구글로 로그인하기</p>
           </div>
         </div>
