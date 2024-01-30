@@ -100,7 +100,9 @@ const Event = () => {
             <div className={styled.right_Box}></div>
           </div>
         </div>
-        <div className={styled.User}>{/* <SubLogin /> */}</div>
+        <div className={styled.User}>
+          <SubLogin />
+        </div>
       </div>
     </div>
   );

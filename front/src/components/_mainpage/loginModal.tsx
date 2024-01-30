@@ -47,21 +47,23 @@ const Modal = ({ setModalOpen }: PropsType) => {
   };
 
   return (
-    <div ref={modalRef} className={styled.container}>
-      <div className={styled.OauthTxt}>SNS 간편로그인</div>
-      <div className={styled.loginBox}>
-        {['naver', 'kakao', 'google'].map((provider) => (
-          <div
-            key={provider}
-            className={styled[provider]}
-            onClick={() => handleLogin(provider)}
-          >
-            <img src={`/png/${provider}.png`} className={styled.login_Logo} />
-            <p>{` ${
-              provider.charAt(0).toUpperCase() + provider.slice(1)
-            } 로 로그인`}</p>
-          </div>
-        ))}
+    <div className={styled.headerModalOverlay}>
+      <div ref={modalRef} className={styled.container}>
+        <div className={styled.OauthTxt}>SNS 간편로그인</div>
+        <div className={styled.loginBox}>
+          {['naver', 'kakao', 'google'].map((provider) => (
+            <div
+              key={provider}
+              className={styled[provider]}
+              onClick={() => handleLogin(provider)}
+            >
+              <img src={`/png/${provider}.png`} className={styled.login_Logo} />
+              <p>{` ${
+                provider.charAt(0).toUpperCase() + provider.slice(1)
+              } 로 로그인`}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
