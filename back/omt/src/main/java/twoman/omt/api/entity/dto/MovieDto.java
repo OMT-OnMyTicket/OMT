@@ -78,5 +78,11 @@ public class MovieDto {
         String companion;
         String review;
         double grade;
+
+        public TicketResponse(Movie movie) {
+            this.companion = movie.getCompanion();
+            this.review = movie.getReview();
+            this.grade = movie.getGrade();
+        }
     }
 }
