@@ -49,4 +49,13 @@ public class MovieController {
         movieService.setTicketValues(principal.getUsername(), request);
         return ApiResponse.success("Set my Ticket Complete",null);
     }
+
+    @GetMapping("/ticket")
+    public ApiResponse getReview(@RequestParam Long movieId){
+        User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        MovieDto.TicketResponse response = movieService.getTicketValues(principal.getUsername(), movieId);
+
+        return ApiResponse.success("get review complete", response);
+    }
 }

@@ -58,4 +58,13 @@ public class MovieService {
             findMovie.setTicketValues(request.getReview(), request.getGrade(), request.getCompanion());
         }
     }
+
+    public MovieDto.TicketResponse getTicketValues(String userIdentity, Long movieId) {
+        Movie findMovie = movieRepository.findById(movieId).orElseThrow(() -> new BusinessLogicException(ExceptionCode.MOVIE_NOT_FOUND, "존재하지 않는 영화입니다."));
+        if(!Objects.equals(findMovie.getUser().getUserIdentity(), userIdentity)){
+            throw new BusinessLogicException(ExceptionCode.UNAUTHORIZED, "해당 영화에 대한 권한이 없습니다.");
+        }else{
+            return new MovieDto.TicketResponse(findMovie);
+        }
+    }
 }
