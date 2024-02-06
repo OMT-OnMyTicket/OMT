@@ -12,8 +12,8 @@ const Ticket = () => {
   const [id, setMovieId] = useState<string | null>(null);
   const [accessToken, setToken] = useState<string | null>(null);
   const [posterImageUrl, setPosterImageUrl] = useState<string>('');
-  const [review, setReview] = useState<string>('');
-  const [companion, setCompanion] = useState<string>('');
+  const [review, setReview] = useState<string>('나만의 리뷰를 남겨보세요!');
+  const [companion, setCompanion] = useState<string>('누구와 관람하셨나요 ?');
   const [grade, setGrade] = useState<number | null>(null);
 
   const router = useRouter();
@@ -46,21 +46,41 @@ const Ticket = () => {
 
   // 기본적으로 유저 리뷰를 띄우기 위한 Code
 
-  // useEffect(() => {
-  //   axios
-  //     .get(`${URL}/api/v1/movies/ticket`, {
-  //       headers: {
-  //         Authorization: `Bearer ${accessToken}`,
-  //         'Content-Type': 'application/json'
-  //       }
-  //     })
-  //     .then((res) => {
-  //       console.log(res);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // }, [accessToken]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        console.log(id);
+
+        if (id !== null && id !== '') {
+          const response = await axios.get(
+            `${URL}/api/v1/movies/ticket?movieId=${id}`,
+            {
+              headers: {
+                Authorization: `Bearer ${accessToken}`,
+                'Content-Type': 'application/json'
+              }
+            }
+          );
+
+          const reviewData = response.data.body;
+
+          if (reviewData) {
+            setCompanion(reviewData['get review complete'].companion || '');
+            setReview(reviewData['get review complete'].review || '');
+            setGrade(reviewData['get review complete'].grade || null);
+          }
+        } else {
+          console.log('movieId is empty.');
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    if (id !== null && id !== '') {
+      fetchData();
+    }
+  }, [id, accessToken]);
 
   const handleSaveReview = () => {
     if (!companion || !review || !grade) {
@@ -133,7 +153,7 @@ const Ticket = () => {
 
                 <div className={styled.TextArea_Layout}>
                   <textarea
-                    placeholder='영화를 함께 본 사람을 입력해주세요.'
+                    placeholder={companion}
                     onChange={handleCompanionChange}
                     className={styled.Togeter_TextArea}
                   ></textarea>
@@ -143,7 +163,7 @@ const Ticket = () => {
                 <div className={styled.Write_Title}>나만의 리뷰</div>
                 <div className={styled.TextArea_Layout}>
                   <textarea
-                    placeholder='영화에 대한 나만의 리뷰를 남겨봐요.'
+                    placeholder={review}
                     onChange={handleReviewChange}
                     className={styled.Review_TextArea}
                   ></textarea>
