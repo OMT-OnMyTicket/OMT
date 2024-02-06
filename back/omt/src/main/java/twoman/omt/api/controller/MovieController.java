@@ -33,15 +33,6 @@ public class MovieController {
         return ApiResponse.success("delete",null);
     }
 
-    @PutMapping()
-    public ApiResponse putRank( @Valid @RequestBody List<MovieDto.PutTop4Request> request){
-        User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-        movieService.setRank(principal.getUsername(),request);
-
-        return ApiResponse.success("Ranking completed",null);
-    }
-
     @PutMapping("/ticket")
     public ApiResponse putReview(@Valid @RequestBody MovieDto.PutMyTicketRequest request){
         User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();

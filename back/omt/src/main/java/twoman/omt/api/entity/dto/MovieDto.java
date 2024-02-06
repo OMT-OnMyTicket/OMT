@@ -47,18 +47,6 @@ public class MovieDto {
         String review;
     }
 
-    @Getter
-    @AllArgsConstructor
-    @Setter
-    @NoArgsConstructor
-    public static class PutTop4Request {
-        @NotNull
-        @Positive
-        Long id;
-        @NotNull
-        @Positive
-        int rank;
-    }
 
     @Getter
     public static class Response{

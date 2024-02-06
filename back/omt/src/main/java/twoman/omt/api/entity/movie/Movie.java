@@ -40,8 +40,6 @@ public class Movie extends BaseEntity {
 
     private Boolean isLike = false;
 
-    private Integer myRank; // 나만의 순위
-
     private Double grade; // 나만의 평점
 
     @Column(length = 512)
@@ -79,8 +77,5 @@ public class Movie extends BaseEntity {
         this.user = null;
     }
 
-    public void changeRank(int num){
-        this.myRank = num;
-    }
 
 }
