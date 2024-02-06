@@ -56,7 +56,7 @@ const TicketRoom = () => {
     return () => {
       document.removeEventListener('click', handleClickOutside);
     };
-  }, []); // Run this effect only once
+  }, []);
 
   return (
     <>

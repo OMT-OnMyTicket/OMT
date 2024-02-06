@@ -22,20 +22,22 @@ const MyMovies = () => {
   }, []);
 
   useEffect(() => {
-    axios
-      .get(`${URL}/api/v1/users/movies`, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-          'Content-Type': 'application/json'
-        }
-      })
-      .then((res) => {
-        const watchedMoviesResponse = res.data.body.response;
-        setWatchedMovies(watchedMoviesResponse);
-      })
-      .catch((err) => {
-        console.log('에러메시지 :', err);
-      });
+    if (accessToken) {
+      axios
+        .get(`${URL}/api/v1/users/movies`, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+            'Content-Type': 'application/json'
+          }
+        })
+        .then((res) => {
+          const watchedMoviesResponse = res.data.body.response;
+          setWatchedMovies(watchedMoviesResponse);
+        })
+        .catch((err) => {
+          console.log('에러메시지 :', err);
+        });
+    }
   }, [accessToken]);
 
   const handleEmptyTicketClick = () => {
@@ -50,7 +52,6 @@ const MyMovies = () => {
       searchContainerRef.current &&
       !searchContainerRef.current.contains(event.target)
     ) {
-      // Clicked outside the search container, close search
       handleCloseSearch();
     }
   };
@@ -61,7 +62,7 @@ const MyMovies = () => {
     return () => {
       document.removeEventListener('click', handleClickOutside);
     };
-  }, []); // Run this effect only once
+  }, []);
 
   const handleMakeTicket = (
     title: string,

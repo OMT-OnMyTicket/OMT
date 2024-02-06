@@ -269,10 +269,9 @@
 }
 
 .recent_Movie {
-  background-color: #6dba24;
   border-radius: 10px;
-  width: 14.6vw;
-  height: 19.4vw;
+  width: 12.6vw;
+  height: 17.4vw;
   box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.2);
   margin: 0 10px;
 }
