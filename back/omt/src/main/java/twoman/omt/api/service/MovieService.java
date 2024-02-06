@@ -38,17 +38,6 @@ public class MovieService {
         }
     }
 
-    public void setRank(String userIdentity, List<MovieDto.PutTop4Request> putDtos) {
-        for (MovieDto.PutTop4Request putDto : putDtos) {
-            Movie findMovie = movieRepository.findById(putDto.getId()).orElseThrow(() -> new BusinessLogicException(ExceptionCode.MOVIE_NOT_FOUND, "존재하지 않는 영화입니다."));
-            if(!Objects.equals(findMovie.getUser().getUserIdentity(), userIdentity)){
-                throw new BusinessLogicException(ExceptionCode.UNAUTHORIZED, "해당 영화에 대한 권한이 없습니다.");
-            }else{
-                findMovie.changeRank(putDto.getRank());
-            }
-
-        }
-    }
 
     public void setTicketValues(String userIdentity ,MovieDto.PutMyTicketRequest request) {
         Movie findMovie = movieRepository.findById(request.getId()).orElseThrow(() -> new BusinessLogicException(ExceptionCode.MOVIE_NOT_FOUND, "존재하지 않는 영화입니다."));
