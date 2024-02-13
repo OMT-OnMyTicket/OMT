@@ -35,7 +35,21 @@ const MyMovies = () => {
           setWatchedMovies(watchedMoviesResponse);
         })
         .catch((err) => {
-          console.log('에러메시지 :', err);
+          if (err.response.status === 401) {
+            axios
+              .get(`${URL}/api/v1/auth/refresh`, {
+                headers: {
+                  Authorization: `Bearer ${accessToken}`,
+                  'Content-Type': 'application/json'
+                }
+              })
+              .then((res) => {
+                console.log(res, '토큰이 성공적으로 갱신되었습니다.');
+              })
+              .catch((err) => {
+                console.log(err, '토큰 갱신에 실패했습니다.');
+              });
+          }
         });
     }
   }, [accessToken]);

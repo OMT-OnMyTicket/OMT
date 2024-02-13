@@ -4,6 +4,8 @@ import 'aos/dist/aos.css';
 import styled from '../../styles/myticketP_S/myTicketHome.module.css';
 import axios from 'axios';
 import Link from 'next/link';
+
+const URL = process.env.NEXT_PUBLIC_URL;
 const RankedMovie = () => {
   const [watchedMovies, setWatchedMovies] = useState<any[] | null>(null);
   const [accessToken, setToken] = useState<string | null>(null);
@@ -30,7 +32,7 @@ const RankedMovie = () => {
           setWatchedMovies(watchedMovies);
         })
         .catch((err) => {
-          console.log('토큰이 만료되었습니다.');
+          console.log(err);
         });
     }
   }, [accessToken]);
@@ -41,13 +43,22 @@ const RankedMovie = () => {
         <div className={styled.Lank_Movie_Box}>
           {watchedMovies.slice(0, 2).map((movie, index) => (
             <div key={index} className={styled.MoviePosters}>
-              <img
-                src={movie.posterImageUrl}
-                alt='영화 포스터'
-                className={styled.MoviePoster}
+              <div
+                className={styled.Img_Layout}
                 data-aos='flip-left'
                 data-aos-duration='1500'
-              />
+              >
+                <img
+                  src={movie.posterImageUrl || '/png/preparing.png'}
+                  alt='영화 포스터'
+                  className={styled.MoviePoster}
+                />
+                <div className={styled.MovieLank}>{index + 1}</div>
+                <div className={styled.MovieTitle}>
+                  <p>{index + 1}위</p>
+                  <p>{movie.title}</p>
+                </div>
+              </div>
             </div>
           ))}
         </div>
