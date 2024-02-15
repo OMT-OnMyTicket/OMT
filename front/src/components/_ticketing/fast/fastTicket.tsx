@@ -4,7 +4,6 @@ import styled from '../../../styles/ticketingP_S/map.module.css';
 
 interface InfoTicketProps {
   MovieTitle: string | null;
-
   Users: string | null;
   posterURL: string;
   showCircles: boolean; // 새로운 prop 추가

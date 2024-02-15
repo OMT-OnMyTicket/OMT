@@ -35,7 +35,11 @@ const MyMovies = () => {
           setWatchedMovies(watchedMoviesResponse);
         })
         .catch((err) => {
-          console.log('에러메시지 :', err);
+          if (err.response.status === 401) {
+            localStorage.clear();
+            router.push('/');
+            alert('토큰이 만료되어 재로그인이 필요합니다.');
+          }
         });
     }
   }, [accessToken]);
