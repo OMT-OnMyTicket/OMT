@@ -1,30 +1,27 @@
 .Movie_Container {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-rows: auto;
+  gap: 50px;
   justify-content: center;
+  padding: 0 30px;
 }
 .movies {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 280px;
-  height: 420px;
-  margin-bottom: 40px;
+  width: 250px;
+  height: 460px;
 }
 .moviePoster_Layout {
   cursor: pointer;
   position: relative;
-  height: 400px;
-  width: 220px;
   display: flex;
   justify-content: center;
 }
 
 .moviePoster {
-  width: 220px;
-  height: 350px;
+  width: 250px;
+  height: 380px;
   position: relative;
   border-radius: 7px;
 }
@@ -35,31 +32,32 @@
   filter: brightness(23%);
 }
 
-.movieContents_Layout {
+.movieContents_display {
   position: absolute;
-  width: 200px;
   display: none;
 }
-
+.movieContents_Layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-top: 30px;
+  height: 320px;
+  width: 200px;
+}
 .Contentes_Title {
   font-size: 1.4rem;
-  height: 50px;
   color: white;
-  margin-top: 30px;
   font-weight: bold;
-  width: 200px;
   display: flex;
   align-items: center;
-  margin-bottom: 30px;
 }
 
 .movieContents {
-  width: 200px;
-  height: 140px;
   overflow-y: auto;
   color: white;
   line-height: 1.5;
-  margin-top: 20px;
+  height: 180px;
+  margin: 20px 0;
 }
 .movieContents::-webkit-scrollbar {
   width: 5px;
@@ -72,7 +70,7 @@
   background-color: grey;
 }
 
-.moviePoster_Layout:hover > .movieContents_Layout {
+.moviePoster_Layout:hover > .movieContents_display {
   display: block;
   transition-duration: 1s;
 }
@@ -99,7 +97,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  width: 200px;
+  width: 240px;
   margin-top: 1vw;
   margin-bottom: 1vw;
   font-size: 18px;

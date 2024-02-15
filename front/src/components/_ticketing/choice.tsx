@@ -151,17 +151,19 @@ const ChoiceMovie = () => {
                   alt='movie poster'
                   className={styled.moviePoster}
                 />
-                <div className={styled.movieContents_Layout}>
-                  <p className={styled.Contentes_Title}>{a.movieNm}</p>
-                  <p className={styled.movieContents}>{movieContents[i]}</p>
+                <div className={styled.movieContents_display}>
+                  <div className={styled.movieContents_Layout}>
+                    <p className={styled.Contentes_Title}>{a.movieNm}</p>
+                    <p className={styled.movieContents}>{movieContents[i]}</p>
 
-                  <div
-                    className={styled.Btn}
-                    onClick={() =>
-                      handleChoiceMovie(`${a.movieNm}`, `${moviePosters[i]}`)
-                    }
-                  >
-                    예매하기
+                    <div
+                      className={styled.Btn}
+                      onClick={() =>
+                        handleChoiceMovie(`${a.movieNm}`, `${moviePosters[i]}`)
+                      }
+                    >
+                      예매하기
+                    </div>
                   </div>
                 </div>
               </div>
