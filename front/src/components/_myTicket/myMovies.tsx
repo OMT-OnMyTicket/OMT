@@ -36,19 +36,9 @@ const MyMovies = () => {
         })
         .catch((err) => {
           if (err.response.status === 401) {
-            axios
-              .get(`${URL}/api/v1/auth/refresh`, {
-                headers: {
-                  Authorization: `Bearer ${accessToken}`,
-                  'Content-Type': 'application/json'
-                }
-              })
-              .then((res) => {
-                console.log(res, '토큰이 성공적으로 갱신되었습니다.');
-              })
-              .catch((err) => {
-                console.log(err, '토큰 갱신에 실패했습니다.');
-              });
+            localStorage.clear();
+            router.push('/');
+            alert('토큰이 만료되어 재로그인이 필요합니다.');
           }
         });
     }

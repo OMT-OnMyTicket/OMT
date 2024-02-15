@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import styled from '../../styles/myticketP_S/myTicketHome.module.css';
@@ -7,6 +8,7 @@ import Link from 'next/link';
 
 const URL = process.env.NEXT_PUBLIC_URL;
 const RankedMovie = () => {
+  const router = useRouter();
   const [watchedMovies, setWatchedMovies] = useState<any[] | null>(null);
   const [accessToken, setToken] = useState<string | null>(null);
   useEffect(() => {
@@ -32,7 +34,11 @@ const RankedMovie = () => {
           setWatchedMovies(watchedMovies);
         })
         .catch((err) => {
-          console.log(err);
+          if (err.response.status === 401) {
+            localStorage.clear();
+            router.push('/');
+            alert('토큰이 만료되어 재로그인이 필요합니다.');
+          }
         });
     }
   }, [accessToken]);
