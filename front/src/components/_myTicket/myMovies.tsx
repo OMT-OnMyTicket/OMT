@@ -35,11 +35,10 @@ const MyMovies = () => {
           setWatchedMovies(watchedMoviesResponse);
         })
         .catch((err) => {
-          if (err.response.status === 401) {
-            localStorage.clear();
-            router.push('/');
-            alert('토큰이 만료되어 재로그인이 필요합니다.');
-          }
+          console.log(err);
+          localStorage.clear();
+          router.push('/');
+          alert('토큰이 만료되어 재로그인이 필요합니다.');
         });
     }
   }, [accessToken]);
@@ -82,7 +81,7 @@ const MyMovies = () => {
   return (
     <>
       {watchedMovies && watchedMovies.length > 0 ? (
-        <div className={styled.MoviePage}>
+        <div className={styled.Movies_Layout}>
           {watchedMovies.map((movie, index) => (
             <div key={index} className={styled.Movies}>
               <img
