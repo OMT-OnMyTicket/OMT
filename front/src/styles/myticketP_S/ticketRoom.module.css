@@ -1,6 +1,5 @@
 .Layout {
   width: 100%;
-  height: 100vh;
   background-image: url('/png/배경3.png');
   padding: 150px 50px 0;
   background-repeat: no-repeat;
@@ -59,14 +58,18 @@
   align-items: center;
 }
 .myMovies_Layout {
-  display: flex;
+  height: 100vh;
+  width: 100%;
+}
+.Movies_Layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-rows: auto;
+  gap: 10px;
   justify-content: center;
-  align-items: center;
-  height: 70%;
+  padding: 0 100px;
 }
-.MoviePage {
-  display: flex;
-}
+
 .Movies {
   display: flex;
   flex-direction: column;
