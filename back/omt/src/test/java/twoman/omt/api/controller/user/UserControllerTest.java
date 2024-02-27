@@ -71,7 +71,6 @@ class UserControllerTest extends ControllerTest {
     @BeforeEach
     void setup() throws Exception {
         Map<String, Object> userResource = userResource();
-
         user = (User) userResource.get("user");
         userDtoResponse = (UserDto.Response) userResource.get("userDtoResponse");
         authentication = (Authentication) userResource.get("authentication");

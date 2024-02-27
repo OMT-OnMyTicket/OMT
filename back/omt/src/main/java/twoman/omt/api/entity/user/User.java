@@ -28,9 +28,9 @@ public class User extends BaseEntity {
     @Size(max = 64)
     private String userIdentity;
 
-    @Column(length = 100)
+    @Column(length = 64)
     @NotNull
-    @Size(max = 100)
+    @Size(max = 64)
     private String username;
 
     @JsonIgnore
@@ -65,7 +65,7 @@ public class User extends BaseEntity {
     @Column(length = 20)
     @NotNull
     @Enumerated(EnumType.STRING)
-    private Grade grade;  // 10개(실버)  30개(골드) 50개(플레) 100개(다이아)
+    private Grade rating;  // 10개(실버)  30개(골드) 50개(플레) 100개(다이아)
 
     @OneToMany(mappedBy ="user",fetch = FetchType.LAZY)
     private List<Movie> movies = new ArrayList<>();
@@ -76,6 +76,7 @@ public class User extends BaseEntity {
             @NotNull @Size(max = 64) String userIdentity,
             @NotNull @Size(max = 100) String username,
             @NotNull @Size(max = 512) String email,
+            @NotNull String password,
             @NotNull @Size(max = 1) String emailVerifiedYn,
             @Size(max = 512) String profileImageUrl,
             @NotNull ProviderType providerType,
@@ -83,13 +84,13 @@ public class User extends BaseEntity {
     ) {
         this.userIdentity = userIdentity;
         this.username = username;
-        this.password = "NO_PASS";
+        this.password = password;
         this.email = email !=null ? email : "NO_EMAIL";
         this.emailVerifiedYn = emailVerifiedYn;
         this.profileImageUrl = profileImageUrl != null ? profileImageUrl : "";
         this.providerType =providerType;
         this.roleType =roleType;
-        this.grade = Grade.BRONZE;
+        this.rating = Grade.BRONZE;
     }
 
     public void setUsername(String nickname) {
@@ -102,11 +103,11 @@ public class User extends BaseEntity {
     }
 
     public void updateGrade(){
-        if(movies.size() <10) this.grade = Grade.BRONZE;
-        else if(movies.size() <30) this.grade = Grade.SILVER;
-        else if(movies.size() <50) this.grade = Grade.GOLD;
-        else if(movies.size() <100) this.grade = Grade.PLATINUM;
-        else this.grade = Grade.DIAMOND;
+        if(movies.size() <10) this.rating = Grade.BRONZE;
+        else if(movies.size() <30) this.rating = Grade.SILVER;
+        else if(movies.size() <50) this.rating = Grade.GOLD;
+        else if(movies.size() <100) this.rating = Grade.PLATINUM;
+        else this.rating = Grade.DIAMOND;
     }
 
     public void deleteImage(){
