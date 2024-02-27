@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import twoman.omt.api.entity.movie.Cinema;
@@ -41,6 +42,10 @@ class TheaterControllerTest extends ControllerTest{
 
     @MockBean
     UserRefreshTokenRepository userRefreshTokenRepository;
+
+    @MockBean
+    PasswordEncoder passwordEncoder;
+
 
     private List<TheaterDto.Response> responses;
 
