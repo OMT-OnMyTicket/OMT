@@ -21,6 +21,7 @@ public class WithMockUserCustomSecurityContextFactory implements WithSecurityCon
                 annotation.id(),
                 "tester",
                 "tester@testet.com",
+                "NO_PASS",
                 "Y",
                 "qwydhywh",
                 ProviderType.GOOGLE,
