@@ -41,7 +41,7 @@ public class MovieDto {
         String companion;
         @NotNull
         @Positive
-        double grade;
+        int grade;
         @NotNull
         @Size(max = 1024)
         String review;
