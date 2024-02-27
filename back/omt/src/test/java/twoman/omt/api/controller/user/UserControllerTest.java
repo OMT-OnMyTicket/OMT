@@ -10,6 +10,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.restdocs.payload.JsonFieldType;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import twoman.omt.api.annotations.WithMockUserCustom;
@@ -58,6 +59,9 @@ class UserControllerTest extends ControllerTest {
 
     @MockBean
     UserRefreshTokenRepository userRefreshTokenRepository;
+
+    @MockBean
+    PasswordEncoder passwordEncoder;
 
     private User user;
     private UserDto.Response userDtoResponse;
