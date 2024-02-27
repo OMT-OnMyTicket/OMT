@@ -20,7 +20,7 @@ public class Movie extends BaseEntity {
     @Column(name = "movie_id")
     private Long id;
 
-    @Column(length = 64)
+    @Column(length = 512)
     @NotNull
     @Size(max = 512)
     private String title;
@@ -32,7 +32,7 @@ public class Movie extends BaseEntity {
 
     @Column(length = 64)
     @NotNull
-    @Size(max = 512)
+    @Size(max = 64)
     private String genre;
 
     @Column(length = 1024)@Size(max = 1024)
@@ -40,7 +40,7 @@ public class Movie extends BaseEntity {
 
     private Boolean isLike = false;
 
-    private Double grade; // 나만의 평점
+    private Integer grade; // 나만의 평점
 
     @Column(length = 512)
     @Size(max = 512)
@@ -61,7 +61,7 @@ public class Movie extends BaseEntity {
         isLike = bool;
     }
 
-    public void setTicketValues(String review, Double grade, String companion){
+    public void setTicketValues(String review, Integer grade, String companion){
         this.review =review;
         this.grade = grade;
         this.companion = companion;

@@ -7,6 +7,8 @@ import twoman.omt.api.entity.dto.MovieDto;
 import twoman.omt.api.entity.dto.UserDto;
 import twoman.omt.api.entity.movie.Movie;
 import twoman.omt.api.entity.user.User;
+import twoman.omt.api.entity.user.UserRefreshToken;
+import twoman.omt.api.repository.user.UserRefreshTokenRepository;
 import twoman.omt.api.repository.user.UserRepository;
 import twoman.omt.global.entity.BaseEntity;
 

@@ -112,12 +112,7 @@ public abstract class ControllerTest {
                 new ArrayList<>()
                 );
 
-        UserDto.Response userDtoResponse =
-                new UserDto.Response(
-                        1L,
-                        user.getUsername(),
-                        user.getProfileImageUrl()
-                );
+        UserDto.Response userDtoResponse = new UserDto.Response(user);
 
         UsernamePasswordAuthenticationToken authentication =
                 new UsernamePasswordAuthenticationToken(

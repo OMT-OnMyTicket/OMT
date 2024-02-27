@@ -16,7 +16,7 @@ public class Theater{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "theater_id")
-    private Long Id;
+    private Long id;
 
     @Column(length = 16)
     @NotNull
