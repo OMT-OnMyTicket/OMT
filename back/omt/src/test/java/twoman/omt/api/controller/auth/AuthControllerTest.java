@@ -14,6 +14,7 @@ import org.springframework.restdocs.payload.JsonFieldType;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import twoman.omt.api.annotations.WithMockUserCustom;
 import twoman.omt.api.entity.auth.AuthReqModel;
@@ -47,7 +48,7 @@ import static twoman.omt.config.properties.AppProperties.*;
 
 @WebMvcTest(controllers = AuthController.class)
 class AuthControllerTest extends ControllerTest {
-    final String DEFAULT_URL = "/api/v1/auth";
+    final String DEFAULT_URL = "/api/all/v1/auth";
     @MockBean
     AppProperties appProperties;
 
@@ -63,6 +64,9 @@ class AuthControllerTest extends ControllerTest {
     @MockBean
     UserRepository userRepository;
 
+    @MockBean
+    PasswordEncoder passwordEncoder;
+
 
     private User user;
     private Authentication authentication;
@@ -70,6 +74,8 @@ class AuthControllerTest extends ControllerTest {
     private AuthToken accessToken;
     private AuthToken refreshToken;
     private UserRefreshToken userRefreshToken;
+
+
 
     @BeforeEach
     void setup() throws Exception {
