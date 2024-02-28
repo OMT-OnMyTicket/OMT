@@ -15,6 +15,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import twoman.omt.api.annotations.WithMockUserCustom;
 import twoman.omt.api.entity.auth.AuthReqModel;
@@ -123,7 +124,7 @@ class AuthControllerTest extends ControllerTest {
 
     @Test
     @DisplayName("[테스트] Refresh Token 재발급")
-    @WithMockUserCustom
+    @WithMockUser
     void refreshTest() throws Exception {
         given(authTokenProvider.convertAuthToken(anyString()))
                 .willReturn(accessToken);
