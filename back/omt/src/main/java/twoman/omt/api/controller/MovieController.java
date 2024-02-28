@@ -47,6 +47,31 @@ public class MovieController {
 
         MovieDto.TicketResponse response = movieService.getTicketValues(principal.getUsername(), movieId);
 
-        return ApiResponse.success("get review complete", response);
+        return ApiResponse.success("get ticket complete", response);
+    }
+
+    @GetMapping("/reviews")
+    public ApiResponse getReviews(@RequestParam String movieTitle){
+        List<MovieDto.ReviewResponse> response = movieService.getReviews(movieTitle);
+
+        return ApiResponse.success("get reviews complete", response);
+    }
+
+    @PutMapping("/like")
+    public ApiResponse likeMovies(@RequestParam Long movieId){
+        User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        movieService.setLike(principal.getUsername(),movieId);
+
+        return ApiResponse.success("set like complete", null);
+    }
+
+    @GetMapping("/like")
+    public ApiResponse getLikeMovies(){
+        User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        List<MovieDto.CommonResponse> response = movieService.getMoviesWithLike(principal.getUsername());
+
+        return ApiResponse.success("get Liked movies complete", response);
     }
 }

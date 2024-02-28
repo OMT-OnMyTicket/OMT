@@ -49,12 +49,12 @@ public class MovieDto {
 
 
     @Getter
-    public static class Response{
+    public static class CommonResponse {
         Long movieId;
         String title;
         String posterImageUrl;
 
-        public Response(Movie movie) {
+        public CommonResponse(Movie movie) {
             this.movieId = movie.getId();
             this.title = movie.getTitle();
             this.posterImageUrl = movie.getPosterImageUrl();
@@ -71,6 +71,15 @@ public class MovieDto {
             this.companion = movie.getCompanion();
             this.review = movie.getReview();
             this.grade = movie.getGrade();
+        }
+    }
+
+    @Getter
+    public static class ReviewResponse{
+        String review;
+
+        public ReviewResponse(String review) {
+            this.review = review;
         }
     }
 }
