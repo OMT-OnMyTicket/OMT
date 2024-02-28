@@ -46,8 +46,7 @@ public class AuthToken {
     }
 
     public boolean validate() {
-        Claims tokenClaims = this.getTokenClaims();
-        return tokenClaims != null && !tokenClaims.getExpiration().before(new Date());
+        return this.getTokenClaims() != null;
     }
 
     public Claims getTokenClaims() {
@@ -63,11 +62,6 @@ public class AuthToken {
             log.info("Invalid JWT token.");
         } catch (ExpiredJwtException e) {
             log.info("Expired JWT token.");
-            return  Jwts.parserBuilder()
-                    .setSigningKey(key)
-                    .build()
-                    .parseClaimsJws(token)
-                    .getBody();
         } catch (UnsupportedJwtException e) {
             log.info("Unsupported JWT token.");
         } catch (IllegalArgumentException e) {
