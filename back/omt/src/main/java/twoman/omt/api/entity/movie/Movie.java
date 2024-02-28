@@ -77,5 +77,9 @@ public class Movie extends BaseEntity {
         this.user = null;
     }
 
+    public void setLikeTrue(){
+        this.isLike = true;
+    }
+
 
 }

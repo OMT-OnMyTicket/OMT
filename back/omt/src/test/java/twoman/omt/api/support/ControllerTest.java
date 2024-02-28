@@ -23,7 +23,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
@@ -39,7 +38,6 @@ import twoman.omt.api.entity.movie.Movie;
 import twoman.omt.api.entity.user.Grade;
 import twoman.omt.api.entity.user.User;
 import twoman.omt.api.entity.user.UserRefreshToken;
-import twoman.omt.config.properties.AppProperties;
 import twoman.omt.global.entity.BaseEntity;
 import twoman.omt.global.exception.BusinessLogicException;
 import twoman.omt.global.exception.ExceptionCode;
@@ -53,7 +51,6 @@ import twoman.omt.oauth.token.AuthToken;
 import twoman.omt.oauth.token.AuthTokenProvider;
 
 import javax.servlet.http.Cookie;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -150,7 +147,7 @@ public abstract class ControllerTest {
 
         movies.sort(Comparator.comparing(BaseEntity::getCreatedDate).reversed());
 
-        List<MovieDto.Response> MoviesAllResponse = movies.stream().map(MovieDto.Response::new).collect(Collectors.toList());
+        List<MovieDto.CommonResponse> moviesAllCommonResponse = movies.stream().map(MovieDto.CommonResponse::new).collect(Collectors.toList());
 
         resource.put("user", user);
         resource.put("userDtoResponse", userDtoResponse);
@@ -159,7 +156,7 @@ public abstract class ControllerTest {
         resource.put("accessToken", accessToken);
         resource.put("refreshToken", refreshToken);
         resource.put("userRefreshToken", userRefreshToken);
-        resource.put("moviesAllResponse", MoviesAllResponse);
+        resource.put("moviesAllResponse", moviesAllCommonResponse);
 
         return resource;
     }
