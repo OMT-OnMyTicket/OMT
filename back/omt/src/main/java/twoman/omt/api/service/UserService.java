@@ -7,12 +7,9 @@ import twoman.omt.api.entity.dto.MovieDto;
 import twoman.omt.api.entity.dto.UserDto;
 import twoman.omt.api.entity.movie.Movie;
 import twoman.omt.api.entity.user.User;
-import twoman.omt.api.entity.user.UserRefreshToken;
-import twoman.omt.api.repository.user.UserRefreshTokenRepository;
 import twoman.omt.api.repository.user.UserRepository;
 import twoman.omt.global.entity.BaseEntity;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -46,23 +43,23 @@ public class UserService {
         return new UserDto.Response(findUser);
     }
 
-    public List<MovieDto.Response> GAMovies(String userIdentity) {
+    public List<MovieDto.CommonResponse> GAMovies(String userIdentity) {
         User user = userRepository.findUserWithFetch(userIdentity);
         if(user != null && user.getMovies() != null && !user.getMovies().isEmpty()) {
             List<Movie> movies = user.getMovies();
             movies.sort(Comparator.comparing(BaseEntity::getCreatedDate).reversed());
 
-            return movies.stream().map(MovieDto.Response::new).collect(Collectors.toList());
+            return movies.stream().map(MovieDto.CommonResponse::new).collect(Collectors.toList());
         }
         else return Collections.emptyList();
     }
 
-    public List<MovieDto.Response> getTop4Movies(String userIdentity) {
+    public List<MovieDto.CommonResponse> getTop4Movies(String userIdentity) {
         User user = userRepository.findUserTop4Fetch(userIdentity);
 
         if(user != null && user.getMovies() != null && !user.getMovies().isEmpty()) {
             List<Movie> movies = user.getMovies();
-            return movies.stream().map(MovieDto.Response::new).collect(Collectors.toList());
+            return movies.stream().map(MovieDto.CommonResponse::new).collect(Collectors.toList());
         }
         else return Collections.emptyList();
     }

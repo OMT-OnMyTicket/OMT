@@ -6,11 +6,12 @@ import org.springframework.transaction.annotation.Transactional;
 import twoman.omt.api.entity.dto.MovieDto;
 import twoman.omt.api.entity.movie.Movie;
 import twoman.omt.api.entity.user.User;
-import twoman.omt.api.repository.MovieRepository;
+import twoman.omt.api.repository.movie.MovieRepository;
 import twoman.omt.api.repository.user.UserRepository;
 import twoman.omt.global.exception.BusinessLogicException;
 import twoman.omt.global.exception.ExceptionCode;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -32,10 +33,9 @@ public class MovieService {
         Movie findMovie = movieRepository.findById(movieId).orElseThrow(()->new BusinessLogicException(ExceptionCode.MOVIE_NOT_FOUND, "존재하지 않는 영화입니다."));
         if(!Objects.equals(findMovie.getUser(), findUser)){
             throw new BusinessLogicException(ExceptionCode.UNAUTHORIZED, "해당 영화에 대한 권한이 없습니다.");
-        }else{
-            findMovie.deleteMovie(findUser);
-            movieRepository.delete(findMovie);
         }
+        findMovie.deleteMovie(findUser);
+        movieRepository.delete(findMovie);
     }
 
 
@@ -43,17 +43,46 @@ public class MovieService {
         Movie findMovie = movieRepository.findById(request.getId()).orElseThrow(() -> new BusinessLogicException(ExceptionCode.MOVIE_NOT_FOUND, "존재하지 않는 영화입니다."));
         if(!Objects.equals(findMovie.getUser().getUserIdentity(), userIdentity)){
             throw new BusinessLogicException(ExceptionCode.UNAUTHORIZED, "해당 영화에 대한 권한이 없습니다.");
-        }else{
-            findMovie.setTicketValues(request.getReview(), request.getGrade(), request.getCompanion());
         }
+        findMovie.setTicketValues(request.getReview(), request.getGrade(), request.getCompanion());
     }
 
+    @Transactional(readOnly = true)
     public MovieDto.TicketResponse getTicketValues(String userIdentity, Long movieId) {
         Movie findMovie = movieRepository.findById(movieId).orElseThrow(() -> new BusinessLogicException(ExceptionCode.MOVIE_NOT_FOUND, "존재하지 않는 영화입니다."));
         if(!Objects.equals(findMovie.getUser().getUserIdentity(), userIdentity)){
             throw new BusinessLogicException(ExceptionCode.UNAUTHORIZED, "해당 영화에 대한 권한이 없습니다.");
-        }else{
-            return new MovieDto.TicketResponse(findMovie);
         }
+
+        return new MovieDto.TicketResponse(findMovie);
+
+    }
+
+    @Transactional(readOnly = true)
+    public List<MovieDto.ReviewResponse> getReviews(String movieTitle) {
+        List<String> reviews = movieRepository.findMoviesWithTitle(movieTitle);
+        List<MovieDto.ReviewResponse> response = new ArrayList<>();
+        for (String review : reviews) {
+            response.add(new MovieDto.ReviewResponse(review));
+        }
+        return response;
+    }
+
+
+    public void setLike(String userIdentity,Long movieId) {
+        Movie findMovie = movieRepository.findById(movieId).orElseThrow(() -> new BusinessLogicException(ExceptionCode.MOVIE_NOT_FOUND, "존재하지 않는 영화입니다."));
+        if(!Objects.equals(findMovie.getUser().getUserIdentity(), userIdentity)){
+            throw new BusinessLogicException(ExceptionCode.UNAUTHORIZED, "해당 영화에 대한 권한이 없습니다.");
+        }
+        findMovie.setLikeTrue();
+    }
+
+    public List<MovieDto.CommonResponse> getMoviesWithLike(String userIdentity) {
+        List<Movie> findMovies = movieRepository.findMoviesWithLike(userIdentity);
+        List<MovieDto.CommonResponse> response = new ArrayList<>();
+        for (Movie findMovie : findMovies) {
+            response.add(new MovieDto.CommonResponse(findMovie));
+        }
+        return response;
     }
 }

@@ -9,8 +9,6 @@ import twoman.omt.api.entity.dto.UserDto;
 
 import twoman.omt.api.service.UserService;
 import twoman.omt.common.ApiResponse;
-import twoman.omt.config.properties.AppProperties;
-import twoman.omt.oauth.token.AuthTokenProvider;
 
 import java.util.List;
 
@@ -34,18 +32,18 @@ public class UserController {
     public ApiResponse getUserMovies() {
         User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-        List<MovieDto.Response> response = userService.GAMovies(principal.getUsername());
-        if(response.size() ==0) return ApiResponse.success("response", null);
-        return ApiResponse.success("response", response);
+        List<MovieDto.CommonResponse> commonResponse = userService.GAMovies(principal.getUsername());
+        if(commonResponse.size() ==0) return ApiResponse.success("response", null);
+        return ApiResponse.success("response", commonResponse);
     }
 
     @GetMapping("/movies/top4")
     public ApiResponse getTop4Movies() {
         User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-        List<MovieDto.Response> response = userService.getTop4Movies(principal.getUsername());
-        if(response.size() ==0) return ApiResponse.success("response", null);
-        return ApiResponse.success("response", response);
+        List<MovieDto.CommonResponse> commonResponse = userService.getTop4Movies(principal.getUsername());
+        if(commonResponse.size() ==0) return ApiResponse.success("response", null);
+        return ApiResponse.success("response", commonResponse);
     }
 
     @PatchMapping("/image")

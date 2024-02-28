@@ -5,15 +5,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.boot.test.mock.mockito.MockBeans;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.restdocs.payload.JsonFieldType;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.test.context.support.WithMockUser;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import twoman.omt.api.annotations.WithMockUserCustom;
 import twoman.omt.api.entity.dto.MovieDto;
 import twoman.omt.api.entity.dto.UserDto;
 import twoman.omt.api.entity.user.User;
@@ -22,21 +17,15 @@ import twoman.omt.api.repository.user.UserRefreshTokenRepository;
 import twoman.omt.api.service.UserService;
 import twoman.omt.api.support.ControllerTest;
 import twoman.omt.config.properties.AppProperties;
-import twoman.omt.oauth.handler.TokenAccessDeniedHandler;
-import twoman.omt.oauth.service.CustomOAuth2UserService;
-import twoman.omt.oauth.service.CustomUserDetailsService;
 import twoman.omt.oauth.token.AuthToken;
 import twoman.omt.oauth.token.AuthTokenProvider;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.BDDMockito.given;
-import static org.springframework.restdocs.payload.PayloadDocumentation.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static twoman.omt.config.properties.AppProperties.*;
@@ -65,7 +54,7 @@ class UserControllerTest extends ControllerTest {
 
     private User user;
     private UserDto.Response userDtoResponse;
-    private List<MovieDto.Response> movieDtoResponse;
+    private List<MovieDto.CommonResponse> movieDtoCommonResponse;
     private Authentication authentication;
     private Auth auth;
     private AuthToken accessToken;
@@ -82,7 +71,7 @@ class UserControllerTest extends ControllerTest {
         accessToken = (AuthToken) userResource.get("accessToken");
         refreshToken = (AuthToken) userResource.get("refreshToken");
         userRefreshToken = (UserRefreshToken) userResource.get("userRefreshToken");
-        movieDtoResponse = (List<MovieDto.Response>) userResource.get("moviesAllResponse");
+        movieDtoCommonResponse = (List<MovieDto.CommonResponse>) userResource.get("moviesAllResponse");
     }
 
     @Test
@@ -104,7 +93,7 @@ class UserControllerTest extends ControllerTest {
     @WithMockUser
     void getMoviesTest() throws Exception {
         given(userService.GAMovies(anyString()))
-                .willReturn(movieDtoResponse);
+                .willReturn(movieDtoCommonResponse);
 
         getResource(DEFAULT_URL + "/movies")
                 .apply(true)
