@@ -4,7 +4,7 @@ import Header from '@/components/_mainpage/header';
 const SearchPage = () => {
   return (
     <>
-      <div className=''>
+      <div>
         <Header />
       </div>
       <div>

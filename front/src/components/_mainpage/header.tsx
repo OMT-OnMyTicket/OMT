@@ -33,7 +33,6 @@ const Header = () => {
         setUserProfile(userInfo.imageUrl);
       } catch (error) {
         console.error('Error parsing storedUserInfo:', error);
-        // Handle the error accordingly, e.g., set default values or show a message to the user
       }
     }
   }, []);

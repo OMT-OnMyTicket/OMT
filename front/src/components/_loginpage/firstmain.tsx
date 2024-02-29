@@ -25,7 +25,11 @@ const firstmain = () => {
     <>
       <div className={styled.Container}>
         <div className={styled.Background}>
-          <img className={styled.Background_IMG} src='/png/loginIMG.jpg' />
+          <img
+            className={styled.Background_IMG}
+            src='/avif/intro/loginIMG.avif'
+            alt='Intro_Background_IMG'
+          />
         </div>
 
         <div className={styled.First_Title}>
@@ -34,7 +38,7 @@ const firstmain = () => {
             data-aos='fade-up'
             data-aos-duration='1000'
           >
-            <h1 className={styled.H1}>ON MY TICKET</h1>
+            <div className={styled.H1}>ON MY TICKET</div>
           </div>
 
           <div className={styled.subTitle}>
