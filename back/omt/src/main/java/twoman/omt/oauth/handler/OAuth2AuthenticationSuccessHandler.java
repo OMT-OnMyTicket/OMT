@@ -9,7 +9,8 @@ import org.springframework.security.web.authentication.SimpleUrlAuthenticationSu
 import org.springframework.stereotype.Component;
 import org.springframework.web.util.UriComponentsBuilder;
 import twoman.omt.api.entity.user.UserRefreshToken;
-import twoman.omt.api.repository.user.UserRefreshTokenRepository;
+import twoman.omt.api.repository.UserRefreshTokenRepository;
+import twoman.omt.api.service.UserRefreshTokenService;
 import twoman.omt.config.properties.AppProperties;
 import twoman.omt.oauth.entity.ProviderType;
 import twoman.omt.oauth.entity.RoleType;
@@ -39,6 +40,7 @@ public class OAuth2AuthenticationSuccessHandler extends SimpleUrlAuthenticationS
 
     private final AuthTokenProvider tokenProvider;
     private final AppProperties appProperties;
+
     private final UserRefreshTokenRepository userRefreshTokenRepository;
     private final OAuth2AuthorizationRequestBasedOnCookieRepository authorizationRequestRepository;
 

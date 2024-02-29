@@ -12,7 +12,7 @@ import org.springframework.util.MultiValueMap;
 import twoman.omt.api.entity.movie.Cinema;
 import twoman.omt.api.entity.Theater;
 import twoman.omt.api.entity.dto.TheaterDto;
-import twoman.omt.api.repository.user.UserRefreshTokenRepository;
+import twoman.omt.api.repository.UserRefreshTokenRepository;
 import twoman.omt.api.service.TheaterService;
 import twoman.omt.api.support.ControllerTest;
 import twoman.omt.config.properties.AppProperties;

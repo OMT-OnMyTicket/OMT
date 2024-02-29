@@ -103,11 +103,11 @@ public class User extends BaseEntity {
     }
 
     public void updateGrade(){
-        if(movies.size() <10) this.rating = Grade.BRONZE;
-        else if(movies.size() <30) this.rating = Grade.SILVER;
-        else if(movies.size() <50) this.rating = Grade.GOLD;
-        else if(movies.size() <100) this.rating = Grade.PLATINUM;
-        else this.rating = Grade.DIAMOND;
+        if(movies.size() <=5) this.rating = Grade.BRONZE;
+        else if(movies.size() <=10) this.rating = Grade.SILVER;
+        else if(movies.size() <=20) this.rating = Grade.GOLD;
+        else if(movies.size() <=40) this.rating = Grade.DIAMOND;
+        else this.rating = Grade.VIP;
     }
 
     public void deleteImage(){

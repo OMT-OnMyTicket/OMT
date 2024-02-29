@@ -24,6 +24,7 @@ public class MovieService {
 
     public void save(Movie movie,String userIdentity){
         User findUser = userRepository.findByUserIdentity(userIdentity);
+        findUser.updateGrade();
         movie.setUser(findUser);
         movieRepository.save(movie);
     }

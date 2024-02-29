@@ -1,4 +1,4 @@
-package twoman.omt.api.repository.user;
+package twoman.omt.api.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import twoman.omt.api.entity.user.UserRefreshToken;
