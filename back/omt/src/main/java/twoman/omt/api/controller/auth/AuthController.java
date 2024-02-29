@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import twoman.omt.api.entity.auth.AuthReqModel;
 import twoman.omt.api.entity.user.User;
 import twoman.omt.api.entity.user.UserRefreshToken;
-import twoman.omt.api.repository.user.UserRefreshTokenRepository;
+import twoman.omt.api.service.UserRefreshTokenService;
 import twoman.omt.common.ApiResponse;
 import twoman.omt.config.properties.AppProperties;
 import twoman.omt.oauth.entity.RoleType;
@@ -36,7 +36,8 @@ public class AuthController {
     private final AppProperties appProperties;
     private final AuthTokenProvider tokenProvider;
     private final AuthenticationManager authenticationManager;
-    private final UserRefreshTokenRepository userRefreshTokenRepository;
+
+    private final UserRefreshTokenService userRefreshTokenService;
 
     private final static long THREE_DAYS_MSEC = 259200000;
     private final static String REFRESH_TOKEN = "refresh_token";
@@ -73,11 +74,11 @@ public class AuthController {
         );
 
         // userIdentity refresh token 으로 DB 확인
-        UserRefreshToken userRefreshToken = userRefreshTokenRepository.findByUserIdentity(id);
+        UserRefreshToken userRefreshToken = userRefreshTokenService.findById(id);
         if (userRefreshToken == null) {
             // 없는 경우 새로 등록
             userRefreshToken = new UserRefreshToken(id, refreshToken.getToken());
-            userRefreshTokenRepository.saveAndFlush(userRefreshToken);
+            userRefreshTokenService.saveToken(userRefreshToken);
         } else {
             // DB에 refresh 토큰 업데이트
             userRefreshToken.setRefreshToken(refreshToken.getToken());
@@ -114,12 +115,12 @@ public class AuthController {
                 .orElse((null));
         AuthToken authRefreshToken = tokenProvider.convertAuthToken(refreshToken);
 
-        if (authRefreshToken.validate()) {
+        if (!authRefreshToken.validate()) {
             return ApiResponse.invalidRefreshToken();
         }
 
         // userId refresh token 으로 DB 확인
-        UserRefreshToken userRefreshToken = userRefreshTokenRepository.findByUserIdentityAndRefreshToken(userId, refreshToken);
+        UserRefreshToken userRefreshToken = userRefreshTokenService.findTokenWithValues(userId, refreshToken);
         if (userRefreshToken == null) {
             return ApiResponse.invalidRefreshToken();
         }

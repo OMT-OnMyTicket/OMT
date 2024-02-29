@@ -10,7 +10,6 @@ import javax.validation.constraints.Size;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-@Table(name = "USER_REFRESH_TOKENS")
 public class UserRefreshToken {
     @JsonIgnore
     @Id
@@ -18,7 +17,7 @@ public class UserRefreshToken {
     @Column(name = "USER_REFRESH_TOKEN_ID")
     private Long Id;
 
-    @Column(length = 64, unique = true,nullable = false)
+    @Column(length = 64, unique = true)
     @NotNull
     @Size(max = 64)
     private String userIdentity;
