@@ -21,7 +21,11 @@ const TheaterComponent: React.FC<TheaterComponentProps> = ({
     data-aos='fade-down'
     data-aos-duration={duration}
   >
-    <img src={`/png/${name}.png`} className={styled.theater_icon} alt={name} />
+    <img
+      src={`/avif/logo/${name}.avif`}
+      className={styled.theater_icon}
+      alt={name}
+    />
   </div>
 );
 
