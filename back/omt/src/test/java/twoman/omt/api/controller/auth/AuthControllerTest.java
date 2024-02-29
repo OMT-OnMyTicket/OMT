@@ -3,47 +3,30 @@ package twoman.omt.api.controller.auth;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.boot.test.mock.mockito.MockBeans;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.FilterType;
-import org.springframework.context.annotation.Import;
-import org.springframework.restdocs.payload.JsonFieldType;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.test.context.support.WithMockUser;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import twoman.omt.api.annotations.WithMockUserCustom;
 import twoman.omt.api.entity.auth.AuthReqModel;
-import twoman.omt.api.entity.dto.UserDto;
 import twoman.omt.api.entity.user.User;
 import twoman.omt.api.entity.user.UserRefreshToken;
-import twoman.omt.api.repository.user.UserRefreshTokenRepository;
+import twoman.omt.api.repository.UserRefreshTokenRepository;
 import twoman.omt.api.repository.user.UserRepository;
-import twoman.omt.api.service.UserService;
+import twoman.omt.api.service.UserRefreshTokenService;
 import twoman.omt.api.support.ControllerTest;
 import twoman.omt.config.properties.AppProperties;
-import twoman.omt.config.security.SecurityConfig;
-import twoman.omt.oauth.handler.TokenAccessDeniedHandler;
-import twoman.omt.oauth.service.CustomOAuth2UserService;
-import twoman.omt.oauth.service.CustomUserDetailsService;
 import twoman.omt.oauth.token.AuthToken;
 import twoman.omt.oauth.token.AuthTokenProvider;
 
 import java.util.Date;
-import java.util.LinkedHashMap;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.doNothing;
-import static org.springframework.restdocs.payload.PayloadDocumentation.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static twoman.omt.config.properties.AppProperties.*;
 
@@ -61,6 +44,9 @@ class AuthControllerTest extends ControllerTest {
 
     @MockBean
     UserRefreshTokenRepository userRefreshTokenRepository;
+
+    @MockBean
+    UserRefreshTokenService userRefreshTokenService;
 
     @MockBean
     UserRepository userRepository;

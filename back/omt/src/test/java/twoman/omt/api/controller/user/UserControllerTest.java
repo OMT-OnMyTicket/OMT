@@ -13,7 +13,7 @@ import twoman.omt.api.entity.dto.MovieDto;
 import twoman.omt.api.entity.dto.UserDto;
 import twoman.omt.api.entity.user.User;
 import twoman.omt.api.entity.user.UserRefreshToken;
-import twoman.omt.api.repository.user.UserRefreshTokenRepository;
+import twoman.omt.api.repository.UserRefreshTokenRepository;
 import twoman.omt.api.service.UserService;
 import twoman.omt.api.support.ControllerTest;
 import twoman.omt.config.properties.AppProperties;
@@ -48,6 +48,7 @@ class UserControllerTest extends ControllerTest {
 
     @MockBean
     UserRefreshTokenRepository userRefreshTokenRepository;
+
 
     @MockBean
     PasswordEncoder passwordEncoder;
