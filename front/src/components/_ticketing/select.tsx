@@ -88,21 +88,25 @@ const SelectTheater = () => {
     [key: string]: {
       backgroundImage: string;
       logoImage: string;
+      alt: string;
     };
   };
 
   const theaterInfo: TheaterInfo = {
     CGV: {
       backgroundImage: '/png/CGV_세로.png',
-      logoImage: '/png/CGV.png'
+      logoImage: '/avif/logo/CGV.avif',
+      alt: 'CGV로고'
     },
     MEGABOX: {
       backgroundImage: '/png/메가박스_세로.png',
-      logoImage: '/png/메가박스.png'
+      logoImage: '/avif/logo/메가박스.avif',
+      alt: 'MEGABOX로고'
     },
     LOTTE: {
       backgroundImage: '/png/롯데시네마_세로.png',
-      logoImage: '/png/롯데시네마.png'
+      logoImage: '/avif/logo/롯데시네마.avif',
+      alt: 'LOTTE로고'
     }
   };
 
@@ -115,7 +119,11 @@ const SelectTheater = () => {
           className={styled.choicedTheater}
           style={{ backgroundImage: `url(${theater.backgroundImage})` }}
         >
-          <img src={theater.logoImage} className={styled.choicedTheater_Logo} />
+          <img
+            src={theater.logoImage}
+            className={styled.choicedTheater_Logo}
+            alt={theater.alt}
+          />
         </div>
       );
     }

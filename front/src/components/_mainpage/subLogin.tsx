@@ -165,15 +165,27 @@ const SubLogin = () => {
             로그인 후 이용 가능한 서비스입니다.
           </p>
           <div className={styled.naver} onClick={() => handleLogin('naver')}>
-            <img src={'/png/naver.png'} className={styled.login_Logo} />
+            <img
+              src={'/avif/logo/naver.avif'}
+              className={styled.login_Logo}
+              alt='Naver_Logo'
+            />
             <p>네이버로 로그인하기</p>
           </div>
           <div className={styled.kakao} onClick={() => handleLogin('kakao')}>
-            <img src={'/png/kakao.png'} className={styled.login_Logo} />
+            <img
+              src={'/avif/logo/kakao.avif'}
+              className={styled.login_Logo}
+              alt='Kakao_Logo'
+            />
             <p>카카오로 로그인하기</p>
           </div>
           <div className={styled.google} onClick={() => handleLogin('google')}>
-            <img src={'/png/google.png'} className={styled.login_Logo} />
+            <img
+              src={'/avif/logo/google.avif'}
+              className={styled.login_Logo}
+              alt='Google_Logo'
+            />
             <p>구글로 로그인하기</p>
           </div>
         </div>

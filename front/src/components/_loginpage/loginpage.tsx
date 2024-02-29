@@ -19,7 +19,11 @@ const Loginpage = () => {
             </div>
           </div>
           <div className={styled.Character_Position}>
-            <img className={styled.Character} src='/png/캐릭터.png' />
+            <img
+              className={styled.Character}
+              src='/png/캐릭터.png'
+              alt='캐릭터이미지'
+            />
           </div>
         </div>
       </div>
