@@ -71,10 +71,7 @@ const Third: React.FC = () => {
         </h3>
 
         <div data-aos='fade-up' data-aos-duration='1000' id='Img'>
-          <img
-            src='https://static.toss.im/screens/iPhone12_Clay_Shadow.png'
-            className={styled.phoneImg}
-          />
+          <img src='/avif/intro/iphone.avif' className={styled.phoneImg} />
         </div>
 
         <h3
