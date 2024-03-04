@@ -5,7 +5,7 @@ const Price = () => {
     {
       name: 'CGV',
       link: 'http://www.cgv.co.kr/theaters/theaterPrice.aspx',
-      imageSrc: '/png/CGV관람권.png',
+      imageSrc: '/avif/home/CGV관람권.avif',
       prices: {
         weekday: '평일: 10000 ~ 14000원',
         holiday: '공휴일: 11000 ~ 15000원'
@@ -14,7 +14,7 @@ const Price = () => {
     {
       name: '메가박스',
       link: 'https://www.megabox.co.kr/store/megaticket',
-      imageSrc: '/png/메가박스관람권.png',
+      imageSrc: '/avif/home/메가박스관람권.avif',
       prices: {
         weekday: '평일: 10000 ~ 14000원',
         holiday: '공휴일: 11000 ~ 15000원'
@@ -23,7 +23,7 @@ const Price = () => {
     {
       name: '롯데시네마',
       link: 'https://www.lottecinema.co.kr/NLCHS/CinemaMall',
-      imageSrc: '/png/롯데시네마관람권.png',
+      imageSrc: '/avif/home/롯데시네마관람권.avif',
       prices: {
         weekday: '평일: 10000 ~ 14000원',
         holiday: '공휴일: 11000 ~ 15000원'
@@ -65,7 +65,11 @@ const Price = () => {
               아래를 클릭하면 시사회 정보를 얻는 페이지로 이동합니다.
             </p>
             <a href='https://www.maxmovie.com/event' target='_blank'>
-              <img src='/png/시사회정보.png' className={styled.ShowPng} />
+              <img
+                src='/avif/home/시사회정보.avif'
+                className={styled.ShowPng}
+                alt='시사회정보'
+              />
             </a>
           </div>
           <div className={styled.Comment_Box}>

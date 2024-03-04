@@ -46,7 +46,8 @@ const Header = () => {
       <div className={styled.header_content}>
         <div className={styled.conetent}>
           <img
-            src='/png/OMT_Home_Logo.png'
+            src='/avif/logo/OMT_Home_Logo.avif'
+            alt='Home로고'
             className={styled.logo}
             onClick={handleHome}
           />

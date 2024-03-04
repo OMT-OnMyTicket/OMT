@@ -150,6 +150,7 @@ const ChoiceMovie = () => {
                   src={moviePosters[i] || '/png/preparing.png'}
                   alt='movie poster'
                   className={styled.moviePoster}
+                  loading='lazy'
                 />
                 <div className={styled.movieContents_display}>
                   <div className={styled.movieContents_Layout}>
