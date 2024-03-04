@@ -47,7 +47,11 @@ const firstmain = () => {
               OMT로 쉽고 간편하게
             </p>
           </div>
-          <img className={styled.ScrollDown} src='/ScrollDown.svg'></img>
+          <img
+            className={styled.ScrollDown}
+            src='/ScrollDown.svg'
+            alt='스크롤다운'
+          />
         </div>
       </div>
       <div className={styled.secondTitle}>

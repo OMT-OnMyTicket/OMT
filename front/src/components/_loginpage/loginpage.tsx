@@ -21,7 +21,7 @@ const Loginpage = () => {
           <div className={styled.Character_Position}>
             <img
               className={styled.Character}
-              src='/png/캐릭터.png'
+              src='/avif/intro/캐릭터.avif'
               alt='캐릭터이미지'
             />
           </div>
