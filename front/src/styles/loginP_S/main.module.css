@@ -31,11 +31,8 @@
   justify-content: flex-start;
 }
 .H1 {
-  width: 100%;
-  text-align: center;
   font-size: 90px;
   font-weight: 700;
-  line-height: 1.4;
   color: rgb(0, 0, 0);
 }
 
@@ -44,16 +41,14 @@
   font-size: 32px;
   line-height: 62px;
   color: #484e5a;
+  text-align: center;
 }
 @media screen and (max-width: 639px) {
   .H1 {
     font-size: 40px;
-    font-weight: 700;
-    line-height: 1.4;
-    color: rgb(25, 31, 40);
   }
   .subTitle {
-    font-size: 28px;
+    font-size: 18px;
   }
   .ScrollDown {
     margin-bottom: 80px;
@@ -188,8 +183,8 @@
   position: relative;
 }
 .phoneImg {
-  width: 550px;
-  margin: 0 3vw;
+  width: 350px;
+  margin: 0 5vw;
 }
 .theater_Layout {
   display: flex;
@@ -208,6 +203,7 @@
   font-size: 24px;
   line-height: 80px;
   color: #000000;
+  text-align: end;
 }
 .phone_Content {
   position: absolute;
@@ -254,7 +250,7 @@
     flex-direction: column;
   }
   .phoneImg {
-    width: 380px;
+    width: 280px;
   }
   .mainTxt3_1 {
     font-size: 18px;
@@ -277,7 +273,7 @@
   margin: 10vw 0;
 }
 .Fourth_Back {
-  background-image: url('/avif/intro/theater.avif');
+  background-image: url('/avif/intro/background.avif');
   background-repeat: no-repeat;
   background-size: cover;
   height: 700px;

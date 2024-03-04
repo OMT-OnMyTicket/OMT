@@ -38,7 +38,7 @@ const firstmain = () => {
             data-aos='fade-up'
             data-aos-duration='1000'
           >
-            <div className={styled.H1}>ON MY TICKET</div>
+            <p className={styled.H1}>ON MY TICKET</p>
           </div>
 
           <div className={styled.subTitle}>
