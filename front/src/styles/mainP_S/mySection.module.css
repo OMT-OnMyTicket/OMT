@@ -22,6 +22,7 @@
 }
 .ShowPng {
   width: 38.2vw;
+  height: auto;
   border-radius: 10px;
   cursor: pointer;
   margin-top: 1.4vw;
@@ -52,6 +53,7 @@
 }
 .ticket_png {
   width: 10.5vw;
+  height: auto;
   margin-right: 3.5vw;
   cursor: pointer;
 }
@@ -83,9 +85,11 @@
 @media screen and (max-width: 600px) {
   .Layout {
     height: 90vw;
+    width: auto;
   }
   .Boxes {
     display: flex;
+    width: auto;
     flex-direction: column;
     height: 20.8vw;
     justify-content: space-between;
@@ -96,11 +100,13 @@
   .LeftBox,
   .RightBox {
     width: 60.7vw;
+    height: auto;
     margin-bottom: 10vw;
   }
   .poster,
   .UserPhoto {
     width: 20.5vw;
+    height: auto;
     position: relative;
   }
   .poster {

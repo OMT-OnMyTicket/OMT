@@ -61,13 +61,15 @@ const Event = () => {
                 <Link href={'/myticket/ticketroom'}>
                   <div className={styled.Slider_Photo}>
                     <img
-                      src='/png/omt_event.png'
+                      src='/avif/home/omt_event.avif'
                       className={styled.leftPhoto}
+                      alt='OMT_Event'
                     />
                     <img
                       src={event.imgSrc}
                       alt={`${event.title} 티켓`}
                       className={styled.rightPhoto}
+                      loading='lazy'
                     />
                     <div className={styled.event_ticketTxt}>
                       {event.title} 본 뒤 OMT가 제안하는 <br /> 나만의 티켓 제작
@@ -85,15 +87,17 @@ const Event = () => {
               <a
                 href={'https://www.youtube.com/watch?v=BR5YCAxjbwc&t=5s'}
                 target='_blank'
+                title='서브 프리뷰 링크'
               >
                 <img
                   src='https://i.ytimg.com/vi/81JOj5-xNGc/maxresdefault.jpg'
                   className={styled.poster}
+                  alt='서브 프리뷰 IMG'
                 />
               </a>
               <div className={styled.poster_Txt}>
                 <h3> 개봉예정작</h3>
-                <h5>듄 파트2</h5>
+                <h4>듄 파트2</h4>
                 <h5>2월 IMAX 대개봉</h5>
               </div>
             </div>

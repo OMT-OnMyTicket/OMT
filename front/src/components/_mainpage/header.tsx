@@ -46,7 +46,8 @@ const Header = () => {
       <div className={styled.header_content}>
         <div className={styled.conetent}>
           <img
-            src='/png/OMT_Home_Logo.png'
+            src='/avif/logo/OMT_Home_Logo.avif'
+            alt='Home로고'
             className={styled.logo}
             onClick={handleHome}
           />
@@ -59,7 +60,7 @@ const Header = () => {
               </Link>
             </li>
             {UserName ? (
-              <>
+              <ul className={styled.headerInfo}>
                 <li>
                   <Link href='/myticket' className={styled.myTickets}>
                     <p className={styled.myTicketTxt}>My Tickets</p>
@@ -72,7 +73,7 @@ const Header = () => {
                   />
                   <div className={styled.UserName}>{UserName} 님</div>
                 </li>
-              </>
+              </ul>
             ) : (
               <div className={styled.Login}>
                 <p className={styled.Login} onClick={handleClick}>
