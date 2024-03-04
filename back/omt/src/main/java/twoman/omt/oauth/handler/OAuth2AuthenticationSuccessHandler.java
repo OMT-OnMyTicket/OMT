@@ -7,6 +7,7 @@ import org.springframework.security.oauth2.client.authentication.OAuth2Authentic
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.util.UriComponentsBuilder;
 import twoman.omt.api.entity.user.UserRefreshToken;
 import twoman.omt.api.repository.UserRefreshTokenRepository;
@@ -57,6 +58,7 @@ public class OAuth2AuthenticationSuccessHandler extends SimpleUrlAuthenticationS
         getRedirectStrategy().sendRedirect(request, response, targetUrl);
     }
 
+    @Transactional
     protected String determineTargetUrl(HttpServletRequest request, HttpServletResponse response, Authentication authentication) {
         Optional<String> redirectUri = CookieUtil.getCookie(request, REDIRECT_URI_PARAM_COOKIE_NAME)
                 .map(Cookie::getValue);
@@ -94,7 +96,10 @@ public class OAuth2AuthenticationSuccessHandler extends SimpleUrlAuthenticationS
         // DB 저장
         UserRefreshToken userRefreshToken = userRefreshTokenRepository.findByUserIdentity(userInfo.getId());
         if (userRefreshToken != null) {
-            userRefreshToken.setRefreshToken(refreshToken.getToken());
+            userRefreshTokenRepository.delete(userRefreshToken);
+            UserRefreshToken newToken = new UserRefreshToken(userInfo.getId(),refreshToken.getToken());
+            userRefreshTokenRepository.saveAndFlush(newToken);
+            //userRefreshToken.setRefreshToken(refreshToken.getToken());
         } else {
             userRefreshToken = new UserRefreshToken(userInfo.getId(), refreshToken.getToken());
             userRefreshTokenRepository.saveAndFlush(userRefreshToken);

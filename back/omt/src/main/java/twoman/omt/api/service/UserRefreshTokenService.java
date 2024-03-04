@@ -26,4 +26,9 @@ public class UserRefreshTokenService {
     public UserRefreshToken findTokenWithValues(String userId, String refreshToken) {
         return repository.findByUserIdentityAndRefreshToken(userId,refreshToken);
     }
+    @Transactional
+    public void setRefreshToken(String userId, String token) {
+        UserRefreshToken refreshToken = repository.findByUserIdentity(userId);
+        refreshToken.setRefreshToken(token);
+    }
 }
