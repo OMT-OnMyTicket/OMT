@@ -29,7 +29,7 @@
 
 .leftPhoto {
   width: 20.8vw;
-  height: 20.8vw;
+  height: auto;
 }
 .rightPhoto {
   width: 26.7vw;

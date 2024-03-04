@@ -74,6 +74,7 @@ const Header = () => {
               <img
                 src={UserProfile ? `${UserProfile}` : '/userProfile.svg'}
                 className={styled.UserProfile}
+                alt='유저프로필 이미지'
               />
               <div className={styled.UserName}>{UserName} 님</div>
             </li>
