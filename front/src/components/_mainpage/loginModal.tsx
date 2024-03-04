@@ -57,7 +57,11 @@ const Modal = ({ setModalOpen }: PropsType) => {
               className={styled[provider]}
               onClick={() => handleLogin(provider)}
             >
-              <img src={`/png/${provider}.png`} className={styled.login_Logo} />
+              <img
+                src={`/avif/logo/${provider}.avif`}
+                className={styled.login_Logo}
+                alt='Oauth Logo'
+              />
               <p>{` ${
                 provider.charAt(0).toUpperCase() + provider.slice(1)
               } 로 로그인`}</p>

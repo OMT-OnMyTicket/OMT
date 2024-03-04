@@ -11,6 +11,7 @@ const preview = () => {
           title='파묘 예고편'
           allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
           allowFullScreen
+          loading='lazy'
         />
         <strong className={styled.title}>파묘 </strong>
         <span className={styled.txt}>

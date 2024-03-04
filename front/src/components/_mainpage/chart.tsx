@@ -15,9 +15,6 @@ interface DailyBoxOfficeItem {
   movieNm: string;
   audiAcc: string;
 }
-interface MoviePosters {
-  url: string;
-}
 
 // 전날 날짜 yyyymmdd 형식으로 추출하기 => targetDt 추출
 
@@ -70,7 +67,6 @@ const Chart = () => {
               }
             })
             .then((res) => {
-              // console.log(res);
               const results = res.data.Data[0]?.Result || [];
               const posters = results.map(
                 (result: any) => result.posters.split('|')[0]
@@ -153,6 +149,7 @@ const Chart = () => {
                   src={moviePosters[i] || '/png/preparing.png'}
                   alt='movie poster'
                   className={styled.moviePoster}
+                  loading='lazy'
                 />
                 <div className={styled.movieContents_Layout}>
                   <p className={styled.Contentes_Title}>{a.movieNm}</p>

@@ -33,6 +33,7 @@
 }
 .rightPhoto {
   width: 26.7vw;
+  height: auto;
 }
 
 .Slider_Photo {
@@ -40,6 +41,7 @@
   justify-content: center;
   align-items: center;
   width: 48.6vw;
+  height: auto;
   position: relative;
 }
 
@@ -59,11 +61,13 @@
   height: 20.8vw;
   max-width: 48.6vw;
   border-radius: 1.4vw;
+  width: auto;
 }
 
 .User {
   width: 32vw;
   height: 41.6vw;
+  height: auto;
   border: 1px solid #cfcccc;
   background-color: white;
   position: absolute;
@@ -79,6 +83,7 @@
   flex-direction: column;
   justify-content: space-around;
   height: 27.7vw;
+  width: auto;
 }
 .loginBox_txt {
   color: #776e6e;
@@ -88,6 +93,7 @@
 .kakao,
 .google {
   width: 20.8vw;
+  height: auto;
   display: flex;
   align-items: center;
   border-radius: 10px;
@@ -98,6 +104,7 @@
 
 .login_Logo {
   width: 3.47vw;
+  height: auto;
   border-radius: 10px;
   margin-right: 3.47vw;
 }
@@ -139,10 +146,11 @@
   position: relative;
   cursor: pointer;
   border-radius: 1.4vw;
+  height: auto;
 }
 .poster:hover {
   width: 26.3vw;
-
+  height: auto;
   transition-duration: 1s;
 }
 
@@ -156,7 +164,7 @@
 .right_Box {
   width: 17.3vw;
   height: 13.8vw;
-  background-image: url('/png/문화의날.png');
+  background-image: url('/avif/home/문화의날.avif');
   border-radius: 1.4vw;
   background-repeat: no-repeat;
   background-size: cover;
@@ -175,6 +183,7 @@
   width: 100%;
   justify-content: space-around;
   align-items: center;
+  height: auto;
 }
 .Detail_User {
   position: relative;
@@ -208,12 +217,11 @@
   border-radius: 10px;
 }
 
-/* Add any additional styling for your modal content here */
 .ModalContent img {
   max-width: 60%; /* Ensure the image doesn't exceed the container width */
+  height: auto;
 }
 
-/* Optionally, you can add styles for closing the modal */
 .ModalBackground:hover {
   cursor: pointer;
 }
@@ -235,11 +243,13 @@
   width: 60px;
   z-index: 1;
   position: absolute;
+  height: auto;
   bottom: -20%;
   right: -20%;
 }
 .UserProfile {
   width: 150px;
+  height: auto;
   border-radius: 10px;
   border: 4px solid rgb(0, 0, 0);
 }
@@ -248,7 +258,7 @@
   width: 100%;
   text-align: center;
   border: 1px solid black;
-
+  height: auto;
   padding: 10px 0;
   border-radius: 5px;
 }
@@ -278,6 +288,7 @@
 .recent_Movie_bar {
   width: 100%;
   padding-left: 1.4vw;
+  height: auto;
   display: flex;
 }
 .EmptyMovie {
