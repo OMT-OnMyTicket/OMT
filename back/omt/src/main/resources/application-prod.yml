@@ -82,7 +82,7 @@ cors:
 app:
   auth:
     tokenSecret: ${JWT_SECRET_KEY}
-    tokenExpiry: 60000
+    tokenExpiry: 1800000
     refreshTokenExpiry: 604800000
   oauth2:
     authorizedRedirectUris:
