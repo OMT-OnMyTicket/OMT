@@ -29,7 +29,7 @@ import java.util.Date;
 
 @Slf4j
 @RestController
-@RequestMapping("/api/all/v1/auth")
+@RequestMapping("/api/v1/auth")
 @RequiredArgsConstructor
 public class AuthController {
 
