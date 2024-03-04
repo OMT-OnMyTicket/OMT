@@ -86,7 +86,7 @@ const Search = () => {
   return (
     <>
       <div ref={textAreaRef}>
-        <li className={styled.search_width}>
+        <div className={styled.search_width}>
           <textarea
             className={styled.Textarea}
             placeholder='영화를 검색해보세요.'
@@ -104,10 +104,11 @@ const Search = () => {
 
           <img
             src='/search.svg'
+            alt='search_icon'
             className={styled.search}
             onClick={() => handleClickSearch(inputText)}
           />
-        </li>
+        </div>
         {inputText && !isTitleClicked && (
           <div className={styled.Testbox}>
             <ul className={styled.Search_ul}>

@@ -38,6 +38,7 @@
   display: flex;
   justify-content: center;
   width: 10vw;
+  height: auto;
 }
 .ticketingTxt:hover,
 .myTicketTxt:hover {
@@ -48,6 +49,7 @@
 
 .UserProfile {
   width: 4.17vw;
+  height: auto;
   border-radius: 5px;
 }
 .UserName {
@@ -59,9 +61,11 @@
   justify-content: center;
   align-items: center;
   width: 10vw;
+  height: auto;
 }
 .Login {
   width: 10vw;
+  height: auto;
   cursor: pointer;
   display: flex;
   justify-content: center;

@@ -45,11 +45,19 @@ const Price = () => {
             <div className={styled.Movie_Tickets}>
               {ticketInfo.map((ticket, index) => (
                 <div key={index} className={styled.ticket_Info}>
-                  <a href={ticket.link} target='_blank'>
-                    <img src={ticket.imageSrc} className={styled.ticket_png} />
+                  <a
+                    href={ticket.link}
+                    target='_blank'
+                    title={`${ticket.name} 관람권 링크`}
+                  >
+                    <img
+                      src={ticket.imageSrc}
+                      className={styled.ticket_png}
+                      alt={`${ticket.name}관람권`}
+                    />
                   </a>
                   <div className={styled.Ticket_Price_Txt}>
-                    <h4>{ticket.name}</h4>
+                    <h3>{ticket.name}</h3>
                     <p>{ticket.prices.weekday}</p>
                     <p>{ticket.prices.holiday}</p>
                   </div>
@@ -64,7 +72,11 @@ const Price = () => {
             <p style={{ color: '#bfbbbb' }}>
               아래를 클릭하면 시사회 정보를 얻는 페이지로 이동합니다.
             </p>
-            <a href='https://www.maxmovie.com/event' target='_blank'>
+            <a
+              href='https://www.maxmovie.com/event'
+              target='_blank'
+              title='MAXMOVIE_LINK'
+            >
               <img
                 src='/avif/home/시사회정보.avif'
                 className={styled.ShowPng}
