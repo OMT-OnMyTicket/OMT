@@ -47,6 +47,7 @@ const MyTicketHome = () => {
             className={styled.lignt}
             data-aos='zoom-in-down'
             data-aos-duration='1500'
+            alt='light'
           />
 
           <div className={styled.Home_Txt}>
@@ -65,7 +66,11 @@ const MyTicketHome = () => {
               영화와 함께 한 좋은 추억들을 직접 기록하고 만들어요.
             </div>
           </div>
-          <img className={styled.ScrollDown} src='/ScrollDown.svg'></img>
+          <img
+            className={styled.ScrollDown}
+            src='/ScrollDown.svg'
+            alt='스크롤다운'
+          />
         </div>
       </div>
 
@@ -81,6 +86,7 @@ const MyTicketHome = () => {
             <img
               src={UserProfile ? `${UserProfile}` : '/userProfile.svg'}
               className={styled.UserProfile}
+              alt='유저프로필'
             />
             <div className={styled.UserName}>{UserName} 님의 TicketRoom</div>
           </div>

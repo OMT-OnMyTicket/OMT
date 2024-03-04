@@ -31,11 +31,15 @@ const OAuthButton: React.FC<OAuthButtonProps> = ({ provider, name }) => {
       <div className={styled.oauth_li_Txt} onClick={handleClick}>
         <div className={styled.oauth_Naming_Layout}>
           <div className={styled.oauth_name}>{name}</div>
-          <img src={`/png/${provider}.png`} className={styled.oauth_Logo} />
+          <img
+            src={`/avif/logo/${provider}.avif`}
+            className={styled.oauth_Logo}
+            alt='oauth 로고'
+          />
         </div>
         <div className={styled.Login_Txt}>{`${name}로 로그인하기`}</div>
         <div className={styled.Login_Txt_M}>Login</div>
-        <img src='/arrow.svg' className={styled.oauth_arrow} />
+        <img src='/arrow.svg' className={styled.oauth_arrow} alt='화살표' />
       </div>
     </li>
   );
