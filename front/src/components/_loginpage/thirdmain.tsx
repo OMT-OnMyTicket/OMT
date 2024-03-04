@@ -71,7 +71,11 @@ const Third: React.FC = () => {
         </h3>
 
         <div data-aos='fade-up' data-aos-duration='1000' id='Img'>
-          <img src='/avif/intro/iphone.avif' className={styled.phoneImg} />
+          <img
+            src='/avif/intro/iphone.avif'
+            className={styled.phoneImg}
+            alt='iphone'
+          />
         </div>
 
         <h3
@@ -89,8 +93,16 @@ const Third: React.FC = () => {
           data-aos-duration='3000'
           id='Img'
         >
-          <img className={styled.phoneTop} src='/png/phoneTop.png' />
-          <img className={styled.phoneBtm} src='/png/phoneBtm.png' />
+          <img
+            className={styled.phoneTop}
+            src='/avif/intro/phoneTop.avif'
+            alt='phone 상단 내용'
+          />
+          <img
+            className={styled.phoneBtm}
+            src='/avif/intro/phoneBtm.avif'
+            alt='phone 하단 내용'
+          />
         </div>
       </div>
     </div>

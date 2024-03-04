@@ -55,8 +55,9 @@
 
 .oauth_li:hover > .oauth_li_Txt > .Login_Txt {
   color: black;
-  font-size: 18px;
+  transform: scale(1.05);
   transition-duration: 1s;
+  font-weight: bold;
 }
 .oauth_li:hover > .oauth_li_Txt > .oauth_arrow {
   filter: invert(100%);
@@ -104,7 +105,7 @@
 
 .Login_Txt {
   font-size: 16px;
-  color: #aba3a3;
+  color: #898989;
 }
 .Login_Txt_M {
   display: none;

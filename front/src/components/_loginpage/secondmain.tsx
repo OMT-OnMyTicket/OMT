@@ -29,13 +29,21 @@ const Second = () => {
             data-aos-duration='1000'
             id='Img'
           >
-            <img className={styled.ticketImg2} src='/png/back.png' />
+            <img
+              className={styled.ticketImg2}
+              src='/avif/intro/back.avif'
+              alt='티켓뒷면'
+            />
           </div>
         </div>
 
         <div className={styled.right_Container}>
           <div data-aos='fade-left' data-aos-duration='1000' id='Img'>
-            <img className={styled.ticketImg2} src='/png/front.png' />
+            <img
+              className={styled.ticketImg2}
+              src='/avif/intro/front.avif'
+              alt='티켓앞면'
+            />
           </div>
           <h3 className={styled.mainTxt2_3}>
             재미있게 시청한 영화를 기록해보세요. <br />
