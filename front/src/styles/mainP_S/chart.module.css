@@ -36,6 +36,7 @@
 }
 .moviePoster_Layout:hover > .moviesTxt2 {
   display: none;
+  cursor: pointer;
 }
 .movieTitle {
   font-size: 1.18vw;

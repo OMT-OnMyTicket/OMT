@@ -30,7 +30,8 @@ const Support = () => {
   return (
     <>
       <img
-        src='/png/OMT_web.png'
+        src='/avif/logo/OMT_web.avif'
+        alt='OMT로고'
         className={styled.container}
         onClick={handleClick}
       />
