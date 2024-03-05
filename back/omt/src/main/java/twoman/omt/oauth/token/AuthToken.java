@@ -66,7 +66,6 @@ public class AuthToken {
             log.info("JWT token compact of handler are invalid.");
         }catch (ExpiredJwtException e) {
             log.info("Expired JWT token.");
-            return e.getClaims();
         }
         return null;
     }

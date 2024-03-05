@@ -29,7 +29,7 @@ import java.util.Date;
 
 @Slf4j
 @RestController
-@RequestMapping("/api/v1/auth")
+@RequestMapping("/api/all/v1/auth")
 @RequiredArgsConstructor
 public class AuthController {
 
@@ -93,12 +93,12 @@ public class AuthController {
 
     @GetMapping("/refresh")
     public ApiResponse refreshToken (HttpServletRequest request, HttpServletResponse response) {
-        // access token 확인
+//        // access token 확인
         String accessToken = HeaderUtil.getAccessToken(request);
         AuthToken authToken = tokenProvider.convertAuthToken(accessToken);
-        if (!authToken.validate()) {
-            return ApiResponse.invalidAccessToken();
-        }
+//        if (authToken.validate()) {
+//            return ApiResponse.invalidAccessToken();
+//        }
 
         // expired access token 인지 확인
         Claims claims = authToken.getExpiredTokenClaims();
