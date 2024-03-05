@@ -32,7 +32,7 @@ import static twoman.omt.config.properties.AppProperties.*;
 
 @WebMvcTest(controllers = AuthController.class)
 class AuthControllerTest extends ControllerTest {
-    final String DEFAULT_URL = "/api/v1/auth";
+    final String DEFAULT_URL = "/api/all/v1/auth";
     @MockBean
     AppProperties appProperties;
 
