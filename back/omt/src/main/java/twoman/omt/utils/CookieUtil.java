@@ -28,7 +28,6 @@ public class CookieUtil {
         cookie.setPath("/");
         cookie.setHttpOnly(true);
         cookie.setMaxAge(maxAge);
-        cookie.setDomain(".omt-onmyticket.vercel.app");
 
         response.addCookie(cookie);
     }
