@@ -41,6 +41,7 @@ public class CookieUtil {
                     cookie.setValue("");
                     cookie.setPath("/");
                     cookie.setMaxAge(0);
+                    cookie.setDomain("localhost:3000");
                     response.addCookie(cookie);
                 }
             }
