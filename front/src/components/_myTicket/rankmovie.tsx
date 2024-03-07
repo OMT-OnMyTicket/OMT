@@ -5,19 +5,15 @@ import 'aos/dist/aos.css';
 import styled from '../../styles/myticketP_S/myTicketHome.module.css';
 import axios from 'axios';
 import Link from 'next/link';
+import { useAuth } from '../AuthContext';
 
 const URL = process.env.NEXT_PUBLIC_URL;
 const RankedMovie = () => {
   const router = useRouter();
   const [watchedMovies, setWatchedMovies] = useState<any[] | null>(null);
-  const [accessToken, setToken] = useState<string | null>(null);
+  const { accessToken } = useAuth();
   useEffect(() => {
-    const storedToken: string | null = localStorage.getItem('Token');
     AOS.init();
-
-    if (storedToken) {
-      setToken(JSON.parse(storedToken));
-    }
   }, []);
 
   useEffect(() => {
@@ -37,7 +33,6 @@ const RankedMovie = () => {
           console.log(err);
           localStorage.clear();
           router.push('/');
-          alert('토큰이 만료되어 재로그인이 필요합니다.');
         });
     }
   }, [accessToken]);

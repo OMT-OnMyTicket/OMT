@@ -14,18 +14,16 @@ const Header = () => {
 
   const handleHome = () => {
     const userInfo = localStorage.getItem('UserInfo');
-    const Token = localStorage.getItem('Token');
+
     localStorage.clear();
-    if (userInfo && Token) {
+    if (userInfo) {
       localStorage.setItem('UserInfo', userInfo);
-      localStorage.setItem('Token', Token);
     }
     router.push('/home');
   };
 
   useEffect(() => {
     const storedUserInfo = localStorage.getItem('UserInfo');
-
     if (storedUserInfo) {
       try {
         const userInfo = JSON.parse(storedUserInfo);

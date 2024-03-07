@@ -3,14 +3,15 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { useAuth } from '../AuthContext';
 
 const URL = process.env.NEXT_PUBLIC_URL;
 
 const SubLogin = () => {
   const router = useRouter();
+  const { accessToken, setAccessToken } = useAuth();
   const [userProfile, setUserProfile] = useState<string | null>(null);
   const [userName, setUserName] = useState<string | null>(null);
-  const [accessToken, setToken] = useState<string | null>(null);
   const [watchedMovies, setWatchedMovies] = useState<any[] | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -23,40 +24,36 @@ const SubLogin = () => {
   };
 
   useEffect(() => {
-    const storedToken: string | null = localStorage.getItem('Token');
-
-    if (storedToken) {
-      setToken(JSON.parse(storedToken));
-    }
-  }, []);
-
-  useEffect(() => {
     const storedUserInfo = localStorage.getItem('UserInfo');
     if (storedUserInfo) {
       try {
         const userInfo = JSON.parse(storedUserInfo);
         setUserName(userInfo.userName);
         setUserProfile(userInfo.imageUrl);
-
-        if (accessToken !== null) {
-          axios
-            .get(`${URL}/api/v1/users/movies`, {
-              headers: {
-                Authorization: `Bearer ${accessToken}`,
-                'Content-Type': 'application/json'
-              }
-            })
-            .then((res) => {
-              const watchedMovies = res.data.body.response;
-              setWatchedMovies(watchedMovies);
-            })
-            .catch((err) => {
-              console.log('토큰이 만료되었습니다.');
-            });
-        }
       } catch (error) {
         console.error('Error parsing storedUserInfo:', error);
       }
+    }
+  });
+
+  useEffect(() => {
+    if (accessToken !== null) {
+      axios
+        .get(`${URL}/api/v1/users/movies`, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+            'Content-Type': 'application/json'
+          }
+        })
+        .then((res) => {
+          const watchedMovies = res.data.body.response;
+          setWatchedMovies(watchedMovies);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      console.log('토큰이 만료되었습니다.');
     }
   }, [accessToken]);
 
