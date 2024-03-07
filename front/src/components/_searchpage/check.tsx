@@ -3,10 +3,12 @@ import styled from '../../styles/search_P_S/checkList.module.css';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
-const URL = process.env.NEXT_PUBLIC_URL;
+import { useAuth } from '../AuthContext';
 
+const URL = process.env.NEXT_PUBLIC_URL;
+// axios.defaults.withCredentials = true;
 const Check = () => {
-  const [accessToken, setToken] = useState<string | null>(null);
+  const { accessToken, setAccessToken } = useAuth();
   const [Title, setTitle] = useState<string | null>(null);
   const [posterImageUrl, setPosterImageUrl] = useState<string | null>(null);
   const [Genre, setGenre] = useState<string | null>(null);
@@ -22,7 +24,6 @@ const Check = () => {
     const storedTitle = localStorage.getItem('영화제목');
     const storedPosterUrl = localStorage.getItem('posterUrl');
     const storedGenre = localStorage.getItem('장르');
-    const storedToken: string | null = localStorage.getItem('Token');
 
     if (storedTitle) {
       setTitle(storedTitle);
@@ -33,12 +34,10 @@ const Check = () => {
     if (storedGenre) {
       setGenre(storedGenre);
     }
-    if (storedToken) {
-      setToken(JSON.parse(storedToken));
-    }
   }, []);
 
   useEffect(() => {
+    console.log(accessToken);
     if (accessToken !== null) {
       axios
         .get(`${URL}/api/v1/users/movies`, {
@@ -49,7 +48,6 @@ const Check = () => {
         })
         .then((res) => {
           const watchedMovies = res.data.body.response;
-
           const hasWatched = watchedMovies.some(
             (movie: any) => movie.title === Title
           );
@@ -59,10 +57,42 @@ const Check = () => {
             setMovieId(watchedMovies[0].movieId);
           } else {
             console.log('아직 시청하지 않은 영화예요 !');
+            setHasWatched(false);
+            setWatchTxt('아직 관람하지 않은 영화입니다.');
           }
         })
-        .catch((err) => {
-          console.log('토큰이 만료되었습니다.');
+        .catch((error) => {
+          // if (error.response.status == 401) {
+          //   console.log(error.response.status, '이미 만료된 토큰입니다.');
+          //   axios
+          //     .get(`${URL}/api/all/v1/auth/refresh`, {
+          //       headers: {
+          //         Authorization: `Bearer ${accessToken}`,
+          //         'Content-Type': 'application/json'
+          //       }
+          //     })
+          //     .then((res) => {
+          //       if (res.data.header.code === 500) {
+          //         console.log('500 토큰갱신에 실패했습니다.');
+          //       } else if (res.data.header.code === 200) {
+          //         // const newAccessToken = res.data
+          //         // setAccessToken(newAccessToken)
+          //         console.log('토큰갱신에 성공했습니다.');
+          //         console.log(res);
+          //       }
+          //     })
+          //     .catch((err) => {
+          //       console.error('토큰갱신에 실패했습니다.');
+          //       // localStorage.clear();
+          //       // router.push('/home');
+          //       // alert('재 로그인이 필요합니다.');
+          //     });
+          // }
+          if (error.response.status == 401) {
+            console.log('401 get: 이미 만료된 토큰입니다.');
+          } else {
+            console.error(error);
+          }
         });
     }
   }, [accessToken, Title]);
@@ -75,7 +105,6 @@ const Check = () => {
     };
 
     if (hasWatched) {
-      // If the movie has been watched, send a DELETE request
       axios
         .delete(`${URL}/api/v1/movies?movieId=${movieId}`, {
           headers: {
@@ -86,13 +115,12 @@ const Check = () => {
         .then((response) => {
           console.log('Delete Success:', response);
           setHasWatched(false); // to empty the checkbox
-          window.location.reload();
+          // window.location.reload();
         })
         .catch((error) => {
           console.error('Delete Error:', error);
         });
     } else {
-      // If the movie has not been watched, send a POST request
       axios
         .post(`${URL}/api/v1/movies`, movieData, {
           headers: {
@@ -104,10 +132,39 @@ const Check = () => {
           console.log('Create Success:', response);
           setHasWatched(true);
           setMovieId(response.data.body.movieId);
-          window.location.reload();
+          // window.location.reload();
         })
         .catch((error) => {
-          console.error('Create Error:', error);
+          if (error.response.status == 401) {
+            console.log(error.response.status, 'Post: 이미 만료된 토큰입니다.');
+
+            axios
+              .get(`${URL}/api/all/v1/auth/refresh`, {
+                headers: {
+                  Authorization: `Bearer ${accessToken}`,
+                  'Content-Type': 'application/json'
+                },
+                withCredentials: true
+              })
+              .then((res) => {
+                if (res.data.header.code === 500) {
+                  console.log(res);
+                  console.log(res.data.header.message);
+                } else if (res.data.header.code === 200) {
+                  // const newAccessToken = res.data
+                  // setAccessToken(newAccessToken)
+                  console.log('토큰갱신에 성공했습니다.');
+                  console.log(res);
+                }
+              })
+              .catch((err) => {
+                console.error('토큰갱신에 실패했습니다.');
+                console.log(err);
+                // localStorage.clear();
+                // router.push('/home');
+                // alert('재 로그인이 필요합니다.');
+              });
+          }
         });
     }
   };
