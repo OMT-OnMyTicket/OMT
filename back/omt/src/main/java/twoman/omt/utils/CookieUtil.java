@@ -41,7 +41,7 @@ public class CookieUtil {
                     cookie.setValue("");
                     cookie.setPath("/");
                     cookie.setMaxAge(0);
-                    cookie.setDomain("https://omt-onmyticket.vercel.app");
+                    cookie.setDomain(".omt-onmyticket.vercel.app");
                     response.addCookie(cookie);
                 }
             }
