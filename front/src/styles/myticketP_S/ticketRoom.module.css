@@ -5,6 +5,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+  height: 100vh;
 }
 
 .TicketRoom {
@@ -34,14 +35,14 @@
   justify-content: space-between;
   font-weight: bold;
   font-size: 18px;
-  margin: 40px;
+  margin: 8%;
 }
 .emptyTicket {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  height: 50%;
+
   cursor: pointer;
 }
 .emptyTxt {
@@ -57,10 +58,10 @@
   justify-content: center;
   align-items: center;
 }
-.myMovies_Layout {
-  height: 100vh;
+/* .myMovies_Layout {
   width: 100%;
-}
+  height: 100vh;
+} */
 .Movies_Layout {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));

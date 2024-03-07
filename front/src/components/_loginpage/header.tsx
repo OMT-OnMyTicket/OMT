@@ -1,6 +1,5 @@
 'use client';
 import { useEffect, useState } from 'react';
-
 import styled from '@/styles/loginP_S/header.module.css';
 import { useRouter } from 'next/navigation';
 
@@ -13,11 +12,9 @@ const Header = () => {
 
   const handleHome = () => {
     const userInfo = localStorage.getItem('UserInfo');
-    const Token = localStorage.getItem('Token');
     localStorage.clear();
-    if (userInfo && Token) {
+    if (userInfo) {
       localStorage.setItem('UserInfo', userInfo);
-      localStorage.setItem('Token', Token);
     }
     router.push('/home');
   };

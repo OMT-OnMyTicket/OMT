@@ -4,22 +4,16 @@ import styled from '../../styles/myticketP_S/ticketRoom.module.css';
 import { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
+import { useAuth } from '../AuthContext';
 
 const URL = process.env.NEXT_PUBLIC_URL;
 
 const MyMovies = () => {
   const [showSearch, setShowSearch] = useState(false);
-  const [accessToken, setToken] = useState<string | null>(null);
+  const { accessToken } = useAuth();
   const [watchedMovies, setWatchedMovies] = useState<any[] | null>(null);
   const searchContainerRef = useRef<HTMLDivElement | null>(null);
   const router = useRouter();
-  useEffect(() => {
-    const storedToken: string | null = localStorage.getItem('Token');
-
-    if (storedToken) {
-      setToken(JSON.parse(storedToken));
-    }
-  }, []);
 
   useEffect(() => {
     if (accessToken) {
@@ -36,9 +30,6 @@ const MyMovies = () => {
         })
         .catch((err) => {
           console.log(err);
-          localStorage.clear();
-          router.push('/');
-          alert('토큰이 만료되어 재로그인이 필요합니다.');
         });
     }
   }, [accessToken]);
