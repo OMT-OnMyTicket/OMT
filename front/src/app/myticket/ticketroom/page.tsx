@@ -81,7 +81,7 @@ const TicketRoom = () => {
             data-aos='fade-down'
             data-aos-duration='3000'
           >
-            {/* {showSearch ? (
+            {showSearch ? (
               <div className={styled.AddTicket_Search} ref={searchContainerRef}>
                 <Search />
               </div>
@@ -90,7 +90,7 @@ const TicketRoom = () => {
                 Ticket Room 채우러가기
               </div>
             )}
-            <div>정렬 바꾸기</div> */}
+            {/* <div>정렬 바꾸기</div> */}
           </div>
         </div>
         <div className={styled.myMovies_Layout}>

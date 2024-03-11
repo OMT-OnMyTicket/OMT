@@ -89,9 +89,9 @@ const Modal = ({ setModalOpen }: PropsType) => {
               Logout
             </button>
             {/* <button className={styled.MyTicket}>MyTicket</button> */}
-            <button className={styled.MyTicket} onClick={CheckToken}>
-              CheckToken
-            </button>
+            {/* <button className={styled.MyTicket} onClick={CheckToken}>
+              Token
+            </button> */}
           </>
         ) : (
           <button className={styled.Logout} onClick={handleLogin}>
