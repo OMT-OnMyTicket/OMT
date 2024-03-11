@@ -90,7 +90,7 @@ const Modal = ({ setModalOpen }: PropsType) => {
             </button>
             {/* <button className={styled.MyTicket}>MyTicket</button> */}
             <button className={styled.MyTicket} onClick={CheckToken}>
-              CheckToken
+              Token
             </button>
           </>
         ) : (

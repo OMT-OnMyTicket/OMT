@@ -4,6 +4,7 @@
   padding: 200px 150px 100px 150px;
   background-attachment: fixed;
   height: auto;
+  background-size: cover;
 }
 
 .Choice_Title {
