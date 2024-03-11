@@ -88,11 +88,7 @@ const Check = () => {
           //       // alert('재 로그인이 필요합니다.');
           //     });
           // }
-          if (error.response.status == 401) {
-            console.log('401 get: 이미 만료된 토큰입니다.');
-          } else {
-            console.error(error);
-          }
+          console.log(error);
         });
     }
   }, [accessToken, Title]);
@@ -135,36 +131,37 @@ const Check = () => {
           // window.location.reload();
         })
         .catch((error) => {
-          if (error.response.status == 401) {
-            console.log(error.response.status, 'Post: 이미 만료된 토큰입니다.');
+          // if (error.response.status == 401) {
+          //   console.log(error.response.status, 'Post: 이미 만료된 토큰입니다.');
 
-            axios
-              .get(`${URL}/api/all/v1/auth/refresh`, {
-                headers: {
-                  Authorization: `Bearer ${accessToken}`,
-                  'Content-Type': 'application/json'
-                },
-                withCredentials: true
-              })
-              .then((res) => {
-                if (res.data.header.code === 500) {
-                  console.log(res);
-                  console.log(res.data.header.message);
-                } else if (res.data.header.code === 200) {
-                  // const newAccessToken = res.data
-                  // setAccessToken(newAccessToken)
-                  console.log('토큰갱신에 성공했습니다.');
-                  console.log(res);
-                }
-              })
-              .catch((err) => {
-                console.error('토큰갱신에 실패했습니다.');
-                console.log(err);
-                // localStorage.clear();
-                // router.push('/home');
-                // alert('재 로그인이 필요합니다.');
-              });
-          }
+          //   axios
+          //     .get(`${URL}/api/all/v1/auth/refresh`, {
+          //       headers: {
+          //         Authorization: `Bearer ${accessToken}`,
+          //         'Content-Type': 'application/json'
+          //       },
+          //       withCredentials: true
+          //     })
+          //     .then((res) => {
+          //       if (res.data.header.code === 500) {
+          //         console.log(res);
+          //         console.log(res.data.header.message);
+          //       } else if (res.data.header.code === 200) {
+          //         // const newAccessToken = res.data
+          //         // setAccessToken(newAccessToken)
+          //         console.log('토큰갱신에 성공했습니다.');
+          //         console.log(res);
+          //       }
+          //     })
+          //     .catch((err) => {
+          //       console.error('토큰갱신에 실패했습니다.');
+          //       console.log(err);
+          //       // localStorage.clear();
+          //       // router.push('/home');
+          //       // alert('재 로그인이 필요합니다.');
+          //     });
+          // }
+          console.log(error);
         });
     }
   };
