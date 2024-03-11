@@ -97,11 +97,11 @@ const MyTicketHome = () => {
           >
             <div>나만의 영화 순위</div>
             <Link href={'/myticket/ticketroom'}>
-              <div>Ticket Room으로 이동</div>
+              <div className={styled.change_lank_txt}>Ticket Room으로 이동</div>
             </Link>
-            <div className={styled.change_lank_txt} onClick={handleChangeLack}>
+            {/* <div className={styled.change_lank_txt} onClick={handleChangeLack}>
               순위 바꾸기
-            </div>
+            </div> */}
           </div>
           {modalOpen && <ChangeLankModal setModalOpen={setModalOpen} />}
         </div>
