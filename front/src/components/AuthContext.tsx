@@ -5,11 +5,11 @@ import React, {
   useContext,
   ReactNode,
   useState,
+  useEffect,
   Dispatch,
   SetStateAction
 } from 'react';
-import { setupAxiosInterceptors } from '@/components/axiosInstance';
-
+import { useRouter } from 'next/navigation';
 interface AuthContextProps {
   accessToken: string | null;
   setAccessToken: Dispatch<SetStateAction<string | null>>;
@@ -21,6 +21,16 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
   children
 }) => {
   const [accessToken, setAccessToken] = useState<string | null>(null);
+
+  const router = useRouter();
+  useEffect(() => {
+    const userInfo = localStorage.getItem('UserInfo');
+    if (userInfo && accessToken === null) {
+      localStorage.clear();
+      alert('토큰이 만료되어 재 로그인이 필요합니다.');
+      router.push('/home');
+    }
+  });
 
   return (
     <AuthContext.Provider value={{ accessToken, setAccessToken }}>
