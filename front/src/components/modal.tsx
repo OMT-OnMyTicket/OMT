@@ -53,10 +53,34 @@ const Modal = ({ setModalOpen }: PropsType) => {
 
   const isLogIn = !!localStorage.getItem('UserInfo');
 
-  const CheckToken = () => {
-    console.log(accessToken);
+  // const TestCheck = () => {
+  //   console.log(accessToken);
+  //   axios
+  //     .get(`${URL}/api/all/v1/auth/refresh`, {
+  //       headers: {
+  //         Authorization: `Bearer ${accessToken}`,
+  //         'Content-Type': 'application/json'
+  //       },
+  //       withCredentials: true
+  //     })
+  //     .then((res) => {
+  //       if (res.data.header.code === 500) {
+  //         console.log(res);
+  //         console.log(res.data.header.message);
+  //       } else if (res.data.header.code === 200) {
+  //         // const newAccessToken = res.data
+  //         // setAccessToken(newAccessToken)
+  //         console.log('토큰갱신에 성공했습니다.');
+  //         console.log(res);
+  //       }
+  //     })
+  //     .catch((err) => console.log('TestCheck err:', err));
+  // };
+
+  const TestCheck = () => {
+    console.log('Test코드입니다.');
     axios
-      .get(`${URL}/api/all/v1/auth/refresh`, {
+      .get(`${URL}/api/v1/movies/reviews?movieTitle=파묘`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
           'Content-Type': 'application/json'
@@ -64,17 +88,11 @@ const Modal = ({ setModalOpen }: PropsType) => {
         withCredentials: true
       })
       .then((res) => {
-        if (res.data.header.code === 500) {
-          console.log(res);
-          console.log(res.data.header.message);
-        } else if (res.data.header.code === 200) {
-          // const newAccessToken = res.data
-          // setAccessToken(newAccessToken)
-          console.log('토큰갱신에 성공했습니다.');
-          console.log(res);
-        }
+        console.log(res);
       })
-      .catch((err) => console.log('CheckToken err:', err));
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -89,9 +107,9 @@ const Modal = ({ setModalOpen }: PropsType) => {
               Logout
             </button>
             {/* <button className={styled.MyTicket}>MyTicket</button> */}
-            {/* <button className={styled.MyTicket} onClick={CheckToken}>
-              Token
-            </button> */}
+            <button className={styled.MyTicket} onClick={TestCheck}>
+              Test
+            </button>
           </>
         ) : (
           <button className={styled.Logout} onClick={handleLogin}>

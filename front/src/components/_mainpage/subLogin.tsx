@@ -52,8 +52,6 @@ const SubLogin = () => {
         .catch((err) => {
           console.log(err);
         });
-    } else {
-      console.log('토큰이 만료되었습니다.');
     }
   }, [accessToken]);
 

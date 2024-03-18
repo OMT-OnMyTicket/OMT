@@ -5,23 +5,23 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import axios from 'axios';
+import { useAuth } from '@/components/AuthContext';
 
 const URL = process.env.NEXT_PUBLIC_URL;
 const Ticket = () => {
   const [Title, setTitle] = useState<string | null>(null);
   const [id, setMovieId] = useState<string | null>(null);
-  const [accessToken, setToken] = useState<string | null>(null);
   const [posterImageUrl, setPosterImageUrl] = useState<string>('');
   const [review, setReview] = useState<string>('나만의 리뷰를 남겨보세요!');
   const [companion, setCompanion] = useState<string>('누구와 관람하셨나요 ?');
   const [grade, setGrade] = useState<number | null>(null);
+  const { accessToken } = useAuth();
 
   const router = useRouter();
   useEffect(() => {
     const storedTitle = localStorage.getItem('Ticket_Title');
     const storedPosterUrl = localStorage.getItem('posterUrl');
     const storedMovieId = localStorage.getItem('movieId');
-    const storedToken: string | null = localStorage.getItem('Token');
 
     if (storedTitle) {
       setTitle(storedTitle);
@@ -31,9 +31,6 @@ const Ticket = () => {
     }
     if (storedMovieId) {
       setMovieId(storedMovieId);
-    }
-    if (storedToken) {
-      setToken(JSON.parse(storedToken));
     }
   }, []);
 

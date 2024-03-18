@@ -76,12 +76,18 @@
   display: flex;
   margin-top: 50px;
 }
-
+.Lank_Movie_Box {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
 .MoviePosters {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin: 0 10px;
 }
 .MoviePoster {
   background-color: white;
