@@ -7,16 +7,16 @@ const preview = () => {
       <div className={styled.preview}>
         <iframe
           className={styled.video}
-          src='https://www.youtube.com/embed/rjW9E1BR_30?autoplay=1&mute=1&loop=1&playlist=rjW9E1BR_30'
-          title='파묘 예고편'
+          src='https://www.youtube.com/embed/6kjApj4YXgY?autoplay=1&mute=1&loop=1&playlist=6kjApj4YXgY'
+          title='댓글부대 예고편'
           allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
           allowFullScreen
           loading='lazy'
         />
-        <strong className={styled.title}>파묘 </strong>
+        <strong className={styled.title}>댓글부대 </strong>
         <span className={styled.txt}>
-          "뭐가 나왔다고 거기서, 겁나 험한 게" <br />
-          모두가 기다린 오컬트 미스터리
+          “기자님 기사 오보 아니었어요.
+          <br /> 다 저희들이 만든 수법이에요”
         </span>
       </div>
     </div>
