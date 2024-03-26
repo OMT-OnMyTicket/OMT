@@ -46,8 +46,6 @@ const Ticket = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        console.log(id);
-
         if (id !== null && id !== '') {
           const response = await axios.get(
             `${URL}/api/v1/movies/ticket?movieId=${id}`,
@@ -58,19 +56,19 @@ const Ticket = () => {
               }
             }
           );
-
+          console.log(response);
           const reviewData = response.data.body;
 
           if (reviewData) {
-            setCompanion(reviewData['get review complete'].companion || '');
-            setReview(reviewData['get review complete'].review || '');
-            setGrade(reviewData['get review complete'].grade || null);
+            setCompanion(reviewData['get ticket complete'].companion || '');
+            setReview(reviewData['get ticket complete'].review || '');
+            setGrade(reviewData['get ticket complete'].grade || null);
           }
         } else {
           console.log('movieId is empty.');
         }
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.log(error);
       }
     };
 
