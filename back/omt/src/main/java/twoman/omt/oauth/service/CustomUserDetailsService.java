@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import twoman.omt.api.entity.user.User;
 import twoman.omt.api.repository.user.UserRepository;
+import twoman.omt.global.exception.BusinessLogicException;
+import twoman.omt.global.exception.ExceptionCode;
 import twoman.omt.oauth.entity.UserPrincipal;
 
 @Service
@@ -17,10 +19,8 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUserIdentity(username);
-        if(user == null){
-            throw new UsernameNotFoundException(username);
-        }
+        User user = userRepository.findByUserIdentity(username).orElseThrow(() -> new BusinessLogicException(ExceptionCode.USER_NOT_FOUND));
+
         return UserPrincipal.create(user);
     }
 }

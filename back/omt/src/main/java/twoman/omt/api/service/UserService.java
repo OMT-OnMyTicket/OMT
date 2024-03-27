@@ -9,6 +9,8 @@ import twoman.omt.api.entity.movie.Movie;
 import twoman.omt.api.entity.user.User;
 import twoman.omt.api.repository.user.UserRepository;
 import twoman.omt.global.entity.BaseEntity;
+import twoman.omt.global.exception.BusinessLogicException;
+import twoman.omt.global.exception.ExceptionCode;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -22,13 +24,13 @@ public class UserService {
     private final UserRepository userRepository;
 
     public UserDto.Response getUserResponse(String userIdentity){
-        User findUser = userRepository.findByUserIdentity(userIdentity);
+        User findUser = userRepository.findByUserIdentity(userIdentity).orElseThrow(() -> new BusinessLogicException(ExceptionCode.USER_NOT_FOUND));
 
         return new UserDto.Response(findUser);
     }
     @Transactional
     public UserDto.Response updateUser(String userIdentity, UserDto.Update updateDto){
-        User findUser = userRepository.findByUserIdentity(userIdentity);
+        User findUser = userRepository.findByUserIdentity(userIdentity).orElseThrow(() -> new BusinessLogicException(ExceptionCode.USER_NOT_FOUND));
 
         findUser.updateImage(updateDto.getProfileImageUrl());
 
@@ -37,7 +39,7 @@ public class UserService {
 
     @Transactional
     public UserDto.Response deleteImage(String userIdentity){
-        User findUser = userRepository.findByUserIdentity(userIdentity);
+        User findUser = userRepository.findByUserIdentity(userIdentity).orElseThrow(() -> new BusinessLogicException(ExceptionCode.USER_NOT_FOUND));
 
         findUser.deleteImage();
         return new UserDto.Response(findUser);
