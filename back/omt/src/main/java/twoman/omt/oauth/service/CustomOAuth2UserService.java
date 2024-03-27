@@ -15,6 +15,8 @@ import org.springframework.transaction.annotation.Transactional;
 import twoman.omt.api.entity.user.Grade;
 import twoman.omt.api.entity.user.User;
 import twoman.omt.api.repository.user.UserRepository;
+import twoman.omt.global.exception.BusinessLogicException;
+import twoman.omt.global.exception.ExceptionCode;
 import twoman.omt.oauth.entity.ProviderType;
 import twoman.omt.oauth.entity.RoleType;
 import twoman.omt.oauth.entity.UserPrincipal;
@@ -49,7 +51,7 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
         ProviderType providerType = ProviderType.valueOf(userRequest.getClientRegistration().getRegistrationId().toUpperCase());
 
         OAuth2UserInfo userInfo = OAuth2UserInfoFactory.getOAuth2UserInfo(providerType, user.getAttributes());
-        User savedUser = userRepository.findByUserIdentity(userInfo.getId());
+        User savedUser = userRepository.findByUserIdentity(userInfo.getId()).orElseThrow(() -> new BusinessLogicException(ExceptionCode.USER_NOT_FOUND));
 
         if (savedUser != null) {
             if (providerType != savedUser.getProviderType()) {

@@ -328,17 +328,15 @@ public abstract class ControllerTest {
 
     protected <T> ResultActionsWithUserFunction<Boolean, ResultActions> deleteResource(
             String url,
-            T body,
+            MultiValueMap<String, String> parameters,
             Object... pathVariables
     ) {
-        if (body != null) return deleteResources(url, body, pathVariables);
-
-        return deleteResources(url, null, pathVariables);
+        return deleteResources(url, parameters, pathVariables);
     }
 
-    protected <T> ResultActionsWithUserFunction<Boolean, ResultActions> deleteResources(
+    protected ResultActionsWithUserFunction<Boolean, ResultActions> deleteResources(
             String url,
-            T body,
+            MultiValueMap<String, String> parameters,
             Object... pathVariables
     ) {
         return withUser -> {
@@ -348,12 +346,11 @@ public abstract class ControllerTest {
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .accept(MediaType.APPLICATION_JSON);
 
-                if (body != null) requestBuilder.content(gson.toJson(body));
+                if (parameters != null) requestBuilder.params(parameters);
 
                 if (withUser) genHeader(requestBuilder);
 
                 return mockMvc.perform(requestBuilder);
-
             } catch (Exception e) {
                 throw new BusinessLogicException(ExceptionCode.INTERNAL_SERVER_ERROR);
             }
