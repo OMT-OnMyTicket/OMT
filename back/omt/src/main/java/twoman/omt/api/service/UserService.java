@@ -1,6 +1,7 @@
 package twoman.omt.api.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import twoman.omt.api.entity.dto.MovieDto;
@@ -24,13 +25,13 @@ public class UserService {
     private final UserRepository userRepository;
 
     public UserDto.Response getUserResponse(String userIdentity){
-        User findUser = userRepository.findByUserIdentity(userIdentity).orElseThrow(() -> new BusinessLogicException(ExceptionCode.USER_NOT_FOUND));
+        User findUser = userRepository.findByNickName(userIdentity).orElseThrow(() -> new BusinessLogicException(ExceptionCode.USER_NOT_FOUND));
 
         return new UserDto.Response(findUser);
     }
     @Transactional
     public UserDto.Response updateUser(String userIdentity, UserDto.Update updateDto){
-        User findUser = userRepository.findByUserIdentity(userIdentity).orElseThrow(() -> new BusinessLogicException(ExceptionCode.USER_NOT_FOUND));
+        User findUser = userRepository.findByNickName(userIdentity).orElseThrow(() -> new BusinessLogicException(ExceptionCode.USER_NOT_FOUND));
 
         findUser.updateImage(updateDto.getProfileImageUrl());
 
@@ -39,7 +40,7 @@ public class UserService {
 
     @Transactional
     public UserDto.Response deleteImage(String userIdentity){
-        User findUser = userRepository.findByUserIdentity(userIdentity).orElseThrow(() -> new BusinessLogicException(ExceptionCode.USER_NOT_FOUND));
+        User findUser = userRepository.findByNickName(userIdentity).orElseThrow(() -> new BusinessLogicException(ExceptionCode.USER_NOT_FOUND));
 
         findUser.deleteImage();
         return new UserDto.Response(findUser);
@@ -64,5 +65,24 @@ public class UserService {
             return movies.stream().map(MovieDto.CommonResponse::new).collect(Collectors.toList());
         }
         else return Collections.emptyList();
+    }
+
+    public User findById(Long userId) {
+        return userRepository.findById(userId).orElseThrow(() -> new BusinessLogicException(ExceptionCode.USER_NOT_FOUND));
+    }
+
+    @Transactional
+    public Long save(UserDto.AddUserRequest dto){
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
+        return userRepository.save(User.builder()
+                .email(dto.getEmail())
+                .password(encoder.encode(dto.getPassword()))
+                .build()).getUserSeq();
+    }
+
+    public User findByEmail(String email){
+        return userRepository.findByEmail(email)
+                .orElseThrow(() -> new BusinessLogicException(ExceptionCode.USER_NOT_FOUND));
     }
 }

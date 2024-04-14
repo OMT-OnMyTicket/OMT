@@ -1,6 +1,8 @@
 package twoman.omt.api.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.*;
@@ -18,11 +20,11 @@ import java.util.List;
 public class MovieController {
     private final MovieService movieService;
     @PostMapping()
-    public ApiResponse postMovie(@Valid @RequestBody MovieDto.PostMovieRequest postMovieRequest){
+    public ResponseEntity postMovie(@Valid @RequestBody MovieDto.PostMovieRequest postMovieRequest){
         User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Movie movie = new Movie(postMovieRequest.getTitle(), postMovieRequest.getPosterImageUrl(), postMovieRequest.getGenre());
         movieService.save(movie, principal.getUsername());
-        return ApiResponse.success("save",null);
+        return ResponseEntity.status(HttpStatus.CREATED).body(null);
     }
 
     @DeleteMapping()

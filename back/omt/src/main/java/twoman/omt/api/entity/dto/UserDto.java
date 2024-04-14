@@ -16,6 +16,13 @@ import javax.validation.constraints.Size;
 public class UserDto {
 
     @Getter
+    @Setter
+    public static class AddUserRequest{
+        private String email;
+        private String password;
+    }
+
+    @Getter
     @AllArgsConstructor
     @Setter
     public static class Response{

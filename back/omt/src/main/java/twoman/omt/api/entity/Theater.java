@@ -1,6 +1,7 @@
 package twoman.omt.api.entity;
 
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import twoman.omt.api.entity.movie.Cinema;
@@ -34,6 +35,7 @@ public class Theater{
     private String cinemaName;
 
 
+    @Builder
     public Theater(
             @NotNull @Size(max= 16) String region,
             @NotNull @Size(max= 16) Cinema cinema,
