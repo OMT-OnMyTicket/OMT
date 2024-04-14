@@ -1,16 +1,13 @@
 package twoman.omt.api.repository.movie;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import twoman.omt.api.entity.dto.MovieDto;
 import twoman.omt.api.entity.movie.Movie;
-import twoman.omt.api.entity.movie.QMovie;
-import twoman.omt.api.entity.user.QUser;
-
 import javax.persistence.EntityManager;
 import java.util.List;
 
-import static twoman.omt.api.entity.movie.QMovie.*;
+import static twoman.omt.api.entity.movie.QMovie.movie;
 import static twoman.omt.api.entity.user.QUser.user;
+
 
 public class MovieRepositoryImpl implements MovieRepositoryCustom{
     private final JPAQueryFactory queryFactory;
@@ -27,10 +24,10 @@ public class MovieRepositoryImpl implements MovieRepositoryCustom{
     }
 
     @Override
-    public List<Movie> findMoviesWithLike(String userIdentity) {
+    public List<Movie> findMoviesWithLike(String nickName) {
         return queryFactory.selectFrom(movie)
                 .join(movie.user,user).fetchJoin()
-                .where(user.userIdentity.eq(userIdentity).and(movie.isLike.eq(true)))
+                .where(user.nickName.eq(nickName).and(movie.isLike.eq(true)))
                 .fetch();
     }
 }

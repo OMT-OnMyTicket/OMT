@@ -1,9 +1,6 @@
 package twoman.omt.config.properties;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import java.util.ArrayList;
@@ -18,7 +15,7 @@ public class AppProperties {
 
     @Getter
     @Setter
-    @NoArgsConstructor
+    @NoArgsConstructor(access = AccessLevel.PROTECTED)
     @AllArgsConstructor
     public static class Auth {
         private String tokenSecret;
