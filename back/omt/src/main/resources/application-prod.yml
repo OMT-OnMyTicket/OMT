@@ -89,5 +89,9 @@ app:
       - http://localhost:3000
       - https://omt-onmyticket.vercel.app/login
 
+jwt:
+  issuer: backOMT@gmail.com
+  secret_key: ${JWT_SECRET_KEY}
+
 logging.level:
   org.hibernate.SQL:  debug
