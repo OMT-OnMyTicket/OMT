@@ -50,7 +50,7 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
 	implementation 'javax.xml.bind:jaxb-api:2.4.0-b180830.0359'
-
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 
 	implementation 'com.google.code.gson:gson'
 	implementation 'org.apache.commons:commons-lang3'

@@ -37,7 +37,6 @@ import twoman.omt.api.entity.dto.UserDto;
 import twoman.omt.api.entity.movie.Movie;
 import twoman.omt.api.entity.user.Grade;
 import twoman.omt.api.entity.user.User;
-import twoman.omt.api.entity.user.UserRefreshToken;
 import twoman.omt.global.entity.BaseEntity;
 import twoman.omt.global.exception.BusinessLogicException;
 import twoman.omt.global.exception.ExceptionCode;
@@ -45,7 +44,7 @@ import twoman.omt.oauth.entity.ProviderType;
 import twoman.omt.oauth.entity.RoleType;
 import twoman.omt.oauth.entity.UserPrincipal;
 import twoman.omt.oauth.handler.TokenAccessDeniedHandler;
-import twoman.omt.oauth.service.CustomOAuth2UserService;
+import twoman.omt.oauth.service.OAuth2UserCustomService;
 import twoman.omt.oauth.service.CustomUserDetailsService;
 import twoman.omt.oauth.token.AuthToken;
 import twoman.omt.oauth.token.AuthTokenProvider;
@@ -61,7 +60,7 @@ import static twoman.omt.config.properties.AppProperties.*;
 @ExtendWith({RestDocumentationExtension.class, SpringExtension.class})
 @MockBeans({
         @MockBean(JpaMetamodelMappingContext.class),
-        @MockBean(CustomOAuth2UserService.class),
+        @MockBean(OAuth2UserCustomService.class),
         @MockBean(CustomUserDetailsService.class),
         @MockBean(TokenAccessDeniedHandler.class),
         @MockBean(UrlBasedCorsConfigurationSource.class),
@@ -124,7 +123,7 @@ public abstract class ControllerTest {
         AuthToken accessToken = genJwtToken("access");
         AuthToken refreshToken = genJwtToken("refresh");
 
-        UserRefreshToken userRefreshToken = new UserRefreshToken(user.getUserIdentity(), Objects.requireNonNull(refreshToken).getToken());
+        RefreshToken userRefreshToken = new RefreshToken(user.getNickName(), Objects.requireNonNull(refreshToken).getToken());
 
         List<Movie> movies = new ArrayList<>();
         Movie movie1 = new Movie("서울의 봄", "absd@@1", "드라마");

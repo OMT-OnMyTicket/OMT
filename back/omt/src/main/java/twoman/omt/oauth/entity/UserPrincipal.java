@@ -16,7 +16,7 @@ import java.util.Map;
 
 @Getter
 @Setter
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 public class UserPrincipal implements UserDetails, OAuth2User, OidcUser {
     private User user;
@@ -49,7 +49,7 @@ public class UserPrincipal implements UserDetails, OAuth2User, OidcUser {
 
     @Override
     public String getUsername() {
-        return user.getUserIdentity();
+        return user.getNickName();
     }
 
     @Override

@@ -1,6 +1,7 @@
 package twoman.omt.api.entity.movie;
 
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import twoman.omt.api.entity.user.User;
@@ -51,6 +52,7 @@ public class Movie extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
+    @Builder
     public Movie(String title, String posterImageUrl, String genre) {
         this.title = title;
         this.posterImageUrl = posterImageUrl;
