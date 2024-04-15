@@ -13,6 +13,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Service;
 import twoman.omt.api.entity.user.User;
 import twoman.omt.config.properties.JwtProperties;
+import twoman.omt.oauth.entity.RoleType;
 
 import java.time.Duration;
 import java.util.*;
@@ -55,7 +56,7 @@ public class TokenProvider {
 
     public Authentication getAuthentication(String token){
         Claims claims = getClaims(token);
-        Set<SimpleGrantedAuthority> authorities = Collections.singleton(new SimpleGrantedAuthority("ROLE_USER"));
+        Set<SimpleGrantedAuthority> authorities = Collections.singleton(new SimpleGrantedAuthority(RoleType.USER.toString()));
 
         return new UsernamePasswordAuthenticationToken(new org.springframework.security.core.userdetails.User(claims.getSubject(),
                 "",authorities), token, authorities);
@@ -67,8 +68,10 @@ public class TokenProvider {
     }
 
     private Claims getClaims(String token){
-        return Jwts.parser()
+
+        return Jwts.parserBuilder()
                 .setSigningKey(jwtProperties.getSecretKey())
+                .build()
                 .parseClaimsJws(token)
                 .getBody();
     }

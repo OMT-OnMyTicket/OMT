@@ -43,11 +43,20 @@ public class OAuth2UserCustomService extends DefaultOAuth2UserService {
         Map<String, Object> attributes = oAuth2User.getAttributes();
         String email = (String) attributes.get("email");
         String name = (String) attributes.get("name");
+        String username = (String) attributes.get("sub");
+        String profileImgUrl = (String) attributes.get("picture");
         User user = userRepository.findByEmail(email)
                 .map(entity -> entity.update(name))
                 .orElse(User.builder()
                         .email(email)
+                        .username(name)
                         .nickName(name)
+                        .roleType(RoleType.USER)
+                        .password("NO_PASS")
+                        .providerType(ProviderType.GOOGLE)
+                        .profileImageUrl(profileImgUrl)
+                        .emailVerifiedYn("Y")
+                        .googleIdentity(username)
                         .build()
                 );
 

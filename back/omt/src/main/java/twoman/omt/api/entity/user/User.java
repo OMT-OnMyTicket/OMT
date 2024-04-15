@@ -57,12 +57,17 @@ public class User extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private RoleType roleType;
 
+    @Column(length = 512, unique = true)
+    @Size(max = 512)
+    private String googleIdentity;
+
     @Column(length = 20)
     @Enumerated(EnumType.STRING)
     private Grade rating;  // 10개(실버)  30개(골드) 50개(플레) 100개(다이아)
 
     @OneToMany(mappedBy ="user",fetch = FetchType.LAZY)
     private List<Movie> movies = new ArrayList<>();
+
 
     //자주가는 극장 , 결제수단 String
 
@@ -75,7 +80,8 @@ public class User extends BaseEntity {
             @Size(max = 1) String emailVerifiedYn,
             @Size(max = 512) String profileImageUrl,
             ProviderType providerType,
-            RoleType roleType
+            RoleType roleType,
+            @Size(max = 512) String googleIdentity
     ) {
         this.nickName = nickName;
         this.username = username;
@@ -86,6 +92,7 @@ public class User extends BaseEntity {
         this.providerType =providerType;
         this.roleType =roleType;
         this.rating = Grade.BRONZE;
+        this.googleIdentity =googleIdentity;
     }
 
     public void setUsername(String nickname) {

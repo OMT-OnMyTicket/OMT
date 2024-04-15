@@ -23,14 +23,14 @@ public class MovieService {
     private final UserRepository userRepository;
 
     public void save(Movie movie,String userIdentity){
-        User findUser = userRepository.findByNickName(userIdentity).orElseThrow(() -> new BusinessLogicException(ExceptionCode.USER_NOT_FOUND));
+        User findUser = userRepository.findByEmail(userIdentity).orElseThrow(() -> new BusinessLogicException(ExceptionCode.USER_NOT_FOUND));
         findUser.updateGrade();
         movie.setUser(findUser);
         movieRepository.save(movie);
     }
 
     public void delete(Long movieId,String userIdentity) {
-        User findUser = userRepository.findByNickName(userIdentity).orElseThrow(() -> new BusinessLogicException(ExceptionCode.USER_NOT_FOUND));
+        User findUser = userRepository.findByEmail(userIdentity).orElseThrow(() -> new BusinessLogicException(ExceptionCode.USER_NOT_FOUND));
         Movie findMovie = movieRepository.findById(movieId).orElseThrow(()->new BusinessLogicException(ExceptionCode.MOVIE_NOT_FOUND, "존재하지 않는 영화입니다."));
         if(!Objects.equals(findMovie.getUser(), findUser)){
             throw new BusinessLogicException(ExceptionCode.UNAUTHORIZED, "해당 영화에 대한 권한이 없습니다.");
