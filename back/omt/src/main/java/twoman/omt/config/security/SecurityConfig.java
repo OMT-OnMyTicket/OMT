@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -67,9 +68,9 @@ public class SecurityConfig{
                     .sessionManagement()
                     .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
-                    .csrf().disable()
+                    .csrf(AbstractHttpConfigurer::disable)
                     .formLogin().disable()
-                    .httpBasic().disable()
+                    .httpBasic(AbstractHttpConfigurer::disable)
                     .logout().disable();
         http.sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
@@ -77,9 +78,7 @@ public class SecurityConfig{
         http.addFilterBefore(tokenAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 
         http.authorizeRequests()
-                .antMatchers("/api/token").permitAll()
-                .requestMatchers(new AntPathRequestMatcher("/api/all/**")) // 특정 요청과 일치하는 url애대한 액세스 설정
-                .permitAll() // requetMatchers 설정한 리소스의 접근을 인증 절차 없이 허용
+                .requestMatchers(new AntPathRequestMatcher("/api/token"),new AntPathRequestMatcher("/api/all/**")).permitAll()
                 .antMatchers("/api/**").authenticated()
                 .antMatchers("/api/v1/**").hasAnyAuthority(RoleType.USER.getCode())
                 .antMatchers("/api/**/admin/**").hasAnyAuthority(RoleType.ADMIN.getCode())
