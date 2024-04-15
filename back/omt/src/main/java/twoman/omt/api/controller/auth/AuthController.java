@@ -1,31 +1,5 @@
 package twoman.omt.api.controller.auth;
 
-import io.jsonwebtoken.Claims;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.*;
-import twoman.omt.api.entity.RefreshToken;
-import twoman.omt.api.entity.auth.AuthReqModel;
-import twoman.omt.api.entity.user.User;
-import twoman.omt.api.service.TokenService;
-import twoman.omt.common.ApiResponse;
-import twoman.omt.config.properties.AppProperties;
-import twoman.omt.oauth.entity.RoleType;
-import twoman.omt.oauth.entity.UserPrincipal;
-import twoman.omt.oauth.token.AuthToken;
-import twoman.omt.oauth.token.AuthTokenProvider;
-import twoman.omt.utils.CookieUtil;
-import twoman.omt.utils.HeaderUtil;
-
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.validation.Valid;
-import java.util.Date;
 //
 //@Slf4j
 //@RestController

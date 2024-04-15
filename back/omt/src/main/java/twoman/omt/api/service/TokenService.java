@@ -2,9 +2,8 @@ package twoman.omt.api.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import twoman.omt.api.entity.user.User;
-import twoman.omt.oauth.token.AuthTokenProvider;
+import twoman.omt.oauth.token.TokenProvider;
 
 import java.time.Duration;
 
@@ -12,7 +11,7 @@ import java.time.Duration;
 @RequiredArgsConstructor
 public class TokenService {
 
-    private final AuthTokenProvider tokenProvider;
+    private final TokenProvider tokenProvider;
     private final RefreshTokenService refreshTokenService;
     private final UserService userService;
 

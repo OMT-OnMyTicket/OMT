@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
-import twoman.omt.oauth.token.AuthTokenProvider;
+import twoman.omt.oauth.token.TokenProvider;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -14,7 +14,7 @@ import java.io.IOException;
 
 @RequiredArgsConstructor
 public class TokenAuthenticationFilter extends OncePerRequestFilter {
-    private final AuthTokenProvider tokenProvider;
+    private final TokenProvider tokenProvider;
     private final static String HEADER_AUTHORIZATION = "Authorization";
     private final static String TOKEN_PREFIX = "BEARER ";
 

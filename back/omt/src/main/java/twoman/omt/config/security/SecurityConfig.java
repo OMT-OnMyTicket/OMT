@@ -7,7 +7,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -25,12 +24,9 @@ import twoman.omt.oauth.entity.RoleType;
 import twoman.omt.oauth.handler.OAuth2SuccessHandler;
 import twoman.omt.oauth.repository.OAuth2AuthorizationRequestBasedOnCookieRepository;
 import twoman.omt.oauth.service.OAuth2UserCustomService;
-import twoman.omt.oauth.service.CustomUserDetailsService;
-import twoman.omt.oauth.token.AuthTokenProvider;
+import twoman.omt.oauth.token.TokenProvider;
 
 import java.util.List;
-
-import static org.springframework.boot.autoconfigure.security.servlet.PathRequest.toH2Console;
 
 @Configuration
 @RequiredArgsConstructor
@@ -40,7 +36,7 @@ public class SecurityConfig{
     private String frontDomain;
     private final CorsProperties corsProperties;
     private final AppProperties appProperties;
-    private final AuthTokenProvider tokenProvider;
+    private final TokenProvider tokenProvider;
     private final OAuth2UserCustomService oAuth2UserCustomService;
     private final RefreshTokenRepository refreshTokenRepository;
 

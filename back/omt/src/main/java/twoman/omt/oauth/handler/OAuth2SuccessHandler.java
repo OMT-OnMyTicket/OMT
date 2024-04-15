@@ -11,7 +11,7 @@ import twoman.omt.api.entity.user.User;
 import twoman.omt.api.repository.RefreshTokenRepository;
 import twoman.omt.api.service.UserService;
 import twoman.omt.oauth.repository.OAuth2AuthorizationRequestBasedOnCookieRepository;
-import twoman.omt.oauth.token.AuthTokenProvider;
+import twoman.omt.oauth.token.TokenProvider;
 import twoman.omt.utils.CookieUtil;
 
 import javax.servlet.ServletException;
@@ -28,8 +28,8 @@ public class OAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
     public static final String REFRESH_TOKEN_COOKIE_NAME = "refresh_token";
     public static final Duration REFRESH_TOKEN_DURATION = Duration.ofDays(14);
     public static final Duration ACCESS_TOKEN_DURATION = Duration.ofDays(1);
-    public static final String REDIRECT_PATH = "https://omt-onmyticket.vercel.app/login";
-    private final AuthTokenProvider tokenProvider;
+    public static final String REDIRECT_PATH = "http://localhost:3000/login";
+    private final TokenProvider tokenProvider;
     private final RefreshTokenRepository refreshTokenRepository;
     private final OAuth2AuthorizationRequestBasedOnCookieRepository authorizationRequestRepository;
     private final UserService userService;
