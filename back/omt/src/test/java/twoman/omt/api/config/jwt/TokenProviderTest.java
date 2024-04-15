@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import twoman.omt.api.config.jwt.factory.JwtFactory;
 import twoman.omt.api.entity.user.User;
 import twoman.omt.api.repository.user.UserRepository;
 import twoman.omt.config.properties.JwtProperties;

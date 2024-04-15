@@ -1,4 +1,4 @@
-package twoman.omt.api.config.jwt;
+package twoman.omt.api.config.jwt.factory;
 
 import io.jsonwebtoken.Header;
 import io.jsonwebtoken.Jwts;
