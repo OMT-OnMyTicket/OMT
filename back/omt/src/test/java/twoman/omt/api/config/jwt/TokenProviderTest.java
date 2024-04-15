@@ -1,6 +1,7 @@
 package twoman.omt.api.config.jwt;
 
 import io.jsonwebtoken.Jwts;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,11 @@ public class TokenProviderTest {
     @Autowired
     private JwtProperties jwtProperties;
 
+    @BeforeEach
+    void beforeEach(){
+        jwtProperties.setIssuer("test@gamil.com");
+        jwtProperties.setSecretKey("qwoidhoqwdhoqwhdiuhrgfhou218939127398fikujhedihfue");
+    }
     @DisplayName("generateToken(): 유저 정보와 만료 기간을 전달해 토큰을 만들 수 있다.")
     @Test
     void generated(){
