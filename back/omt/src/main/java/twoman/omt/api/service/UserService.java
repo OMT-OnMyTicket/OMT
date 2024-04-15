@@ -25,13 +25,13 @@ public class UserService {
     private final UserRepository userRepository;
 
     public UserDto.Response getUserResponse(String userIdentity){
-        User findUser = userRepository.findByNickName(userIdentity).orElseThrow(() -> new BusinessLogicException(ExceptionCode.USER_NOT_FOUND));
+        User findUser = userRepository.findByEmail(userIdentity).orElseThrow(() -> new BusinessLogicException(ExceptionCode.USER_NOT_FOUND));
 
         return new UserDto.Response(findUser);
     }
     @Transactional
     public UserDto.Response updateUser(String userIdentity, UserDto.Update updateDto){
-        User findUser = userRepository.findByNickName(userIdentity).orElseThrow(() -> new BusinessLogicException(ExceptionCode.USER_NOT_FOUND));
+        User findUser = userRepository.findByEmail(userIdentity).orElseThrow(() -> new BusinessLogicException(ExceptionCode.USER_NOT_FOUND));
 
         findUser.updateImage(updateDto.getProfileImageUrl());
 
@@ -40,7 +40,7 @@ public class UserService {
 
     @Transactional
     public UserDto.Response deleteImage(String userIdentity){
-        User findUser = userRepository.findByNickName(userIdentity).orElseThrow(() -> new BusinessLogicException(ExceptionCode.USER_NOT_FOUND));
+        User findUser = userRepository.findByEmail(userIdentity).orElseThrow(() -> new BusinessLogicException(ExceptionCode.USER_NOT_FOUND));
 
         findUser.deleteImage();
         return new UserDto.Response(findUser);
