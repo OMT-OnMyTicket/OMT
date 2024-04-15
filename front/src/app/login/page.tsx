@@ -16,7 +16,7 @@ const OAuth2 = () => {
       url.split('?')[1]
     );
     const accessToken: string | null = urlSearchParams.get('token');
-    console.log(accessToken);
+
     useEffect(() => {
       const fetchData = async () => {
         try {

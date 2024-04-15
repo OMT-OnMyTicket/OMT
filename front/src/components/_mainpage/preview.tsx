@@ -7,16 +7,17 @@ const preview = () => {
       <div className={styled.preview}>
         <iframe
           className={styled.video}
-          src='https://www.youtube.com/embed/6kjApj4YXgY?autoplay=1&mute=1&loop=1&playlist=6kjApj4YXgY'
-          title='댓글부대 예고편'
+          src='https://www.youtube.com/embed/pMAPj6WVsT4?autoplay=1&mute=1&loop=1&playlist=pMAPj6WVsT4'
+          title='범죄도시4 예고편'
           allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
           allowFullScreen
           loading='lazy'
         />
-        <strong className={styled.title}>댓글부대 </strong>
+        <strong className={styled.title}>범죄도시4 </strong>
         <span className={styled.txt}>
-          “기자님 기사 오보 아니었어요.
-          <br /> 다 저희들이 만든 수법이에요”
+          나쁜 놈들 제대로 뽀개버린다!
+          <br />
+          마동석의 시원한 액션이 돌아온다.
         </span>
       </div>
     </div>
