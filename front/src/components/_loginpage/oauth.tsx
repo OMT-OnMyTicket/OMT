@@ -12,18 +12,20 @@ const OAuthButton: React.FC<OAuthButtonProps> = ({ provider, name }) => {
   const router = useRouter();
 
   const handleClick = () => {
-    const currentUrl = window.location.href;
+    // redirectUrl 필요 없어짐
+    // const currentUrl = window.location.href;
 
-    // 시작 URL이 localhost3000인지 체크
-    const isLocal = currentUrl.startsWith('http://localhost:3000');
+    // // 시작 URL이 localhost3000인지 체크
+    // const isLocal = currentUrl.startsWith('http://localhost:3000');
 
-    const redirectUri = isLocal
-      ? 'http://localhost:3000/login'
-      : 'https://omt-onmyticket.vercel.app/login';
+    // const redirectUri = isLocal
+    //   ? 'http://localhost:3000/login'
+    //   : 'https://omt-onmyticket.vercel.app/login';
 
-    router.push(
-      `${URL}/oauth2/authorization/${provider}?redirect_uri=${redirectUri}`
-    );
+    // router.push(
+    //   `${URL}/oauth2/authorization/${provider}?redirect_uri=${redirectUri}`
+    // );
+    router.push(`${URL}/oauth2/authorization/${provider}`);
   };
 
   return (
