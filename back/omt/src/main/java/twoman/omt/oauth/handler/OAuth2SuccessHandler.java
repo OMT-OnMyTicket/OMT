@@ -71,7 +71,7 @@ public class OAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
     }
     //엑세스 토큰을 패스에 추가
     private String getTargetUrl(String token){
-        return UriComponentsBuilder.fromPath(REDIRECT_PATH)
+        return UriComponentsBuilder.fromUriString(REDIRECT_PATH)
                 .queryParam("token", token)
                 .build()
                 .toUriString();
