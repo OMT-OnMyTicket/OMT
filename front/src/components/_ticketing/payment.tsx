@@ -6,7 +6,7 @@ import {
   PaymentWidgetInstance
 } from '@tosspayments/payment-widget-sdk';
 import { nanoid } from 'nanoid';
-const clientKey = 'test_ck_Z1aOwX7K8me1gxz2JG98yQxzvNPG';
+const clientKey = 'test_gck_docs_Ovk5rk1EwkEbP0W43n07xlzm';
 const customerKey = 'YbX2HuSlsC9uVJW6NMRMj';
 
 const Payment = () => {
