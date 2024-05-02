@@ -141,7 +141,7 @@ const SubLogin = () => {
             </div>
           ) : (
             <div className={styled.EmptyMovie}>
-              <img src='/png/WarningLine.png' className={styled.WarningLine} />
+              <img src='/png/warningLine.png' className={styled.WarningLine} />
               <Link href={'/myticket/ticketroom'}>
                 <div className={styled.EmptyMovie_Txt}>
                   최근 시청한 영화가 없습니다.
